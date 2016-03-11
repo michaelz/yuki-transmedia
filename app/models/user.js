@@ -14,10 +14,13 @@ var UserSchema = new Schema({
     password: String,
     passed_levels: [
         {
-            level_id: Schema.Types.ObjectId,
-            required: false,
-            ref: "Level"
+            level_id: {
+                type: Schema.Types.ObjectId,
+                required: false,
+                ref: "Level"
+            }
         }
+
     ]
 });
 

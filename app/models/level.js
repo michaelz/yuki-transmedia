@@ -15,7 +15,7 @@ var LevelSchema = new Schema({
         alt: String,
         description: String
     },
-    solution_id: Schema.Types.ObjectId, required: false, ref: "Solution_image", //mongoose sait que c'est une référence à un autre modèèle. Methode "populate" TODO maj
+    solution_id: {type: Schema.Types.ObjectId, required: false, ref: "Solution_image"}, //mongoose sait que c'est une référence à un autre modèèle. Methode "populate" TODO maj
 
 
 
