@@ -7,7 +7,7 @@ Ce repository git contient l'application Yuki-transmedia, narrant l'aventure de 
 Ouvrez Babun ou un autre terminal unix, et tappez
 
 ```
-$ git clone git@github.com:michaelz/yuki-transmedia.git
+$ git clone -b dev git@github.com:michaelz/yuki-transmedia.git # Cloner la branch dev directement
 $ cd yuki-transmedia
 $ npm install
 ```
@@ -41,3 +41,27 @@ $ git push origin nom_de_la_branche # va pousser les modifications sur notre bra
 ```
 
 Une fois que la fonctionnalité est terminée, il faut merger le nouveau code avec la branche `dev`.  Pour cela, on va faire un pull request depuis Github directement.
+
+Le pull request doit être fait entre ***`dev` et `nom_de_la_branche`, et pas avec `master`***. Une fois le pull request crée, on peut contrôler que tout est ok sur Github et merger les modifications.
+
+On a le choix de garder notre branche ou de la supprimer une fois que c'est mergé (si la fonctionnalité n'est pas terminée par exemple mais qu'on a quand même envie de voir les modifications sur `dev`).
+
+C'est M qui s'occupe de mettre en production (= merger `dev` sur `master` et fetcher sur le serveur).
+
+
+## Documentation
+
+La documentation backend (api routes) est accessible sur `/doc`.  Les commentaires au dessus des controllers se fait de cette manière: 
+```
+ /**
+  * @api {get} /user/:id Request User information
+  * @apiName GetUser
+  * @apiGroup User
+  *
+  * @apiParam {Number} id Users unique ID.
+  *
+  * @apiSuccess {String} firstname Firstname of the User.
+  * @apiSuccess {String} lastname  Lastname of the User.
+  */
+```
+Source: [apidocs.com](http://apidocjs.com/#getting-started)
