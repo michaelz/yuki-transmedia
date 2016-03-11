@@ -48,6 +48,8 @@ On a le choix de garder notre branche ou de la supprimer une fois que c'est merg
 
 C'est M qui s'occupe de mettre en production (= merger `dev` sur `master` et fetcher sur le serveur).
 
+Plus d'information sur le rebase sur [coderwall.com](https://coderwall.com/p/7aymfa/please-oh-please-use-git-pull-rebase)
+
 
 ## Documentation
 
