@@ -13,14 +13,18 @@ var UserSchema = new Schema({
     email: String,
     password: String,
     passed_levels: [
-       /* level_id: Object,*/ //TODO
+        {
+            level_id: Schema.Types.ObjectId,
+            required: false,
+            ref: "Level"
+        }
     ]
 });
 
 /*UserSchema.virtual('date')
-    .get(function(){
-        return this._id.getTimestamp();
-    });*/
+ .get(function(){
+ return this._id.getTimestamp();
+ });*/
 
 mongoose.model('User', UserSchema);
 
