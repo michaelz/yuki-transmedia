@@ -12,9 +12,26 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    jshint: {
+        options: {
+            node: true
+        },
+        all: [ "Gruntfile.js", "app/**/*.js", "public/js/**/*.js", "app.js" ]
+    },
     develop: {
       server: {
         file: 'app.js'
+      }
+    },
+    apidoc: {
+      yuki: {
+        src: "app/",
+        dest: "public/doc/",
+        options: {
+          debug: true,
+          includeFilters: [ ".*\\.js$" ],
+          excludeFilters: [ "node_modules/" ]
+        }
       }
     },
     sass: {
@@ -48,14 +65,15 @@ module.exports = function (grunt) {
       },
       views: {
         files: [
-          'app/views/*.handlebars',
-          'app/views/**/*.handlebars'
+          'app/views/*.jade',
+          'app/views/**/*.jade'
         ],
         options: { livereload: reloadPort }
       }
     }
   });
-
+  grunt.loadNpmTasks("grunt-contrib-jshint");
+  grunt.loadNpmTasks('grunt-apidoc');
   grunt.config.requires('watch.js.files');
   files = grunt.config('watch.js.files');
   files = grunt.file.expand(files);
@@ -76,7 +94,9 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'sass',
+    'jshint',
     'develop',
+    'apidoc',
     'watch'
   ]);
 };
