@@ -36,9 +36,15 @@ module.exports = function (grunt) {
     },
     sass: {
       dist: {
-        files: {
-          'public/css/style.css': 'app/resources/sass/style.scss'
-        }
+        files: [
+            {
+                expand: true,
+                    cwd: "app/resources/sass",
+                    src: ["**/*.scss"],
+                    dest: "public/css",
+                    ext: ".css"
+            }
+        ]
       }
     },
     copy: {
@@ -97,7 +103,7 @@ module.exports = function (grunt) {
         files: [
           'app/resources/sass/*.scss'
         ],
-        tasks: ['sass'],
+        tasks: ['sass:dist'],
         options: {
           livereload: reloadPort
         }

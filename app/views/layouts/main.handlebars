@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <title>{{title }}</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/app.css">
   <link rel="stylesheet" href="/css/{{pagename}}.css"
   {{#if ENV_DEVELOPMENT}}
     <script src="http://localhost:35729/livereload.js"></script>
@@ -15,8 +15,6 @@
 
   {{{body}}}
 
-<script type="text/javascript" src="/js/{{pagename}}.js">
-
-</script>
+<script type="text/javascript" src="/js/{{pagename}}.js"></script>
   </body>
 </html>
