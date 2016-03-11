@@ -24,7 +24,7 @@ module.exports = function (grunt) {
       }
     },
     apidoc: {
-      yuki: {
+      yukidoc: {
         src: "app/",
         dest: "public/doc/",
         options: {

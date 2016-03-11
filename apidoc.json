@@ -1,0 +1,7 @@
+{
+  "name": "yukidoc",
+  "version": "1.0.0",
+  "description": "apiDoc basic example",
+  "title": "Custom apiDoc browser title",
+  "url" : "/api/v1"
+}
