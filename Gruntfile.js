@@ -53,7 +53,7 @@ module.exports = function (grunt) {
                 {
                     expand: true,
                     flatten:true,
-                    src: ['app/resources/javascript/*','node_modules/jquery/jquery.min.js'],
+                    src: ['app/resources/javascript/*'],
                     dest: 'public/js/', filter: 'isFile'
                 }
             ]
@@ -63,8 +63,8 @@ module.exports = function (grunt) {
                 {
                     expand:true,
                     flatten:true,
-                    src: ['node_modules/jquery/jquery.min.js'],
-                    dest: 'public/js/', filter: 'isFile'
+                    src: ['node_modules/jquery/dist/jquery.min.js'],
+                    dest: 'public/js/lib/', filter: 'isFile'
                 }
             ]
         }
