@@ -67,6 +67,16 @@ module.exports = function (grunt) {
                     dest: 'public/js/lib/', filter: 'isFile'
                 }
             ]
+        },
+        fonts: {
+            files: [
+                {
+                    expand:true,
+                    flatten:true,
+                    src: ['app/resources/fonts/*'],
+                    dest: 'public/fonts', filter: 'isFile'
+                }
+            ]
         }
     },
     uglify: {
@@ -101,7 +111,8 @@ module.exports = function (grunt) {
       },
       css: {
         files: [
-          'app/resources/sass/*.scss'
+          'app/resources/sass/*.scss',
+          'app/resources/sass/*/*.scss'
         ],
         tasks: ['sass:dist'],
         options: {

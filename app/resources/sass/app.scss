@@ -1,10 +1,23 @@
-@import 'components/variables.scss';
-@import 'components/mixins.scss';
+@import 'components/fonts';
+@import 'components/variables';
+@import 'components/mixins';
+
+/*
+ * This file contains all the styles used for the whole app and for the map.
+ */
+
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: $font-body;
 }
 
+
+h1,h2,h3,h4,h5 {
+    font-family: $font-title;
+    font-weight:normal;
+}
+
+
 a {
-  color: #00B7FF;
+    color: $color-martialarts-1;
 }
