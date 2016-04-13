@@ -22,9 +22,9 @@ router.get('/', function (req, res, next) {
 /**
  * Calligraphy route. Maybe move it somewhere else
  */
-router.get('/martialsArts', function (req, res, next) {
-    res.render('index', {
-      pagename: 'martialsArts',
-      title: 'martialsArts page',
+router.get('/martialArts', function (req, res, next) {
+    res.render('martialArts', {
+      pagename: 'martialArts',
+      title: 'martialArts page'
     });
 });
