@@ -16,7 +16,7 @@ module.exports = function (grunt) {
         options: {
             node: true
         },
-        all: [ "Gruntfile.js", "app/**/*.js", "public/js/**/*.js", "app.js" ]
+        all: [ "Gruntfile.js", "app/**/*.js", "app.js" ]
     },
     develop: {
       server: {
@@ -28,7 +28,7 @@ module.exports = function (grunt) {
         src: "app/",
         dest: "public/doc/",
         options: {
-          debug: true,
+          debug: false,
           includeFilters: [ ".*\\.js$" ],
           excludeFilters: [ "node_modules/" ]
         }
@@ -36,37 +36,93 @@ module.exports = function (grunt) {
     },
     sass: {
       dist: {
-        files: {
-          'public/css/style.css': 'public/css/style.scss'
-        }
+        files: [
+            {
+                expand: true,
+                    cwd: "app/resources/sass",
+                    src: ["**/*.scss"],
+                    dest: "public/css",
+                    ext: ".css"
+            }
+        ]
       }
+    },
+    copy: {
+        main: {
+            files: [
+                {
+                    expand: true,
+                    flatten:true,
+                    src: ['app/resources/javascript/*'],
+                    dest: 'public/js/', filter: 'isFile'
+                }
+            ]
+        },
+        jquery: {
+            files: [
+                {
+                    expand:true,
+                    flatten:true,
+                    src: ['node_modules/jquery/dist/jquery.min.js'],
+                    dest: 'public/js/lib/', filter: 'isFile'
+                }
+            ]
+        },
+        fonts: {
+            files: [
+                {
+                    expand:true,
+                    flatten:true,
+                    src: ['app/resources/fonts/*'],
+                    dest: 'public/fonts', filter: 'isFile'
+                }
+            ]
+        }
+    },
+    uglify: {
+        options: {
+            mangle: false  // Use if you want the names of your functions and variables unchanged
+        },
+        frontend: {
+            files: [{
+              expand: true,
+              cwd: 'public/js',
+              src: '*.js',
+              dest: 'public/js'
+            }]
+        }
+
     },
     watch: {
       options: {
         nospawn: true,
         livereload: reloadPort
       },
-      js: {
+      js_main: {
         files: [
           'app.js',
           'app/**/*.js',
           'config/*.js'
         ],
-        tasks: ['develop', 'delayed-livereload']
+        tasks: ['develop', 'delayed-livereload','copy:main','copy:jquery'],
+        options: {
+            livereload: reloadPort
+        }
       },
       css: {
         files: [
-          'public/css/*.scss'
+          'app/resources/sass/*.scss',
+          'app/resources/sass/*/*.scss'
         ],
-        tasks: ['sass'],
+        tasks: ['sass:dist'],
         options: {
           livereload: reloadPort
         }
       },
       views: {
         files: [
-          'app/views/*.jade',
-          'app/views/**/*.jade'
+          'app/views/*.handlebars',
+          'app/views/**/*.handlebars'
         ],
         options: { livereload: reloadPort }
       }
@@ -74,8 +130,11 @@ module.exports = function (grunt) {
   });
   grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks('grunt-apidoc');
-  grunt.config.requires('watch.js.files');
-  files = grunt.config('watch.js.files');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+
+  grunt.config.requires('watch.js_main.files');
+  files = grunt.config('watch.js_main.files');
   files = grunt.file.expand(files);
 
   grunt.registerTask('delayed-livereload', 'Live reload after the node server has restarted.', function () {
@@ -95,6 +154,8 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'sass',
     'jshint',
+    'copy',
+    'uglify',
     'develop',
     'apidoc',
     'watch'

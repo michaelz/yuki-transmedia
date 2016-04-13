@@ -50,6 +50,18 @@ C'est M qui s'occupe de mettre en production (= merger `dev` sur `master` et fet
 
 Plus d'information sur le rebase sur [coderwall.com](https://coderwall.com/p/7aymfa/please-oh-please-use-git-pull-rebase)
 
+<<<<<<< HEAD
+=======
+## Développement
+
+### Backend
+
+Le développement backend peut directement s'effectuer dans le dossier
+
+### Frontend
+
+Les fichiers sont dans le dossier `resources`. Ils seront copiés dans le repértoire `/public/`. Il ne faut donc modifier le contenu de ce dernier repértoire !
+>>>>>>> dev
 
 ## Documentation
 

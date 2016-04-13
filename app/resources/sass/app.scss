@@ -1,0 +1,23 @@
+@import 'components/fonts';
+@import 'components/variables';
+@import 'components/mixins';
+
+/*
+ * This file contains all the styles used for the whole app and for the map.
+ */
+
+body {
+  padding: 50px;
+  font-family: $font-body;
+}
+
+
+h1,h2,h3,h4,h5 {
+    font-family: $font-title;
+    font-weight:normal;
+}
+
+
+a {
+    color: $color-martialarts-1;
+}
