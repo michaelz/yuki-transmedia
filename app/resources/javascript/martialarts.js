@@ -46,11 +46,20 @@ function kata1() {
       //On compare nos tableau
       var is_same = tblKata1.length == tblInputs.length && tblKata1.every(function(element, index) {
         return element === tblInputs[index];
-
       });
       console.log(is_same);
-
+      if (is_same === true) {
+        console.log("Bien joué le kata a été effectué à la perfection");
+        kata2(tblInputs);
+      } else {
+        console.log("Dommage tu as fait une erreur, recommençons");
+        kata1();
+      }
     }
-
   });
+}
+
+//Fonction gérant le second kata
+function kata2() {
+  console.log("kata2");
 }
