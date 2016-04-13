@@ -9,7 +9,7 @@ $(document).ready(function () {
     function introCount() {
         intro++;
         if (intro === 3) {
-            //console.log("suivant clicked " + intro + " fois");
+            console.log("suivant clicked " + intro + " fois");
             $(kata1);
         }
     }
@@ -17,14 +17,19 @@ $(document).ready(function () {
 });
 
 function kata1() {
-    console.log("fonction kata");
 
+    //Variable de la fonction
+    var tblKata1 = ['Poing', 'Pied', 'Poing'];//Premier kata préconfiguré
+    var tblInputs=[];//Tableau stockant les inputs pour le kata
+    var nbrInputKata1 = 0;//Nbr d'inputs que le user a entré
+
+    //Détéction des inputs
     $('#btnPoing, #btnPied, #btnSpe').click(function () {
-        if (this.id === 'btnPoing') {
-            console.log("Vous avez clické sur le bon bouton (poing)");
 
-        } else {
-            console.log('Vous avez clické sur le mauvais');
-        }
+            var i = 0;
+            nbrInputKata1++;
+            console.log("Vous avez clické sur " + nbrInputKata1 + " inputs");
+            tblInputs[i] = this.id;
+
     });
 }
