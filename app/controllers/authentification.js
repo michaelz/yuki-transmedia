@@ -11,12 +11,12 @@ base64url = require('base64url');
 require('express-jsend');
 
 module.exports = function (app) {
-	app.use('/api/v1/auth', router);
+	app.use('/api/auth', router);
 };
 
 router.post('/', function (req, res, next){
  	var criteria = {};
- 	criteria.name = req.body.name;
+ 	criteria.email = req.body.email;
  	criteria.password = req.body.password;
 
  	User.findOne(criteria, function(err, user){
@@ -24,21 +24,24 @@ router.post('/', function (req, res, next){
 			res.status(500).send(err);
 			return;
 		} else if (!user){
-			var user = new User(req.body);
-
-		 	user.save(function(err, createdUser){
-		 		if (err) {
-		 			res.status(500).send(err);
-		 			return;
-		 		}
-		 		var token = tools.generate(createdUser);
-		 		res.jsend(token);
-		 	});
-			
+			res.status(404).send("User not found");
 			return;
 		} else {
 			var token = tools.generate(user);
 			res.jsend(token);
 		}
 	});
+});
+
+router.post('/register', function (req, res, next){
+ 	var user = new User(req.body);
+
+ 	user.save(function(err, createdUser){
+ 		if (err) {
+ 			res.status(500).send(err);
+ 			return;
+ 		}
+
+ 		res.send(createdUser);
+ 	});
  });
