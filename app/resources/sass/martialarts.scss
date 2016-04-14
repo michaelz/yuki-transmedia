@@ -1,14 +1,18 @@
+/* Inputs button
+==================================================*/
 .martialArtsBtn {
-    width: 10%;
+    width: 5%;
     height: 0;
-    padding-bottom: 10%;
+    padding-bottom: 5%;
     border-radius: 50%;
     border: 2px solid #f5f5f5;
     overflow: hidden;
     box-shadow: 0 0 3px gray;
+        display: inline-block;
 }
 .martialArtsBtn:hover {
     background: #262626;
+    cursor: pointer;
 }
 .martialArtsBtn img {
     display: block;
@@ -18,5 +22,77 @@
 }
 
 #btnPoing {
-background: #464646;
+background: #12a3b2;
+}
+
+#btnPoing:hover {
+    background: #088b99;
+}
+
+#btnPied {
+background: #e5007f;
+}
+
+#btnPied:hover {
+    background: #990f5c;
+}
+
+#btnJump {
+background: #ffdb4b;
+}
+
+#btnJump:hover {
+    background: #ffcb34;
+}
+
+#btnSpe {
+background: #1A2131;
+}
+
+#btnSpe:hover {
+    background: black;
+}
+
+/* Next Button
+==================================================*/
+.martialArtsNextBtn {
+  position: relative;
+  vertical-align: top;
+  width: 10%;
+  height: 40px;
+  padding: 0;
+  font-size: 1em;
+  font-family: montserrat;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #3498db;
+  border: 0;
+  border-bottom: 2px solid #2a8bcc;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -2px #2a8bcc;
+  box-shadow: inset 0 -2px #2a8bcc;
+  margin-bottom: 10px;
+}
+.martialArtsNextBtn:active {
+  top: 1px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+/* Content bubble
+==================================================*/
+.discussionContainer {
+border:1px solid #B0C4DE;
+background-color:#E4EFFF;
+-moz-border-radius:10px;
+-webkit-border-radius:10px;
+width: 99.4%;
+position:fixed;
+bottom:5px;
+left:5px;
+}
+
+.discussionContainer p, button, h3 {
+  margin-left: 10px;
 }
