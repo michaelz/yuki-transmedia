@@ -18,13 +18,73 @@ router.get('/', function (req, res, next) {
   });
 });
 
+/**
+ * Introduction route.
+ */
+router.get('/introduction', function (req, res, next) {
+    res.render('introduction', {
+      pagename: 'introduction',
+      title: 'introduction page'
+    });
+});
 
 /**
- * Calligraphy route. Maybe move it somewhere else
+ * MartialArts route.
  */
 router.get('/martialArts', function (req, res, next) {
     res.render('martialArts', {
-      pagename: 'martialArts',
+      pagename: 'martialarts',
       title: 'martialArts page'
+    });
+});
+
+/**
+ * Calligraphy route.
+ */
+router.get('/calligraphy', function (req, res, next) {
+    res.render('calligraphy', {
+      pagename: 'calligraphy',
+      title: 'Calligraphy page'
+    });
+});
+
+/**
+ * Quizz route.
+ */
+router.get('/quizz', function (req, res, next) {
+    res.render('quizz', {
+      pagename: 'quizz',
+      title: 'quizz page'
+    });
+});
+
+/**
+ * Calligraphy route.
+ */
+router.get('/food', function (req, res, next) {
+    res.render('food', {
+      pagename: 'food',
+      title: 'food page'
+    });
+});
+
+/**
+ * Calligraphy route.
+ */
+router.get('/origami', function (req, res, next) {
+    res.render('origami', {
+      pagename: 'origami',
+      title: 'origami page'
+    });
+});
+
+
+/**
+ * Outro route.
+ */
+router.get('/outro', function (req, res, next) {
+    res.render('outro', {
+      pagename: 'outro',
+      title: 'outro page'
     });
 });
