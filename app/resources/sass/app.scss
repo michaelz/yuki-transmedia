@@ -7,7 +7,7 @@
  */
 
 body {
-  padding: 50px;
+  padding:0;
   font-family: $font-body;
 }
 
@@ -20,4 +20,43 @@ h1,h2,h3,h4,h5 {
 
 a {
     color: $color-martialarts-1;
+}
+
+/**
+ * Mobile container
+ */
+.square {
+    overflow:hidden;
+    position:relative;
+    width: 90%;
+    margin: 0 auto;
+    border: 3px solid $color-back;
+    &:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+    }
+    .content {
+        position: absolute;
+        padding: 1em;
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    .square {
+        height: 500px;
+        max-height: 100%;
+        width: 500px;
+        &:after  {
+            padding: 0;
+        }
+        .content {
+            position:static;
+        }
+    }
+
 }
