@@ -48,15 +48,6 @@ router.get('/calligraphy', function (req, res, next) {
     });
 });
 
-/**
- * Quizz route.
- */
-router.get('/quizz', function (req, res, next) {
-    res.render('quizz', {
-      pagename: 'quizz',
-      title: 'quizz page'
-    });
-});
 
 /**
  * Calligraphy route.
@@ -64,7 +55,7 @@ router.get('/quizz', function (req, res, next) {
 router.get('/food', function (req, res, next) {
     res.render('food', {
       pagename: 'food',
-      title: 'food page'
+      title: 'food Quizz page'
     });
 });
 
@@ -75,6 +66,16 @@ router.get('/origami', function (req, res, next) {
     res.render('origami', {
       pagename: 'origami',
       title: 'origami page'
+    });
+});
+
+/**
+ * Pop culture route.
+ */
+router.get('/popculture', function (req, res, next) {
+    res.render('popculture', {
+      pagename: 'popculture',
+      title: 'popculture page'
     });
 });
 
