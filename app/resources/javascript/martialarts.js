@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // Attente du document ready
+=======
+// Attente du document ready
+>>>>>>> automatisation de la longueur des kata - wip
 $(document).ready(function () {
 
   //Définition des variables
@@ -55,7 +59,11 @@ function kata() {
   var nbrInputKata = 0;//Nbr d'inputs que le user a entré
   var i = 0;//Index pour le kata aléatoire définir le kata
   var j = 0;//Index pour les inputs saisi
+<<<<<<< HEAD
   var lngKata;
+=======
+  var lngKata = 3;
+>>>>>>> automatisation de la longueur des kata - wip
 
   //Génération du kata aléatoire
   while (i<3) {
