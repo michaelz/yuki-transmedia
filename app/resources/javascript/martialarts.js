@@ -10,6 +10,7 @@ $(document).ready(function () {
   $('#martialArtsBubble2').hide();
   $('#martialArtsBubble3').hide();
   $('#martialArtsBubble4').hide();
+  $('#martialArtsBubble5').show();
   $('.martialArtsBtn').hide();
 
 
@@ -51,32 +52,80 @@ function kataGeneration(nbMove, lvl){
 
   var i = 0;//Index pour le kata aléatoire définir le kata
   var tblKata = [];//Premier kata préconfiguré
-  var yolo = "true";
+  var kataValidated = "true";
   lvl++;
   nbMove++;
   $( "#nbrKata" ).empty();
   $( "#nbrKata" ).append(lvl);
 
-  if (lvl<5 && yolo === "true") {
-    yolo = null;
+  $(".martialArtsBtn").css("background", "grey");
+
+  if (lvl!=6 && kataValidated === "true") {
+    kataValidated = null;
     //Génération du kata aléatoire
     while (i<nbMove) {
       var aleatoireNbr = Math.round(Math.random()*3) + 1;
       if (aleatoireNbr === 1) {
         tblKata[i] = "btnPoing";
         i++;
+
+        $('<div>').attr({
+          class: 'kataASaisir kataASaisirPoing'
+        }).appendTo("#kataASaisir");
+
+        $('<img>').attr({
+          src: 'img/punch.png'
+        }).appendTo(".kataASaisirPoing");
+
       } else if (aleatoireNbr === 2) {
         tblKata[i] = "btnPied";
         i++;
+
+        $('<div>').attr({
+          class: 'kataASaisir kataASaisirPied'
+        }).appendTo("#kataASaisir");
+
+        $('<img>').attr({
+          src: 'img/kick.png'
+        }).appendTo(".kataASaisirPied");
+
       } else if (aleatoireNbr === 3) {
         tblKata[i] = "btnJump";
         i++;
+
+        $('<div>').attr({
+          class: 'kataASaisir kataASaisirJump'
+        }).appendTo("#kataASaisir");
+
+        $('<img>').attr({
+          src: 'img/jump.png'
+        }).appendTo(".kataASaisirJump");
+
       } else if (aleatoireNbr === 4) {
         tblKata[i] = "btnSpe";
         i++;
+
+        $('<div>').attr({
+          class: 'kataASaisir kataASaisirSpe'
+        }).appendTo("#kataASaisir");
+
+        $('<img>').attr({
+          src: 'img/special.png'
+        }).appendTo(".kataASaisirSpe");
+
       }
     }
+
+    $(".kataASaisir").show().delay(4000).fadeOut();
+
+    setTimeout(
+  function()
+  {
     validationKata(tblKata, lvl, nbMove);
+    //do something special
+  }, 4000);
+
+
     console.log(tblKata);
     i = 0;
     //tblKata = [];
@@ -89,6 +138,11 @@ function validationKata(tblKata, lvl, nbMove){
   var nbrInputKata = 0;
   var tblInputs=[];//Tableau stockant les inputs pour le kata
   var j = 0;//Index pour les inputs aléatoire définir le kata
+
+  $("#btnPoing").css("background", "#12a3b2");
+  $("#btnPied").css("background", "#e5007f");
+  $("#btnJump").css("background", "#ffdb4b");
+  $("#btnSpe").css("background", "#1A2131");
 
   //Détéction des inputs
   $('#btnPoing, #btnPied, #btnJump, #btnSpe').click(function () {
@@ -110,7 +164,16 @@ function validationKata(tblKata, lvl, nbMove){
       console.log(is_same);
       if (is_same === true) {
         console.log("Bien joué le kata a été effectué à la perfection");
-        kataGeneration(nbMove, lvl);
+        $( ".kataASaisir" ).remove();
+
+        if (lvl===5) {
+          $('.discussionContainer').hide();
+          alert("Bravo vous avez fini le mini jeu des arts martiaux.");
+        } else if (lvl<5) {
+          kataGeneration(nbMove, lvl);
+        }
+
+
       } else {
         console.log("Dommage tu as fait une erreur, recommençons");
         validationKata(tblKata, lvl, nbMove);
