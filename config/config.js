@@ -9,7 +9,8 @@ var config = {
       name: 'yuki-transmedia'
     },
     port: 3000,
-    db: 'mongodb://localhost/yuki-transmedia-development'
+    db: 'mongodb://localhost/yuki-transmedia-development',
+    key: "mdslmlfd893879smlfsldmffnneknwklelm8934879478"
   },
 
   test: {
@@ -18,7 +19,8 @@ var config = {
       name: 'yuki-transmedia'
     },
     port: 3000,
-    db: 'mongodb://localhost/yuki-transmedia-test'
+    db: 'mongodb://localhost/yuki-transmedia-test',
+    key: "mdslmlfd893879smlfsldmffnneknwklelm8934879478"
   },
 
   production: {
@@ -27,7 +29,8 @@ var config = {
       name: 'yuki-transmedia'
     },
     port: 3000,
-    db: 'mongodb://localhost/yuki-transmedia-production'
+    db: 'mongodb://localhost/yuki-transmedia-production',
+    key: "mdslmlfd893879smlfsldmffnneknwklelm8934879478"
   }
 };
 
