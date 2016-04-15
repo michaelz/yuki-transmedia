@@ -22,12 +22,12 @@ $ grunt
 
 Utilisation de git pour tous les membres de l'équipe.
 
-Nous utilisons la fonctionnalité des branches dans git. La branche `master` est utilisée pour la production. Une branche `dev` a été créée pour le serveur de développement. 
+Nous utilisons la fonctionnalité des branches dans git. La branche `master` est utilisée pour la production. Une branche `dev` a été créée pour le serveur de développement.
 
-Pour chaque nouvelle fonctionnalité, il faut créer une nouvelle branche, basée sur la branche `dev`, avec la commande suivante : 
+Pour chaque nouvelle fonctionnalité, il faut créer une nouvelle branche, basée sur la branche `dev`, avec la commande suivante :
 
 ```
-$ git checkout -b nom_de_la_branche --track origin/dev`
+$ git checkout -b nom_de_la_branche --track origin/dev
 ```
 Ceci va créer une nouvelle branche `nom_de_la_branche` et switcher dessus.
 
@@ -35,7 +35,7 @@ La procédure pour les commits reste la même que d'habitude, sauf au niveau du 
 
 
 ```
-$ git commit -am "mon message de commit très important car public" # commit 
+$ git commit -am "mon message de commit très important car public" # commit
 $ git pull --rebase # correspond à un 'git fetch' suivi d'un 'git rebase' --> mieux que juste git pull, ça évite les merges
 $ git push origin nom_de_la_branche # va pousser les modifications sur notre branche vers origin (= github)
 ```
@@ -62,7 +62,7 @@ Les fichiers sont dans le dossier `resources`. Ils seront copiés dans le repér
 
 ## Documentation
 
-La documentation backend (api routes) est accessible sur `/doc`.  Les commentaires au dessus des controllers se fait de cette manière: 
+La documentation backend (api routes) est accessible sur `/doc`.  Les commentaires au dessus des controllers se fait de cette manière:
 ```
  /**
   * @api {get} /user/:id Request User information
