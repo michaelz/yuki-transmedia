@@ -50,6 +50,7 @@ C'est M qui s'occupe de mettre en production (= merger `dev` sur `master` et fet
 
 Plus d'information sur le rebase sur [coderwall.com](https://coderwall.com/p/7aymfa/please-oh-please-use-git-pull-rebase)
 
+
 ## Développement
 
 ### Backend
