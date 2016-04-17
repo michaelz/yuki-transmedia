@@ -10,7 +10,7 @@ $(document).ready(function () {
   $('#martialArtsBubble2').hide();
   $('#martialArtsBubble3').hide();
   $('#martialArtsBubble4').hide();
-  $('#martialArtsBubble5').show();
+  $('#martialArtsBubble5').hide();
   $('.martialArtsBtn').hide();
 
 
@@ -60,7 +60,8 @@ function kataGeneration(nbMove, lvl){
 
   $(".martialArtsBtn").css("background", "grey");
 
-  if (lvl!=6 && kataValidated === "true") {
+
+  if (lvl!=5 && kataValidated === "true") {
     kataValidated = null;
     //Génération du kata aléatoire
     while (i<nbMove) {
@@ -166,17 +167,24 @@ function validationKata(tblKata, lvl, nbMove){
         console.log("Bien joué le kata a été effectué à la perfection");
         $( ".kataASaisir" ).remove();
 
-        if (lvl===5) {
+        if (lvl===4) {
           $('.discussionContainer').hide();
           alert("Bravo vous avez fini le mini jeu des arts martiaux.");
-        } else if (lvl<5) {
+        } else if (lvl<4) {
           kataGeneration(nbMove, lvl);
         }
 
 
       } else {
         console.log("Dommage tu as fait une erreur, recommençons");
+        $(".martialArtsBtn").css("background", "grey");
+        $(".kataASaisir").show().delay(4000).fadeOut();
+        setTimeout(
+      function()
+      {
         validationKata(tblKata, lvl, nbMove);
+        //do something special
+      }, 4000);
       }
     }
   });
