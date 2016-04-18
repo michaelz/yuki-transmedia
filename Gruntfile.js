@@ -1,5 +1,3 @@
-'use strict';
-
 var request = require('request');
 
 module.exports = function (grunt) {
@@ -16,7 +14,7 @@ module.exports = function (grunt) {
         options: {
             node: true
         },
-        all: [ "Gruntfile.js", "app/**/*.js", "app.js" ]
+        all: [ "Gruntfile.js", "app/*.js", "app.js" ]
     },
     develop: {
       server: {
@@ -68,6 +66,16 @@ module.exports = function (grunt) {
                 }
             ]
         },
+        lib: {
+            files: [
+                {
+                    expand:true,
+                    flatten:true,
+                    src:['app/resources/javascript/lib/*'],
+                    dest: 'public/js/lib', filter: 'isFile'
+                }
+            ]
+        },
         fonts: {
             files: [
                 {
@@ -104,7 +112,7 @@ module.exports = function (grunt) {
           'app/**/*.js',
           'config/*.js'
         ],
-        tasks: ['develop', 'delayed-livereload','copy:main','copy:jquery'],
+        tasks: ['develop', 'delayed-livereload','copy:main','copy:jquery','copy:lib'],
         options: {
             livereload: reloadPort
         }
