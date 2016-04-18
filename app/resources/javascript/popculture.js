@@ -1,4 +1,8 @@
 /*
- * This is popculture
+ * POP CULTURE
  */
-console.log('this is popculture');
+
+console.log("this is popculture");
+    $(function() {
+    $(".drag").draggable();
+});
