@@ -70,9 +70,10 @@ module.exports = function (grunt) {
             files: [
                 {
                     expand:true,
-                    flatten:true,
-                    src:['app/resources/javascript/lib/*'],
-                    dest: 'public/js/lib', filter: 'isFile'
+                    cwd: 'app/resources/javascript/lib/',
+                    flatten:false,
+                    src:['**'],
+                    dest: 'public/js/lib',
                 }
             ]
         },
