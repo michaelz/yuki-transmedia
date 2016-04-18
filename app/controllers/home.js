@@ -29,6 +29,16 @@ router.get('/introduction', function (req, res, next) {
 });
 
 /**
+ * login route.
+ */
+router.get('/login', function (req, res, next) {
+    res.render('login', {
+      pagename: 'login',
+      title: 'login page'
+    });
+});
+
+/**
  * MartialArts route.
  */
 router.get('/martialArts', function (req, res, next) {

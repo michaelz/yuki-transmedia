@@ -1,3 +1,39 @@
+/* Kata a saisir
+==================================================*/
+.kataASaisir {
+    width: 5%;
+    height: 0;
+    padding-bottom: 5%;
+    border-radius: 50%;
+    border: 2px solid #f5f5f5;
+    overflow: hidden;
+    box-shadow: 0 0 3px gray;
+    display: inline-block;
+}
+
+.kataASaisir img {
+    display: block;
+    width: 76%;
+    padding: 12%;
+    height: auto;
+}
+
+.kataASaisirPoing {
+background: #12a3b2;
+}
+
+.kataASaisirPied {
+background: #e5007f;
+}
+
+.kataASaisirJump {
+background: #ffdb4b;
+}
+
+.kataASaisirSpe {
+background: #1A2131;
+}
+
 /* Inputs button
 ==================================================*/
 .martialArtsBtn {
@@ -8,7 +44,7 @@
     border: 2px solid #f5f5f5;
     overflow: hidden;
     box-shadow: 0 0 3px gray;
-        display: inline-block;
+    display: inline-block;
 }
 .martialArtsBtn:hover {
     background: #262626;
