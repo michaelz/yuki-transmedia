@@ -2,6 +2,7 @@ $.getJSON("/api/quiz", function (data) {
     console.log(data);
 
     var length = data.length;
+    var positionUser = 0;
     console.log(length);
     $(".question").append(data[0].question);
     $.each(data[0].answers, function (a, answer) {
@@ -19,6 +20,9 @@ $.getJSON("/api/quiz", function (data) {
             //message de confirmation
             $(".button").empty();
             $(".button").append('<button type="button" class="true"> Send</button>');
+            if(positionUser = length){
+
+            }
 
         } else {
             //message d'erreur
