@@ -22,8 +22,8 @@ var settings = {
     success: {
         //fadeOriginal: false,    // cross-fade original image [true|false]
         callback: function (results) {
-            alert('Gelöst in ' + results.moves + ' Zügen und ' +
-                + results.seconds + ' Sekunden.');
+            alert('Resolu en ' + results.moves + ' coups et en ' +
+                + results.seconds + ' secondes.');
         }//,    // callback a user-defined function [function]
                                 // the function is passed an object as its argument
                                 // which includes the fields 'moves' and 'seconds'
@@ -58,5 +58,5 @@ var texts = {
 }
 
 $(document).ready(function() {
-    $('img').jqPuzzle(settings, texts); // apply to all images
+    $('img.jqPuzzle').jqPuzzle(settings, texts); // apply to all images
 });
