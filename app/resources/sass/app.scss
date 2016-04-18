@@ -31,7 +31,8 @@ a {
     position:relative;
     width: 90%;
     margin: 0 auto;
-    border: 3px solid $color-back;
+    border: 6px solid $color-grey;
+    border-top: none;
     background: rgba($color-white,0.5);
     &:after {
         content: "";
@@ -50,9 +51,9 @@ a {
 // Specifics for landscape
 @media only screen and (orientation: landscape) {
     .square {
-        height: 500px;
+
         max-height: 100%;
-        width: 500px;
+        max-width: 1024px;
         &:after  {
             padding: 0;
         }
@@ -61,4 +62,17 @@ a {
         }
     }
 
+}
+
+
+.mainHeader {
+    border-bottom: 6px solid $color-grey;
+    .logo {
+        width: 10em;
+        height: auto;
+        margin-bottom: -2.8em;
+        z-index:2;
+        position:relative;
+        margin-left: 10%;
+    }
 }
