@@ -101,6 +101,7 @@ router.get('/popculture', function (req, res, next) {
 });
 
 
+
 /**
  * Outro route.
  */
@@ -110,5 +111,3 @@ router.get('/outro', function (req, res, next) {
       title: 'outro page'
     });
 });
-
-
