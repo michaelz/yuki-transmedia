@@ -20,9 +20,9 @@ $.getJSON("/api/quiz", function (data) {
             //message de confirmation
             $(".button").empty();
             $(".button").append('<button type="button" class="true"> Send</button>');
-            if(positionUser = length){
+           /* if(positionUser = length){
 
-            }
+            }*/
 
         } else {
             //message d'erreur
