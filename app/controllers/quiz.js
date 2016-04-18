@@ -26,10 +26,14 @@ router.get('/', function (req, res, next) {
  */
 router.get('/:id', function (req, res, next) {
 
-    Quiz_food_question.find(function (err, quiz_food_question) {
-        if (err) {
+
+    var questionId = req.params.id;
+    Quiz_food_question.findById(questionId, function(err, quiz_food_question){
+        if (err){
             res.status(500).send(err);
             return;
+        } else if(!quiz_food_question){
+            res.status(404).send("question not found");
         }
         res.send(quiz_food_question);
     });
@@ -47,5 +51,50 @@ router.post('/', function (req, res, next) {
             return;
         }
         res.send(Created_quiz_food_questions);
+    });
+});
+
+/**
+ * delete question
+ */
+router.delete("/:id", function(req, res, next){
+    var questionId = req.params.id;
+    Quiz_food_question.remove({
+        _id: questionId
+    }, function(err, data){
+        if (err){
+            res.status(500).send(err);
+            return;
+        }
+        console.log('Deleted' + data + 'documents');
+        res.sendStatus(204);
+    });
+});
+
+
+/**
+ * modify a question
+ */
+
+router.put("/:id", function(req, res, next){
+    var questionId = req.params.id;
+    Quiz_food_question.findById(questionId, function(err, question){
+        if (err){
+            res.status(500).send(err);
+            return;
+        }
+        else if(!person){
+            res.status(404).send("person not found");
+        }
+        question.name = req.body.name;
+        question.age = req.body.age;
+
+        question.save(req.body, function(err, updatedQuestion){
+            if(err){
+                res.status(500).send(err);
+                update();
+            }
+            res.send(updatedQuestion);
+        });
     });
 });
