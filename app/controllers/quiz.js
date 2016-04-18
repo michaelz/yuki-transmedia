@@ -78,18 +78,20 @@ router.delete("/:id", function(req, res, next){
 
 router.put("/:id", function(req, res, next){
     var questionId = req.params.id;
-    Quiz_food_question.findById(questionId, function(err, question){
+    Quiz_food_question.findById(questionId, function(err, quiz_food_question){
         if (err){
             res.status(500).send(err);
             return;
         }
-        else if(!person){
-            res.status(404).send("person not found");
+        else if(!quiz_food_question){
+            res.status(404).send("question not found");
         }
-        question.name = req.body.name;
-        question.age = req.body.age;
+        quiz_food_question.question = req.body.question;
+        quiz_food_question.position = req.body.position;
+        quiz_food_question.answers = req.body.answers;
+        quiz_food_question.img = req.body.img;
 
-        question.save(req.body, function(err, updatedQuestion){
+        quiz_food_question.save(req.body, function(err, updatedQuestion){
             if(err){
                 res.status(500).send(err);
                 update();
