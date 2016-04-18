@@ -18,8 +18,12 @@
 .jqPuzzle {
 	padding: 5px;
 	border: 1px solid #222222;
-	background-color: #DDDDFF;
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background-color: #FFFFFF;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:80%;
+    height: auto;
 }
 
 /* only needed if external css rules set defaults for divs,
