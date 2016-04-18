@@ -1,13 +1,21 @@
 <h1>login</h1>
 
-<form id="signUp-form" action="">
+<!--<form id="signUp-form" action="">-->
   Pseudo:<br>
-  <input type="text" name="pseudo" placeholder="Kevin99"><br>
+  <input id="pseudo" type="text" name="pseudo" placeholder="Kevin99"><br>
+  <div id="pseudoError" class="error"></div>
+
   Adresse email:<br>
-  <input type="text" name="email" placeholder="kevin.tomba@gmail.com"><br>
+  <input type="text" class="verif-email" name="email" placeholder="kevin.tomba@gmail.com">
+  <div id="emailError" class="error"></div>
+
   Mot de passe:<br>
-  <input type="text" name="password" placeholder="******"><br>
+  <input id="password" type="text" name="password" placeholder="******"><br>
+  <div id="pwError" class="error"></div>
+
   Confirmation de mot de passe:<br>
-  <input type="text" name="rePassword" placeholder="******"><br><br>
-  <input id="signUp" type="submit" value="Submit">
-</form>
+  <input  id="rePassword" type="text" name="rePassword" placeholder="******">
+  <div id="rePwError" class="error"></div>
+
+  <br><input id="signUpBtn" type="submit" value="Sign Up">
+<!--</form>-->
