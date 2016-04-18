@@ -133,7 +133,7 @@ function kataGeneration(nbMove, lvl){
     //lvl++;
     //nbMove++;
   }
-};
+}
 
 function validationKata(tblKata, lvl, nbMove){
   var nbrInputKata = 0;
