@@ -7,8 +7,9 @@
  */
 
 body {
-  padding: 50px;
+  padding:0;
   font-family: $font-body;
+  background: url('/img/mosaique.png');
 }
 
 
@@ -20,4 +21,58 @@ h1,h2,h3,h4,h5 {
 
 a {
     color: $color-martialarts-1;
+}
+
+/**
+ * Mobile container
+ */
+.square {
+    overflow:hidden;
+    position:relative;
+    width: 90%;
+    margin: 0 auto;
+    border: 6px solid $color-grey;
+    border-top: none;
+    background: rgba($color-white,0.5);
+    &:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+    }
+    .content {
+        position: absolute;
+        padding: 1em;
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+    }
+}
+// Specifics for landscape
+@media only screen and (orientation: landscape) {
+    .square {
+
+        max-height: 100%;
+        max-width: 1024px;
+        &:after  {
+            padding: 0;
+        }
+        .content {
+            position:static;
+        }
+    }
+
+}
+
+
+.mainHeader {
+    border-bottom: 6px solid $color-grey;
+    .logo {
+        width: 10em;
+        height: auto;
+        margin-bottom: -2.8em;
+        z-index:2;
+        position:relative;
+        margin-left: 10%;
+    }
 }
