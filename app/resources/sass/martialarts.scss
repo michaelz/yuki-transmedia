@@ -36,6 +36,8 @@ background: #1A2131;
 
 /* Inputs button
 ==================================================*/
+
+
 .martialArtsBtn {
     width: 5%;
     height: 0;
@@ -45,6 +47,9 @@ background: #1A2131;
     overflow: hidden;
     box-shadow: 0 0 3px gray;
     display: inline-block;
+    &.desactivatedBtn {
+      background: grey!important;
+    }
 }
 .martialArtsBtn:hover {
     background: #262626;

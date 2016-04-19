@@ -58,7 +58,9 @@ function kataGeneration(nbMove, lvl){
   $( "#nbrKata" ).empty();
   $( "#nbrKata" ).append(lvl);
 
-  $(".martialArtsBtn").css("background", "grey");
+  //$( ".martialArtsBtn" ).addClass( "desactivatedBtn" );
+  $(".martialArtsBtn").addClass("desactivatedBtn");
+  //$(".desactivatedBtn").css("background", "grey");
 
 
   if (lvl!=5 && kataValidated === "true") {
@@ -140,20 +142,10 @@ function validationKata(tblKata, lvl, nbMove){
   var tblInputs=[];//Tableau stockant les inputs pour le kata
   var j = 0;//Index pour les inputs aléatoire définir le kata
 
-  $("#btnPoing").css("background", "#12a3b2");
-  $("#btnPied").css("background", "#e5007f");
-  $("#btnJump").css("background", "#ffdb4b");
-  $("#btnSpe").css("background", "#1A2131");
 
+$(".martialArtsBtn").removeClass("desactivatedBtn");
 
-  $("#btnPoing").hover(function(){
-    $(this).css("background", "#088B99");
-  }, function(){
-    $(this).css("background", "#12a3b2");
-});
-
-
-
+$( ".martialArtsBtn" ).removeClass( "desactivatedBtn" );
 
 
   //Détéction des inputs
@@ -165,7 +157,6 @@ function validationKata(tblKata, lvl, nbMove){
     //Injection des valeurs saisies dans un tableau
     tblInputs[j] = this.id;
     j++;
-    //console.log(tblInputs);
 
     //Dès que le bon nombre d'inputs est saisi...
     if (nbrInputKata === nbMove) {
@@ -188,7 +179,8 @@ function validationKata(tblKata, lvl, nbMove){
 
       } else {
         console.log("Dommage tu as fait une erreur, recommençons");
-        $(".martialArtsBtn").css("background", "grey");
+        $( ".martialArtsBtn" ).addClass( "desactivatedBtn" );
+        //$(".martialArtsBtn").css("background", "grey");
         $(".kataASaisir").show().delay(4000).fadeOut();
         setTimeout(
       function()
