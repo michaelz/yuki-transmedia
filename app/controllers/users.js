@@ -66,21 +66,18 @@ router.put("/:id", function (req, res, next) {
 		else if (!user) {
 			res.status(404).send("user not found");
 		}
-		level.question = req.body.question;
-		level.number = req.body.number;
-		level.name = req.body.name;
-		level.release_date = req.body.release_date;
-		level.additional_info = req.body.additional_info;
-		level.description = req.body.description;
-		level.clue = req.body.clue;
-		level.solution = req.body.solution;
+		user.email = req.body.email;
+		user.password = req.body.password;
+		user.username = req.body.username;
+		user.solved_solutions = req.body.solved_solutions;
+		user.passed_levels = req.body.passed_levels;
 
-		level.save(req.body, function (err, updatedLevel) {
+		user.save(req.body, function (err, updatedUser) {
 			if (err) {
 				res.status(500).send(err);
 				update();
 			}
-			res.send(updatedLevel);
+			res.send(updatedUser);
 		})
 	});
 });

@@ -114,25 +114,50 @@ router.put("/:id", function (req, res, next) {
 /**
  * Pass a level
  */
-router.post('/passLevelUser/:idLevel/', function (req, res, next) {
+router.post('/passLevelUser/:idLevel/', tools.verifyToken, function (req, res, next) {
 
 
-    var levelId = req.params.idLevel;
-    var userToken = req.params.authentification;
-        var userValided = tools.verifyToken(userToken);
+    var user = User.findById(req.idUser, function(err, user){
+        if(err){
+            res.status(500).send(err);
+            return;
+        } else if (!user){
+            res.status(404).send('User not found');
+            return;
+        }
 
-    Level.findById(levelId, function (err, quiz_food_question) {
+    });
+
+
+    var level = Level.findById(req.params.idLevel, function (err, quiz_food_question) {
         if (err) {
             res.status(500).send(err);
             return;
         } else if (!quiz_food_question) {
-            res.status(404).send("question not found");
+            res.status(404).send("level not found");
         }
 
-        //find user
+
+        //assign level and result
+
+        user.passed_levels;
 
 
         res.status(200).send("level passed");
     });
 
 });
+
+/*
+passed_levels: [
+    {
+        level_id: {
+            type: Schema.Types.ObjectId,
+            required: false,
+            ref: "Level"
+        },
+        result: String //here we can save any result we want for any game that has been passed
+
+    }
+
+]*/

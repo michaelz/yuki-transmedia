@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
 var LevelSchema = new Schema({
     number: Number,
     name: String,
+    code: String,
     release_date: Date,
     additional_info: String,
     description: String,
@@ -22,6 +23,5 @@ var LevelSchema = new Schema({
 
 
 });
-
 
 mongoose.model('Level', LevelSchema);
