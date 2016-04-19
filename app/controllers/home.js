@@ -18,6 +18,17 @@ router.get('/', function (req, res, next) {
   });
 });
 
+
+/**
+ * Map Route
+ */
+router.get('/map', function (req, res, next) {
+    res.render('map', {
+        pagename: 'map',
+        title: 'Map'
+    });
+});
+
 /**
  * Introduction route.
  */

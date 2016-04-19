@@ -8,6 +8,7 @@
 
 body {
   padding:0;
+  margin:0;
   font-family: $font-body;
   background: url('/img/mosaique.png');
 }
@@ -26,7 +27,12 @@ a {
 /**
  * Mobile container
  */
+
 .square {
+    height: 90vw;
+    width: 90vw;
+    max-height: 80vh;
+    max-width: 80vh;
     overflow:hidden;
     position:relative;
     width: 90%;
@@ -34,34 +40,6 @@ a {
     border: 6px solid $color-grey;
     border-top: none;
     background: rgba($color-white,0.5);
-    &:after {
-        content: "";
-        display: block;
-        padding-bottom: 100%;
-    }
-    .content {
-        position: absolute;
-        padding: 1em;
-        left:0;
-        right:0;
-        top:0;
-        bottom:0;
-    }
-}
-// Specifics for landscape
-@media only screen and (orientation: landscape) {
-    .square {
-
-        max-height: 100%;
-        max-width: 1024px;
-        &:after  {
-            padding: 0;
-        }
-        .content {
-            position:static;
-        }
-    }
-
 }
 
 
@@ -77,4 +55,9 @@ a {
         position:relative;
         display:block;
     }
+}
+
+.copyright {
+    font-size: 9px;
+    text-align: center;
 }

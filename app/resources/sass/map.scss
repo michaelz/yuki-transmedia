@@ -1,0 +1,75 @@
+@import 'components/variables';
+.body-map .square {
+    background: url('/img/map.png') no-repeat top center transparent;
+    background-size: cover;
+
+}
+
+.map {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    .elements {
+        position:relative;
+        height: 100%;
+        width: 100%;
+        .element {
+            background-position: center center;
+            background-size: contain;
+            background-repeat:no-repeat;
+            height: 60px;
+            width: 60px;
+            margin-top: -30px;
+            margin-left: -30px;
+            @media screen and (min-device-width: 600px) {
+               height: 90px;
+               width: 90px;
+               margin-top: -45px;
+               margin-left: -45px;
+            }
+
+            overflow:hidden;
+            position:absolute;
+            font-size: 10px;
+            &.disabled {
+                opacity: 0.3;
+            }
+            a {
+                display:block;
+                width: 100%;
+                height: 100%;
+                position:absolute;
+            }
+        }
+        .item-intro {
+            left: 32%;
+            top: 16%;
+            background-image: url('/img/ojiisan.png');
+        }
+        .item-martialarts {
+            left: 67%;
+            top: 25%;
+            background-image: url('/img/singe.png');
+        }
+        .item-calligraphy {
+            left: 40%;
+            top: 40%;
+            background-image: url('/img/grue.png');
+        }
+        .item-origami {
+            left: 60%;
+            top: 53%;
+            background-image: url('/img/chouette.png');
+        }
+        .item-food {
+            left: 45%;
+            top: 67%;
+            background-image: url('/img/tanuki.png');
+        }
+        .item-popculture {
+            left: 60%;
+            top: 90%;
+            background-image: url('/img/chat.png');
+        }
+    }
+}
