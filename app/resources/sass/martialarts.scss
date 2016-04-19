@@ -1,3 +1,5 @@
+@import 'components/variables';
+
 /* Kata a saisir
 ==================================================*/
 .kataASaisir {
@@ -137,4 +139,40 @@ right: 5px;
 
 .discussionContainer p, button, h3 {
   margin-left: 10px;
+}
+
+/* kata bar
+==================================================*/
+#progressBar {
+    width: 400px;
+    height: 22px;
+    border: 1px solid #111;
+    background-color: #292929;
+    .progress {
+      width: 0;
+      background: green;
+    }
+    .progress.started {
+      height: 100%;
+      color: #fff;
+      text-align: right;
+      line-height: 22px; /* same as #progressBar height if we want text middle aligned */
+      width: 100%;
+      background-color: $color-martialarts-1;
+      position: relative;
+      -webkit-transition: 4s linear;
+      -moz-transition: 4s linear;
+      -o-transition: 4s linear;
+      transition: 4s linear;
+      -webkit-transition-property: width, background-color;
+      -moz-transition-property: width, background-color;
+      -o-transition-property: width, background-color;
+      transition-property: width, background-color;
+      -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+    }
+    .progress.stopped {
+      width:0%;
+      transition-duration:0;
+    }
 }

@@ -6,12 +6,14 @@ $(document).ready(function () {
   var lvl = 0;
   var nbMove = 2;
 
+
   //Masquage des éléments
   $('#martialArtsBubble2').hide();
   $('#martialArtsBubble3').hide();
   $('#martialArtsBubble4').hide();
   $('#martialArtsBubble5').hide();
   $('.martialArtsBtn').hide();
+  $("#progressBar").hide();
 
 
   //detection du clic sur suivant
@@ -43,10 +45,13 @@ $(document).ready(function () {
       $('#martialArtsBubble4').show();
       //...On lance la fonction gérant les katas
       kataGeneration(nbMove, lvl);
+
     }
   }
 
 });
+
+
 
 function kataGeneration(nbMove, lvl){
 
@@ -56,6 +61,7 @@ function kataGeneration(nbMove, lvl){
   lvl++;
   nbMove++;
   $( "#nbrKata" ).empty();
+  $( "#retry" ).empty();
   $( "#nbrKata" ).append(lvl);
 
   //$( ".martialArtsBtn" ).addClass( "desactivatedBtn" );
@@ -118,8 +124,9 @@ function kataGeneration(nbMove, lvl){
 
       }
     }
-
+    $("#progressBar").show();
     $(".kataASaisir").show().delay(4000).fadeOut();
+    $("#progressBar .progress").addClass("started");
 
     setTimeout(
   function()
@@ -142,6 +149,8 @@ function validationKata(tblKata, lvl, nbMove){
   var tblInputs=[];//Tableau stockant les inputs pour le kata
   var j = 0;//Index pour les inputs aléatoire définir le kata
 
+$("#progressBar .progress").removeClass("started");
+$("#progressBar").hide();
 
 $(".martialArtsBtn").removeClass("desactivatedBtn");
 
@@ -179,13 +188,18 @@ $( ".martialArtsBtn" ).removeClass( "desactivatedBtn" );
 
       } else {
         console.log("Dommage tu as fait une erreur, recommençons");
+        $( "#retry" ).empty("");
+        $( "#retry" ).append("Dommage tu as fait une erreur. ");
         $( ".martialArtsBtn" ).addClass( "desactivatedBtn" );
-        //$(".martialArtsBtn").css("background", "grey");
+        $("#progressBar").show();
         $(".kataASaisir").show().delay(4000).fadeOut();
+        $("#progressBar .progress").addClass("started");
         setTimeout(
       function()
       {
+
         validationKata(tblKata, lvl, nbMove);
+
         //do something special
       }, 4000);
       }
