@@ -75,6 +75,7 @@ function kataGeneration(nbMove, lvl){
         tblKata[i] = "btnPoing";
         i++;
 
+
         $('<div>').attr({
           class: 'kataASaisir kataASaisirPoing'
         }).appendTo("#kataASaisir");
@@ -123,6 +124,7 @@ function kataGeneration(nbMove, lvl){
     }
     $("#progressBar").show();
     $(".kataASaisir").show().delay(4000).fadeOut();
+    $("#martialArtsDialogue").show().delay(4000).fadeOut();
     $("#progressBar .progress").addClass("started");
 
     setTimeout(
@@ -196,6 +198,7 @@ $( ".martialArtsBtn" ).removeClass( "desactivatedBtn" );
         $( "#retry" ).append("Dommage tu as fait une erreur. ");
         $( ".martialArtsBtn" ).addClass( "desactivatedBtn" );
         $(".kataASaisir").show().delay(4000).fadeOut();
+        $("#martialArtsDialogue").show().delay(4000).fadeOut();
         $("#progressBar .progress").removeClass("stopped").addClass("started");
         setTimeout(
       function()

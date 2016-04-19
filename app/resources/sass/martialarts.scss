@@ -48,7 +48,7 @@ div#martialArtsDialogue {
     margin: 0 auto;
     display: inline-block;
     text-align: center;
-    width: 100%
+    width: 100%;
         margin-top: 60px;
 }
 
@@ -156,9 +156,9 @@ background: #1A2131;
     .progress, .progress.stopped {
       width:0;
       transition-duration:0;
-      background-color: green;
+      background-color: $color-martialarts-3;
       height: 100%;
-      color: #fff;
+      color: $color-martialarts-2;
       text-align: right;
       position: relative;
     }
