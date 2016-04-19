@@ -3,15 +3,17 @@
 #menu  {
 	float:right;
 	width:25%;
-	height: 70vh;
+	height: 100vh;
 	background-color:#FF3366;
 }
 
 #contenu {
+
 	padding-top: 1px;
 	margin-right:79%;
 	width: 74%;
-	height: 70vh;
+	haight: 80%;
+	background-color: brown;
 	background-repeat: no-repeat;
 	background-size: cover 100% auto;
 
@@ -23,19 +25,18 @@
     margin-left: auto;
     margin-right: auto;
 
-	max-width: 13vh;
+	max-width: 80%;
 	height: auto;
 	display: block;
 }
 
 .yuki {
-	max-width: 50vh;
+	max-width: 70%;
 	height: auto;
 	display: block;
 	
     margin-left: auto;
     margin-right: auto;
-
-    margin-top: 18%;
+    margin-top: 50%;
     margin-bottom: auto;
 }
