@@ -26,21 +26,26 @@
     <meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="/css/app.css">
-    <link rel="stylesheet" href="/css/{{pagename}}.css"
+    <link rel="stylesheet" href="/css/{{pagename}}.css">
     {{#if ENV_DEVELOPMENT}}
     <script src="http://localhost:35729/livereload.js"></script>
     {{/if}}
     <script type="text/javascript" src="/js/lib/jquery.min.js"></script>
 </head>
-<body>
+<body class="body-{{pagename}}">
     <header class="mainHeader">
         <img class="logo" src="/img/logo.png" alt="logo"/>
     </header>
-  <div class="square">
-      <div class="content">
-  {{{body}}}
-      </div>
-  <script type="text/javascript" src="/js/{{pagename}}.js"></script>
-  </div>
+
+    <div class="square">
+        <div class="content">
+            {{{body}}}
+        </div>
+        <script type="text/javascript" src="/js/{{pagename}}.js"></script>
+    </div>
+    <div class="copyright">
+        <p>Ce projet a été réalisé dans le cadre du projet Transmedia M42 2016</p>
+        <p>Merci à Tab, Sab, Fla, Val, Schenk, Greg, Yun, Den, Guz, Mich</p>
+    </div>
 </body>
 </html>
