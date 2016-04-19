@@ -1,1 +1,27 @@
 //@import '/js/lib/jquery-ui/jquery-ui.min.css';
+
+#menu  {
+	float:right;
+	width:25%;
+	height: 70vh;
+	background-color:#FF3366;
+}
+
+#contenu {
+	margin-right:79%;
+	width: 74%;
+	height: 70vh;
+	background-color:red;
+}
+
+.yuki {
+	max-width: 50vh;
+	height: auto;
+	display: block;
+	
+    margin-left: auto;
+    margin-right: auto;
+
+    margin-top: 18%;
+    margin-bottom: auto;
+}
