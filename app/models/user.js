@@ -17,10 +17,23 @@ var UserSchema = new Schema({
                 type: Schema.Types.ObjectId,
                 required: false,
                 ref: "Level"
-            }
+            },
+            result: String //here we can save any result we want for any game that has been passed
+
         }
 
-    ]
+    ],
+    solved_solutions : [
+        {
+            level_id:{
+                type: Schema.Types.ObjectId,
+                required: false,
+                ref: "Level"
+            }
+        }
+    ],
+
+
 });
 
 /*UserSchema.virtual('date')
