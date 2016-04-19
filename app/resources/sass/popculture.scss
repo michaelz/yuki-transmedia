@@ -1,1 +1,42 @@
 //@import '/js/lib/jquery-ui/jquery-ui.min.css';
+
+#menu  {
+	float:right;
+	width:25%;
+	height: 100vh;
+	background-color:#d0d0d0;
+}
+
+#contenu {
+
+	padding-top: 1px;
+	margin-right:79%;
+	width: 74%;
+	haight: 80%;
+	background-color: #eee;
+	background-repeat: no-repeat;
+	background-size: cover 100% auto;
+
+}
+
+.accessoire {
+	padding-top: 1px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+	max-width: 80%;
+	height: auto;
+	display: block;
+}
+
+.yuki {
+	max-width: 70%;
+	height: auto;
+	display: block;
+	
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50%;
+    margin-bottom: auto;
+}
