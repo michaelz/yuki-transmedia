@@ -12,11 +12,10 @@ $(document).ready(function () {
   $('#martialArtsBubble4').hide();
   $('#martialArtsBubble5').hide();
   $('.martialArtsBtn').hide();
-
+  $("#progressBar").hide();
 
   //detection du clic sur suivant
   $(".martialArtsNextBtn").on('click', introCount);
-
 
   //Fonction liée au dialogue
   ///////////////////////////////////////////////////////////////
@@ -43,10 +42,13 @@ $(document).ready(function () {
       $('#martialArtsBubble4').show();
       //...On lance la fonction gérant les katas
       kataGeneration(nbMove, lvl);
+
     }
   }
 
 });
+
+
 
 function kataGeneration(nbMove, lvl){
 
@@ -56,9 +58,12 @@ function kataGeneration(nbMove, lvl){
   lvl++;
   nbMove++;
   $( "#nbrKata" ).empty();
+  $( "#retry" ).empty();
   $( "#nbrKata" ).append(lvl);
 
-  $(".martialArtsBtn").css("background", "grey");
+  //$( ".martialArtsBtn" ).addClass( "desactivatedBtn" );
+  $(".martialArtsBtn").addClass("desactivatedBtn");
+  //$(".desactivatedBtn").css("background", "grey");
 
 
   if (lvl!=5 && kataValidated === "true") {
@@ -69,6 +74,7 @@ function kataGeneration(nbMove, lvl){
       if (aleatoireNbr === 1) {
         tblKata[i] = "btnPoing";
         i++;
+
 
         $('<div>').attr({
           class: 'kataASaisir kataASaisirPoing'
@@ -116,8 +122,10 @@ function kataGeneration(nbMove, lvl){
 
       }
     }
-
+    $("#progressBar").show();
     $(".kataASaisir").show().delay(4000).fadeOut();
+    $("#martialArtsDialogue").show().delay(4000).fadeOut();
+    $("#progressBar .progress").addClass("started");
 
     setTimeout(
   function()
@@ -140,10 +148,15 @@ function validationKata(tblKata, lvl, nbMove){
   var tblInputs=[];//Tableau stockant les inputs pour le kata
   var j = 0;//Index pour les inputs aléatoire définir le kata
 
-  $("#btnPoing").css("background", "#12a3b2");
-  $("#btnPied").css("background", "#e5007f");
-  $("#btnJump").css("background", "#ffdb4b");
-  $("#btnSpe").css("background", "#1A2131");
+
+//$("#progressBar").hide();
+$("#progressBar .progress").removeClass("started").addClass("stopped");
+
+
+$(".martialArtsBtn").removeClass("desactivatedBtn");
+
+$( ".martialArtsBtn" ).removeClass( "desactivatedBtn" );
+
 
   //Détéction des inputs
   $('#btnPoing, #btnPied, #btnJump, #btnSpe').click(function () {
@@ -154,7 +167,6 @@ function validationKata(tblKata, lvl, nbMove){
     //Injection des valeurs saisies dans un tableau
     tblInputs[j] = this.id;
     j++;
-    //console.log(tblInputs);
 
     //Dès que le bon nombre d'inputs est saisi...
     if (nbrInputKata === nbMove) {
@@ -176,13 +188,24 @@ function validationKata(tblKata, lvl, nbMove){
 
 
       } else {
-        console.log("Dommage tu as fait une erreur, recommençons");
-        $(".martialArtsBtn").css("background", "grey");
+
+        $("#progressBar .progress").removeClass("started").addClass("stopped");
+        $("#progressBar").show();
+
+
+        //console.log("Dommage tu as fait une erreur, recommençons");
+        $( "#retry" ).empty("");
+        $( "#retry" ).append("Dommage tu as fait une erreur. ");
+        $( ".martialArtsBtn" ).addClass( "desactivatedBtn" );
         $(".kataASaisir").show().delay(4000).fadeOut();
+        $("#martialArtsDialogue").show().delay(4000).fadeOut();
+        $("#progressBar .progress").removeClass("stopped").addClass("started");
         setTimeout(
       function()
       {
+
         validationKata(tblKata, lvl, nbMove);
+
         //do something special
       }, 4000);
       }
