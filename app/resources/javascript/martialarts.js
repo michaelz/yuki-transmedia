@@ -6,7 +6,6 @@ $(document).ready(function () {
   var lvl = 0;
   var nbMove = 2;
 
-
   //Masquage des éléments
   $('#martialArtsBubble2').hide();
   $('#martialArtsBubble3').hide();
@@ -15,10 +14,8 @@ $(document).ready(function () {
   $('.martialArtsBtn').hide();
   $("#progressBar").hide();
 
-
   //detection du clic sur suivant
   $(".martialArtsNextBtn").on('click', introCount);
-
 
   //Fonction liée au dialogue
   ///////////////////////////////////////////////////////////////
@@ -149,8 +146,10 @@ function validationKata(tblKata, lvl, nbMove){
   var tblInputs=[];//Tableau stockant les inputs pour le kata
   var j = 0;//Index pour les inputs aléatoire définir le kata
 
-$("#progressBar .progress").removeClass("started");
-$("#progressBar").hide();
+
+//$("#progressBar").hide();
+$("#progressBar .progress").removeClass("started").addClass("stopped");
+
 
 $(".martialArtsBtn").removeClass("desactivatedBtn");
 
@@ -187,13 +186,17 @@ $( ".martialArtsBtn" ).removeClass( "desactivatedBtn" );
 
 
       } else {
-        console.log("Dommage tu as fait une erreur, recommençons");
+
+        $("#progressBar .progress").removeClass("started").addClass("stopped");
+        $("#progressBar").show();
+
+
+        //console.log("Dommage tu as fait une erreur, recommençons");
         $( "#retry" ).empty("");
         $( "#retry" ).append("Dommage tu as fait une erreur. ");
         $( ".martialArtsBtn" ).addClass( "desactivatedBtn" );
-        $("#progressBar").show();
         $(".kataASaisir").show().delay(4000).fadeOut();
-        $("#progressBar .progress").addClass("started");
+        $("#progressBar .progress").removeClass("stopped").addClass("started");
         setTimeout(
       function()
       {
