@@ -1,21 +1,50 @@
-<h1>login</h1>
+<script src="/js/lib/jquery-ui/jquery-ui.min.js"></script>
 
-<!--<form id="signUp-form" action="">-->
-  Pseudo:<br>
-  <input id="pseudo" type="text" name="pseudo" placeholder="Kevin99"><br>
-  <div id="pseudoError" class="error"></div>
+<div class="loginPage">
+  <h3>S'identifier</h3>
 
-  Adresse email:<br>
-  <input type="text" class="verif-email" name="email" placeholder="kevin.tomba@gmail.com">
-  <div id="emailError" class="error"></div>
+  <div class="login">
+    <div class="form">
+      <div class="form-item">
+        <input id="identified" type="text" name="pseudo" placeholder="Identifiant">
+      </div>
+      <div class="form-item">
+        <input id="pwd" type="password" name="password" placeholder="Mot de passe">
+      </div>
+      <div class="submit-area">
+        <button class="submit login" id="signUpBtn">S'identifier</button>
+      </div>
+    </div>
+  </div>
 
-  Mot de passe:<br>
-  <input id="password" type="text" name="password" placeholder="******"><br>
-  <div id="pwError" class="error"></div>
+  <h3>Nouveau compte</h3>
+  <div class="register">
 
-  Confirmation de mot de passe:<br>
-  <input  id="rePassword" type="text" name="rePassword" placeholder="******">
-  <div id="rePwError" class="error"></div>
+    <!--<form id="signUp-form" action="">-->
+    <div class="form">
+      <div class="form-item">
+        <input id="pseudo" type="text" name="pseudo" placeholder="Pseudo">
+        <div class="msgContainer" id="pseudoError"></div>
+      </div>
+      <div class="form-item">
+        <input type="text" class="verif-email" name="email" placeholder="Adresse email">
+        <div class="msgContainer" id="emailError"></div>
+      </div>
+      <div class="form-item">
+        <input id="password" type="password" name="password" placeholder="Mot de passe">
+        <div class="msgContainer" id="pwError"></div>
+      </div>
+      <div class="form-item">
+        <input id="rePassword" type="password" name="rePassword" placeholder="Confirmation">
+        <div class="msgContainer" id="rePwError"></div>
+      </div>
 
-  <br><input id="signUpBtn" type="submit" value="Sign Up">
-<!--</form>-->
+
+      <div class="submit-area">
+        <button class="submit register" id="signUpBtn">S'enregistrer</button>
+      </div>
+    </div>
+    <!--</form>-->
+  </div>
+
+</div>

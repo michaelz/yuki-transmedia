@@ -1,12 +1,17 @@
 $(document).ready(function() {
 
+$('.loginPage').accordion({
+    heightStyle: "content"
+});
 
   $("#pseudo").focusout(function () {
     var pseudoValue = $(this).val();
     if ( pseudoValue.length < 3 ){
-      $('#pseudoError').text('Votre pseudo doit faire au moins 3 caractères de long.');
+        $('#pseudoError').empty();
+        console.log(pseudoValue);
+      $('#pseudoError').append('<p class="error">Votre pseudo doit faire au moins 3 caractères de long.</p>');
     } else {
-      $('#pseudoError').text('');
+      $('#pseudoError').empty();
     }
   });
 
@@ -15,21 +20,25 @@ $(document).ready(function() {
     var emailblockReg = /^([\w-\.]+@(?!hotmail.fr)(?!hotmail.com)([\w-]+\.)+[\w-]{2,4})?$/;
     var emailaddressVal = $(this).val();
 
+
     if(emailaddressVal == '') {
-      $('#emailError').text('Veuillez saisir le champs email.');
+      $('#emailError').empty();
+      $('#emailError').append('<p class="error">Veuillez saisir le champs email.</p>');
     } else if(!emailReg.test(emailaddressVal)) {
-      $('#emailError').text('Votre adresse email n\'est pas valide.');
+      $('#emailError').empty();
+      $('#emailError').append('<p class="error">Votre adresse email n\'est pas valide.</p>');
     } else {
-      $('#emailError').text('');
+      $('#emailError').empty();
     }
   });
 
   $("#password").focusout(function () {
     var pwValue = $(this).val();
     if ( pwValue.length < 6 ){
-      $('#pwError').text('Votre mot de passe doit faire au moins 6 caractères de long.');
+        $('#pwError').empty();
+      $('#pwError').append('<p class="error">Votre mot de passe doit faire au moins 6 caractères de long.</p>');
     } else {
-      $('#pwError').text('');
+      $('#pwError').empty();
     }
   });
 
@@ -40,10 +49,11 @@ $(document).ready(function() {
 
     if (password != confirmPassword) {
       //alert("Passwords do not match.");
-      $('#rePwError').text('Vos mots de passe ne sont pas similaires.');
+      $('#rePwError').empty();
+      $('#rePwError').append('<p class="error">Vos mots de passe ne sont pas similaires.</p>');
       return false;
     } else {
-      $('#rePwError').text('');
+      $('#rePwError').empty();
       return true;
     }
   });

@@ -1,6 +1,7 @@
 @import 'components/fonts';
 @import 'components/variables';
 @import 'components/mixins';
+@import 'components/forms';
 
 /*
  * This file contains all the styles used for the whole app and for the map.
@@ -10,6 +11,7 @@ body {
   padding:0;
   margin:0;
   font-family: $font-body;
+  font-size: 12px;
   background: url('/img/mosaique.png');
 }
 
@@ -33,7 +35,8 @@ a {
     width: 90vw;
     max-height: 80vh;
     max-width: 80vh;
-    overflow:hidden;
+    overflow-x:hidden;
+    overflow-y:auto;
     position:relative;
     width: 90%;
     margin: 0 auto;
