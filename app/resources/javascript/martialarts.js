@@ -145,6 +145,17 @@ function validationKata(tblKata, lvl, nbMove){
   $("#btnJump").css("background", "#ffdb4b");
   $("#btnSpe").css("background", "#1A2131");
 
+
+  $("#btnPoing").hover(function(){
+    $(this).css("background", "#088B99");
+  }, function(){
+    $(this).css("background", "#12a3b2");
+});
+
+
+
+
+
   //Détéction des inputs
   $('#btnPoing, #btnPied, #btnJump, #btnSpe').click(function () {
 
