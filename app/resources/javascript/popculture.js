@@ -34,3 +34,12 @@ $("#fondsImg2").click( function () {
 		$('#contenu').css("background-image", "url(/img/3.jpg)");
 	}
 })
+
+$("#boutton").click( function () {
+	html2canvas( [ document.body ], {
+	          onrendered: function(canvas) {
+	          	alert("sd");
+	            document.body.appendChild(canvas);
+	          }
+	});
+})
