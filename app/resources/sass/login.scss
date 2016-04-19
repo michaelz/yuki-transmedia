@@ -1,0 +1,59 @@
+@import 'components/variables';
+.error {
+  color: $color-martialarts-3;
+}
+
+
+.loginPage {
+    text-align:center;
+    input {
+        margin: 0 auto;
+        width: 60%;
+        max-width: 300px;
+        text-align:center;
+        display:block;
+    }
+    .form-item {
+        width: 100%;
+        margin: 0.5em 0;
+        display:block;
+    }
+
+    h3 {
+        background: lighten($color-grey,20);
+        color: $color-white;
+        padding: 0.5em;
+        &:before {
+            content: '+';
+            width: 1em;
+            padding-right: 1em;
+        }
+        &:focus {
+            outline:none;
+        }
+    }
+
+    h3.ui-accordion-header-active {
+        background: $color-grey;
+        &:before {
+            content: '-';
+        }
+    }
+    .msgContainer {
+
+        margin: 0.2em;
+    }
+    .error {
+        padding: 0.3em;
+        font-size: 0.8em;
+        background: desaturate(lighten(red,40),30);
+        text-align:center;
+        margin: 0 auto;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+        overflow:hidden;
+    }
+    button.submit {
+    background:green;
+    }
+}
