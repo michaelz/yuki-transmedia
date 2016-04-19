@@ -4,8 +4,11 @@ $.getJSON("/api/quiz", function (data) {
     var length = data.length;
     var positionUser = 0;
     console.log(length);
+
+
+
     $(".question").append(data[positionUser].question);
-    $.each(data[0].answers, function (a, answer) {
+    $.each(data[positionUser].answers, function (a, answer) {
         $(".choices").append("<li class='" + a + "'>" + answer.text + "</li>");
 
 
