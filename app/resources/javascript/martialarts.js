@@ -178,10 +178,18 @@ function kataGeneration(nbMove, lvl){
     $('#btnPoing, #btnPied, #btnJump, #btnSpe').click(function () {
 
       var sprite = this.id;
-      spriteAnimation(sprite);
+
+
+
+
 
       //Nombre d'input saisi
       nbrInputKata++;
+
+      if (nbrInputKata < nbMove) {
+        spriteAnimation(sprite);
+      }
+
 
       //Injection des valeurs saisies dans un tableau
       tblInputs[j] = this.id;
@@ -197,6 +205,7 @@ function kataGeneration(nbMove, lvl){
         if (is_same === true) {
           console.log("Bien joué le kata a été effectué à la perfection");
           $( ".kataASaisir" ).remove();
+          spriteAnimation(sprite);
 
           if (lvl===4) {
             $('.discussionContainer').hide();
@@ -208,81 +217,87 @@ function kataGeneration(nbMove, lvl){
 
         } else {
 
-          $("#progressBar .progress").removeClass("stopped").addClass("started");
-          $("#progressBar").show();
-
-
-
-
-          //console.log("Dommage tu as fait une erreur, recommençons");
-          $( "#retry" ).empty("");
-          $( "#retry" ).append("Dommage tu as fait une erreur. ");
-          $( ".martialArtsBtn" ).addClass( "desactivatedBtn" );
-          $(".kataASaisir").show().delay(4000).fadeOut();
-          $("#martialArtsDialogue").show().delay(4000).fadeOut();
-          $("#progressBar .progress").removeClass("stopped").addClass("started");
-          setTimeout(
-            function()
-            {
-
-              validationKata(tblKata, lvl, nbMove);
-              $('#yuki_profil').show();
-              //do something special
-            }, 4000);
-          }
-        }
-      });
-    }
-
-    function spriteAnimation(sprite) {
-
-
-      if (sprite === "btnPoing") {
-        //console.log(sprite);
-        $('#yuki_profil').hide();
-        $('#yuki_poing').show();
-        setTimeout(
-          function()
-          {
-            //do something special
-            $('#yuki_profil').show();
-            $('#yuki_poing').hide();
-          }, 300);
-
-
-        } else if (sprite === "btnPied") {
           $('#yuki_profil').hide();
-          $('#yuki_pied').show();
+          $('#yuki_tombe').show();
           setTimeout(
             function()
             {
               //do something special
               $('#yuki_profil').show();
-              $('#yuki_pied').hide();
+              $('#yuki_tombe').hide();
+            }, 600);
 
+
+            $("#progressBar .progress").removeClass("stopped").addClass("started");
+            $("#progressBar").show();
+            $( "#retry" ).empty("");
+            $( "#retry" ).append("Dommage tu as fait une erreur. ");
+            $( ".martialArtsBtn" ).addClass( "desactivatedBtn" );
+            $(".kataASaisir").show().delay(4000).fadeOut();
+            $("#martialArtsDialogue").show().delay(4000).fadeOut();
+            $("#progressBar .progress").removeClass("stopped").addClass("started");
+            setTimeout(
+              function()
+              {
+
+                validationKata(tblKata, lvl, nbMove);
+                $('#yuki_profil').show();
+                //do something special
+              }, 4000);
+            }
+          }
+        });
+      }
+
+      function spriteAnimation(sprite) {
+
+
+        if (sprite === "btnPoing") {
+          //console.log(sprite);
+          $('#yuki_profil').hide();
+          $('#yuki_poing').show();
+          setTimeout(
+            function()
+            {
+              //do something special
+              $('#yuki_profil').show();
+              $('#yuki_poing').hide();
             }, 300);
 
-          } else if (sprite === "btnJump") {
+
+          } else if (sprite === "btnPied") {
             $('#yuki_profil').hide();
-            $('#yuki_saut').show();
+            $('#yuki_pied').show();
             setTimeout(
               function()
               {
                 //do something special
                 $('#yuki_profil').show();
-                $('#yuki_saut').hide();
+                $('#yuki_pied').hide();
+
               }, 300);
 
-            } else if (sprite === "btnSpe") {
+            } else if (sprite === "btnJump") {
               $('#yuki_profil').hide();
-              $('#yuki_poingDeFeu').show();
+              $('#yuki_saut').show();
               setTimeout(
                 function()
                 {
                   //do something special
                   $('#yuki_profil').show();
-                  $('#yuki_poingDeFeu').hide();
-                }, 600);
+                  $('#yuki_saut').hide();
+                }, 300);
 
+              } else if (sprite === "btnSpe") {
+                $('#yuki_profil').hide();
+                $('#yuki_poingDeFeu').show();
+                setTimeout(
+                  function()
+                  {
+                    //do something special
+                    $('#yuki_profil').show();
+                    $('#yuki_poingDeFeu').hide();
+                  }, 600);
+
+                }
               }
-            }

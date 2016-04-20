@@ -68,6 +68,7 @@ div#martialArtsDialogue {
   display: inline-block;
   &.desactivatedBtn {
     background: grey!important;
+    opacity: 0.3;
   }
   margin-top: 5px;
   margin-bottom: 4px;
@@ -161,9 +162,9 @@ div#martialArtsDialogue {
   .progress, .progress.stopped {
     width:0;
     transition-duration:0;
-    background-color: $color-martialarts-3;
+    background-color: #DB6839;
     height: 100%;
-    color: $color-martialarts-2;
+    /*color: $color-martialarts-2;*/
     text-align: right;
     position: relative;
   }
