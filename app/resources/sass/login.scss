@@ -54,6 +54,9 @@
         overflow:hidden;
     }
     button.submit {
-    background:green;
+    background:grey;
+        &.active {
+            background:green;
+        }
     }
 }

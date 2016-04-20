@@ -23,10 +23,10 @@ router.post('/', function (req, res, next){
 
  	User.findOne(criteria, function(err, user){
 		if(err){
-			res.status(500).send(err);
+            res.jerror(err);
 			return;
 		} else if (!user){
-			res.status(404).send("User not found");
+			res.jerror("User not found");
 			return;
 		} else {
 			var token = tools.generate(user);
@@ -44,6 +44,7 @@ router.post('/register', function (req, res, next){
  			return;
  		}
 
- 		res.send(createdUser); //TODO rend le token aussi
+        var token = tools.generate(createdUser);
+ 		res.jsend(token);
  	});
  });

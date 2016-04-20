@@ -15,14 +15,14 @@ module.exports = {
 		var payload = {
 			id: user.id,
 		  	email: user.email,
-		  	exp : Date.now() + 60 * 2 * 60 * 1000 //temps d'expiration : 120min
+		  	exp : Date.now() + 10000* 60 * 2 * 60 * 1000 //temps d'expiration : 120min
 		};
 
 		var signature = crypto.createHmac("SHA256", config.key).update(base64url(JSON.stringify(header)) + "." + base64url(JSON.stringify(payload))).digest("bin");
-	 	
-	 	return base64url(JSON.stringify(header)) + 
-		 	"." + 
-		 	base64url(JSON.stringify(payload)) + "." + 
+
+	 	return base64url(JSON.stringify(header)) +
+		 	"." +
+		 	base64url(JSON.stringify(payload)) + "." +
 		 	base64url(signature);
 	},
 
@@ -45,7 +45,7 @@ module.exports = {
 			return;
 		}
 
-		var signature = crypto.createHmac("SHA256", config.key).update(tokenTab[0] + "." + tokenTab[1]).digest("bin");  
+		var signature = crypto.createHmac("SHA256", config.key).update(tokenTab[0] + "." + tokenTab[1]).digest("bin");
 	  	if (base64url(signature) != tokenTab[2]) {
 			res.status(400).send('Invalid token');
 			return;
@@ -55,7 +55,7 @@ module.exports = {
 		if (Date.now() > JSON.parse(payloadDecode).exp) {
 			res.status(400).send('Token date expirated');
 			return;
-		} 
+		}
 
 		req.email = JSON.parse(payloadDecode).email;
 		req.idUser = JSON.parse(payloadDecode).id;
@@ -67,12 +67,12 @@ module.exports = {
 		var tokenTab = token.split(".");
 		if (tokenTab.length != 3) return false;
 
-		var signature = crypto.createHmac("SHA256", config.key).update(tokenTab[0] + "." + tokenTab[1]).digest("bin");  
+		var signature = crypto.createHmac("SHA256", config.key).update(tokenTab[0] + "." + tokenTab[1]).digest("bin");
 	  	if (base64url(signature) != tokenTab[2]) return false;
 
 		var payloadDecode =  base64url.decode(tokenTab[1]);
 		if (Date.now() > JSON.parse(payloadDecode).exp) return false;
-		
+
 		return token;
   	},
 
