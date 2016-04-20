@@ -7,19 +7,23 @@
 	background-color:#d0d0d0;
 }
 
-#contenu {
+.contenu {
+    height: 89vw;
+    width: 74%;
+    max-height: 79vh;
 
 	padding-top: 1px;
 	margin-right:79%;
-	width: 74%;
-	haight: 80%;
+
 	background-color: #eee;
 	background-repeat: no-repeat;
 	background-size: cover 100% auto;
-
+}
+.menuAccessoires {
+	min-height: 20vh;
 }
 
-.accessoire {
+#menu .accessoire {
 	padding-top: 1px;
 	display: block;
     margin-left: auto;
@@ -28,6 +32,17 @@
 	max-width: 80%;
 	height: auto;
 	display: block;
+}
+
+#droppableContenu .drag {
+	padding-top: 1px;
+	display: block;
+	max-width: 20%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%
+	}
 }
 
 .yuki {
