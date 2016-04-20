@@ -26,3 +26,15 @@ input {
     }
 
 }
+.btn {
+    background:white;
+    border:1px solid #d0d0d0;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    text-transform:uppercase;
+    font-family: $font-body;
+}
+.btn:hover {
+    background: #d0d0d0;
+    cursor:pointer;
+}
