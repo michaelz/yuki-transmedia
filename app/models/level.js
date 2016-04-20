@@ -5,21 +5,23 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var LevelSchema = new Schema({
-   number: Number,
+    number: Number,
     name: String,
+    code: String,
     release_date: Date,
-    additional_info:String,
+    additional_info: String,
     description: String,
-    clue : {
+    clue: {
         url: String,
         alt: String,
         description: String
     },
-    solution_id: {type: Schema.Types.ObjectId, required: false, ref: "Solution_image"}, //mongoose sait que c'est une référence à un autre modèèle. Methode "populate" TODO maj
-
+    solution: {
+       url_img: String,
+        alt: String
+    },
 
 
 });
-
 
 mongoose.model('Level', LevelSchema);

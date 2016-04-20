@@ -51,3 +51,35 @@ router.get('/:id', function (req, res, next){
 	});
  });
 
+
+/**
+ * modify a user
+ */
+
+router.put("/:id", function (req, res, next) {
+	var userId = req.params.id;
+	User.findById(userId, function (err, level) {
+		if (err) {
+			res.status(500).send(err);
+			return;
+		}
+		else if (!user) {
+			res.status(404).send("user not found");
+		}
+		user.email = req.body.email;
+		user.password = req.body.password;
+		user.username = req.body.username;
+		user.solved_solutions = req.body.solved_solutions;
+		user.passed_levels = req.body.passed_levels;
+
+		user.save(req.body, function (err, updatedUser) {
+			if (err) {
+				res.status(500).send(err);
+				update();
+			}
+			res.send(updatedUser);
+		})
+	});
+});
+
+

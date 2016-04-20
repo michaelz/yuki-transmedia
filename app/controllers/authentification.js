@@ -13,7 +13,9 @@ require('express-jsend');
 module.exports = function (app) {
 	app.use('/api/auth', router);
 };
-
+/**
+ * login
+ */
 router.post('/', function (req, res, next){
  	var criteria = {};
  	criteria.email = req.body.email;
@@ -42,6 +44,6 @@ router.post('/register', function (req, res, next){
  			return;
  		}
 
- 		res.send(createdUser);
+ 		res.send(createdUser); //TODO rend le token aussi
  	});
  });
