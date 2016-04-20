@@ -12,7 +12,17 @@ $(document).ready(function () {
   $('#martialArtsBubble4').hide();
   $('#martialArtsBubble5').hide();
   $('.martialArtsBtn').hide();
-  $("#progressBar").hide();
+  //$("#progressBar").hide();
+
+  //Masquage des sprites
+  $('#yuki_profil').hide();
+  $('#yuki_poing').hide();
+  $('#yuki_pied').hide();
+  $('#yuki_saut').hide();
+  $('#yuki_poingDeFeu').hide();
+  $('#yuki_tombe').hide();
+
+
 
   //detection du clic sur suivant
   $(".martialArtsNextBtn").on('click', introCount);
@@ -42,7 +52,8 @@ $(document).ready(function () {
       $('#martialArtsBubble4').show();
       //...On lance la fonction gérant les katas
 
-      $('#spriteYuki img').attr("src","/img/sprites/yuki_profil.png");
+      $('#yuki_face').hide();
+      $('#yuki_profil').show();
 
       kataGeneration(nbMove, lvl);
 
@@ -130,145 +141,148 @@ function kataGeneration(nbMove, lvl){
     $("#martialArtsDialogue").show().delay(4000).fadeOut();
     $("#progressBar .progress").addClass("started");
 
+
     setTimeout(
-  function()
-  {
-    validationKata(tblKata, lvl, nbMove);
-    //do something special
-  }, 4000);
-
-
-    console.log(tblKata);
-    i = 0;
-    //tblKata = [];
-    //lvl++;
-    //nbMove++;
-  }
-}
-
-function validationKata(tblKata, lvl, nbMove){
-  var nbrInputKata = 0;
-  var tblInputs=[];//Tableau stockant les inputs pour le kata
-  var j = 0;//Index pour les inputs aléatoire définir le kata
-
-
-//$("#progressBar").hide();
-$("#progressBar .progress").removeClass("started").addClass("stopped");
-
-
-$(".martialArtsBtn").removeClass("desactivatedBtn");
-
-$( ".martialArtsBtn" ).removeClass( "desactivatedBtn" );
-
-
-  //Détéction des inputs
-  $('#btnPoing, #btnPied, #btnJump, #btnSpe').click(function () {
-
-    var sprite = this.id;
-    spriteAnimation(sprite);
-
-    //Nombre d'input saisi
-    nbrInputKata++;
-
-    //Injection des valeurs saisies dans un tableau
-    tblInputs[j] = this.id;
-    j++;
-
-    //Dès que le bon nombre d'inputs est saisi...
-    if (nbrInputKata === nbMove) {
-      //On compare nos tableau
-      var is_same = tblKata.length == tblInputs.length && tblKata.every(function(element, index) {
-        return element === tblInputs[index];
-      });
-      console.log(is_same);
-      if (is_same === true) {
-        console.log("Bien joué le kata a été effectué à la perfection");
-        $( ".kataASaisir" ).remove();
-
-        if (lvl===4) {
-          $('.discussionContainer').hide();
-          alert("Bravo vous avez fini le mini jeu des arts martiaux.");
-        } else if (lvl<4) {
-          kataGeneration(nbMove, lvl);
-        }
-
-
-      } else {
-
-        $("#progressBar .progress").removeClass("started").addClass("stopped");
-        $("#progressBar").show();
-
-
-        //console.log("Dommage tu as fait une erreur, recommençons");
-        $( "#retry" ).empty("");
-        $( "#retry" ).append("Dommage tu as fait une erreur. ");
-        $( ".martialArtsBtn" ).addClass( "desactivatedBtn" );
-        $(".kataASaisir").show().delay(4000).fadeOut();
-        $("#martialArtsDialogue").show().delay(4000).fadeOut();
-        $("#progressBar .progress").removeClass("stopped").addClass("started");
-        setTimeout(
       function()
       {
-
+        //$("#progressBar").hide();
         validationKata(tblKata, lvl, nbMove);
-
         //do something special
       }, 4000);
-      }
+
+
+      console.log(tblKata);
+      i = 0;
+      //tblKata = [];
+      //lvl++;
+      //nbMove++;
     }
-  });
-}
-function spriteAnimation(sprite) {
+  }
+
+  function validationKata(tblKata, lvl, nbMove){
+    var nbrInputKata = 0;
+    var tblInputs=[];//Tableau stockant les inputs pour le kata
+    var j = 0;//Index pour les inputs aléatoire définir le kata
 
 
-  if (sprite === "btnPoing") {
-    //console.log(sprite);
-    $('#spriteYuki img').attr("src","");
-    $('#spriteYuki img').attr("src","/img/sprites/yuki_poing.png");
-    setTimeout(
-  function()
-  {
-    //do something special
-    $('#spriteYuki img').attr("src","/img/sprites/yuki_profil.png");
-
-  }, 300);
+    //$("#progressBar").hide();
+    $("#progressBar .progress").removeClass("started").addClass("stopped");
 
 
-} else if (sprite === "btnPied") {
-  $('#spriteYuki img').attr("src","");
-  $('#spriteYuki img').attr("src","/img/sprites/yuki_pied.png");
-  setTimeout(
-function()
-{
-  //do something special
-  $('#spriteYuki img').attr("src","/img/sprites/yuki_profil.png");
+    $(".martialArtsBtn").removeClass("desactivatedBtn");
 
-}, 300);
+    $( ".martialArtsBtn" ).removeClass( "desactivatedBtn" );
 
-} else if (sprite === "btnJump") {
-  $('#spriteYuki img').attr("src","");
-  $('#spriteYuki img').attr("src","/img/sprites/yuki_saut.png");
-  setTimeout(
-function()
-{
-  //do something special
-  $('#spriteYuki img').attr("src","/img/sprites/yuki_profil.png");
 
-}, 300);
+    //Détéction des inputs
+    $('#btnPoing, #btnPied, #btnJump, #btnSpe').click(function () {
 
-} else if (sprite === "btnSpe") {
-  $('#spriteYuki img').attr("src","");
-  $('#spriteYuki img').attr("src","/img/sprites/yuki_poingDeFeu.png");
-  setTimeout(
-function()
-{
-  //do something special
-  $('#spriteYuki img').attr("src","/img/sprites/yuki_profil.png");
+      var sprite = this.id;
+      spriteAnimation(sprite);
 
-}, 600);
+      //Nombre d'input saisi
+      nbrInputKata++;
 
-}
+      //Injection des valeurs saisies dans un tableau
+      tblInputs[j] = this.id;
+      j++;
+
+      //Dès que le bon nombre d'inputs est saisi...
+      if (nbrInputKata === nbMove) {
+        //On compare nos tableau
+        var is_same = tblKata.length == tblInputs.length && tblKata.every(function(element, index) {
+          return element === tblInputs[index];
+        });
+        console.log(is_same);
+        if (is_same === true) {
+          console.log("Bien joué le kata a été effectué à la perfection");
+          $( ".kataASaisir" ).remove();
+
+          if (lvl===4) {
+            $('.discussionContainer').hide();
+            alert("Bravo vous avez fini le mini jeu des arts martiaux.");
+          } else if (lvl<4) {
+            kataGeneration(nbMove, lvl);
+          }
+
+
+        } else {
+
+          $("#progressBar .progress").removeClass("stopped").addClass("started");
+          $("#progressBar").show();
 
 
 
-}
+
+          //console.log("Dommage tu as fait une erreur, recommençons");
+          $( "#retry" ).empty("");
+          $( "#retry" ).append("Dommage tu as fait une erreur. ");
+          $( ".martialArtsBtn" ).addClass( "desactivatedBtn" );
+          $(".kataASaisir").show().delay(4000).fadeOut();
+          $("#martialArtsDialogue").show().delay(4000).fadeOut();
+          $("#progressBar .progress").removeClass("stopped").addClass("started");
+          setTimeout(
+            function()
+            {
+
+              validationKata(tblKata, lvl, nbMove);
+              $('#yuki_profil').show();
+              //do something special
+            }, 4000);
+          }
+        }
+      });
+    }
+
+    function spriteAnimation(sprite) {
+
+
+      if (sprite === "btnPoing") {
+        //console.log(sprite);
+        $('#yuki_profil').hide();
+        $('#yuki_poing').show();
+        setTimeout(
+          function()
+          {
+            //do something special
+            $('#yuki_profil').show();
+            $('#yuki_poing').hide();
+          }, 300);
+
+
+        } else if (sprite === "btnPied") {
+          $('#yuki_profil').hide();
+          $('#yuki_pied').show();
+          setTimeout(
+            function()
+            {
+              //do something special
+              $('#yuki_profil').show();
+              $('#yuki_pied').hide();
+
+            }, 300);
+
+          } else if (sprite === "btnJump") {
+            $('#yuki_profil').hide();
+            $('#yuki_saut').show();
+            setTimeout(
+              function()
+              {
+                //do something special
+                $('#yuki_profil').show();
+                $('#yuki_saut').hide();
+              }, 300);
+
+            } else if (sprite === "btnSpe") {
+              $('#yuki_profil').hide();
+              $('#yuki_poingDeFeu').show();
+              setTimeout(
+                function()
+                {
+                  //do something special
+                  $('#yuki_profil').show();
+                  $('#yuki_poingDeFeu').hide();
+                }, 600);
+
+              }
+            }
