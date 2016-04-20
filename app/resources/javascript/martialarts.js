@@ -12,6 +12,9 @@ $(document).ready(function () {
   $('#martialArtsBubble4').hide();
   $('#martialArtsBubble5').hide();
   $('.martialArtsBtn').hide();
+  $('#opener').hide();
+  $('#dialog').hide();
+
   //$("#progressBar").hide();
 
   //Masquage des sprites
@@ -21,8 +24,6 @@ $(document).ready(function () {
   $('#yuki_saut').hide();
   $('#yuki_poingDeFeu').hide();
   $('#yuki_tombe').hide();
-
-
 
   //detection du clic sur suivant
   $(".martialArtsNextBtn").on('click', introCount);
@@ -74,6 +75,8 @@ function kataGeneration(nbMove, lvl){
   $( "#nbrKata" ).empty();
   $( "#retry" ).empty();
   $( "#nbrKata" ).append(lvl);
+
+  $('#opener').hide();
 
   //$( ".martialArtsBtn" ).addClass( "desactivatedBtn" );
   $(".martialArtsBtn").addClass("desactivatedBtn");
@@ -147,6 +150,7 @@ function kataGeneration(nbMove, lvl){
       {
         //$("#progressBar").hide();
         validationKata(tblKata, lvl, nbMove);
+        showInfos();
         //do something special
       }, 4000);
 
@@ -217,6 +221,8 @@ function kataGeneration(nbMove, lvl){
 
         } else {
 
+          $('#opener').hide();
+
           $('#yuki_profil').hide();
           $('#yuki_tombe').show();
           setTimeout(
@@ -225,7 +231,7 @@ function kataGeneration(nbMove, lvl){
               //do something special
               $('#yuki_profil').show();
               $('#yuki_tombe').hide();
-            }, 600);
+            }, 4000);
 
 
             $("#progressBar .progress").removeClass("stopped").addClass("started");
@@ -242,6 +248,7 @@ function kataGeneration(nbMove, lvl){
 
                 validationKata(tblKata, lvl, nbMove);
                 $('#yuki_profil').show();
+                $('#opener').show();
                 //do something special
               }, 4000);
             }
@@ -301,3 +308,28 @@ function kataGeneration(nbMove, lvl){
 
                 }
               }
+
+          function showInfos() {
+
+            $('#opener').show();
+
+
+                $( "#dialog" ).dialog({
+                  autoOpen: false,
+                  show: {
+                    effect: "fade",
+                    duration: 1000
+                  },
+                  hide: {
+                    effect: "fade",
+                    duration: 1000
+                  }
+                });
+
+                $( "#opener" ).click(function() {
+                  $( "#dialog" ).dialog( "open" );
+                });
+
+
+
+          }

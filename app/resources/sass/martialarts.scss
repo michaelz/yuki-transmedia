@@ -162,7 +162,7 @@ div#martialArtsDialogue {
   .progress, .progress.stopped {
     width:0;
     transition-duration:0;
-    background-color: #DB6839;
+    background-color: #bada55;
     height: 100%;
     /*color: $color-martialarts-2;*/
     text-align: right;
@@ -170,15 +170,15 @@ div#martialArtsDialogue {
   }
   .progress.started {
     width: 100%;
-    background-color: $color-martialarts-1;
+    background-color: #F9C700;
     -webkit-transition: 4s linear;
     -moz-transition: 4s linear;
     -o-transition: 4s linear;
     transition: 4s linear;
-    -webkit-transition-property: width, background-color;
-    -moz-transition-property: width, background-color;
-    -o-transition-property: width, background-color;
-    transition-property: width, background-color;
+    -webkit-transition-property: width;
+    -moz-transition-property: width;
+    -o-transition-property: width;
+    transition-property: width;
   }
 }
 div#inputBox {
@@ -199,4 +199,12 @@ div#inputBox {
   position: absolute;
   bottom: 14%;
   left: 13%;
+}
+
+
+/* infoBox
+==================================================*/
+button#opener {
+    position: absolute;
+    top: 2%;
 }
