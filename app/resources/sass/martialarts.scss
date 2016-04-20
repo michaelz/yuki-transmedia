@@ -49,7 +49,7 @@ div#martialArtsDialogue {
     display: inline-block;
     text-align: center;
     width: 100%;
-        margin-top: 60px;
+        margin-top: 10%;
 }
 
 .martialArtsBtn {
@@ -185,4 +185,11 @@ div#inputBox {
 .body-martialarts .square {
     background: url("/img/arts-martiaux.png") no-repeat top center transparent;
     background-size: cover;
+}
+
+#spriteYuki img{
+    width: 30%;
+    position: absolute;
+    bottom: 13%;
+    left: 13%;
 }

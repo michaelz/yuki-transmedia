@@ -41,6 +41,9 @@ $(document).ready(function () {
       $('.martialArtsBtn').show();
       $('#martialArtsBubble4').show();
       //...On lance la fonction gérant les katas
+
+      $('#spriteYuki img').attr("src","/img/sprites/yuki_profil.png");
+
       kataGeneration(nbMove, lvl);
 
     }
@@ -161,6 +164,9 @@ $( ".martialArtsBtn" ).removeClass( "desactivatedBtn" );
   //Détéction des inputs
   $('#btnPoing, #btnPied, #btnJump, #btnSpe').click(function () {
 
+    var sprite = this.id;
+    spriteAnimation(sprite);
+
     //Nombre d'input saisi
     nbrInputKata++;
 
@@ -211,4 +217,58 @@ $( ".martialArtsBtn" ).removeClass( "desactivatedBtn" );
       }
     }
   });
+}
+function spriteAnimation(sprite) {
+
+
+  if (sprite === "btnPoing") {
+    //console.log(sprite);
+    $('#spriteYuki img').attr("src","");
+    $('#spriteYuki img').attr("src","/img/sprites/yuki_poing.png");
+    setTimeout(
+  function()
+  {
+    //do something special
+    $('#spriteYuki img').attr("src","/img/sprites/yuki_profil.png");
+
+  }, 300);
+
+
+} else if (sprite === "btnPied") {
+  $('#spriteYuki img').attr("src","");
+  $('#spriteYuki img').attr("src","/img/sprites/yuki_pied.png");
+  setTimeout(
+function()
+{
+  //do something special
+  $('#spriteYuki img').attr("src","/img/sprites/yuki_profil.png");
+
+}, 300);
+
+} else if (sprite === "btnJump") {
+  $('#spriteYuki img').attr("src","");
+  $('#spriteYuki img').attr("src","/img/sprites/yuki_saut.png");
+  setTimeout(
+function()
+{
+  //do something special
+  $('#spriteYuki img').attr("src","/img/sprites/yuki_profil.png");
+
+}, 300);
+
+} else if (sprite === "btnSpe") {
+  $('#spriteYuki img').attr("src","");
+  $('#spriteYuki img').attr("src","/img/sprites/yuki_poingDeFeu.png");
+  setTimeout(
+function()
+{
+  //do something special
+  $('#spriteYuki img').attr("src","/img/sprites/yuki_profil.png");
+
+}, 600);
+
+}
+
+
+
 }
