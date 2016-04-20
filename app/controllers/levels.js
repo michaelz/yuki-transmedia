@@ -1,9 +1,9 @@
 var express = require('express'),
     router = express.Router(),
     mongoose = require('mongoose'),
-    Level = mongoose.model('Level');
+    Level = mongoose.model('Level'),
     User = mongoose.model('User');
-    tools = require('../services/tools');
+tools = require('../services/tools');
 
 
 module.exports = function (app) {
@@ -106,7 +106,7 @@ router.put("/:id", function (req, res, next) {
                 update();
             }
             res.send(updatedLevel);
-        })
+        });
     });
 });
 
@@ -116,48 +116,67 @@ router.put("/:id", function (req, res, next) {
  */
 router.post('/passLevelUser/:idLevel/', tools.verifyToken, function (req, res, next) {
 
-
-    var user = User.findById(req.idUser, function(err, user){
-        if(err){
+    var user = User.findById(req.idUser, function (err, user) {
+        if (err) {
             res.status(500).send(err);
             return;
-        } else if (!user){
+        } else if (!user) {
             res.status(404).send('User not found');
             return;
         }
 
+
+        console.log(user);
+
+        var level = Level.findById(req.params.idLevel, function (err, level) {
+            if (err) {
+                res.status(500).send(err);
+                return;
+            } else if (!level) {
+                res.status(404).send("level not found");
+            }
+
+            var newResult = "";
+
+            if (req.body.result) {
+                newResult = req.body.result;
+
+            }
+            //assign level and result
+
+
+            var newInput = {
+                "level_id": req.params.idLevel,
+                "result": newResult
+            };
+
+            user.passed_levels.push(newInput);
+
+
+            user.save(function (err, updatedUser) {
+                if (err) {
+                    res.status(500).send(err);
+                    return;
+                }
+                res.send(updatedUser);
+            });
+
+
+
+        });
     });
-
-
-    var level = Level.findById(req.params.idLevel, function (err, quiz_food_question) {
-        if (err) {
-            res.status(500).send(err);
-            return;
-        } else if (!quiz_food_question) {
-            res.status(404).send("level not found");
-        }
-
-
-        //assign level and result
-
-        user.passed_levels;
-
-
-        res.status(200).send("level passed");
-    });
-
 });
 
 /*
-passed_levels: [
-    {
-        level_id: {
-            type: Schema.Types.ObjectId,
-            required: false,
-            ref: "Level"
-        },
-        result: String //here we can save any result we want for any game that has been passed
+ passed_levels: [
+ {
+ level_id: {
+ type: Schema.Types.ObjectId,
+ required: false,
+ ref: "Level"
+ },
+ result: String //here we can save any result we want for any game that has been passed
 
-    }
+ }
 
-]*/
+ ]*/

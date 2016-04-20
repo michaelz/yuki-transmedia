@@ -9,17 +9,17 @@ var mongoose = require('mongoose'),
 var UserSchema = new Schema({
     type: String,
     username: {
-        Type: String,
+        type: String,
         required: true,
         unique: true
     },
     email: {
-        Type: String,
+        type: String,
         required: true,
         unique: true
     },
     password: {
-        Type: String,
+        type: String,
         required: true
     },
     passed_levels: [
