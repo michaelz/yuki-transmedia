@@ -70,8 +70,8 @@ router.post('/login', function (req, res) {
         var salt = bcrypt.genSaltSync(saltRounds);
         var password = toString(req.body.password);
         var hash = bcrypt.hashSync(password, salt);
-       // criteria.password = hash;
-        //criteria.password = req.body.password;
+        criteria.password = hash;
+        criteria.password = req.body.password;
         //find user
         User.findOne(criteria, function(err, user){
             if(err){
