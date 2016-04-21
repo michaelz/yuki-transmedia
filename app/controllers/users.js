@@ -17,6 +17,15 @@ router.use(session({
 module.exports = function (app) {
     app.use('/api/user', router);
 };
+
+
+router.get("/me", function (req, res) {
+    res.send(req.cookies);
+
+});
+
+
+
 //Retourne la liste des utilisateurs
 router.get('/', function (req, res, next) {
     User.find(function (err, user) {
@@ -90,9 +99,6 @@ router.put("/:id", function (req, res, next) {
     });
 });
 
-router.get("/me", function (req, res) {
-    res.jsend(req.cookies);
-});
 
 
 
