@@ -14,15 +14,19 @@
  		</div>
  		<div class="btnFonds"> Fonds </div>
  		<div class="menuFonds">
- 			<img src="img/png1.jpg" class="accessoire" id="fondsImg1" />
- 			<img src="img/3.jpg" class="accessoire" id="fondsImg2" />
+ 			<img src="img/png1.jpg" class="fond" id="fondsImg1" />
+ 			<img src="img/3.jpg" class="fond" id="fondsImg2" />
  		</div>
  	</div>
 
  	<div class="contenu" id="droppableContenu">
- 	 	<img src="img/yuki.png" class="yuki" />	
+ 	 	<img src="img/yuki.png" class="yuki" />
+ 	 	<input type="submit" value="" onclick="capture();" />
+ 	 		<img src="img/download-icon.png" class="fond" id="fondsImg2" />
+ 	 	</input>
+		<form method="POST" enctype="multipart/form-data" action="/api/picture/upload" id="myForm">
+		    <input type="hidden" name="img_val" id="img_val" value="" />
+		</form>	
  	</div>
- 	<div id="boutton">
- 		Sauvegarder image
- 	</div>
+ 	
 </div>

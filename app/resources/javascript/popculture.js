@@ -10,12 +10,7 @@ $(".drag").draggable({
 $("#droppableContenu").droppable({
 	drop: function(event, ui) {
         var position = $("#" + ui.draggable[0].id).position();
-        console.log($("#droppableContenu").height());
         $("#droppableContenu").append(ui.draggable[0]);
-        console.log(position);
-        console.log($("#droppableContenu").height());
-        console.log($("#" + ui.draggable[0].id).height() * 0.5);
-        console.log();
         $("#" + ui.draggable[0].id).css({'position':'absolute', 'left': position.left + 'px', 'top': position.top + 'px' });       
 	}
 });
@@ -23,6 +18,7 @@ $("#droppableContenu").droppable({
 $("#droppableMenu").droppable({
 	drop: function(event, ui) {
         $("#droppableMenu").append(ui.draggable[0]);
+        $("#" + ui.draggable[0].id).css({'position':'relative', 'left': '', 'top':'' }); 
     }
 });
 
@@ -53,13 +49,11 @@ $("#fondsImg2").click( function () {
 	}
 })
 
-$("#boutton").click( function () {
+function capture() {
 	html2canvas( $('.contenu'), {
 	        onrendered: function(canvas) {
-	 		var a = document.createElement('a');
-	        // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
-	        a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
-	        a.download = 'somefilename.jpg';
-	        a.click();
+		 		$("#img_val").val(canvas.toDataURL("image/png"));
+		        // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
+		        document.getElementById("myForm").submit();
 	}});
-})
+}
