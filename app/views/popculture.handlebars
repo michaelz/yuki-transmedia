@@ -6,27 +6,25 @@
  	<div id="menu">
  		<div class="btnAccessoires"> Accessoires </div>
  		<div class="menuAccessoires" id="droppableMenu">
-	 		<div class="drag" id="1">
-	 			<img src="img/06.gif" class="accessoire" />
-	 		</div><div class="drag" id="2">
-	 			<img src="img/black.png" class="accessoire" />	
-	 		</div>
  		</div>
  		<div class="btnFonds"> Fonds </div>
  		<div class="menuFonds">
- 			<img src="img/png1.jpg" class="fond" id="fondsImg1" />
- 			<img src="img/3.jpg" class="fond" id="fondsImg2" />
+ 			<img src="img/jeu_popculture/fonds/arts-martiaux.png" class="fond" id="fondsImg1" />
+ 			<img src="img/jeu_popculture/fonds/calligraphie.png" class="fond" id="fondsImg2" />
  		</div>
  	</div>
 
  	<div class="contenu" id="droppableContenu">
- 	 	<img src="img/yuki.png" class="yuki" />
- 	 	<input type="submit" value="" onclick="capture();" />
- 	 		<img src="img/download-icon.png" class="fond" id="fondsImg2" />
- 	 	</input>
-		<form method="POST" enctype="multipart/form-data" action="/api/picture/upload" id="myForm">
-		    <input type="hidden" name="img_val" id="img_val" value="" />
+ 	 	<img src="img/jeu_popculture/yuki.png" class="yuki" />
+ 	 	<input id="photoBouton" type="submit" value="DL" onclick="capture();" />
+		
+		<form method="POST" 
+		enctype="multipart/form-data" 
+		action="/api/picture/upload" 
+		id="myForm">
+		    <input type="hidden" name="img" id="img" value="" />
 		</form>	
+ 	
  	</div>
  	
 </div>

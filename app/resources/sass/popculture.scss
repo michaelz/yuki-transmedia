@@ -3,8 +3,10 @@
 #menu  {
 	float:right;
 	width:25%;
-    height: 89vw;
+	height:89vw;
     max-height: 79vh;
+
+    overflow-y:auto;
 	background-color:#d0d0d0;
 }
 
@@ -19,10 +21,6 @@
 	background-color: #eee;
 	background-repeat: no-repeat;
 	background-size: cover 100% auto;
-}
-
-.menuAccessoires {
-	min-height: 20vh;
 }
 
 #menu .accessoire,  #menu .fond {
@@ -50,10 +48,15 @@
 	}
 }
 
+#droppableMenu .menuAccessoires {
+    height: 100%;
+    overflow-x: auto;
+}
+
 #droppableContenu .drag {
 	padding-top: 1px;
 	display: block;
-	max-width: 20%;
+	max-width: 23%;
 	height: auto;
 	display: block;
 	img {
