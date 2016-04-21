@@ -69,7 +69,7 @@ router.post('/login', function (req, res) {
         //encrypt pswd
         var salt = bcrypt.genSaltSync(saltRounds);
         var password = toString(req.body.password);
-        var hash = bcrypt.hashSync(password, salt);
+        var hash = bcrypt.hashSync(password, salt); //TODO check
         criteria.password = hash;
         criteria.password = req.body.password;
         //find user
