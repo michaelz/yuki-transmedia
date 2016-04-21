@@ -1,30 +1,34 @@
 var express = require('express'),
-    router = express.Router(),
     mongoose = require('mongoose'),
-    session = require('express-session'),
     bcrypt = require('bcrypt'),
-    cookieParser = require('cookie-parser'),
+    session = require('express-session'),
+    router = express.Router(),
     Cookies = require('cookies'),
-    User = mongoose.model('User');
+    User = mongoose.model('User'),
+    MongoDBStore = require('connect-mongodb-session')(session);
+
 
 
 const saltRounds = 10;
-
-router.use(session({
-    secret: '2C44-4D44-WppQ38S',
-    resave: true,
-    saveUninitialized: true
-}));
-router.use(cookieParser());
+const salt = '$2a$10$RpO7eflB5oO7Otp01NgmFO';
 
 
-module.exports = function (app) {
-    app.use('/session', router);
 
+//router.use(cookieParser());
+
+
+module.exports = function(app) {
+    app.use('/session', router, session({
+        cookieName: 'session',
+        secret: '2C44-4D44-WppQ38S',
+        duration: 72 * 60 * 60 * 1000,
+        activeDuration: 1000 * 60 * 5
+    }));
+    //app.use();
 };
 
 // Logout endpoint
-router.get('/logout', function (req, res) {
+router.get('/logout', function(req, res) {
     req.session.destroy();
 
     res.send("logout success!");
@@ -32,20 +36,20 @@ router.get('/logout', function (req, res) {
 });
 
 // Logout endpoint
-router.get('/cookies', function (req, res) {
+router.get('/cookies', function(req, res) {
     res.send(req.cookies);
 });
 
-router.post('/register', function (req, res) {
+router.post('/register', function(req, res) {
     var user = new User;
     user.username = req.body.username;
     user.email = req.body.email;
-    var salt = bcrypt.genSaltSync(saltRounds);
     var password = toString(req.body.password);
     var hash = bcrypt.hashSync(password, salt);
     user.password = hash;
 
-    user.save(function (err, createdUser) {
+    user.save(function(err, createdUser) {
+        console.log(createdUser);
         if (err) {
             res.status(500).send(err);
             return;
@@ -57,53 +61,54 @@ router.post('/register', function (req, res) {
     });
 });
 
-router.post('/login', function (req, res) {
+router.post('/login', function(req, res) {
     if (!req.body.identifier || !req.body.password) {
-        res.send('login failed, no pswd or username input');
+        res.jerror('login failed, no pswd or username input');
     } else {
 
         var criteria = {};
-        criteria.email = req.body.identifier; //username or email
-       // res.send(criteria.email);
-        //criteria.username = req.body.identifier; //username or email
-        //encrypt pswd
-        var salt = bcrypt.genSaltSync(saltRounds);
-        var password = toString(req.body.password);
-        var hash = bcrypt.hashSync(password, salt); //TODO check
-        criteria.password = hash;
-        criteria.password = req.body.password;
-        //find user
-        User.findOne(criteria, function(err, user){
-            if(err){
+
+        var hash = bcrypt.hashSync(toString(req.body.password), salt);
+
+        // Find the user with either login or password
+        User.findOne({
+            $or: [{
+                username: req.body.identifier
+            }, {
+                email: req.body.identifier
+            }],
+            password: hash
+        }, function(err, user) {
+            if (err) {
                 res.jerror(err);
                 return;
-            } else if (!user){
+            } else if (!user) {
                 res.jerror("User not found");
-
                 return;
             } else {
-                req.session.email = user.email;
+                req.session.user = user;
+
                 //if found, set session
-               //res.cookie('email', "hello@lol.com").send(req.cookies.email);
-     /*           req.cookies.email = user.email;*/
+                //res.cookie('email', "hello@lol.com").send(req.cookies.email);
+                /*           req.cookies.email = user.email;*/
                 //req.session.cookie.email = "hello";
                 //req.cookies.email = "hello";
-               /* req.cookies.id = user._id;
-                 req.session.id = user._id;*/
-               var cookies = new Cookies(req, res, {"email": user.email}),signed;
-                cookies.set("email", user.email, {signed:false});
+                /* req.cookies.id = user._id;
+                  req.session.id = user._id;*/
+                /*var cookies = new Cookies(req, res, {
+                        "email": user.email
+                    }),
+                    signed;
+                cookies.set("email", user.email, {
+                    signed: false
+                });*/
 
-               // res.cookie('email', user.email, {signed: true}).send("okay");
+                // res.cookie('email', user.email, {signed: true}).send("okay");
 
-
-                res.send("login success! with email : " + cookies.email);
+                //res.redirect('/');
+                res.jsend('plop');
             }
         });
 
-
-
     }
 });
-
-
-
