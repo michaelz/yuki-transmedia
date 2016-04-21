@@ -8,6 +8,7 @@
   "dependencies": {
     "async": "^2.0.0-rc.3",
     "base64url": "^1.0.6",
+    "bcrypt": "^0.8.6",
     "body-parser": "^1.13.3",
     "client-sessions": "^0.7.0",
     "compression": "^1.5.2",

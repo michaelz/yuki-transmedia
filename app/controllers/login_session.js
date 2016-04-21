@@ -1,8 +1,11 @@
 var express = require('express'),
-    app = express(),
     router = express.Router(),
     mongoose = require('mongoose'),
-    session = require('express-session');
+    session = require('express-session'),
+    bcrypt = require('bcrypt'),
+    User = mongoose.model('User');
+
+const saltRounds = 10;
 
 router.use(session({
     secret: '2C44-4D44-WppQ38S',
@@ -14,12 +17,35 @@ module.exports = function (app) {
     app.use('/session', router);
 };
 
-router.get('/', function (req, res, next) {
+// Logout endpoint
+router.get('/logout', function (req, res) {
+    req.session.destroy();
+    res.send("logout success!");
+});
 
-    req.session.yolo = "yolo";
+// Logout endpoint
+router.get('/cookies', function (req, res) {
+    res.send(req.cookies);
+});
 
-    res.send(req.session);
-    res.send(200, 'yolo');
+router.post('/register', function (req, res) {
+    var user = new User;
+    user.username = req.body.username;
+    user.email = req.body.email;
+    var salt = bcrypt.genSaltSync(saltRounds);
+    var password = toString(req.body.password);
+    var hash = bcrypt.hashSync(password, salt);
+    user.password = hash;
 
+    user.save(function (err, createdUser) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+        res.jsend({
+            username: user.username,
+            email: user.email
+        });
+    });
 });
 
