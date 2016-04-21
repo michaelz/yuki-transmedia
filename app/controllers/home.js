@@ -28,8 +28,9 @@ store.on('error', function(error) {
 router.use(session({
     secret: 'keyboard cat',
     cookie: {
-        secure: true,
-        maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+        secure: false,
+        maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+        httpOnly: false
     },
     store: store,
     resave: true,

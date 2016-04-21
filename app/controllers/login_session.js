@@ -3,8 +3,10 @@ var express = require('express'),
     bcrypt = require('bcrypt'),
     session = require('express-session'),
     router = express.Router(),
-    Cookies = require('cookies'),
+    //Cookies = require('cookies'),
     User = mongoose.model('User'),
+    auth = require('../services/auth'),
+
     MongoDBStore = require('connect-mongodb-session')(session);
 
 
@@ -14,17 +16,8 @@ const salt = '$2a$10$RpO7eflB5oO7Otp01NgmFO';
 
 
 
-//router.use(cookieParser());
-
-
 module.exports = function(app) {
-    app.use('/session', router, session({
-        cookieName: 'session',
-        secret: '2C44-4D44-WppQ38S',
-        duration: 72 * 60 * 60 * 1000,
-        activeDuration: 1000 * 60 * 5
-    }));
-    //app.use();
+    app.use('/session', router);
 };
 
 // Logout endpoint
@@ -39,6 +32,11 @@ router.get('/logout', function(req, res) {
 router.get('/cookies', function(req, res) {
     res.send(req.cookies);
 });
+
+router.get('/plop', auth.mustBeAuthenticated, function(req, res) {
+    req.session.test = 'popopop';
+    res.send(req.session.test);
+})
 
 router.post('/register', function(req, res) {
     var user = new User;
@@ -86,7 +84,7 @@ router.post('/login', function(req, res) {
                 res.jerror("User not found");
                 return;
             } else {
-                req.session.user = user;
+                req.session.user = user.username;
 
                 //if found, set session
                 //res.cookie('email', "hello@lol.com").send(req.cookies.email);
@@ -106,7 +104,8 @@ router.post('/login', function(req, res) {
                 // res.cookie('email', user.email, {signed: true}).send("okay");
 
                 //res.redirect('/');
-                res.jsend('plop');
+                res.send('logged in');
+                return;
             }
         });
 

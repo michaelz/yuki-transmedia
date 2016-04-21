@@ -8,11 +8,10 @@ module.exports = {
     // must be authenticated
     mustBeAuthenticated: function(req, res, next) {
         //console.log(req.session.plop);
-        if (req.yukiSession && req.yukiSession.user) {
+        if (req.session && req.session.user) {
             console.log(req.session.user);
             return next();
         }
-        console.log(req.session);
-        return next();
+        res.redirect('/login');
     }
 }
