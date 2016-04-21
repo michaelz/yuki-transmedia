@@ -144,3 +144,39 @@ div.infoBox h1, p, h2 {
     margin-left: 2%;
     margin-right: 2%;
 }
+
+/**
+* dialogue
+*/
+.dialogue {
+    position: absolute;
+    bottom: 0;
+    border-style: solid;
+    border-left: none;
+    margin: 0 auto;
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+    margin-top: 10%;
+    border-top-style: solid;
+    border-color: #454B4C;
+    border-top-width: 6px;
+    border-bottom-style: none;
+    z-index: 11;
+    background-color: rgba(#E4EFFF, 0.7);
+}
+
+button.dialogue-skip {
+    position: absolute;
+    top: 45%;
+    left: 80%;
+    width: 15%;
+    height: 30px;
+    font-size: 1em;
+    font-family: montserrat;
+    text-align: center;
+}
+
+p.dialogue-script {
+    margin-right: 25%;
+}

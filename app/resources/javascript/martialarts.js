@@ -6,16 +6,64 @@ $(document).ready(function () {
   var lvl = 0;
   var nbMove = 2;
 
+
+  //Gestion des dialogue/////////////////////////////////////////
+  var indexdialoguepersonnage = 0;
+  var indexdialoguescript = 0;
+  var dialoguescript = [
+    "Bonjour Yuki, je te souhaite la bienvenue dans le monde des arts-matriaux.",
+    "Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+    "bla bla bla bla bla bla bla bla bla bla bla bla"
+  ];
+
+  var dialoguepersonnage = [
+    "Maitre Kaio : ",
+    "Yuki : ",
+    "Maitre Kaio : "
+  ];
+
+  $( ".dialogue-personnage" ).append(dialoguepersonnage[indexdialoguepersonnage]);
+  $( ".dialogue-script" ).append(dialoguescript[indexdialoguescript]);
+
+  $(".dialogue-skip").on('click', script);
+  $(".dialogue-skip").on('click', personnage);
+
+  function script(){
+    indexdialoguescript++;
+
+if (indexdialoguescript < dialoguescript.length) {
+  $( ".dialogue-script" ).empty();
+  $( ".dialogue-script" ).append(dialoguescript[indexdialoguescript]);
+}
+
+    if (indexdialoguescript === dialoguescript.length) {
+      $( ".dialogue" ).fadeOut();
+      //Lancer votre fonction post dialogue ici...
+      $('#yuki_face').hide();
+      $('#yuki_profil').show();
+      $('.martialArtsBtn').show();
+      kataGeneration(nbMove, lvl);
+    }
+  }
+
+  function personnage(){
+    indexdialoguepersonnage++;
+
+    if (indexdialoguescript < dialoguescript.length) {
+      $( ".dialogue-personnage" ).empty();
+      $( ".dialogue-personnage" ).append(dialoguepersonnage[indexdialoguepersonnage]);
+    }
+  }
+
+  ///////////////////////////////////////////////////////////////
+
+
   //Masquage des éléments
-  $('#martialArtsBubble2').hide();
-  $('#martialArtsBubble3').hide();
-  $('#martialArtsBubble4').hide();
-  $('#martialArtsBubble5').hide();
   $('.martialArtsBtn').hide();
   $('.round-info-button').hide();
   $('#martial-arts-info').hide();
+  $('#martialArtsDialogue').hide();
 
-  //$("#progressBar").hide();
 
   //Masquage des sprites
   $('#yuki_profil').hide();
@@ -27,43 +75,6 @@ $(document).ready(function () {
 
 
   $('.round-info-button').on('click', showInfos);
-
-
-  //detection du clic sur suivant
-  $(".martialArtsNextBtn").on('click', introCount);
-
-  //Fonction liée au dialogue
-  ///////////////////////////////////////////////////////////////
-  function introCount() {
-    //Incrémentation de la variable au clic sur le bouton suivant
-    intro++;
-    //Masquage/affichage de ligne de dialogue en fonction de l'avancement du script
-    if (intro === 1) {
-      $('#martialArtsBubble1').hide();
-      $('#martialArtsBubble2').show();
-    }
-
-    if (intro === 2) {
-      $('#martialArtsBubble2').hide();
-      $('#martialArtsBubble3').show();
-    }
-    //Dernière ligne de dialogue, dès que suivant on lance une fonction...
-    if (intro === 3) {
-      //Masquage du sript et du bouton next
-      $('#martialArtsBubble3').hide();
-      $('.martialArtsNextBtn').hide();
-      //Affichage des inputs du jeu
-      $('.martialArtsBtn').show();
-      $('#martialArtsBubble4').show();
-      //...On lance la fonction gérant les katas
-
-      $('#yuki_face').hide();
-      $('#yuki_profil').show();
-
-      kataGeneration(nbMove, lvl);
-
-    }
-  }
 
 });
 
@@ -180,7 +191,6 @@ function kataGeneration(nbMove, lvl){
 
     $(".martialArtsBtn").removeClass("desactivatedBtn");
 
-    $( ".martialArtsBtn" ).removeClass( "desactivatedBtn" );
 
 
     //Détéction des inputs
