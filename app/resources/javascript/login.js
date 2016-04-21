@@ -27,9 +27,7 @@ $(document).ready(function() {
             success: function(data) {
                 console.log(data);
                 if (data.status == 'success') {
-                    localStorage.setItem(
-                        "yuki-auth-token", data
-                        .data);
+                    window.location.replace('/');
                 } else {
                     $("#loginError").append(
                         '<p class="error">Login/Mot de passe non-reconnu</p>'
@@ -156,7 +154,15 @@ $(document).ready(function() {
                 url: regUrl,
                 data: transmit,
                 success: function(data) {
-                    console.log(data);
+                    if (data.status == 'success') {
+                        window.location.replace(
+                            '/regok');
+                    } else {
+                        $("#loginError").append(
+                            '<p class="error">Problème</p>'
+                        );
+                    }
+
                 }
             });
         } else {

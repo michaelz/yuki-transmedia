@@ -26,7 +26,7 @@ store.on('error', function(error) {
 });
 
 router.use(session({
-    secret: 'keyboard cat',
+    secret: config.key,
     cookie: {
         secure: false,
         maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
@@ -37,20 +37,17 @@ router.use(session({
     saveUninitialized: true
 }))
 
-router.get('/', /*auth.mustBeAuthenticated,*/ function(req, res, next) {
-    var sess = req.session;
-    if (sess.views) {
-        sess.views++
-            res.setHeader('Content-Type', 'text/html')
-        res.write('<p>views: ' + sess.views + '</p>')
-        res.write('<p>expires in: ' + (sess.cookie.maxAge / 1000 / 60 /
-                60 / 24) +
-            'days</p>')
-        res.end()
-    } else {
-        sess.views = 1
-        res.end('welcome to the session demo. refresh!')
-    }
+
+/**
+ * Home page, to show the user data
+ */
+router.get('/', auth.mustBeAuthenticated, auth.getUserInfo, function(req, res,
+    next) {
+    res.render('index', {
+        pagename: 'index',
+        title: 'index',
+        userdata: req.connectedUser // thanks auth.getUserInfo
+    });
 });
 
 
@@ -77,12 +74,24 @@ router.get('/introduction', function(req, res, next) {
 /**
  * login route.
  */
-router.get('/login', function(req, res, next) {
+router.get('/login', auth.cantBeAuthenticated, function(req, res, next) {
     res.render('login', {
         pagename: 'login',
         title: 'login page'
     });
 });
+
+/*
+ * Use the empty template to say thank you for being authenticated
+ */
+router.get('/regok', auth.cantBeAuthenticated, function(req, res, next) {
+    res.render('empty', {
+        pagename: 'home',
+        title: 'Merci pour votre enregistrement',
+        content: '<div style="text-align:center"><h3> Merci pour votre enregistrement !</h3><p>Vous allez recevoir un super lien par email</p></div>'
+    })
+});
+
 
 /**
  * MartialArts route.

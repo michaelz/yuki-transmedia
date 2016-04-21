@@ -23,21 +23,12 @@ module.exports = function(app) {
 // Logout endpoint
 router.get('/logout', function(req, res) {
     req.session.destroy();
-
-    res.send("logout success!");
-    //TODO check
+    res.redirect('/');
 });
 
-// Logout endpoint
-router.get('/cookies', function(req, res) {
-    res.send(req.cookies);
-});
-
-router.get('/plop', auth.mustBeAuthenticated, function(req, res) {
-    req.session.test = 'popopop';
-    res.send(req.session.test);
-})
-
+/**
+ * Register new user
+ */
 router.post('/register', function(req, res) {
     var user = new User;
     user.username = req.body.username;
@@ -56,6 +47,7 @@ router.post('/register', function(req, res) {
             username: user.username,
             email: user.email
         });
+        return;
     });
 });
 
@@ -63,11 +55,8 @@ router.post('/login', function(req, res) {
     if (!req.body.identifier || !req.body.password) {
         res.jerror('login failed, no pswd or username input');
     } else {
-
         var criteria = {};
-
         var hash = bcrypt.hashSync(toString(req.body.password), salt);
-
         // Find the user with either login or password
         User.findOne({
             $or: [{
@@ -85,26 +74,7 @@ router.post('/login', function(req, res) {
                 return;
             } else {
                 req.session.user = user.username;
-
-                //if found, set session
-                //res.cookie('email', "hello@lol.com").send(req.cookies.email);
-                /*           req.cookies.email = user.email;*/
-                //req.session.cookie.email = "hello";
-                //req.cookies.email = "hello";
-                /* req.cookies.id = user._id;
-                  req.session.id = user._id;*/
-                /*var cookies = new Cookies(req, res, {
-                        "email": user.email
-                    }),
-                    signed;
-                cookies.set("email", user.email, {
-                    signed: false
-                });*/
-
-                // res.cookie('email', user.email, {signed: true}).send("okay");
-
-                //res.redirect('/');
-                res.send('logged in');
+                res.jsend("Welcome " + user.username + "!")
                 return;
             }
         });

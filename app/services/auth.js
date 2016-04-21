@@ -1,6 +1,4 @@
-var cookieParser = require('cookie-parser'),
-    Cookies = require('cookies'),
-    mongoose = require('mongoose'),
+var mongoose = require('mongoose'),
     User = mongoose.model('User');
 
 module.exports = {
@@ -12,6 +10,34 @@ module.exports = {
             console.log(req.session.user);
             return next();
         }
-        res.redirect('/login');
+        // redirect to login with query
+        res.redirect('/login'); // can be fun to add a ?q= to get the original query
+    },
+    // this function redirects if user is already authenticated
+    cantBeAuthenticated: function(req, res, next) {
+
+        if (req.session.user) {
+            res.send(403, 'already logged in !');
+            return;
+        }
+        next();
+    },
+
+    // Get user information
+    getUserInfo: function(req, res, next) {
+        User.findOne({
+            'username': req.session.user
+        }, function(err, user) {
+            if (err) {
+                res.jerror('no user found')
+                return;
+            }
+            req.connectedUser = {
+                username: user.username,
+                email: user.email,
+                passed_levels: user.passed_levels
+            };
+            return next();
+        });
     }
 }
