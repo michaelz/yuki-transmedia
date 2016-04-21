@@ -4,8 +4,8 @@
 @import 'components/forms';
 
 /*
- * This file contains all the styles used for the whole app and for the map.
- */
+* This file contains all the styles used for the whole app and for the map.
+*/
 
 body {
   padding:0;
@@ -17,50 +17,88 @@ body {
 
 
 h1,h2,h3,h4,h5 {
-    font-family: $font-title;
-    font-weight:normal;
+  font-family: $font-title;
+  font-weight:normal;
 }
 
 
 a {
-    color: $color-martialarts-1;
+  color: $color-martialarts-1;
 }
 
 /**
- * Mobile container
- */
+* Mobile container
+*/
 
 .square {
-    height: 90vw;
-    width: 90vw;
-    max-height: 80vh;
-    max-width: 80vh;
-    overflow-x:hidden;
-    overflow-y:auto;
-    position:relative;
-    width: 90%;
-    margin: 0 auto;
-    border: 6px solid $color-grey;
-    border-top: none;
-    background: rgba($color-white,0.5);
+  height: 90vw;
+  width: 90vw;
+  max-height: 80vh;
+  max-width: 80vh;
+  overflow-x:hidden;
+  overflow-y:auto;
+  position:relative;
+  width: 90%;
+  margin: 0 auto;
+  border: 6px solid $color-grey;
+  border-top: none;
+  background: rgba($color-white,0.5);
 }
 
 
 .mainHeader {
-    border-bottom: 6px solid $color-grey;
-    .logo {
-        margin-left: auto;
-        margin-right: auto;
-        width: 10em;
-        height: auto;
-        margin-bottom: -3.45em;
-        z-index:2;
-        position:relative;
-        display:block;
-    }
+  border-bottom: 6px solid $color-grey;
+  .logo {
+    margin-left: auto;
+    margin-right: auto;
+    width: 10em;
+    height: auto;
+    margin-bottom: -3.45em;
+    z-index:2;
+    position:relative;
+    display:block;
+  }
 }
 
 .copyright {
-    font-size: 9px;
-    text-align: center;
+  font-size: 9px;
+  text-align: center;
+}
+
+/**
+* Info btn
+*/
+.round-info-button {
+  width:5%;
+}
+.round-info-button-circle {
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  z-index: 10;
+  width: 8%;
+  height:0;
+  padding-bottom: 8%;
+  border-radius: 50%;
+  background: #70cce0;
+  box-shadow: 0 0 3px gray;
+}
+.round-info-button-circle:hover {
+  background:#2a738e;
+  cursor: pointer;
+}
+.round-info-button p {
+  display:block;
+  float:left;
+  width:100%;
+  padding-top:50%;
+  padding-bottom:50%;
+  line-height:1em;
+  margin-top:-0.5em;
+  text-align:center;
+  color:#e2eaf3;
+  font-family:Verdana;
+  font-size:1.2em;
+  font-weight:bold;
+  text-decoration:none;
 }
