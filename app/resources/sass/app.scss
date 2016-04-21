@@ -66,6 +66,44 @@ a {
 }
 
 /**
+* Info close btn
+*/
+.round-info-button-close {
+  width:5%;
+}
+.round-info-button-circle-close {
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  z-index: 10;
+  width: 8%;
+  height:0;
+  padding-bottom: 8%;
+  border-radius: 50%;
+  background: #A63D3A;
+  box-shadow: 0 0 3px gray;
+}
+.round-info-button-circle-close:hover {
+  background:#733431;
+  cursor: pointer;
+}
+.round-info-button-close p {
+  display:block;
+  float:left;
+  width:100%;
+  padding-top:50%;
+  padding-bottom:50%;
+  line-height:1em;
+  margin-top:-0.5em;
+  text-align:center;
+  color:#e2eaf3;
+  font-family:Verdana;
+  font-size:1.2em;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+/**
 * Info btn
 */
 .round-info-button {
@@ -101,4 +139,8 @@ a {
   font-size:1.2em;
   font-weight:bold;
   text-decoration:none;
+}
+div.infoBox h1, p, h2 {
+    margin-left: 2%;
+    margin-right: 2%;
 }

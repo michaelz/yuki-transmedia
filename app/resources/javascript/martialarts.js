@@ -12,8 +12,8 @@ $(document).ready(function () {
   $('#martialArtsBubble4').hide();
   $('#martialArtsBubble5').hide();
   $('.martialArtsBtn').hide();
-  $('#opener').hide();
-  $('#dialog').hide();
+  $('.round-info-button').hide();
+  $('#martial-arts-info').hide();
 
   //$("#progressBar").hide();
 
@@ -24,6 +24,10 @@ $(document).ready(function () {
   $('#yuki_saut').hide();
   $('#yuki_poingDeFeu').hide();
   $('#yuki_tombe').hide();
+
+
+  $('.round-info-button').on('click', showInfos);
+
 
   //detection du clic sur suivant
   $(".martialArtsNextBtn").on('click', introCount);
@@ -76,7 +80,7 @@ function kataGeneration(nbMove, lvl){
   $( "#retry" ).empty();
   $( "#nbrKata" ).append(lvl);
 
-  $('#opener').hide();
+  $('.round-info-button').hide();
 
   //$( ".martialArtsBtn" ).addClass( "desactivatedBtn" );
   $(".martialArtsBtn").addClass("desactivatedBtn");
@@ -150,7 +154,8 @@ function kataGeneration(nbMove, lvl){
       {
         //$("#progressBar").hide();
         validationKata(tblKata, lvl, nbMove);
-        showInfos();
+        $('.round-info-button').show();
+        //showInfos();
         //do something special
       }, 4000);
 
@@ -221,7 +226,7 @@ function kataGeneration(nbMove, lvl){
 
         } else {
 
-          $('#opener').hide();
+          $('.round-info-button').hide();
 
           $('#yuki_profil').hide();
           $('#yuki_tombe').show();
@@ -248,7 +253,7 @@ function kataGeneration(nbMove, lvl){
 
                 validationKata(tblKata, lvl, nbMove);
                 $('#yuki_profil').show();
-                $('#opener').show();
+                $('.round-info-button').show();
                 //do something special
               }, 4000);
             }
@@ -310,26 +315,10 @@ function kataGeneration(nbMove, lvl){
               }
 
           function showInfos() {
+            $('#martial-arts-info').show();
+            $('.round-info-button-close').on('click', hideInfos);
+          }
 
-            $('#opener').show();
-
-
-                $( "#dialog" ).dialog({
-                  autoOpen: false,
-                  show: {
-                    effect: "fade",
-                    duration: 1000
-                  },
-                  hide: {
-                    effect: "fade",
-                    duration: 1000
-                  }
-                });
-
-                $( "#opener" ).click(function() {
-                  $( "#dialog" ).dialog( "open" );
-                });
-
-
-
+          function hideInfos() {
+            $('#martial-arts-info').hide();
           }
