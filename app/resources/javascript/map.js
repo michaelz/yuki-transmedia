@@ -2,14 +2,19 @@
 $(document).ready(function() {
     var levels = [{
         code: 'martialarts'
-    },{
+    }, {
         code: 'calligraphy'
+    }, {
+        code: 'popculture'
+    }, {
+        code: 'food'
     }]; // TODO: Replace with data from user (API)
 
     levels.forEach(function(data) {
         console.log(data.code);
-        var item = $('.item-'+data.code);
-        
-        item.removeClass('disabled').append("<a href='/"+data.code+"'>"+item.val()+"</a>");
+        var item = $('.item-' + data.code);
+
+        item.removeClass('disabled').append("<a href='/" + data
+            .code + "'>" + item.val() + "</a>");
     });
 });

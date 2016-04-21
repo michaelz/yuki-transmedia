@@ -27,7 +27,6 @@
                margin-top: -45px;
                margin-left: -45px;
             }
-
             overflow:hidden;
             position:absolute;
             font-size: 10px;
@@ -44,32 +43,32 @@
         .item-intro {
             left: 32%;
             top: 16%;
-            background-image: url('/img/ojiisan.png');
+            background-image: url('/img/map/ojiisan.png');
         }
         .item-martialarts {
             left: 67%;
             top: 25%;
-            background-image: url('/img/singe.png');
+            background-image: url('/img/map/martialarts.png');
         }
         .item-calligraphy {
             left: 40%;
             top: 40%;
-            background-image: url('/img/grue.png');
+            background-image: url('/img/map/calligraphy.png');
         }
         .item-origami {
             left: 60%;
             top: 53%;
-            background-image: url('/img/chouette.png');
+            background-image: url('/img/map/origami.png');
         }
         .item-food {
             left: 45%;
             top: 67%;
-            background-image: url('/img/tanuki.png');
+            background-image: url('/img/map/food.png');
         }
         .item-popculture {
             left: 60%;
             top: 90%;
-            background-image: url('/img/chat.png');
+            background-image: url('/img/map/popculture.png');
         }
     }
 }
