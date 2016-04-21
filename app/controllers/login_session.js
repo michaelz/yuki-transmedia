@@ -26,8 +26,9 @@ module.exports = function (app) {
 // Logout endpoint
 router.get('/logout', function (req, res) {
     req.session.destroy();
-    req.clearCookie(req.cookies);
+
     res.send("logout success!");
+    //TODO check
 });
 
 // Logout endpoint
@@ -95,7 +96,7 @@ router.post('/login', function (req, res) {
                // res.cookie('email', user.email, {signed: true}).send("okay");
 
 
-                res.send("login success! with email : ");
+                res.send("login success! with email : " + cookies.email);
             }
         });
 
