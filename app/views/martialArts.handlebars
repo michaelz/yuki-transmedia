@@ -1,20 +1,35 @@
+<script src="/js/lib/jquery-ui/jquery-ui.min.js"></script>
+
+<button id="opener">Open Dialog</button>
+
+<div id="dialog" title="Basic dialog">
+  <p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div>
+
 <div id="martialArtsDialogue" class="discussionContainer">
  <h3>Maitre Kaio</h3>
- <p id="martialArtsBubble1">Salut Yuki, es-tu prêt à découvrire le monde formidable des arts-martiaux?</p>
- <p id="martialArtsBubble2">Singe: Alors c'est parti !</p>
- <p id="martialArtsBubble3">Nous allons enchainer quelques Kata ensemble mon petit Yuki chéri.</p>
+ <p id="martialArtsBubble1">Bonjour Yuki, es-tu prêt à découvrir le monde formidable des arts-martiaux ?</p>
+ <p id="martialArtsBubble2">Je te présenterai un Kata quelques secondes, puis se sera à ton tour de l'exécuter.</p>
+ <p id="martialArtsBubble3">Alors... es-tu prêt ?</p>
  <p id="martialArtsBubble5">Voici le kata N°<span></span></p>
- <p id="martialArtsBubble4"><span id="retry"></span>Essayes d'éxecuter le kata N°<span id="nbrKata"></span></p>
+ <span id="retry"><br></span><p id="martialArtsBubble4">Essayes d'exécuter le kata N°<span id="nbrKata"></span></p>
  <button class="martialArtsNextBtn" type="button">Suivant</button>
 <div id="kataASaisir">
 </div>
 </div>
 
+<div id=spriteYuki>
+  <img id="yuki_face" src="/img/sprites/yuki_face.png" alt="sprite de yuki de face"></img>
+  <img id="yuki_profil" src="/img/sprites/yuki_profil.png" alt="sprite de yuki de profil"></img>
+  <img id="yuki_poing" src="/img/sprites/yuki_poing.png" alt="sprite de yuki poing"></img>
+  <img id="yuki_pied" src="/img/sprites/yuki_pied.png" alt="sprite de yuki coup de pied"></img>
+  <img id="yuki_saut" src="/img/sprites/yuki_saut.png" alt="sprite de yuki sautant"></img>
+  <img id="yuki_poingDeFeu" src="/img/sprites/yuki_poingDeFeu.png" alt="sprite de yuki spécial"></img>
+  <img id="yuki_tombe" src="/img/sprites/yuki_tombe.png" alt="sprite de yuki échec"></img>
+</div>
+
 <div id="inputBox" class="discussionContainer">
 <div id="progressBar"><div class="progress"></div></div>
-
-
-
 
 <div id="btnBox">
  <div class="martialArtsBtn" id="btnPoing">
