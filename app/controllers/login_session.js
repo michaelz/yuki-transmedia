@@ -3,7 +3,8 @@ var express = require('express'),
     router = express.Router(),
     mongoose = require('mongoose'),
     session = require('express-session');
-app.use(session({
+
+router.use(session({
     secret: '2C44-4D44-WppQ38S',
     resave: true,
     saveUninitialized: true
@@ -16,6 +17,9 @@ module.exports = function (app) {
 router.get('/', function (req, res, next) {
 
     req.session.yolo = "yolo";
-    res.send(200,'yolo');
+
+    res.send(req.session);
+    res.send(200, 'yolo');
 
 });
+
