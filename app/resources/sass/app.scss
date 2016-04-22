@@ -1,7 +1,9 @@
 @import 'components/fonts';
+@import 'fontawesome/font-awesome';
 @import 'components/variables';
 @import 'components/mixins';
 @import 'components/forms';
+
 
 /*
 * This file contains all the styles used for the whole app and for the map.
@@ -19,6 +21,7 @@ body {
 h1,h2,h3,h4,h5 {
   font-family: $font-title;
   font-weight:normal;
+
 }
 
 
@@ -45,6 +48,19 @@ a {
   background: rgba($color-white,0.5);
 }
 
+// Disable square for some pages on mobile (keyboard)
+
+    @media screen and (max-device-width: 600px) {
+        .body-calligraphy .square,
+        .body-login .square {
+        height: auto;
+        width: 90vw;
+        padding-bottom: 1em;
+        overflow:hidden;
+        max-height:none;
+        max-width:none;
+    }
+}
 
 .mainHeader {
   border-bottom: 6px solid $color-grey;
@@ -63,6 +79,9 @@ a {
 .copyright {
   font-size: 9px;
   text-align: center;
+  &:after {
+      @include icon($fa-var-arrow-up);
+  }
 }
 
 /**
