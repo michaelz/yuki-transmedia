@@ -21,9 +21,7 @@ body {
 h1,h2,h3,h4,h5 {
   font-family: $font-title;
   font-weight:normal;
-  &:before {
-      @include fa-icon('')
-  }
+
 }
 
 
@@ -81,6 +79,9 @@ a {
 .copyright {
   font-size: 9px;
   text-align: center;
+  &:after {
+      @include icon($fa-var-arrow-up);
+  }
 }
 
 /**
