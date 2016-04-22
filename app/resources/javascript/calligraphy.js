@@ -58,5 +58,8 @@ var texts = {
 }
 
 $(document).ready(function() {
+
+    $('.round-info-button').hide();
+
     $('img.jqPuzzle').jqPuzzle(settings, texts); // apply to all images
 });
