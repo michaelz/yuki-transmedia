@@ -1,7 +1,9 @@
 @import 'components/fonts';
+@import 'fontawesome/font-awesome';
 @import 'components/variables';
 @import 'components/mixins';
 @import 'components/forms';
+
 
 /*
 * This file contains all the styles used for the whole app and for the map.
@@ -19,6 +21,9 @@ body {
 h1,h2,h3,h4,h5 {
   font-family: $font-title;
   font-weight:normal;
+  &:before {
+      @include fa-icon('')
+  }
 }
 
 
