@@ -73,6 +73,7 @@ a {
 }
 .round-info-button-circle-close {
   position: absolute;
+  border: 2px solid #cfdcec;
   top: 1%;
   left: 1%;
   z-index: 10;
@@ -80,7 +81,7 @@ a {
   height:0;
   padding-bottom: 8%;
   border-radius: 50%;
-  background: #A63D3A;
+  background: #70cce0;
   box-shadow: 0 0 3px gray;
 }
 .round-info-button-circle-close:hover {
@@ -111,6 +112,7 @@ a {
 }
 .round-info-button-circle {
   position: absolute;
+  border: 2px solid #cfdcec;
   top: 1%;
   left: 1%;
   z-index: 10;

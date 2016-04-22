@@ -1,6 +1,6 @@
 var express = require('express'),
     mongoose = require('mongoose'),
-    bcrypt = require('bcrypt'),
+    bcrypt = require('bcryptjs'),
     session = require('express-session'),
     router = express.Router(),
     //Cookies = require('cookies'),
