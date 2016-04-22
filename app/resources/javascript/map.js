@@ -19,4 +19,6 @@ $(document).ready(function() {
         item.removeClass('disabled').append("<a href='/" + data
             .code + "'>" + item.val() + "</a>");
     });
+
+    $(".element:not(.item-intro)").append("<p>Hello</p>")
 });
