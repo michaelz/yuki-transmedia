@@ -4,6 +4,7 @@ var express = require('express'),
     Level = mongoose.model('Level'),
     User = mongoose.model('User');
 tools = require('../services/tools');
+auth = require('../services/auth');
 
 
 module.exports = function (app) {
@@ -117,7 +118,7 @@ router.put("/:id", function (req, res, next) {
 router.post('/passLevelUser/:idLevel/', auth.mustBeAuthenticated, auth.getUserInfo, function (req, res, next) {
 
 
-    user = req.connectedUser;
+    var user = req.connectedUser;
 
 
     console.log(user);

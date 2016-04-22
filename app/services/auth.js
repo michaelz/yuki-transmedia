@@ -32,11 +32,7 @@ module.exports = {
                 res.jerror('no user found')
                 return;
             }
-            req.connectedUser = {
-                username: user.username,
-                email: user.email,
-                passed_levels: user.passed_levels
-            };
+            req.connectedUser = user;
             return next();
         });
     }
