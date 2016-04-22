@@ -94,7 +94,7 @@ $(document).ready(function () {
   $('.round-info-button').hide();
   $('#martial-arts-info').hide();
   $('#martialArtsDialogue').hide();
-  $(".body-martialarts-dojo").hide();
+  $(".lvl-achieved").hide();
 
 
   //Masquage des sprites
@@ -260,7 +260,9 @@ function kataGeneration(nbMove, lvl){
 
           if (lvl===4) {
             $('.discussionContainer').hide();
-            alert("Bravo vous avez fini le mini jeu des arts martiaux.");
+            $(".lvl-achieved").fadeIn();
+            $('.round-info-button').fadeOut();
+            //alert("Bravo vous avez fini le mini jeu des arts martiaux.");
           } else if (lvl<4) {
             kataGeneration(nbMove, lvl);
           }
@@ -358,9 +360,11 @@ function kataGeneration(nbMove, lvl){
 
               function showInfos() {
                 $('#martial-arts-info').show();
+                $('.round-info-button').hide();
                 $('.round-info-button-close').on('click', hideInfos);
               }
 
               function hideInfos() {
+                $('.round-info-button').show();
                 $('#martial-arts-info').hide();
               }
