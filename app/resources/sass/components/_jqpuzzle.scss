@@ -36,8 +36,20 @@
 /* a single puzzle piece */
 .jqPuzzle .jqp-piece {
 	//border: 1px solid #FFFFFF;
-	color: $color-calligraphy-2;
-	font-size: 36px;
+	color: red;
+	font-size: 1.3em;
+
+    span {
+        background: rgba($color-calligraphy-1,0.6);
+        color:white;
+        display:block;
+        width: 1.5em;
+        line-height: 1.5em;
+        text-align:center;
+        border-radius: 1em;
+        margin-top: 0.5em;
+        margin-left: 0.5em;
+    }
 }
 
 .jqPuzzle .jqp-piece:hover {
@@ -62,7 +74,7 @@
 	border: none;
     border-radius: 3px;
 	background-color: $color-calligraphy-1;
-	color: $color-calligraphy-2;
+	color: $color-white;
 	font-size: 14px;
 	line-height: normal;
 	float: left;
@@ -75,17 +87,13 @@
 /* toggle/down state for buttons */
 .jqPuzzle .jqp-controls a.jqp-toggle,
 .jqPuzzle .jqp-controls a.jqp-down {
-	padding-left: 4px;
-	padding-right: 6px;
-	border-style: inset;
-	background-color: $color-calligraphy-1;
+	background-color: rgba($color-calligraphy-1,0.8);
 
 }
 
 /* disabled state for buttons */
 .jqPuzzle .jqp-controls a.jqp-disabled {
-	background-color: $color-calligraphy-2;
-	color: #FFFFFF;
+	opacity: 0.5;
 }
 
 /* the area which holds the moves/seconds display */

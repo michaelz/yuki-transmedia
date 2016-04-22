@@ -45,6 +45,19 @@ a {
   background: rgba($color-white,0.5);
 }
 
+// Disable square for some pages on mobile (keyboard)
+
+    @media screen and (max-device-width: 600px) {
+        .body-calligraphy .square,
+        .body-login .square {
+        height: auto;
+        width: 90vw;
+        padding-bottom: 1em;
+        overflow:hidden;
+        max-height:none;
+        max-width:none;
+    }
+}
 
 .mainHeader {
   border-bottom: 6px solid $color-grey;
