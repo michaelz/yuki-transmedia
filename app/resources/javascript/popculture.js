@@ -28,13 +28,31 @@ $( document ).ready(function() {
 	});
 
 	$(".btnAccessoires").click( function () {
+		$(".btnAccessoires").css("color", "#3498db");
+		$(".btnAccessoires").css("background","white");
+
+		$(".btnFonds").css("color", "white");
+		$(".btnFonds").css("background","#3498db");
+
+		$(".btnFonds").css("border-top-width","6px");
+		$(".btnFonds").css("border-bottom-width","0px");
+
 		$(".menuAccessoires").show();
 		$(".menuFonds").hide();
 	})
 
 	$(".btnFonds").click( function () {
-		$(".menuAccessoires").hide();
+		$(".btnFonds").css("color", "#3498db");
+		$(".btnFonds").css("background","white");
+
+		$(".btnFonds").css("border-top-width","0px");
+		$(".btnFonds").css("border-bottom-width","6px");
+
+		$(".btnAccessoires").css("color", "white");
+		$(".btnAccessoires").css("background","#3498db");
+
 		$(".menuFonds").show();
+		$(".menuAccessoires").hide();
 	})
 
 
@@ -53,7 +71,6 @@ $( document ).ready(function() {
 			$('.contenu').css("background-image", "url(/img/jeu_popculture/fonds/calligraphie.png)");
 		}
 	})
-	
 });
 
 function capture() {
