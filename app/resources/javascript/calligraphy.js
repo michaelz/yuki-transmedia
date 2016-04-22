@@ -58,5 +58,79 @@ var texts = {
 }
 
 $(document).ready(function() {
-    $('img.jqPuzzle').jqPuzzle(settings, texts); // apply to all images
+    $('.round-info-button').show();
+    $('.img').hide();
+    $('.infoBox').hide();
+
+    $('.round-info-button').on('click', showInfos);
+
+    function showInfos() {
+      $('#martial-arts-info').show();
+      $('.round-info-button').hide();
+      $('.round-info-button-close').on('click', hideInfos);
+    }
+
+    function hideInfos() {
+      $('.round-info-button').show();
+      $('#martial-arts-info').hide();
+    }
+
+    //Gestion des dialogue/////////////////////////////////////////
+    var indexdialoguepersonnage = 0;
+    var indexdialoguescript = 0;
+    var dialoguescript = [
+      "Hum, ce doit être le monde de la calligraphie...",
+      "Hey Grue-chan, peut-tu m'aider à retrouver le morceau de tasse de mon grand-père ?",
+      "Ok, mais d'abord résoud ce puzzle."
+    ];
+
+    var dialoguepersonnage = [
+      "Yuki : ",
+      "Yuki : ",
+      "Grue-chan : "
+    ];
+
+    $( ".dialogue-personnage" ).append(dialoguepersonnage[indexdialoguepersonnage]);
+    $( ".dialogue-script" ).append(dialoguescript[indexdialoguescript]);
+
+    $(".dialogue-skip").on('click', script);
+    $(".dialogue-skip").on('click', personnage);
+
+    function script(){
+      indexdialoguescript++;
+
+      if (indexdialoguescript < dialoguescript.length) {
+        $( ".dialogue-script" ).empty();
+        $( ".dialogue-script" ).append(dialoguescript[indexdialoguescript]);
+      }
+
+      if (indexdialoguescript === dialoguescript.length) {
+        $( ".dialogue" ).fadeOut();
+        //Lancer votre fonction post dialogue ici...
+        $('img.jqPuzzle').jqPuzzle(settings, texts); // apply to all images
+        $('.round-info-button').fadeOut();
+
+          $('.img').fadeIn(3000);
+
+
+      }
+    }
+
+    function personnage(){
+      indexdialoguepersonnage++;
+
+      if (indexdialoguescript < dialoguescript.length) {
+        $( ".dialogue-personnage" ).empty();
+        $( ".dialogue-personnage" ).append(dialoguepersonnage[indexdialoguepersonnage]);
+      }
+    }
+
+    ///////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
 });
