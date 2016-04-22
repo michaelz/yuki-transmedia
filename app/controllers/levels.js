@@ -4,6 +4,7 @@ var express = require('express'),
     Level = mongoose.model('Level'),
     User = mongoose.model('User');
 tools = require('../services/tools');
+auth = require('../services/auth');
 
 
 module.exports = function (app) {
@@ -114,57 +115,51 @@ router.put("/:id", function (req, res, next) {
 /**
  * Pass a level
  */
-router.post('/passLevelUser/:idLevel/', tools.verifyToken, function (req, res, next) {
+router.post('/passLevelUser/:number/', auth.mustBeAuthenticated, auth.getUserInfo, function (req, res, next) {
 
-    var user = User.findById(req.idUser, function (err, user) {
+
+    var user = req.connectedUser;
+
+
+    console.log(user);
+
+    var level = Level.findOne({number:  req.params.number}, function (err, level) {
         if (err) {
             res.status(500).send(err);
             return;
-        } else if (!user) {
-            res.status(404).send('User not found');
-            return;
+        } else if (!level) {
+            res.status(404).send("level not found");
         }
 
 
-        console.log(user);
+        var newResult = "";
 
-        var level = Level.findById(req.params.idLevel, function (err, level) {
+        if (req.body.result) {
+            newResult = req.body.result;
+
+        }
+        //assign level and result
+
+
+        var newInput = {
+            "level_id": level._id,
+            "result": newResult
+        };
+
+        user.passed_levels.push(newInput);
+
+
+        user.save(function (err, updatedUser) {
             if (err) {
                 res.status(500).send(err);
                 return;
-            } else if (!level) {
-                res.status(404).send("level not found");
             }
-
-            var newResult = "";
-
-            if (req.body.result) {
-                newResult = req.body.result;
-
-            }
-            //assign level and result
-
-
-            var newInput = {
-                "level_id": req.params.idLevel,
-                "result": newResult
-            };
-
-            user.passed_levels.push(newInput);
-
-
-            user.save(function (err, updatedUser) {
-                if (err) {
-                    res.status(500).send(err);
-                    return;
-                }
-                res.send(updatedUser);
-            });
-
-
-
+            res.send(updatedUser);
         });
+
+
     });
+
 });
 
 /*
