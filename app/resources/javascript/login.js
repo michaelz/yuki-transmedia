@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+    $('.round-info-button').hide();
+
+
     //var regUrl = '/api/auth/register';
     var regUrl = '/session/register';
     //var logUrl = '/api/auth';
