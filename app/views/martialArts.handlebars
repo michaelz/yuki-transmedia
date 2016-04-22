@@ -1,51 +1,69 @@
 <script src="/js/lib/jquery-ui/jquery-ui.min.js"></script>
 
-<button id="opener">Open Dialog</button>
+<div id="martial-arts-info" class="infoBox">
 
-<div id="dialog" title="Basic dialog">
-  <p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
-</div>
+  <div class="round-info-button-close">
+    <div class="round-info-button-circle-close">
+      <p class="round-info-button-close">x</p>
+    </div>
+  </div>
 
-<div id="martialArtsDialogue" class="discussionContainer">
- <h3>Maitre Kaio</h3>
- <p id="martialArtsBubble1">Bonjour Yuki, es-tu prêt à découvrir le monde formidable des arts-martiaux ?</p>
- <p id="martialArtsBubble2">Je te présenterai un Kata quelques secondes, puis se sera à ton tour de l'exécuter.</p>
- <p id="martialArtsBubble3">Alors... es-tu prêt ?</p>
- <p id="martialArtsBubble5">Voici le kata N°<span></span></p>
- <span id="retry"><br></span><p id="martialArtsBubble4">Essayes d'exécuter le kata N°<span id="nbrKata"></span></p>
- <button class="martialArtsNextBtn" type="button">Suivant</button>
-<div id="kataASaisir">
-</div>
-</div>
 
-<div id=spriteYuki>
-  <img id="yuki_face" src="/img/sprites/yuki_face.png" alt="sprite de yuki de face"></img>
-  <img id="yuki_profil" src="/img/sprites/yuki_profil.png" alt="sprite de yuki de profil"></img>
-  <img id="yuki_poing" src="/img/sprites/yuki_poing.png" alt="sprite de yuki poing"></img>
-  <img id="yuki_pied" src="/img/sprites/yuki_pied.png" alt="sprite de yuki coup de pied"></img>
-  <img id="yuki_saut" src="/img/sprites/yuki_saut.png" alt="sprite de yuki sautant"></img>
-  <img id="yuki_poingDeFeu" src="/img/sprites/yuki_poingDeFeu.png" alt="sprite de yuki spécial"></img>
-  <img id="yuki_tombe" src="/img/sprites/yuki_tombe.png" alt="sprite de yuki échec"></img>
-</div>
+  <h1 class="info-title">Les arts martiaux</h1>
+  <h2 class="info-title">Le thème</h2>
+  <p>Un grand nombre d’arts martiaux sont originaires du Japon. Ils traduisent au moins trois termes
+    japonais couramment utilisé  budō, dont le sens littéral est « voie de la guerre », bujutsu signifiant
+    « techniques de la guerre », et bugei pour « art martial ».</p>
+    <p>Parmis les arts martiaux japonais les plus connus nous retrouvons l’aikido, le judo, le karate, le
+      kendo et le sumo, un des plus ancien art martial japonais. Mais il en existe encore de nombreux peu connus en occident. </p>
+          <h2 class="info-title">Nos choix</h2>
+      <p>Nous avons décidé d’illustrer le maître d’arts martiaux par un singe, car au Japon, le singe est synonyme de sagesse et de bonheur.</p>
+      <p>Au Japon, il est fréquent de représenter les trois singes de la sagesse. Ceci est un symbole d'origine asiatique constitué de
+        trois singes, dont chacun se couvre une partie différente du visage avec les mains : le premier les yeux, le deuxième la bouche et le troisième les oreilles.</p>
+    </div>
 
-<div id="inputBox" class="discussionContainer">
-<div id="progressBar"><div class="progress"></div></div>
+    <div class="dialogue">
+      <h3 class="dialogue-personnage"></h3>
+      <p class="dialogue-script"></p>
+      <button class="dialogue-skip" type="button">Suivant</button>
+    </div>
 
-<div id="btnBox">
- <div class="martialArtsBtn" id="btnPoing">
-   <img src="img/punch.png" alt="poing" />
- </div>
 
- <div class="martialArtsBtn" id="btnPied">
-   <img src="img/kick.png" alt="poing" />
- </div>
+      <div id="martialArtsDialogue" class="discussionContainer">
+        <h3>Maitre Kaio</h3>
+        <span id="retry"><br></span><p id="martialArtsBubble4">Essayes d'exécuter le kata N°<span id="nbrKata"></span></p>
+        <div id="kataASaisir">
+        </div>
+      </div>
 
- <div class="martialArtsBtn" id="btnJump">
-   <img src="img/jump.png" alt="poing" />
- </div>
+      <div id=spriteYuki>
+        <img id="yuki_face" src="/img/sprites/yuki_face.png" alt="sprite de yuki de face"></img>
+        <img id="yuki_profil" src="/img/sprites/yuki_profil.png" alt="sprite de yuki de profil"></img>
+        <img id="yuki_poing" src="/img/sprites/yuki_poing.png" alt="sprite de yuki poing"></img>
+        <img id="yuki_pied" src="/img/sprites/yuki_pied.png" alt="sprite de yuki coup de pied"></img>
+        <img id="yuki_saut" src="/img/sprites/yuki_saut.png" alt="sprite de yuki sautant"></img>
+        <img id="yuki_poingDeFeu" src="/img/sprites/yuki_poingDeFeu.png" alt="sprite de yuki spécial"></img>
+        <img id="yuki_tombe" src="/img/sprites/yuki_tombe.png" alt="sprite de yuki échec"></img>
+      </div>
 
- <div class="martialArtsBtn" id="btnSpe">
-   <img src="img/special.png" alt="poing" />
- </div>
- </div>
-</div>
+      <div id="inputBox" class="discussionContainer">
+        <div id="progressBar"><div class="progress"></div></div>
+
+        <div id="btnBox">
+          <div class="martialArtsBtn" id="btnPoing">
+            <img src="img/punch.png" alt="poing" />
+          </div>
+
+          <div class="martialArtsBtn" id="btnPied">
+            <img src="img/kick.png" alt="poing" />
+          </div>
+
+          <div class="martialArtsBtn" id="btnJump">
+            <img src="img/jump.png" alt="poing" />
+          </div>
+
+          <div class="martialArtsBtn" id="btnSpe">
+            <img src="img/special.png" alt="poing" />
+          </div>
+        </div>
+      </div>

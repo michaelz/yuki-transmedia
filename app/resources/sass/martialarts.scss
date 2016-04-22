@@ -204,7 +204,14 @@ div#inputBox {
 
 /* infoBox
 ==================================================*/
-button#opener {
+div#martial-arts-info {
     position: absolute;
-    top: 2%;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+    background-color: rgba(112, 204, 224, 0.6);
+    overflow: auto;
+}
+h1.info-title {
+    margin-top: 12%;
 }
