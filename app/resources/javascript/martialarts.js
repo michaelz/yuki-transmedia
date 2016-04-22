@@ -5,6 +5,7 @@ $(document).ready(function () {
   var intro = 0;
   var lvl = 0;
   var nbMove = 2;
+  $(".lvl-achieved").hide();
 
 
   //Gestion des dialogue/////////////////////////////////////////
