@@ -11,9 +11,9 @@ $(document).ready(function () {
   var indexdialoguepersonnage = 0;
   var indexdialoguescript = 0;
   var dialoguescript = [
-    "Ou sommes-nous ? Demandons à ce singe.",
+    "Wow ou sommes-nous ? Demandons à ce singe.",
     "Bonjour singe-sama. Quel est cet endroit ?",
-    "Appele-moi Kaio-sensei. Tu es à l'entrée de mon dojo. Mais dis-moi, tu ne serais pas le fils de Ojii-san?",
+    "Appele-moi Kaio-sensei. Tu es à l'entrée de mon dojo. Mais dis-moi, ton grand-père ne serait-il pas Ojii-san?",
     "Oui, mais comment le connaisez-vous ?",
     "Ho... nous avons appris les arts-martiaux ensemble il y a fort longtemps. Nous nous étions rencontré au cours d'une belle journée d'automne. Je me souviens bien de ces feuilles tombant des arbres. C'était très certainement un samedi... ",
     "Hum...",
@@ -63,6 +63,8 @@ $(document).ready(function () {
     }
 
     if (indexdialoguescript === 12) {
+      //$( ".body-martialarts" ).fadeOut();
+      //$( ".body-martialarts-dojo" ).fadeIn();
       $('#yuki_face').fadeOut();
       $('#yuki_profil').fadeIn();
     }
@@ -92,6 +94,7 @@ $(document).ready(function () {
   $('.round-info-button').hide();
   $('#martial-arts-info').hide();
   $('#martialArtsDialogue').hide();
+  $(".body-martialarts-dojo").hide();
 
 
   //Masquage des sprites
