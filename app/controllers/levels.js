@@ -115,7 +115,7 @@ router.put("/:id", function (req, res, next) {
 /**
  * Pass a level
  */
-router.post('/passLevelUser/:idLevel/', auth.mustBeAuthenticated, auth.getUserInfo, function (req, res, next) {
+router.post('/passLevelUser/:number/', auth.mustBeAuthenticated, auth.getUserInfo, function (req, res, next) {
 
 
     var user = req.connectedUser;
@@ -123,13 +123,14 @@ router.post('/passLevelUser/:idLevel/', auth.mustBeAuthenticated, auth.getUserIn
 
     console.log(user);
 
-    var level = Level.findById(req.params.idLevel, function (err, level) {
+    var level = Level.findOne({number:  req.params.number}, function (err, level) {
         if (err) {
             res.status(500).send(err);
             return;
         } else if (!level) {
             res.status(404).send("level not found");
         }
+
 
         var newResult = "";
 
@@ -141,7 +142,7 @@ router.post('/passLevelUser/:idLevel/', auth.mustBeAuthenticated, auth.getUserIn
 
 
         var newInput = {
-            "level_id": req.params.idLevel,
+            "level_id": level._id,
             "result": newResult
         };
 
