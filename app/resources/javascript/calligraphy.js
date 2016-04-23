@@ -65,14 +65,14 @@ $(document).ready(function() {
     $('.round-info-button').on('click', showInfos);
 
     function showInfos() {
-      $('#martial-arts-info').show();
+      $('.infoBox').show();
       $('.round-info-button').hide();
       $('.round-info-button-close').on('click', hideInfos);
     }
 
     function hideInfos() {
       $('.round-info-button').show();
-      $('#martial-arts-info').hide();
+      $('.infoBox').hide();
     }
 
     //Gestion des dialogue/////////////////////////////////////////
