@@ -5,7 +5,6 @@
 	width:25%;
 	height:90vw;
     max-height: 80vh;
-	
 	text-align: center;
 
 	border-left-style: solid;
@@ -65,9 +64,9 @@
 
 .contenu {
     height: 66vw;
-    width: 66vw;
+    width: 100%;
     max-height: 65vh;
-	max-width: 66vh;
+	max-width: 100%;
 
 	padding-top: 1px;
 	margin-right:79%;
@@ -91,16 +90,6 @@
 	max-width: 66vh;		
 }
 
-.menuAccessoires {
-	padding-top: 1px;
-    margin-left: auto;
-    margin-right: auto;
-
-	max-width: 80%;
-	height: auto;
-	display: block;
-}
-
 #droppableMenu .drag {
 	padding-top: 1px;
 	display: block;
@@ -114,23 +103,192 @@
 	}
 }
 
-#droppableMenu .menuAccessoires {
-    padding-top: 1px;
-	display: block;
-	max-width: 50%;
-	height: auto;
-    margin-left: auto;
-    margin-right: auto;
+.menuFonds .imgJeu {
+	img {
+		max-width: 100%;
+	}	
 }
 
-.imgJeu {
-	text-align: center;	
-}
-
-#droppableContenu .drag {
+#droppableContenu #img1 {
 	padding-top: 1px;
 	display: block;
-	max-width: 23%;
+	width: 17%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img2 {
+	padding-top: 1px;
+	display: block;
+	width: 24%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img3 {
+	padding-top: 1px;
+	display: block;
+	width: 11%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img4 {
+	padding-top: 1px;
+	display: block;
+	width: 9.7%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img5 {
+	padding-top: 1px;
+	display: block;
+	width: 14%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img6 {
+	padding-top: 1px;
+	display: block;
+	width: 14%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img7 {
+	padding-top: 1px;
+	display: block;
+	width: 9%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img8 {
+	padding-top: 1px;
+	display: block;
+	width: 13%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img9 {
+	padding-top: 1px;
+	display: block;
+	width: 20%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img10 {
+	padding-top: 1px;
+	display: block;
+	width: 7%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img11 {
+	padding-top: 1px;
+	display: block;
+	width: 4%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img12 {
+	padding-top: 1px;
+	display: block;
+	width: 7%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img13 {
+	padding-top: 1px;
+	display: block;
+	width: 17%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img14 {
+	padding-top: 1px;
+	display: block;
+	width: 11%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img15 {
+	padding-top: 1px;
+	display: block;
+	width: 20%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img16 {
+	padding-top: 1px;
+	display: block;
+	width: 14%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img17 {
+	padding-top: 1px;
+	display: block;
+	width: 14%;
 	height: auto;
 	display: block;
 	img {
@@ -139,10 +297,12 @@
 }
 
 .yuki {
-	max-width: 50%;
-	max-heiggt: 50%;
+	width: 50%;
 	height: auto;
 	display: block;
+	img {
+		max-width: 100%;
+	}
 	
     margin-left: auto;
     margin-right: auto;
