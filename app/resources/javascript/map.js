@@ -1,5 +1,7 @@
 // TODO Appel aux webservices
 $(document).ready(function() {
+    $('.round-info-button').hide();
+  
     var levels = [{
         code: 'martialarts'
     }, {

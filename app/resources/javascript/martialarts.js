@@ -5,20 +5,47 @@ $(document).ready(function () {
   var intro = 0;
   var lvl = 0;
   var nbMove = 2;
+  $(".lvl-achieved").hide();
 
 
   //Gestion des dialogue/////////////////////////////////////////
   var indexdialoguepersonnage = 0;
   var indexdialoguescript = 0;
   var dialoguescript = [
-    "Bonjour Yuki, je te souhaite la bienvenue dans le monde des arts-matriaux.",
-    "Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
-    "bla bla bla bla bla bla bla bla bla bla bla bla"
+    "Wow ou sommes-nous ? Demandons à ce singe.",
+    "Bonjour singe-sama. Quel est cet endroit ?",
+    "Appele-moi Kaio-sensei. Tu es à l'entrée de mon dojo. Mais dis-moi, ton grand-père ne serait-il pas Ojii-san?",
+    "Oui, mais comment le connaisez-vous ?",
+    "Ho... nous avons appris les arts-martiaux ensemble il y a fort longtemps. Nous nous étions rencontré au cours d'une belle journée d'automne. Je me souviens bien de ces feuilles tombant des arbres. C'était très certainement un samedi... ",
+    "Hum...",
+    "Ha non, il s'agissait d'un dimanche en réalité. Oui nous étions au parc et je marchais tranquillement sur un sentier terreux. J'ai aperçu Ojii-san sur un banc longeant un fleuve tranquille.",
+    "Hum... Kaio-sensei",
+    "Sacré Ojii-san, il m'a immédiatement proposé de prendre place à ses côtés. Il m'a ensuite invité à boire le thé en sa compagnie. On a dégusté notre thé dans de sublimes tasses. La sienne était d'un bleu clair du plus bel effet avec de petites vagues dessinées dessus à la main.",
+    "Oui c'est la tasse que je recherche !!!",
+    "Ha la tasse! Figure-toi que j'ai vu un feu follet passer avec des morceaux tasses. Ils ressemblaient fortement à la tasse de Ojii-san. J'ai essayé de l'arrêter, mais il s'est enfui. ",
+    "Par contre, il a laissé tomber un indice permettant de le retrouver. Suis-moi, je t'apprendrai les arts-martiaux. Si je juge tes capacités suffisantes, je donnerai cet indice.",
+    "Yuki, prépare-toi! Je vais te présenter un COMBO a effectué. Il faudra que tu mémorises les différents mouvements, puis après un certain temps, tu pourras essayer de reproduire le COMBO.",
+    "Ce n'est pas grave si tu n'y arrives pas du premier coup, nous avons le temps. À chaque fois que tu arrives à exécuter un COMBO, le suivant devient plus compliqué.",
+    "Tu débutes donc je vais être gentil. Dès que tu parviens à exécuter 4 COMBO, je te donnerai l'indice.",
+    "Tu peux égelement obtenir des informations complémentaires sur les arts-martiaux et notre monde en cliquant sur la bulle d'info"
   ];
 
   var dialoguepersonnage = [
+    "Yuki : ",
+    "Yuki : ",
     "Maitre Kaio : ",
     "Yuki : ",
+    "Maitre Kaio : ",
+    "Yuki : ",
+    "Maitre Kaio : ",
+    "Yuki : ",
+    "Maitre Kaio : ",
+    "Yuki : ",
+    "Maitre Kaio : ",
+    "Maitre Kaio : ",
+    "Maitre Kaio : ",
+    "Maitre Kaio : ",
+    "Maitre Kaio : ",
     "Maitre Kaio : "
   ];
 
@@ -31,16 +58,21 @@ $(document).ready(function () {
   function script(){
     indexdialoguescript++;
 
-if (indexdialoguescript < dialoguescript.length) {
-  $( ".dialogue-script" ).empty();
-  $( ".dialogue-script" ).append(dialoguescript[indexdialoguescript]);
-}
+    if (indexdialoguescript < dialoguescript.length) {
+      $( ".dialogue-script" ).empty();
+      $( ".dialogue-script" ).append(dialoguescript[indexdialoguescript]);
+    }
+
+    if (indexdialoguescript === 12) {
+      //$( ".body-martialarts" ).fadeOut();
+      //$( ".body-martialarts-dojo" ).fadeIn();
+      $('#yuki_face').fadeOut();
+      $('#yuki_profil').fadeIn();
+    }
 
     if (indexdialoguescript === dialoguescript.length) {
       $( ".dialogue" ).fadeOut();
       //Lancer votre fonction post dialogue ici...
-      $('#yuki_face').hide();
-      $('#yuki_profil').show();
       $('.martialArtsBtn').show();
       kataGeneration(nbMove, lvl);
     }
@@ -63,6 +95,7 @@ if (indexdialoguescript < dialoguescript.length) {
   $('.round-info-button').hide();
   $('#martial-arts-info').hide();
   $('#martialArtsDialogue').hide();
+  $(".lvl-achieved").hide();
 
 
   //Masquage des sprites
@@ -228,7 +261,9 @@ function kataGeneration(nbMove, lvl){
 
           if (lvl===4) {
             $('.discussionContainer').hide();
-            alert("Bravo vous avez fini le mini jeu des arts martiaux.");
+            $(".lvl-achieved").fadeIn();
+            $('.round-info-button').fadeOut();
+            //alert("Bravo vous avez fini le mini jeu des arts martiaux.");
           } else if (lvl<4) {
             kataGeneration(nbMove, lvl);
           }
@@ -324,11 +359,13 @@ function kataGeneration(nbMove, lvl){
                 }
               }
 
-          function showInfos() {
-            $('#martial-arts-info').show();
-            $('.round-info-button-close').on('click', hideInfos);
-          }
+              function showInfos() {
+                $('#martial-arts-info').show();
+                $('.round-info-button').hide();
+                $('.round-info-button-close').on('click', hideInfos);
+              }
 
-          function hideInfos() {
-            $('#martial-arts-info').hide();
-          }
+              function hideInfos() {
+                $('.round-info-button').show();
+                $('#martial-arts-info').hide();
+              }

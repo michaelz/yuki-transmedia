@@ -85,45 +85,6 @@ a {
 }
 
 /**
-* Info close btn
-*/
-.round-info-button-close {
-  width:5%;
-}
-.round-info-button-circle-close {
-  position: absolute;
-  border: 2px solid #cfdcec;
-  top: 1%;
-  left: 1%;
-  z-index: 10;
-  width: 8%;
-  height:0;
-  padding-bottom: 8%;
-  border-radius: 50%;
-  background: #70cce0;
-  box-shadow: 0 0 3px gray;
-}
-.round-info-button-circle-close:hover {
-  background:#733431;
-  cursor: pointer;
-}
-.round-info-button-close p {
-  display:block;
-  float:left;
-  width:100%;
-  padding-top:50%;
-  padding-bottom:50%;
-  line-height:1em;
-  margin-top:-0.5em;
-  text-align:center;
-  color:#e2eaf3;
-  font-family:Verdana;
-  font-size:1.2em;
-  font-weight:bold;
-  text-decoration:none;
-}
-
-/**
 * Info btn
 */
 .round-info-button {
@@ -161,9 +122,10 @@ a {
   font-weight:bold;
   text-decoration:none;
 }
-div.infoBox h1, p, h2 {
+.infoBox h1, h2, p {
     margin-left: 2%;
     margin-right: 2%;
+
 }
 
 /**
@@ -200,4 +162,85 @@ button.dialogue-skip {
 
 p.dialogue-script {
     margin-right: 25%;
+}
+
+/*
+*level validation
+*/
+.lvl-achieved {
+    position: absolute;
+    top: 10%;
+    text-align: center;
+    background-color: rgba(228, 239, 255, 0.7);
+    border-style: solid;
+    border-width: 6px;
+    border-left: none;
+    border-right: none;
+    border-color: #454B4C;
+    z-index: 30;
+}
+
+.lvl-achieved img {
+    width: 35%;
+}
+
+/* infoBox
+==================================================*/
+.infoBox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+    background-color: rgba(112, 204, 224, 0.9);
+    overflow: auto;
+}
+h1.info-title {
+    margin-top: 12%;
+    color: black;
+}
+
+h2.info-title {
+    color: black;
+}
+.infoBox p {
+    color: black;
+}
+
+/**
+* Info close btn
+*/
+.round-info-button-close {
+  width:5%;
+}
+.round-info-button-circle-close {
+  position: absolute;
+  border: 2px solid #70cce0 !important;
+  top: 1%;
+  left: 1%;
+  z-index: 10;
+  width: 8%;
+  height:0;
+  padding-bottom: 8%;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 3px gray;
+}
+.round-info-button-circle-close:hover {
+  background:#2A738E;
+  cursor: pointer;
+}
+.round-info-button-close p {
+  display:block;
+  float:left;
+  width:100%;
+  padding-top:50%;
+  padding-bottom:50%;
+  line-height:1em;
+  margin-top:-0.5em;
+  text-align:center;
+  color:#70cce0;
+  font-family:Verdana;
+  font-size:1.2em;
+  font-weight:bold;
+  text-decoration:none;
 }

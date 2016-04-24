@@ -193,25 +193,29 @@ div#inputBox {
   background: url("/img/arts-martiaux.png") no-repeat top center transparent;
   background-size: cover;
 }
+/*
+.dojo-front {
+  background: url("/img/calligraphie_decor.png") no-repeat top center transparent;
+  background-size: cover;
+  position: absolute;
+width: 100%;
+height: 100%;
+z-index: 0;
+}
+
+.dojo-inside {
+  background: url("/img/arts-martiaux.png") no-repeat top center transparent;
+  background-size: cover;
+  position: absolute;
+width: 100%;
+height: 100%;
+z-index: -1;
+}
+*/
 
 #spriteYuki img{
   width: 30%;
   position: absolute;
   bottom: 14%;
   left: 13%;
-}
-
-
-/* infoBox
-==================================================*/
-div#martial-arts-info {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 11;
-    background-color: rgba(112, 204, 224, 0.6);
-    overflow: auto;
-}
-h1.info-title {
-    margin-top: 12%;
 }
