@@ -4,7 +4,7 @@
 
 $( document ).ready(function() {
 	for (var i = 1; i < 18; i++) {
-		$(".menuAccessoires").append('<div class="drag" id="' + i + '"><img src="img/jeu_popculture/accessoires/item' + i +'.png" class="accessoire" /></div>');
+		$(".menuAccessoires").append('<div class="drag" id="img' + i + '"><img src="img/jeu_popculture/accessoires/item' + i +'.png" class="accessoire" ></div>');
 	}
 
 	$(".menuFonds").hide();
@@ -43,10 +43,10 @@ $( document ).ready(function() {
 
 	$(".btnFonds").click( function () {
 		$(".btnFonds").css("color", "#3498db");
-		$(".btnFonds").css("background","white");
+		$(".btnFonds").css("background", "white");
 
-		$(".btnFonds").css("border-top-width","0px");
-		$(".btnFonds").css("border-bottom-width","6px");
+		$(".btnFonds").css("border-top-width", "0px");
+		$(".btnFonds").css("border-bottom-width", "6px");
 
 		$(".btnAccessoires").css("color", "white");
 		$(".btnAccessoires").css("background","#3498db");
