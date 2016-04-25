@@ -58,6 +58,7 @@ var texts = {
 }
 
 $(document).ready(function() {
+
     $('.round-info-button').show();
     $('.img').hide();
     $('.infoBox').hide();
@@ -93,7 +94,6 @@ $(document).ready(function() {
         "Akimi : ",
         "Yuki :",
         "Akimi :"
-
     ];
 
     $(".dialogue-personnage").append(dialoguepersonnage[
@@ -137,8 +137,6 @@ $(document).ready(function() {
     ///////////////////////////////////////////////////////////////
 
 
-
-    $('.round-info-button').hide();
 
     $('img.jqPuzzle').jqPuzzle(settings, texts); // apply to all images
 
