@@ -87,7 +87,7 @@ function yukiCustomisation() {
     $('#main').fadeIn();
     for (var i = 1; i < 18; i++) {
         $(".menuAccessoires").append('<div class="drag" id="img' + i +
-            '"><img src="img/jeu_popculture/accessoires/item' + i +
+            '"><img src="/img/jeu_popculture/accessoires/item' + i +
             '.png" class="accessoire" ></div>');
     }
 

@@ -4,68 +4,71 @@ $(document).ready(function() {
     $('.img').hide();
     $('.infoBox').hide();
     $('.quiz').hide();
+    $('.lvl-achieved').hide();
 
     $('.round-info-button').on('click', showInfos);
 
     function showInfos() {
-      $('.infoBox').show();
-      $('.round-info-button').hide();
-      $('.round-info-button-close').on('click', hideInfos);
+        $('.infoBox').show();
+        $('.round-info-button').hide();
+        $('.round-info-button-close').on('click', hideInfos);
     }
 
     function hideInfos() {
-      $('.round-info-button').show();
-      $('.infoBox').hide();
+        $('.round-info-button').show();
+        $('.infoBox').hide();
     }
 
     //Gestion des dialogue/////////////////////////////////////////
     var indexdialoguepersonnage = 0;
     var indexdialoguescript = 0;
     var dialoguescript = [
-      "Bonjour. Je m’appelle Yuki et voici mon ami Guro. Hum, nous recherchons un morceau d’une tasse. Est-ce que ceci vous dit-il quelque chose?",
-      "Bonjour Yuki. Oui, il y a quelque temps, un esprit malicieux est venu mélanger mes recettes et il avait des morceaux de tasse avec lui. ",
-      "Vous savez où je peux le trouver?",
-      "Il a laissé derrière lui ces deux baguettes. Elle peuvent vous mener à lui. Je vous les donne si vous m’aidez à remettre de l’ordre dans mes recettes de cuisine.",
-      "Oui d’accord, je vais vous aider."
+        "Bonjour. Je m’appelle Yuki et voici mon ami Guro. Hum, nous recherchons un morceau d’une tasse. Est-ce que ceci vous dit-il quelque chose?",
+        "Bonjour Yuki. Oui, il y a quelque temps, un esprit malicieux est venu mélanger mes recettes et il avait des morceaux de tasse avec lui. ",
+        "Vous savez où je peux le trouver?",
+        "Il a laissé derrière lui ces deux baguettes. Elle peuvent vous mener à lui. Je vous les donne si vous m’aidez à remettre de l’ordre dans mes recettes de cuisine.",
+        "Oui d’accord, je vais vous aider."
     ];
 
     var dialoguepersonnage = [
-      "Yuki : ",
-      "Hiramatsu : ",
-      "Yuki : ",
-      "Hiramatsu : ",
-      "Yuki : "
+        "Yuki : ",
+        "Hiramatsu : ",
+        "Yuki : ",
+        "Hiramatsu : ",
+        "Yuki : "
     ];
 
-    $( ".dialogue-personnage" ).append(dialoguepersonnage[indexdialoguepersonnage]);
-    $( ".dialogue-script" ).append(dialoguescript[indexdialoguescript]);
+    $(".dialogue-personnage").append(dialoguepersonnage[
+        indexdialoguepersonnage]);
+    $(".dialogue-script").append(dialoguescript[indexdialoguescript]);
 
     $(".dialogue-skip").on('click', script);
     $(".dialogue-skip").on('click', personnage);
 
-    function script(){
-      indexdialoguescript++;
+    function script() {
+        indexdialoguescript++;
 
-      if (indexdialoguescript < dialoguescript.length) {
-        $( ".dialogue-script" ).empty();
-        $( ".dialogue-script" ).append(dialoguescript[indexdialoguescript]);
-      }
+        if (indexdialoguescript < dialoguescript.length) {
+            $(".dialogue-script").empty();
+            $(".dialogue-script").append(dialoguescript[
+                indexdialoguescript]);
+        }
 
-      if (indexdialoguescript === dialoguescript.length) {
-        $( ".dialogue" ).fadeOut();
-        //Lancer votre fonction post dialogue ici...
-        $('.round-info-button').fadeIn();
-        $('.quiz').fadeIn();
-      }
+        if (indexdialoguescript === dialoguescript.length) {
+            $(".dialogue").fadeOut();
+            //Lancer votre fonction post dialogue ici...
+            $('.round-info-button').fadeIn();
+            $('.quiz').fadeIn();
+        }
     }
 
-    function personnage(){
-      indexdialoguepersonnage++;
+    function personnage() {
+        indexdialoguepersonnage++;
 
-      if (indexdialoguescript < dialoguescript.length) {
-        $( ".dialogue-personnage" ).empty();
-        $( ".dialogue-personnage" ).append(dialoguepersonnage[indexdialoguepersonnage]);
-      }
+        if (indexdialoguescript < dialoguescript.length) {
+            $(".dialogue-personnage").empty();
+            $(".dialogue-personnage").append(correctAnswer);
+        }
     }
 
     ///////////////////////////////////////////////////////////////
@@ -74,27 +77,28 @@ $(document).ready(function() {
 
 
 
-
 var pos = 0; // define starting question
+var correctAnswer; // number of questions answered right
 
 
 /**
  *
  */
 $.getJSON("/api/quiz", function(data) {
-  if (data.length > 0) {
-    // Build questions
-    $.each(data, function(q, question) {
-        buildQuestion(q, question);
-    });
-    $('#startQuiz').on('click', function() {
-        console.log('click');
-        $(this).parent().hide(); // hide the startQuiz button
-        startQuiz(data);
-    });
-} else {
-    $('#startQuiz').parent().append('<p>Pas de questions ici, désolé !</p>');
-}
+    if (data.length > 0) {
+        // Build questions
+        $.each(data, function(q, question) {
+            buildQuestion(q, question);
+        });
+        $('#startQuiz').on('click', function() {
+            console.log('click');
+            $(this).parent().hide(); // hide the startQuiz button
+            startQuiz(data);
+        });
+    } else {
+        $('#startQuiz').parent().append(
+            '<p>Pas de questions ici, désolé !</p>');
+    }
 });
 
 
@@ -103,12 +107,13 @@ $.getJSON("/api/quiz", function(data) {
  * data should be the data received from the ajax call
  */
 var startQuiz = function(data) {
-    $('.q-'+pos).show(); // show first question
-
+    correctAnswer = 0;
+    $('.q-' + pos).show(); // show first question
     $('.answer').on('click', function() {
         if (data[pos].answers[$(this).attr('data-position')].is_solution) {
-            nextQuestion(pos, data.length);
+            correctAnswer += 1;
         }
+        nextQuestion(pos, data.length);
     });
 }
 
@@ -117,13 +122,29 @@ var startQuiz = function(data) {
  * Next question or finish quiz if question is last
  */
 var nextQuestion = function(currentPos, total) {
-    if (currentPos == total) {
-        $(".q-"+pos).hide();
-        $('.quiz').append('ok !');
+    if (currentPos == total - 1) {
+        $(".q-" + pos).hide();
+        //To do div pour mettre le score du petit nenfant
+        $(".quiz").append();
+        if (correctAnswer >= 1) {
+            $("#quizTXT").append("Bravo");
+            $("#yukiQuiz").removeAttr("src");
+            $("#yukiQuiz").attr("src", "/img/yuki_content.png");
+        } else {
+            $("#quizTXT").append("Dommage");
+            $(".yukImage").removeAttr("src");
+            $(".yukImage").attr("src", "/img/sprites/yuki_tombe.png");
+        }
+
+        $('.round-info-button').show();
+
+        $("#quizResult").append(correctAnswer + "/" + total);
+        $('.lvl-achieved').fadeIn();
+
     } else {
-        $(".q-"+pos).hide();
+        $(".q-" + pos).hide();
         pos++;
-        $(".q-"+pos).show();
+        $(".q-" + pos).show();
     }
 }
 
@@ -131,16 +152,18 @@ var nextQuestion = function(currentPos, total) {
  * Fonction to build the frontend of the questionBlock
  */
 var buildQuestion = function(pos, q) {
-  // var length = data.length;
-  // Template is hidden by default;
-  var qTpl = '<div style="display:none" class="questionBlock q-'+pos+'" data-question="'+pos+'"><ol class="choices"></ol></div>';
+    // var length = data.length;
+    // Template is hidden by default;
+    var qTpl = '<div style="display:none" class="questionBlock q-' + pos +
+        '" data-question="' + pos + '"><ol class="choices"></ol></div>';
 
-  $(".quiz").append(qTpl);
-  $(".q-"+pos).prepend('<h3 class="qTitle">'+q.question+'</h3>');
+    $(".quiz").append(qTpl);
+    $(".q-" + pos).prepend('<h3 class="qTitle">' + q.question + '</h3>');
 
-  $.each(q.answers, function(a, answer) {
-    $(".q-"+pos+" .choices").append("<li data-position='"+a+"' class='answer'>" + answer.text + "</li>");
-  });
+    $.each(q.answers, function(a, answer) {
+        $(".q-" + pos + " .choices").append("<li data-position='" +
+            a + "' class='answer'>" + answer.text + "</li>");
+    });
 }
 
 
@@ -167,7 +190,8 @@ var buildQuestion = function(pos, q) {
         console.log("position User: " + positionUser);
       });
 
-  }*//*
+  }*/
+/*
 
   } else {
     //message d'erreur
