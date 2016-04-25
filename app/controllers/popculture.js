@@ -5,6 +5,7 @@ mongoose = require('mongoose');
 var multer  = require('multer');
 var fs = require('fs');
 var app=express();
+auth = require('../services/auth');
 
 require('express-jsend');
 
@@ -25,7 +26,7 @@ var storage = multer.diskStorage({
 
 var upload = multer({storage: storage}).array('img', 5);
 
-router.post('/', function(request, response, next) {
+router.post('/', auth.getUserInfo, function(request, response, next) {
   var filesBase64 = [];
   upload(request, response, function(err) {
     if(err) {
@@ -34,42 +35,12 @@ router.post('/', function(request, response, next) {
     }
     
     var base64data = request.body.img.replace(/^data:image\/png;base64,/, "");
-    
-    fs.writeFile("storage/salsut.png", base64data, 'base64', function (err) {
+
+    fs.writeFile("storage/" + req.connectedUser + Date.now() + ".png", base64data, 'base64', function (err) {
       if (err) console.log(err);
       console.log('Photo Uploaded');
     })
-
-    
-   
   })
   response.redirect("back");
 });
-
-
-
-
-
-
-
-
-/*
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './')
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.fieldname)
-    }
-});
-var upload = multer({ storage: storage });
-
-//var upload = multer({ storage: multer.memoryStorage({}) });
-router.post('/', upload.fields([{name: 'img'},]), function (req, res, next) {
-  //var raw = new Buffer(req.files['img'].buffer.toString(), 'base64')
-  console.log(req.body.img);
-  console.log("File : " + req.files['img']);
-  res.redirect("back");
-});*/
-
 

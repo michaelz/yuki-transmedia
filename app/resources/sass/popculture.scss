@@ -6,13 +6,10 @@
 	height:90vw;
     max-height: 80vh;
 	text-align: center;
-
 	border-left-style: solid;
     border-color: #454B4C;
     border-left-width: 6px;
-
-    overflow-y:auto;
-	background-color:white;
+	background: white;
 }
 
 #purikura {
@@ -25,6 +22,8 @@
 .btnAccessoires {
 	color: #3498db;
 	background: white;
+	height: 3vw;
+    max-height: 3vh;
 
 	cursor: pointer;
 
@@ -36,6 +35,8 @@
 .btnFonds {
 	color: white;
 	background: #3498db;
+	height: 3vw;
+    max-height: 3vh;
 
 	border-top-style: solid;
     border-color: #454B4C;
@@ -62,7 +63,7 @@
     margin-right: auto;
 }
 
-.contenu {
+.square #main #purikura .contenu {
     height: 66vw;
     width: 100%;
     max-height: 65vh;
@@ -80,7 +81,9 @@
 
 	background-color: #eee;
 	background-repeat: no-repeat;
-	background-size: cover 100% auto;
+	background-attachment: fixed;
+	background-size: auto 80vw;
+	background-position: inherit;
 }
 
 .bandeInf {
@@ -88,6 +91,11 @@
     width: 100%;
     max-height: 7vh;
 	max-width: 66vh;		
+}
+#droppableMenu {
+	height: 82vw;
+    max-height: 70vh;
+    overflow-y:auto;
 }
 
 #droppableMenu .drag {
