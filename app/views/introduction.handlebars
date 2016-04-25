@@ -1,13 +1,13 @@
 <script src="/js/lib/jquery.fitvids.js"></script>
-
-<div id="video">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/CVUOTzoVeZA" frameborder="0" allowfullscreen></iframe>
-</div>
-
-<div>
-{{#if auth}}
-	<a href="/">Retour sur la carte</a>
-{{else}}
-	<a class="btn" href="/">Passer la vidéo</a>
-{{/if}}
+<div class="ojiisan">
+    <div id="video">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/CVUOTzoVeZA" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="actions">
+    {{#if auth}}
+    	<a class="btn back-map" href="/">Retour aux mondes</a>
+    {{else}}
+    	<a class="btn tologin" href="/login">Passer la vidéo</a>
+    {{/if}}
+    </div>
 </div>
