@@ -58,6 +58,12 @@ var texts = {
 }
 
 $(document).ready(function() {
+
+
+    $('.round-info-button').hide();
+
+    $('img.jqPuzzle').jqPuzzle(settings, texts); // apply to all images
+
     $('.round-info-button').show();
     $('.img').hide();
     $('.infoBox').hide();
@@ -65,76 +71,74 @@ $(document).ready(function() {
     $('.round-info-button').on('click', showInfos);
 
     function showInfos() {
-      $('.infoBox').show();
-      $('.round-info-button').hide();
-      $('.round-info-button-close').on('click', hideInfos);
+        $('.infoBox').show();
+        $('.round-info-button').hide();
+        $('.round-info-button-close').on('click', hideInfos);
     }
 
     function hideInfos() {
-      $('.round-info-button').show();
-      $('.infoBox').hide();
+        $('.round-info-button').show();
+        $('.infoBox').hide();
     }
 
     //Gestion des dialogue/////////////////////////////////////////
     var indexdialoguepersonnage = 0;
     var indexdialoguescript = 0;
     var dialoguescript = [
-      "Oh regarde Guro, quel beau paysage. C’est magnifique..",
-      "Mais quels sont ces cris? Bonjour, que ce passe-t-il?",
-      "Un esprit malveillant a mélangé les parties composants ma toiles. C’était ma plus belle!",
-      "Je vais t’aider a remettre le tout dans l’ordre.",
-      "Merci beaucoup! Si tu y parviens, pour te remercier, je te donnerai un indice menant à ce fauteur de trouble."
+        "Oh regarde Guro, quel beau paysage. C’est magnifique..",
+        "Mais quels sont ces cris? Bonjour, que ce passe-t-il?",
+        "Un esprit malveillant a mélangé les parties composants ma toiles. C’était ma plus belle!",
+        "Je vais t’aider a remettre le tout dans l’ordre.",
+        "Merci beaucoup! Si tu y parviens, pour te remercier, je te donnerai un indice menant à ce fauteur de trouble."
     ];
 
     var dialoguepersonnage = [
-      "Yuki : ",
-      "Yuki : ",
-      "Akimi : ",
-      "Yuki :",
-      "Akimi :"
+        "Yuki : ",
+        "Yuki : ",
+        "Akimi : ",
+        "Yuki :",
+        "Akimi :"
     ];
 
-    $( ".dialogue-personnage" ).append(dialoguepersonnage[indexdialoguepersonnage]);
-    $( ".dialogue-script" ).append(dialoguescript[indexdialoguescript]);
+    $(".dialogue-personnage").append(dialoguepersonnage[
+        indexdialoguepersonnage]);
+    $(".dialogue-script").append(dialoguescript[indexdialoguescript]);
 
     $(".dialogue-skip").on('click', script);
     $(".dialogue-skip").on('click', personnage);
 
-    function script(){
-      indexdialoguescript++;
+    function script() {
+        indexdialoguescript++;
 
-      if (indexdialoguescript < dialoguescript.length) {
-        $( ".dialogue-script" ).empty();
-        $( ".dialogue-script" ).append(dialoguescript[indexdialoguescript]);
-      }
+        if (indexdialoguescript < dialoguescript.length) {
+            $(".dialogue-script").empty();
+            $(".dialogue-script").append(dialoguescript[
+                indexdialoguescript]);
+        }
 
-      if (indexdialoguescript === dialoguescript.length) {
-        $( ".dialogue" ).fadeOut();
-        //Lancer votre fonction post dialogue ici...
-        $('img.jqPuzzle').jqPuzzle(settings, texts); // apply to all images
-        $('.round-info-button').fadeOut();
+        if (indexdialoguescript === dialoguescript.length) {
+            $(".dialogue").fadeOut();
+            //Lancer votre fonction post dialogue ici...
+            $('img.jqPuzzle').jqPuzzle(settings, texts); // apply to all images
+            $('.round-info-button').fadeOut();
 
-          $('.img').fadeIn(3000);
+            $('.img').fadeIn(3000);
 
 
-      }
+        }
     }
 
-    function personnage(){
-      indexdialoguepersonnage++;
+    function personnage() {
+        indexdialoguepersonnage++;
 
-      if (indexdialoguescript < dialoguescript.length) {
-        $( ".dialogue-personnage" ).empty();
-        $( ".dialogue-personnage" ).append(dialoguepersonnage[indexdialoguepersonnage]);
-      }
+        if (indexdialoguescript < dialoguescript.length) {
+            $(".dialogue-personnage").empty();
+            $(".dialogue-personnage").append(dialoguepersonnage[
+                indexdialoguepersonnage]);
+        }
     }
 
     ///////////////////////////////////////////////////////////////
-
-
-
-
-
 
 
 });
