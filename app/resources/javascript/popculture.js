@@ -80,7 +80,7 @@ function capture() {
 		 		$("#img").val(canvas.toDataURL("image/png"));
 		 		var a = document.createElement('a');
 		 		a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
-		        a.download = 'somefilename.jpg';
+		        a.download = 'monYuki.jpg';
 		        a.click();
 		        $("#photoBouton").show();
 		 		document.getElementById("myForm").submit();
