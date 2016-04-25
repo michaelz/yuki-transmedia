@@ -40,25 +40,22 @@ router.use(session({
 /**
  * Home page, to show the user data
  */
-router.get('/', auth.mustBeAuthenticated, auth.getUserInfo, function(req, res,
+router.get('/', function(req, res,
     next) {
-    res.render('index', {
-        pagename: 'index',
-        title: 'index',
-        userdata: req.connectedUser // thanks auth.getUserInfo
-    });
+    if (req.session.user) {
+        res.render('map', {
+            pagename: 'map',
+            title: 'Mondes'
+        });
+    } else {
+        res.render('introduction', {
+            pagename: 'introduction',
+            title: 'Yuki chez Ojiisan',
+            auth: false
+        });   
+    }
 });
 
-
-/**
- * Map Route
- */
-router.get('/mondes', function(req, res, next) {
-    res.render('map', {
-        pagename: 'map',
-        title: 'Mondes'
-    });
-});
 
 /**
  * Introduction route.
@@ -66,7 +63,8 @@ router.get('/mondes', function(req, res, next) {
 router.get('/mondes/ojiisan', function(req, res, next) {
     res.render('introduction', {
         pagename: 'introduction',
-        title: 'Yuki chez Ojiisan'
+        title: 'Yuki chez Ojiisan',
+        auth: true
     });
 });
 
