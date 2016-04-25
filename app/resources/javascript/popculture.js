@@ -1,29 +1,109 @@
 /*
- * POP CULTURE
+*intro
+*/
+$(document).ready(function () {
+
+  //Définition des variables
+  ///////////////////////////////////////////////////////////////
+  var intro = 0;
+  var lvl = 0;
+  var nbMove = 2;
+  $(".lvl-achieved").hide();
+
+
+  //Gestion des dialogue/////////////////////////////////////////
+  var indexdialoguepersonnage = 0;
+  var indexdialoguescript = 0;
+  var dialoguescript = [
+    "Regade! Il est entré ici! Mince, nous ne pouvons pas entrer, la porte est bloquée.",
+    "Bonjour, que se passe-t-il? Je peux vous aider?",
+    "On doit rentrer dans ce bâtiment mais les portes refusent de s’ouvrir.",
+    "Je sais pourquoi, les portes sont équipées d’un programme qui reconnaît les visages et bloque l’accès à certaines personnes. Celui que vous suivez a bloqué l’accès pour vous.",
+    "Oh non! Il faut vraiment que nous entrions dans ce bâtiment. Comment faire?",
+    "Suivez-moi, j’ai une idée. On va se déguiser afin que le programme ne vous reconnaisse pas."
+  ];
+
+  var dialoguepersonnage = [
+    "Yuki : ",
+    "Hatsune : ",
+		"Yuki : ",
+    "Hatsune : ",
+		"Yuki : ",
+    "Hatsune : "
+  ];
+
+  $( ".dialogue-personnage" ).append(dialoguepersonnage[indexdialoguepersonnage]);
+  $( ".dialogue-script" ).append(dialoguescript[indexdialoguescript]);
+
+  $(".dialogue-skip").on('click', script);
+  $(".dialogue-skip").on('click', personnage);
+
+  function script(){
+    indexdialoguescript++;
+
+    if (indexdialoguescript < dialoguescript.length) {
+      $( ".dialogue-script" ).empty();
+      $( ".dialogue-script" ).append(dialoguescript[indexdialoguescript]);
+    }
+
+    if (indexdialoguescript === dialoguescript.length) {
+      $( ".dialogue" ).fadeOut();
+      //Lancer votre fonction post dialogue ici...
+      yukiCustomisation(nbMove, lvl);
+    }
+  }
+
+  function personnage(){
+    indexdialoguepersonnage++;
+
+    if (indexdialoguescript < dialoguescript.length) {
+      $( ".dialogue-personnage" ).empty();
+      $( ".dialogue-personnage" ).append(dialoguepersonnage[indexdialoguepersonnage]);
+    }
+  }
+
+  ///////////////////////////////////////////////////////////////
+
+
+  //Masquage des éléments
+  $('#main').hide();
+	$('.infoBox').hide();
+
+  $('.round-info-button').on('click', showInfos);
+
+});
+
+
+
+
+/*
+ * POP CULTURE Game
  */
 
-$( document ).ready(function() {
+function yukiCustomisation() {
+	$('.round-info-button').fadeOut();
+	$('#main').fadeIn();
 	for (var i = 1; i < 18; i++) {
 		$(".menuAccessoires").append('<div class="drag" id="img' + i + '"><img src="img/jeu_popculture/accessoires/item' + i +'.png" class="accessoire" ></div>');
 	}
 
 	$(".menuFonds").hide();
 
-	$(".drag").draggable({ 
+	$(".drag").draggable({
 		containment: "#main"});
 
 	$("#droppableContenu").droppable({
 		drop: function(event, ui) {
 	        var position = $("#" + ui.draggable[0].id).position();
 	        $("#droppableContenu").append(ui.draggable[0]);
-	        $("#" + ui.draggable[0].id).css({'position':'absolute', 'left': position.left + 'px', 'top': position.top + 'px' });       
+	        $("#" + ui.draggable[0].id).css({'position':'absolute', 'left': position.left + 'px', 'top': position.top + 'px' });
 		}
 	});
 
 	$("#droppableMenu").droppable({
 		drop: function(event, ui) {
 	        $("#droppableMenu").append(ui.draggable[0]);
-	        $("#" + ui.draggable[0].id).css({'position':'relative', 'left': '', 'top':'' }); 
+	        $("#" + ui.draggable[0].id).css({'position':'relative', 'left': '', 'top':'' });
 	    }
 	});
 
@@ -71,7 +151,7 @@ $( document ).ready(function() {
 			$('.contenu').css("background-image", "url(/img/jeu_popculture/fonds/calligraphie.png)");
 		}
 	})
-});
+};
 
 function capture() {
 	$("#photoBouton").hide();
@@ -85,4 +165,15 @@ function capture() {
 		        $("#photoBouton").show();
 		 		document.getElementById("myForm").submit();
 	}});
+}
+
+function showInfos() {
+	$('.infoBox').show();
+	$('.round-info-button').hide();
+	$('.round-info-button-close').on('click', hideInfos);
+}
+
+function hideInfos() {
+	$('.round-info-button').show();
+	$('.infoBox').hide();
 }

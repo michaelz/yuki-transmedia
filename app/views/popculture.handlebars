@@ -2,6 +2,34 @@
 <script src="/js/lib/jquery.ui.touch-punch.min.js"></script>
 <script src="/js/lib/html2canvas.js"></script>
 
+<div class="dialogue">
+  <h3 class="dialogue-personnage"></h3>
+  <p class="dialogue-script"></p>
+  <button class="dialogue-skip" type="button">Suivant</button>
+</div>
+
+<div class="infoBox">
+
+  <div class="round-info-button-close">
+    <div class="round-info-button-circle-close">
+      <p class="round-info-button-close">x</p>
+    </div>
+  </div>
+
+
+  <h1 class="info-title">Les arts martiaux</h1>
+  <h2 class="info-title">Le thème</h2>
+  <p>Un grand nombre d’arts martiaux sont originaires du Japon. Ils traduisent au moins trois termes
+    japonais couramment utilisé  budō, dont le sens littéral est « voie de la guerre », bujutsu signifiant
+    « techniques de la guerre », et bugei pour « art martial ».</p>
+    <p>Parmis les arts martiaux japonais les plus connus nous retrouvons l’aikido, le judo, le karate, le
+      kendo et le sumo, un des plus ancien art martial japonais. Mais il en existe encore de nombreux peu connus en occident. </p>
+          <h2 class="info-title">Nos choix</h2>
+      <p>Nous avons décidé d’illustrer le maître d’arts martiaux par un singe, car au Japon, le singe est synonyme de sagesse et de bonheur.</p>
+      <p>Au Japon, il est fréquent de représenter les trois singes de la sagesse. Ceci est un symbole d'origine asiatique constitué de
+        trois singes, dont chacun se couvre une partie différente du visage avec les mains : le premier les yeux, le deuxième la bouche et le troisième les oreilles.</p>
+    </div>
+
 <div id="main">
  	<div id="menu">
  		<div class="btnAccessoires"> Accessoires </div>
@@ -19,17 +47,17 @@
 
  	<div id="purikura">
  		<div class="bandeSup"></div>
-	 	
+
 	 	<div class="contenu" id="droppableContenu">
-	 	 	<img src="img/jeu_popculture/yuki.png" class="yuki" />	
+	 	 	<img src="img/jeu_popculture/yuki.png" class="yuki" />
 	 	</div>
 
 	 	<div class="bandeInf">
 	 		<input id="photoBouton" type="submit" value="DL" onclick="capture();" />
-			
-			<form method="POST" 
-			enctype="multipart/form-data" 
-			action="/api/picture/upload" 
+
+			<form method="POST"
+			enctype="multipart/form-data"
+			action="/api/picture/upload"
 			id="myForm">
 			    <input type="hidden" name="img" id="img" value="" />
 			</form>
