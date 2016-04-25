@@ -26,21 +26,21 @@ var storage = multer.diskStorage({
 
 var upload = multer({storage: storage}).array('img', 5);
 
-router.post('/', auth.getUserInfo, function(request, response, next) {
+router.post('/', auth.getUserInfo, function(req, res, next) {
   var filesBase64 = [];
-  upload(request, response, function(err) {
+  upload(req, res, function(err) {
     if(err) {
       console.log('Error Occured');
       return;
     }
-    
-    var base64data = request.body.img.replace(/^data:image\/png;base64,/, "");
 
-    fs.writeFile("storage/" + req.connectedUser + Date.now() + ".png", base64data, 'base64', function (err) {
+    var base64data = req.body.img.replace(/^data:image\/png;base64,/, "");
+
+    fs.writeFile("storage/yukiCustom/" + req.connectedUser.id + Date.now() + ".png", base64data, 'base64', function (err) {
       if (err) console.log(err);
       console.log('Photo Uploaded');
     })
   })
-  response.redirect("back");
+  res.redirect("back");
 });
 
