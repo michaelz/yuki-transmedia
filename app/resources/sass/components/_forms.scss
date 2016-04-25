@@ -1,0 +1,40 @@
+@import 'variables';
+label {
+
+}
+input {
+    border:1px solid darken($color-white, 30);
+    background:$color-white;
+    border-radius: 1em;
+    padding: 0.5em;
+}
+
+.form-item {
+    clear:both;
+    position:relative;
+}
+
+.submit-area {
+    text-align:center;
+    button.submit {
+        display:inline-block;
+        background: $color-grey;
+        border:none;
+        color:white;
+        padding: 0.5em 1em;
+        border-radius: 1em;
+    }
+
+}
+.btn {
+    background:white;
+    border:1px solid #d0d0d0;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    text-transform:uppercase;
+    font-family: $font-body;
+}
+.btn:hover {
+    background: #d0d0d0;
+    cursor:pointer;
+}

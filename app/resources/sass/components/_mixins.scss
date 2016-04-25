@@ -1,0 +1,5 @@
+@mixin icon($iconname) {
+ -webkit-text-size-adjust: none;
+ content:$iconname;
+ @include fa-icon();
+}

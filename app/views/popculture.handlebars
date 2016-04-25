@@ -1,8 +1,38 @@
 <script src="/js/lib/jquery-ui/jquery-ui.min.js"></script>
 <script src="/js/lib/jquery.ui.touch-punch.min.js"></script>
+<script src="/js/lib/html2canvas.js"></script>
 
-<div class="container">
-    <br /><br />
-<p class="drag">asdf</p>
-<br /><br />
+<div id="main">
+ 	<div id="menu">
+ 		<div class="btnAccessoires"> Accessoires </div>
+ 		<div class="menuAccessoires" id="droppableMenu"></div>
+ 		<div class="btnFonds"> Fonds </div>
+ 		<div class="menuFonds">
+ 			<div class="imgJeu">
+ 				<img src="img/jeu_popculture/fonds/arts-martiaux.png" class="fond" id="fondsImg1">
+			</div>
+			<div class="imgJeu">
+ 				<img src="img/jeu_popculture/fonds/calligraphie.png" class="fond" id="fondsImg2">
+ 			</div>
+ 		</div>
+ 	</div>
+
+ 	<div id="purikura">
+ 		<div class="bandeSup"></div>
+	 	
+	 	<div class="contenu" id="droppableContenu">
+	 	 	<img src="img/jeu_popculture/yuki.png" class="yuki" />	
+	 	</div>
+
+	 	<div class="bandeInf">
+	 		<input id="photoBouton" type="submit" value="DL" onclick="capture();" />
+			
+			<form method="POST" 
+			enctype="multipart/form-data" 
+			action="/api/picture/upload" 
+			id="myForm">
+			    <input type="hidden" name="img" id="img" value="" />
+			</form>
+	 	</div>
+ 	</div>
 </div>

@@ -8,19 +8,43 @@ var mongoose = require('mongoose'),
 
 var UserSchema = new Schema({
     type: String,
-    username: String,
-    email: String,
-    password: String,
+    username: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
     passed_levels: [
         {
             level_id: {
                 type: Schema.Types.ObjectId,
                 required: false,
                 ref: "Level"
-            }
+            },
+            result: String //here we can save any result we want for any game that has been passed
+
         }
 
-    ]
+    ],
+    solved_solutions : [
+        {
+            level_id:{
+                type: Schema.Types.ObjectId,
+                required: false,
+                ref: "Level"
+            }
+        }
+    ],
+
+
 });
 
 /*UserSchema.virtual('date')

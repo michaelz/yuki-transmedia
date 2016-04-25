@@ -7,3 +7,4 @@ public/css
 public/fonts
 .sass-cache
 .idea
+storage/*

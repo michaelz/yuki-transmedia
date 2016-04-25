@@ -1,92 +1,119 @@
+@import 'components/variables';
+
 /* Kata a saisir
 ==================================================*/
 .kataASaisir {
-    width: 5%;
-    height: 0;
-    padding-bottom: 5%;
-    border-radius: 50%;
-    border: 2px solid #f5f5f5;
-    overflow: hidden;
-    box-shadow: 0 0 3px gray;
-    display: inline-block;
+  width: 10%;
+  height: 0;
+  padding-bottom: 10%;
+  border-radius: 50%;
+  border: 2px solid #f5f5f5;
+  overflow: hidden;
+  box-shadow: 0 0 3px gray;
+  display: inline-block;
 }
 
 .kataASaisir img {
-    display: block;
-    width: 76%;
-    padding: 12%;
-    height: auto;
+  display: block;
+  width: 76%;
+  padding: 12%;
+  height: auto;
 }
 
 .kataASaisirPoing {
-background: #12a3b2;
+  background: #12a3b2;
 }
 
 .kataASaisirPied {
-background: #e5007f;
+  background: #e5007f;
 }
 
 .kataASaisirJump {
-background: #ffdb4b;
+  background: #ffdb4b;
 }
 
 .kataASaisirSpe {
-background: #1A2131;
+  background: #1A2131;
 }
 
 /* Inputs button
 ==================================================*/
+div#btnBox {
+  margin: 0 auto;
+  display: inline-block;
+  text-align: center;
+}
+
+div#martialArtsDialogue {
+  margin: 0 auto;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  margin-top: 10%;
+  border-top-style: solid;
+  border-color: #454B4C;
+  border-top-width: 6px;
+  border-bottom-style: solid;
+  border-bottom-width: 6px;
+}
+
 .martialArtsBtn {
-    width: 5%;
-    height: 0;
-    padding-bottom: 5%;
-    border-radius: 50%;
-    border: 2px solid #f5f5f5;
-    overflow: hidden;
-    box-shadow: 0 0 3px gray;
-    display: inline-block;
+  width: 10%;
+  height: 0;
+  padding-bottom: 10%;
+  border-radius: 50%;
+  border: 2px solid #f5f5f5;
+  overflow: hidden;
+  box-shadow: 0 0 3px gray;
+  display: inline-block;
+  &.desactivatedBtn {
+    background: grey!important;
+    opacity: 0.3;
+  }
+  margin-top: 5px;
+  margin-bottom: 4px;
 }
 .martialArtsBtn:hover {
-    background: #262626;
-    cursor: pointer;
+  background: #262626;
+  cursor: pointer;
 }
 .martialArtsBtn img {
-    display: block;
-    width: 76%;
-    padding: 12%;
-    height: auto;
+  display: block;
+  width: 76%;
+  padding: 12%;
+  height: auto;
 }
 
 #btnPoing {
-background: #12a3b2;
+  background: #12a3b2;
 }
 
 #btnPoing:hover {
-    background: #088b99;
+  background: #088b99;
 }
 
 #btnPied {
-background: #e5007f;
+  background: #e5007f;
 }
 
 #btnPied:hover {
-    background: #990f5c;
+  background: #990f5c;
 }
 
 #btnJump {
-background: #ffdb4b;
+  background: #ffdb4b;
 }
 
 #btnJump:hover {
-    background: #ffcb34;
+  background: #f9c700;
 }
 
 #btnSpe {
-background: #1A2131;
+  background: #1A2131;
 }
 
 #btnSpe:hover {
-    background: black;
+  background: black;
 }
 
 /* Next Button
@@ -94,7 +121,7 @@ background: #1A2131;
 .martialArtsNextBtn {
   position: relative;
   vertical-align: top;
-  width: 10%;
+  width: 20%;
   height: 40px;
   padding: 0;
   font-size: 1em;
@@ -119,17 +146,76 @@ background: #1A2131;
 /* Content bubble
 ==================================================*/
 .discussionContainer {
-border:1px solid #B0C4DE;
-background-color:#E4EFFF;
--moz-border-radius:10px;
--webkit-border-radius:10px;
-width: 99.4%;
-position:fixed;
-bottom:5px;
-left:5px;
-right: 5px;
+  background-color: rgba(#E4EFFF, 0.7);
 }
 
 .discussionContainer p, button, h3 {
   margin-left: 10px;
+}
+
+/* kata bar
+==================================================*/
+#progressBar {
+  width: 100%;
+  height: 6px;
+  background-color: $color-grey;
+  .progress, .progress.stopped {
+    width:0;
+    transition-duration:0;
+    background-color: #bada55;
+    height: 100%;
+    /*color: $color-martialarts-2;*/
+    text-align: right;
+    position: relative;
+  }
+  .progress.started {
+    width: 100%;
+    background-color: #F9C700;
+    -webkit-transition: 4s linear;
+    -moz-transition: 4s linear;
+    -o-transition: 4s linear;
+    transition: 4s linear;
+    -webkit-transition-property: width;
+    -moz-transition-property: width;
+    -o-transition-property: width;
+    transition-property: width;
+  }
+}
+div#inputBox {
+  position: absolute;
+  bottom: 0;
+}
+
+
+/* background + animation
+==================================================*/
+.body-martialarts .square {
+  background: url("/img/arts-martiaux.png") no-repeat top center transparent;
+  background-size: cover;
+}
+/*
+.dojo-front {
+  background: url("/img/calligraphie_decor.png") no-repeat top center transparent;
+  background-size: cover;
+  position: absolute;
+width: 100%;
+height: 100%;
+z-index: 0;
+}
+
+.dojo-inside {
+  background: url("/img/arts-martiaux.png") no-repeat top center transparent;
+  background-size: cover;
+  position: absolute;
+width: 100%;
+height: 100%;
+z-index: -1;
+}
+*/
+
+#spriteYuki img{
+  width: 30%;
+  position: absolute;
+  bottom: 14%;
+  left: 13%;
 }

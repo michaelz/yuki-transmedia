@@ -1,1 +1,321 @@
 //@import '/js/lib/jquery-ui/jquery-ui.min.css';
+
+#menu  {
+	float:right;
+	width:25%;
+	height:90vw;
+    max-height: 80vh;
+	text-align: center;
+	border-left-style: solid;
+    border-color: #454B4C;
+    border-left-width: 6px;
+	background: white;
+}
+
+#purikura {
+	width:75%;
+	background-color: white;
+	height:90vw;
+    max-height: 80vh;
+}
+
+.btnAccessoires {
+	color: #3498db;
+	background: white;
+	height: 3vw;
+    max-height: 3vh;
+
+	cursor: pointer;
+
+	border-bottom-style: solid;
+    border-color: #454B4C;
+    border-bottom-width: 6px;
+}
+
+.btnFonds {
+	color: white;
+	background: #3498db;
+	height: 3vw;
+    max-height: 3vh;
+
+	border-top-style: solid;
+    border-color: #454B4C;
+    border-top-width: 6px;
+
+    border-bottom-style: solid;
+    border-bottom-width: 0px;
+    
+ 	cursor: pointer;
+}
+
+.bandeSup {
+	height: 6vw;
+    width: 100%;
+    max-height: 6vh;
+	max-width: 66vh;
+	background-color: white;
+
+    border-color: #454B4C;
+    border-bottom-style: solid;
+    border-bottom-width: 6px;
+}
+
+.bandeInf input {
+	color: white;
+	background: #3498db;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.square #main #purikura .contenu {
+    height: 66vw;
+    width: 100%;
+    max-height: 65vh;
+	max-width: 100%;
+
+	padding-top: 1px;
+	margin-right:79%;
+    
+
+	background-color: #eee;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: auto 80vw;
+	background-position: inherit;
+}
+
+.bandeInf {
+	height: 7vw;
+    width: 100%;
+    max-height: 7vh;
+	max-width: 66vh;
+	
+	border-top-style: solid;
+    border-color: #454B4C;
+    border-top-width: 6px;		
+}
+#droppableMenu {
+	height: 82vw;
+    max-height: 70vh;
+    overflow-y:auto;
+}
+
+#droppableMenu .drag {
+	padding-top: 1px;
+	display: block;
+	max-width: 50%;
+	height: auto;
+    margin-left: auto;
+    margin-right: auto;
+	
+	img {
+		max-width: 100%;
+	}
+}
+
+.menuFonds .imgJeu {
+	img {
+		max-width: 100%;
+	}	
+}
+
+#droppableContenu #img1 {
+	padding-top: 1px;
+	display: block;
+	width: 17%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img2 {
+	padding-top: 1px;
+	display: block;
+	width: 24%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img3 {
+	padding-top: 1px;
+	display: block;
+	width: 11%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img4 {
+	padding-top: 1px;
+	display: block;
+	width: 9.7%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img5 {
+	padding-top: 1px;
+	display: block;
+	width: 14%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img6 {
+	padding-top: 1px;
+	display: block;
+	width: 14%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img7 {
+	padding-top: 1px;
+	display: block;
+	width: 9%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img8 {
+	padding-top: 1px;
+	display: block;
+	width: 13%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img9 {
+	padding-top: 1px;
+	display: block;
+	width: 20%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img10 {
+	padding-top: 1px;
+	display: block;
+	width: 7%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img11 {
+	padding-top: 1px;
+	display: block;
+	width: 4%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img12 {
+	padding-top: 1px;
+	display: block;
+	width: 7%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img13 {
+	padding-top: 1px;
+	display: block;
+	width: 17%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img14 {
+	padding-top: 1px;
+	display: block;
+	width: 11%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img15 {
+	padding-top: 1px;
+	display: block;
+	width: 20%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img16 {
+	padding-top: 1px;
+	display: block;
+	width: 14%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+#droppableContenu #img17 {
+	padding-top: 1px;
+	display: block;
+	width: 14%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+}
+
+.yuki {
+	width: 50%;
+	height: auto;
+	display: block;
+	img {
+		max-width: 100%;
+	}
+	
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30%;
+    margin-bottom: auto;
+}

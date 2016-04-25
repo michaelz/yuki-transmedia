@@ -1,13 +1,51 @@
-<h1>login</h1>
+<script src="/js/lib/jquery-ui/jquery-ui.min.js"></script>
 
-<form id="signUp-form" action="">
-  Pseudo:<br>
-  <input type="text" name="pseudo" placeholder="Kevin99"><br>
-  Adresse email:<br>
-  <input type="text" name="email" placeholder="kevin.tomba@gmail.com"><br>
-  Mot de passe:<br>
-  <input type="text" name="password" placeholder="******"><br>
-  Confirmation de mot de passe:<br>
-  <input type="text" name="rePassword" placeholder="******"><br><br>
-  <input id="signUp" type="submit" value="Submit">
-</form>
+<div class="loginPage">
+  <h3>S'identifier</h3>
+
+  <div class="login">
+    <div class="form">
+      <div class="form-item">
+        <input id="identifier" type="text" name="pseudo" placeholder="Identifiant">
+      </div>
+      <div class="form-item">
+        <input id="pwd" type="password" name="password" placeholder="Mot de passe">
+      </div>
+      <div class="submit-area">
+        <button class="submit login" id="loginBtn">S'identifier</button>
+      </div>
+    </div>
+    <div id="loginError" class="msgContainer"></div>
+  </div>
+
+  <h3>Nouveau compte</h3>
+  <div class="register">
+
+    <!--<form id="signUp-form" action="">-->
+    <div class="form">
+      <div class="form-item">
+        <input id="pseudo" type="text" name="pseudo" placeholder="Pseudo">
+        <div class="msgContainer" id="pseudoError"></div>
+      </div>
+      <div class="form-item">
+        <input id="email" type="email" class="verif-email" name="email" placeholder="Adresse email">
+        <div class="msgContainer" id="emailError"></div>
+      </div>
+      <div class="form-item">
+        <input id="password" type="password" name="password" placeholder="Mot de passe">
+        <div class="msgContainer" id="pwError"></div>
+      </div>
+      <div class="form-item">
+        <input id="rePassword" type="password" name="rePassword" placeholder="Confirmation">
+        <div class="msgContainer" id="rePwError"></div>
+      </div>
+
+
+      <div class="submit-area">
+        <button class="submit register" id="signUpBtn">S'enregistrer</button>
+      </div>
+    </div>
+    <!--</form>-->
+  </div>
+
+</div>

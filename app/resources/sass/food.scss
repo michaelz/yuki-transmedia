@@ -1,0 +1,46 @@
+@import 'components/variables';
+
+.body-food {
+    .square {
+        background: url('/img/food.png') no-repeat center center;
+        background-size: cover;
+    }
+}
+.quiz {
+
+    .startQuizArea {
+        background: $color-grey;
+        width: 100%;
+        padding: 1em 0;
+        position:absolute;
+        bottom: 10%;
+        text-align:center;
+    }
+    #startQuiz {
+        display:block;
+        width:30%;
+        margin: 0 auto;
+        min-width: 150px;
+    }
+    .questionBlock  {
+        position:absolute;
+        bottom:0;
+        width: 90%;
+        padding: 5%;
+        background:white;
+        border-top: 6px solid $color-grey;
+        .qtitle {
+
+        }
+        .choices {
+            &, li {
+
+            }
+            li {
+                width: 50%;
+                margin: 0.5em 0;
+                display:inline-block;
+            }
+        }
+    }
+}
