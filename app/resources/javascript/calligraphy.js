@@ -79,15 +79,19 @@ $(document).ready(function() {
     var indexdialoguepersonnage = 0;
     var indexdialoguescript = 0;
     var dialoguescript = [
-      "Hum, ce doit être le monde de la calligraphie...",
-      "Hey Grue-chan, peut-tu m'aider à retrouver le morceau de tasse de mon grand-père ?",
-      "Ok, mais d'abord résoud ce puzzle."
+      "Oh regarde Guro, quel beau paysage. C’est magnifique..",
+      "Mais quels sont ces cris? Bonjour, que ce passe-t-il?",
+      "Un esprit malveillant a mélangé les parties composants ma toiles. C’était ma plus belle!",
+      "Je vais t’aider a remettre le tout dans l’ordre.",
+      "Merci beaucoup! Si tu y parviens, pour te remercier, je te donnerai un indice menant à ce fauteur de trouble."
     ];
 
     var dialoguepersonnage = [
       "Yuki : ",
       "Yuki : ",
-      "Grue-chan : "
+      "Akimi : ",
+      "Yuki :",
+      "Akimi :"
     ];
 
     $( ".dialogue-personnage" ).append(dialoguepersonnage[indexdialoguepersonnage]);
