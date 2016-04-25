@@ -19,6 +19,33 @@ $(document).ready(function() {
         item.removeClass('disabled').append("<a href='/" + data
             .code + "'>" + item.val() + "</a>");
     });
+var slideIndex = 1;
+showDivs(slideIndex);
 
-    $(".element:not(.item-intro)").append("<p>Hello</p>")
+$(".plus-one").click(function() {
+  slideIndex += 1;
+  showDivs(slideIndex);
+});
+
+$(".minus-one").click(function() {
+  slideIndex -= 1;
+  showDivs(slideIndex);
+});
+
+
+function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    if (n > x.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = x.length} ;
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    x[slideIndex-1].style.display = "block";
+}
+
+function validate(){
+
+}
+    //$(".element:not(.item-intro)").append("<div class='indice'><select><option value='volvo'>Volvo</option><option value='saab'>Saab</option><option value='mercedes'>Mercedes</option> <option value='audi'>Audi</option></select></div>");
 });

@@ -39,6 +39,10 @@
                 height: 100%;
                 position:absolute;
             }
+            .indice{
+                position:relative;
+                z-index: 1;
+            }
         }
         .item-intro {
             left: 32%;
