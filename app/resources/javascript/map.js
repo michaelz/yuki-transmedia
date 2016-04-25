@@ -4,18 +4,22 @@ $(document).ready(function() {
 
     var levels = [{
         code: 'martialarts',
-        url: 'mondes/artsmartiaux'
+        url: 'mondes/artsmartiaux',
+        solved: true
     }, {
         code: 'calligraphy',
-        url: 'mondes/calligraphie'
+        url: 'mondes/calligraphie',
+        solved: false
 
     }, {
         code: 'popculture',
-        url: 'mondes/popculture'
+        url: 'mondes/popculture',
+        solved: true
 
     }, {
         code: 'food',
-        url: 'mondes/nourriture'
+        url: 'mondes/nourriture',
+        solved: true
 
     }]; // TODO: Replace with data from user (API)
 
@@ -25,6 +29,10 @@ $(document).ready(function() {
 
         item.removeClass('disabled').append("<a href='/" + data
             .url + "'>" + item.val() + "</a>");
+        $(".sign-" + data.code).show(); // TODO: Show only once Japan Impact begins
+        if (data.solved) {
+            $(".indice-" + data.code).show();
+        }
     });
     var slideIndex = 1;
     showDivs(slideIndex);

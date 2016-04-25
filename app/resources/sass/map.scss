@@ -1,4 +1,6 @@
 @import 'components/variables';
+@import 'fontawesome/font-awesome';
+@import 'components/mixins';
 .body-map .square {
     background: url('/img/map.png') no-repeat top center transparent;
     background-size: cover;
@@ -14,20 +16,22 @@
         height: 100%;
         width: 100%;
         .element {
-            background-position: center center;
+
+            background-position: left center;
+            padding-left: 60px;
             background-size: contain;
             background-repeat:no-repeat;
+            @media screen and (min-device-width: 600px) {
+                padding-left: 90px;
+                height: 90px;
+                width: 90px;
+                margin-top: -45px;
+                margin-left: -45px;
+            }
             height: 60px;
             width: 60px;
             margin-top: -30px;
             margin-left: -30px;
-            @media screen and (min-device-width: 600px) {
-               height: 90px;
-               width: 90px;
-               margin-top: -45px;
-               margin-left: -45px;
-            }
-            overflow:hidden;
             position:absolute;
             font-size: 10px;
             &.disabled {
@@ -39,9 +43,22 @@
                 height: 100%;
                 position:absolute;
             }
-            .indice{
+            .indice {
                 position:relative;
+                
                 z-index: 1;
+                width: 40px;
+                height: 40px;
+                border-radius: 100%;
+                text-align:center;
+                background: $color-martialarts-1;
+                color:white;
+                &:before { // TODO: This should show the image with the indice
+                    @include icon($fa-var-info);
+                    line-height: 40px;
+                    font-size: 20px;
+
+                }
             }
         }
         .item-intro {
@@ -50,28 +67,28 @@
             background-image: url('/img/map/ojiisan.png');
         }
         .item-martialarts {
-            left: 67%;
-            top: 25%;
+            left: 75%;
+            top: 27%;
             background-image: url('/img/map/martialarts.png');
         }
         .item-calligraphy {
-            left: 40%;
+            left: 19%;
             top: 40%;
             background-image: url('/img/map/calligraphy.png');
         }
         .item-origami {
-            left: 60%;
+            left: 55%;
             top: 53%;
             background-image: url('/img/map/origami.png');
         }
         .item-food {
-            left: 45%;
-            top: 67%;
+            left: 37%;
+            top: 72%;
             background-image: url('/img/map/food.png');
         }
         .item-popculture {
-            left: 60%;
-            top: 90%;
+            left: 70%;
+            top: 89%;
             background-image: url('/img/map/popculture.png');
         }
     }
