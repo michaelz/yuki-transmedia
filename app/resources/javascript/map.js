@@ -24,16 +24,18 @@ $(document).ready(function() {
     }]; // TODO: Replace with data from user (API)
 
     levels.forEach(function(data) {
-        console.log(data.code);
         var itemSelector = '.item-' + data.code;
 
         $(itemSelector).removeClass('disabled');
-        $(itemSelector + ' a.icon').attr('src', '/' + data.url);
-        $(itemSelector + ' .sign-indice').show(); // TODO: Show only once Japan Impact begins
+        $(itemSelector + ' .icon').attr("href", '/' + data.url);
+        $(itemSelector + ' .sign-indice').show();
         if (data.solved) {
             $(itemSelector).addClass('solved');
         }
     });
+
+
+
     var slideIndex = 1;
     showDivs(slideIndex);
 

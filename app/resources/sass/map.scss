@@ -46,7 +46,7 @@
                 }
             }
             .sign-indice {
-                background:$color-white;
+                background:rgba($color-white,0.8);
                 padding: 0.8em;
 
                 border-radius: 1em;
@@ -77,7 +77,16 @@
                 }
             }
 
-
+            &.solved {
+                .indice {
+                    background: green;
+                    &:before {
+                        @include icon($fa-var-hand-peace-o); // should be the icon of the indice
+                        font-size: 20px;
+                        line-height:40px;
+                    }
+                }
+            }
         }
         .item-intro {
             left: 17%;
