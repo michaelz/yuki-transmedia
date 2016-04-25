@@ -16,80 +16,110 @@
         height: 100%;
         width: 100%;
         .element {
-
-            background-position: left center;
             padding-left: 60px;
-            background-size: contain;
-            background-repeat:no-repeat;
-            @media screen and (min-device-width: 600px) {
-                padding-left: 90px;
-                height: 90px;
-                width: 90px;
-                margin-top: -45px;
-                margin-left: -45px;
-            }
-            height: 60px;
-            width: 60px;
             margin-top: -30px;
             margin-left: -30px;
             position:absolute;
             font-size: 10px;
+            @media screen and (min-device-width: 600px) {
+                padding-left: 90px;
+                margin-top: -45px;
+                margin-left: -45px;
+                .icon {
+                    height: 90px;
+                    width: 90px;
+                }
+            }
             &.disabled {
                 opacity: 0.3;
             }
-            a {
-                display:block;
-                width: 100%;
-                height: 100%;
-                position:absolute;
-            }
-            .indice {
-                position:relative;
-                
-                z-index: 1;
-                width: 40px;
-                height: 40px;
-                border-radius: 100%;
-                text-align:center;
-                background: $color-martialarts-1;
-                color:white;
-                &:before { // TODO: This should show the image with the indice
-                    @include icon($fa-var-info);
-                    line-height: 40px;
-                    font-size: 20px;
-
+            .icon {
+                display:inline-block;
+                background-position: center center;
+                background-size: contain;
+                background-repeat:no-repeat;
+                height: 60px;
+                width: 60px;
+                @media screen and (min-device-width: 600px) {
+                    height: 90px;
+                    width: 90px;
                 }
             }
+            .sign-indice {
+                background:$color-white;
+                padding: 0.8em;
+
+                border-radius: 1em;
+                display:inline-block;
+                .indice {
+                    float:left;
+                    position:relative;
+
+                    z-index: 1;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 100%;
+                    text-align:center;
+                    background: $color-grey;
+                    color:white;
+                    &:before {
+                        @include icon($fa-var-close);
+                        line-height: 40px;
+                        font-size: 20px;
+
+                    }
+                }
+                .signs {
+                    // This should show up only once japan impact has started
+                    float:right;
+                    width: 50px;
+                    overflow:hidden;
+                }
+            }
+
+
         }
         .item-intro {
-            left: 32%;
+            left: 17%;
             top: 16%;
-            background-image: url('/img/map/ojiisan.png');
+            .icon {
+                background-image: url('/img/map/ojiisan.png');
+            }
         }
         .item-martialarts {
-            left: 75%;
+            left: 55%;
             top: 27%;
-            background-image: url('/img/map/martialarts.png');
+            .icon {
+                background-image: url('/img/map/martialarts.png');
+            }
         }
         .item-calligraphy {
-            left: 19%;
+            left: 0%;
             top: 40%;
-            background-image: url('/img/map/calligraphy.png');
+            .icon {
+                background-image: url('/img/map/calligraphy.png');
+            }
         }
         .item-origami {
             left: 55%;
             top: 53%;
-            background-image: url('/img/map/origami.png');
+            .icon {
+                background-image: url('/img/map/origami.png');
+            }
         }
         .item-food {
-            left: 37%;
+            left: 12%;
             top: 72%;
-            background-image: url('/img/map/food.png');
+            .icon {
+                background-image: url('/img/map/food.png');
+            }
         }
         .item-popculture {
-            left: 70%;
-            top: 89%;
-            background-image: url('/img/map/popculture.png');
+            left: 55%;
+            top: 84%;
+            .icon {
+                background-image: url('/img/map/popculture.png');
+            }
         }
     }
 }

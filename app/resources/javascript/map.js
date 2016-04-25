@@ -25,13 +25,13 @@ $(document).ready(function() {
 
     levels.forEach(function(data) {
         console.log(data.code);
-        var item = $('.item-' + data.code);
+        var itemSelector = '.item-' + data.code;
 
-        item.removeClass('disabled').append("<a href='/" + data
-            .url + "'>" + item.val() + "</a>");
-        $(".sign-" + data.code).show(); // TODO: Show only once Japan Impact begins
+        $(itemSelector).removeClass('disabled');
+        $(itemSelector + ' a.icon').attr('src', '/' + data.url);
+        $(itemSelector + ' .sign-indice').show(); // TODO: Show only once Japan Impact begins
         if (data.solved) {
-            $(".indice-" + data.code).show();
+            $(itemSelector).addClass('solved');
         }
     });
     var slideIndex = 1;
