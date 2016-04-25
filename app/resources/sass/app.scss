@@ -87,41 +87,40 @@ a {
 /**
 * Info btn
 */
+.round-info-button-close,
 .round-info-button {
   width:5%;
+  .round-info-button-circle {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      border: 2px solid #cfdcec;
+      border-radius: 50%;
+      background: #2a738e;
+      box-shadow: 0 0 3px rgba(0,0,0,0.6);
+      &:hover {
+          background:darken(#2a738e,10);
+          cursor: pointer;
+      }
+      .icon-close:before {
+          @include icon($fa-var-times);
+      }
+      .icon-open:before {
+          @include icon($fa-var-info);
+      }
+      .icon-close:before, .icon-open:before {
+          text-align:center;
+          width: 40px;
+          height:40px;
+          line-height:40px;
+          font-size: 20px;
+          color:$color-white;
+          display:block;
+      }
+  }
 }
-.round-info-button-circle {
-  position: absolute;
-  border: 2px solid #cfdcec;
-  top: 1%;
-  left: 1%;
-  z-index: 10;
-  width: 8%;
-  height:0;
-  padding-bottom: 8%;
-  border-radius: 50%;
-  background: #70cce0;
-  box-shadow: 0 0 3px gray;
-}
-.round-info-button-circle:hover {
-  background:#2a738e;
-  cursor: pointer;
-}
-.round-info-button p {
-  display:block;
-  float:left;
-  width:100%;
-  padding-top:50%;
-  padding-bottom:50%;
-  line-height:1em;
-  margin-top:-0.5em;
-  text-align:center;
-  color:#e2eaf3;
-  font-family:Verdana;
-  font-size:1.2em;
-  font-weight:bold;
-  text-decoration:none;
-}
+
+
 .infoBox h1, h2, p {
     margin-left: 2%;
     margin-right: 2%;
@@ -204,43 +203,4 @@ h2.info-title {
 }
 .infoBox p {
     color: black;
-}
-
-/**
-* Info close btn
-*/
-.round-info-button-close {
-  width:5%;
-}
-.round-info-button-circle-close {
-  position: absolute;
-  border: 2px solid #70cce0 !important;
-  top: 1%;
-  left: 1%;
-  z-index: 10;
-  width: 8%;
-  height:0;
-  padding-bottom: 8%;
-  border-radius: 50%;
-  background: white;
-  box-shadow: 0 0 3px gray;
-}
-.round-info-button-circle-close:hover {
-  background:#2A738E;
-  cursor: pointer;
-}
-.round-info-button-close p {
-  display:block;
-  float:left;
-  width:100%;
-  padding-top:50%;
-  padding-bottom:50%;
-  line-height:1em;
-  margin-top:-0.5em;
-  text-align:center;
-  color:#70cce0;
-  font-family:Verdana;
-  font-size:1.2em;
-  font-weight:bold;
-  text-decoration:none;
 }

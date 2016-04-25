@@ -3,7 +3,7 @@ var settings = {
     cols: 3, // number of columns [3 ... 9]
     hole: 9, // initial hole position [1 ... rows*columns]
     shuffle: true, // initially show shuffled pieces [true|false]
-    numbers: false, // initially show numbers on pieces [true|false]
+    numbers: true, // initially show numbers on pieces [true|false]
     language: 'fr', // language for gui elements [language code]
 
     // display additional gui controls
@@ -11,7 +11,7 @@ var settings = {
         shufflePieces: false, // display 'Shuffle' button [true|false]
         confirmShuffle: false, // ask before shuffling [true|false]
         toggleOriginal: true, // display 'Original' button [true|false]
-        toggleNumbers: true, // display 'Numbers' button [true|false]
+        toggleNumbers: false, // display 'Numbers' button [true|false]
         counter: true, // display moves counter [true|false]
         timer: true, // display timer (seconds) [true|false]
         pauseTimer: true // pause timer if 'Original' button is activated
@@ -59,11 +59,6 @@ var texts = {
 
 $(document).ready(function() {
 
-
-    $('.round-info-button').hide();
-
-    $('img.jqPuzzle').jqPuzzle(settings, texts); // apply to all images
-
     $('.round-info-button').show();
     $('.img').hide();
     $('.infoBox').hide();
@@ -85,6 +80,7 @@ $(document).ready(function() {
     var indexdialoguepersonnage = 0;
     var indexdialoguescript = 0;
     var dialoguescript = [
+
         "Oh regarde Guro, quel beau paysage. C’est magnifique..",
         "Mais quels sont ces cris? Bonjour, que ce passe-t-il?",
         "Un esprit malveillant a mélangé les parties composants ma toiles. C’était ma plus belle!",
@@ -140,5 +136,8 @@ $(document).ready(function() {
 
     ///////////////////////////////////////////////////////////////
 
+
+
+    $('img.jqPuzzle').jqPuzzle(settings, texts); // apply to all images
 
 });

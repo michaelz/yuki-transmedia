@@ -4,8 +4,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
     session = require('express-session'),
     MongoDBStore = require('connect-mongodb-session')(session),
-    auth = require('../services/auth'),
-    Article = mongoose.model('Article');
+    auth = require('../services/auth');
 
 module.exports = function(app) {
     app.use('/', router);
@@ -41,33 +40,31 @@ router.use(session({
 /**
  * Home page, to show the user data
  */
-router.get('/', auth.mustBeAuthenticated, auth.getUserInfo, function(req, res,
+router.get('/', function(req, res,
     next) {
-    res.render('index', {
-        pagename: 'index',
-        title: 'index',
-        userdata: req.connectedUser // thanks auth.getUserInfo
-    });
+    if (req.session.user) {
+        res.render('map', {
+            pagename: 'map',
+            title: 'Mondes'
+        });
+    } else {
+        res.render('introduction', {
+            pagename: 'introduction',
+            title: 'Yuki chez Ojiisan',
+            auth: false
+        });   
+    }
 });
 
-
-/**
- * Map Route
- */
-router.get('/map', function(req, res, next) {
-    res.render('map', {
-        pagename: 'map',
-        title: 'Map'
-    });
-});
 
 /**
  * Introduction route.
  */
-router.get('/introduction', function(req, res, next) {
+router.get('/mondes/ojiisan', function(req, res, next) {
     res.render('introduction', {
         pagename: 'introduction',
-        title: 'introduction page'
+        title: 'Yuki chez Ojiisan',
+        auth: true
     });
 });
 
@@ -96,7 +93,7 @@ router.get('/regok', auth.cantBeAuthenticated, function(req, res, next) {
 /**
  * MartialArts route.
  */
-router.get('/martialArts', function(req, res, next) {
+router.get('/mondes/artsmartiaux', function(req, res, next) {
     res.render('martialArts', {
         pagename: 'martialarts',
         title: 'martialArts page'
@@ -106,7 +103,7 @@ router.get('/martialArts', function(req, res, next) {
 /**
  * Calligraphy route.
  */
-router.get('/calligraphy', function(req, res, next) {
+router.get('/mondes/calligraphie', function(req, res, next) {
     res.render('calligraphy', {
         pagename: 'calligraphy',
         title: 'Calligraphy page'
@@ -115,9 +112,9 @@ router.get('/calligraphy', function(req, res, next) {
 
 
 /**
- * Calligraphy route.
+ * Food route.
  */
-router.get('/food', function(req, res, next) {
+router.get('/mondes/nourriture', function(req, res, next) {
     res.render('food', {
         pagename: 'food',
         title: 'food Quizz page'
@@ -125,22 +122,22 @@ router.get('/food', function(req, res, next) {
 });
 
 /**
- * Calligraphy route.
+ * Origamis route.
  */
-router.get('/origami', function(req, res, next) {
+router.get('/mondes/origamis', function(req, res, next) {
     res.render('origami', {
         pagename: 'origami',
-        title: 'origami page'
+        title: 'Yuki dans le mondes des origamis'
     });
 });
 
 /**
  * Pop culture route.
  */
-router.get('/popculture', function(req, res, next) {
+router.get('/mondes/popculture', function(req, res, next) {
     res.render('popculture', {
         pagename: 'popculture',
-        title: 'popculture page'
+        title: 'Yuki dans le monde de la Pop culture'
     });
 });
 
