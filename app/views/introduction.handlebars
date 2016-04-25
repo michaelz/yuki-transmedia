@@ -1,11 +1,13 @@
-<div>
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/E6KeCaXsHNE" frameborder="0" allowfullscreen></iframe>
+<script src="/js/lib/jquery.fitvids.js"></script>
+
+<div id="video">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/CVUOTzoVeZA" frameborder="0" allowfullscreen></iframe>
 </div>
- 
+
 <div>
 {{#if auth}}
-	<a href="/">Retour sur la carte</button>
+	<a href="/">Retour sur la carte</a>
 {{else}}
-	<a href="/">Passer la vidéo</button>
+	<a class="btn" href="/">Passer la vidéo</a>
 {{/if}}
 </div>
