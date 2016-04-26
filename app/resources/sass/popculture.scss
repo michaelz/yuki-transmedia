@@ -1,136 +1,151 @@
-//@import '/js/lib/jquery-ui/jquery-ui.min.css';
+@import 'components/variables';
+
 
 
 /* background + animation
 ==================================================*/
 .body-popculture .square {
-  background: url("/img/pop_culture.png") no-repeat top center transparent;
-  background-size: cover;
+    background: url("/img/pop_culture.png") no-repeat top center transparent;
+    background-size: cover;
+    overflow:hidden;
+    min-height: 80vh;
 }
-
+.body-popculture .square.game {
+    background:#d0d0d0;
+}
+.toppart {
+    overflow:hidden;
+    max-height:60vh;
+}
 #menu  {
+    z-index:4;
 	float:right;
 	width:25%;
-	height:90vw;
-    max-height: 80vh;
 	text-align: center;
-	border-left-style: solid;
-    border-color: #454B4C;
-    border-left-width: 6px;
-	background: white;
+    color:white;
+    background: $color-grey;
+    border-radius: 0 0 0 1em;
+    overflow-y: auto;
+    max-height:60vh;
+
+    #droppableMenu {
+
+    }
+    .menuAccessoires {
+        &>div { // draggable div
+            height:30px;
+            width: 30px;
+            margin:3px;
+            @media screen and (min-device-width: 600px) {
+                height:43px;
+                width: 43px;
+                margin:3px;
+            }
+            float:left;
+            background: #eee;
+            border-radius: 15px;
+            padding: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.6);
+            img {
+        		max-width: 100%;
+                max-height:100%;
+                height:auto;
+                width: auto;
+        	}
+            &.ui-draggable-dragging {
+                background:none;
+                box-shadow:none;
+            }
+        }
+    }
 }
 
 #purikura {
 	width:75%;
-	background-color: white;
-	height:90vw;
-    max-height: 80vh;
+    margin-top: 8%;
+    background:white;
+    position:relative;
+    .contenu {
+    	background-color: transparent;
+    	background-repeat: no-repeat;
+    	background-size: cover;
+        width: 100%;
+        min-height:100%;
+    }
+    .yuki {
+    	width: 42%;
+        position:absolute;
+        top: 30%;
+        left: 32%;
+    	height: auto;
+    	display: block;
+    	img {
+    		max-width: 100%;
+    	}
+    }
 }
 
-.btnAccessoires {
-	color: #3498db;
-	background: white;
-	height: 3vw;
-    max-height: 3vh;
-
-	cursor: pointer;
-
-	border-bottom-style: solid;
-    border-color: #454B4C;
-    border-bottom-width: 6px;
-}
-
-.btnFonds {
-	color: white;
-	background: #3498db;
-	height: 3vw;
-    max-height: 3vh;
-
-	border-top-style: solid;
-    border-color: #454B4C;
-    border-top-width: 6px;
-
-    border-bottom-style: solid;
-    border-bottom-width: 0px;
-
- 	cursor: pointer;
-}
-
-.bandeSup {
-	height: 6vw;
-    width: 100%;
-    max-height: 6vh;
-	max-width: 66vh;
-	background-color: white;
-
-    border-color: #454B4C;
-    border-bottom-style: solid;
-    border-bottom-width: 6px;
-}
-
-.bandeInf input {
-	color: white;
-	background: #3498db;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.square #main #purikura .contenu {
-    height: 66vw;
-    width: 100%;
-    max-height: 65vh;
-	max-width: 100%;
-
-	padding-top: 1px;
-	margin-right:79%;
 
 
-	background-color: #eee;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: auto 80vw;
-	background-position: inherit;
-}
 
 .bandeInf {
-	height: 7vw;
+    color:white;
     width: 100%;
-    max-height: 7vh;
-	max-width: 66vh;
+    height:20vh;
+    background: $color-grey;
+    position:absolute;
+    bottom:0;
+    h2 {
+        float:left;
+        width: 100px;
+        padding:0;
 
-	border-top-style: solid;
-    border-color: #454B4C;
-    border-top-width: 6px;
+    }
+    .yukidl {
+        float:right;
+        width: 25%;
+        margin-top: 5%;
+    }
+    .menuFonds {
+        margin: 0 25% 0 100px;
+        max-height: 20%;
+        padding: 1em;
+        .imgJeu {
+            display:block;
+            float:left;
+            white-space:nowrap;
+            overflow-x:auto;
+            width: 8%;
+            margin-top: 10px;
+            margin-right:10px;
+            min-width: 50px;
+
+        	img {
+        		max-width: 100%;
+        	}
+        }
+    }
 }
-#droppableMenu {
-	height: 82vw;
-    max-height: 70vh;
-    overflow-y:auto;
+
+
+
+.ui-draggable-handle {
+    cursor:grab;
+    cursor: -webkit-grab;
+    &.ui-draggable-dragging {
+        cursor:grabbing;
+        cursor: -webkit-grabbing;
+        opacity: 0.8;
+    }
 }
 
-#droppableMenu .drag {
-	padding-top: 1px;
-	display: block;
-	max-width: 50%;
-	height: auto;
-    margin-left: auto;
-    margin-right: auto;
 
-	img {
-		max-width: 100%;
-	}
-}
 
-.menuFonds .imgJeu {
-	img {
-		max-width: 100%;
-	}
-}
-
+#droppableContenu #img13,
 #droppableContenu #img1 {
 	padding-top: 1px;
 	display: block;
-	width: 17%;
+	width: 18.5%;
 	height: auto;
 	display: block;
 	img {
@@ -141,18 +156,18 @@
 #droppableContenu #img2 {
 	padding-top: 1px;
 	display: block;
-	width: 24%;
+	width: 28%;
 	height: auto;
 	display: block;
 	img {
 		max-width: 100%;
 	}
 }
-
+#droppableContenu #img14,
 #droppableContenu #img3 {
 	padding-top: 1px;
 	display: block;
-	width: 11%;
+	width: 12%;
 	height: auto;
 	display: block;
 	img {
@@ -163,18 +178,19 @@
 #droppableContenu #img4 {
 	padding-top: 1px;
 	display: block;
-	width: 9.7%;
+	width: 10.8%;
 	height: auto;
 	display: block;
 	img {
 		max-width: 100%;
 	}
 }
-
+#droppableContenu #img16,
+#droppableContenu #img17,
 #droppableContenu #img5 {
 	padding-top: 1px;
 	display: block;
-	width: 14%;
+	width: 20%;
 	height: auto;
 	display: block;
 	img {
@@ -185,7 +201,7 @@
 #droppableContenu #img6 {
 	padding-top: 1px;
 	display: block;
-	width: 14%;
+	width: 19%;
 	height: auto;
 	display: block;
 	img {
@@ -196,7 +212,7 @@
 #droppableContenu #img7 {
 	padding-top: 1px;
 	display: block;
-	width: 9%;
+	width: 10%;
 	height: auto;
 	display: block;
 	img {
@@ -214,11 +230,11 @@
 		max-width: 100%;
 	}
 }
-
+#droppableContenu #img15,
 #droppableContenu #img9 {
 	padding-top: 1px;
 	display: block;
-	width: 20%;
+	width: 24%;
 	height: auto;
 	display: block;
 	img {
@@ -229,7 +245,7 @@
 #droppableContenu #img10 {
 	padding-top: 1px;
 	display: block;
-	width: 7%;
+	width: 9%;
 	height: auto;
 	display: block;
 	img {
@@ -257,73 +273,4 @@
 	img {
 		max-width: 100%;
 	}
-}
-
-#droppableContenu #img13 {
-	padding-top: 1px;
-	display: block;
-	width: 17%;
-	height: auto;
-	display: block;
-	img {
-		max-width: 100%;
-	}
-}
-
-#droppableContenu #img14 {
-	padding-top: 1px;
-	display: block;
-	width: 11%;
-	height: auto;
-	display: block;
-	img {
-		max-width: 100%;
-	}
-}
-
-#droppableContenu #img15 {
-	padding-top: 1px;
-	display: block;
-	width: 20%;
-	height: auto;
-	display: block;
-	img {
-		max-width: 100%;
-	}
-}
-
-#droppableContenu #img16 {
-	padding-top: 1px;
-	display: block;
-	width: 14%;
-	height: auto;
-	display: block;
-	img {
-		max-width: 100%;
-	}
-}
-
-#droppableContenu #img17 {
-	padding-top: 1px;
-	display: block;
-	width: 14%;
-	height: auto;
-	display: block;
-	img {
-		max-width: 100%;
-	}
-}
-
-.yuki {
-	width: 50%;
-	height: auto;
-	display: block;
-	img {
-		max-width: 100%;
-	}
-
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30%;
-    margin-bottom: auto;
 }

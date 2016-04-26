@@ -33,38 +33,42 @@
     </div>
 
 <div id="main">
- 	<div id="menu">
- 		<div class="btnAccessoires"> Accessoires </div>
- 		<div class="menuAccessoires" id="droppableMenu"></div>
- 		<div class="btnFonds"> Fonds </div>
- 		<div class="menuFonds">
- 			<div class="imgJeu">
- 				<img src="/img/jeu_popculture/fonds/arts-martiaux.png" class="fond" id="fondsImg1">
-			</div>
-			<div class="imgJeu">
- 				<img src="/img/jeu_popculture/fonds/calligraphie.png" class="fond" id="fondsImg2">
- 			</div>
- 		</div>
- 	</div>
+    <div class="toppart">
+     	<div id="menu">
+     		<div class="menuAccessoires" id="droppableMenu"></div>
+     	</div>
 
- 	<div id="purikura">
- 		<div class="bandeSup"></div>
+     	<div id="purikura">
 
-	 	<div class="contenu" id="droppableContenu">
+    	 	<div class="contenu square-element" id="droppableContenu" style="background:white">
 
-	 	 	<img src="/img/jeu_popculture/yuki.png" class="yuki" />
+    	 	 	<img src="/img/jeu_popculture/yuki.png" class="yuki" />
 
-	 	</div>
+    	 	</div>
 
-	 	<div class="bandeInf">
-	 		<input id="photoBouton" type="submit" value="DL" onclick="capture();" />
 
-			<form method="POST"
-			enctype="multipart/form-data"
-			action="/api/picture/upload"
-			id="myForm">
-			    <input type="hidden" name="img" id="img" value="" />
-			</form>
-	 	</div>
- 	</div>
+     	</div>
+    </div>
+    <div class="bandeInf">
+        <form method="POST"
+        enctype="multipart/form-data"
+        action="/api/picture/upload"
+        id="myForm">
+            <input type="hidden" name="img" id="img" value="" />
+        </form>
+        <div class="yukidl"><input id="photoBouton" class="btn" type="submit" value="Télécharge ton Yuki !" onclick="capture();" />
+        </div>
+
+        <h2>Choisis ton fond !</h2>
+        <div class="menuFonds">
+            <div class="imgJeu">
+                <img src="/img/jeu_popculture/fonds/arts-martiaux.png" class="fond" id="fondsImg1">
+            </div>
+            <div class="imgJeu">
+                <img src="/img/jeu_popculture/fonds/calligraphie.png" class="fond" id="fondsImg2">
+            </div>
+        </div>
+
+
+    </div>
 </div>
