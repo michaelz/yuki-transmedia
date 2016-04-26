@@ -127,9 +127,13 @@ var nextQuestion = function(currentPos, total) {
         //To do div pour mettre le score du petit nenfant
         $(".quiz").append();
         if (correctAnswer >= 1) {
+          // Envoi des infos à la bd
+          $.post("/api/level/passLevelUser/food",{ result: correctAnswer}, function( data ) {
+            console.log("post");
             $("#quizTXT").append("Bravo");
             $("#yukiQuiz").removeAttr("src");
             $("#yukiQuiz").attr("src", "/img/yuki_content.png");
+          });
         } else {
             $("#quizTXT").append("Dommage");
             $(".yukImage").removeAttr("src");
