@@ -7,6 +7,11 @@ $(document).ready(function() {
     var nbMove = 2;
     $(".lvl-achieved").hide();
 
+    //Création et lancement de l'audio
+    ///////////////////////////////////////////////////////////////
+    $(".audioArtsMartiaux").append('<source src="/audio/arts-martiaux/DarkTemple-DerekAndBrandonFiechter.mp3" type="audio/mpeg">');
+    $(".audioArtsMartiaux").trigger('play');
+
 
     //Gestion des dialogue/////////////////////////////////////////
     var indexdialoguepersonnage = 0;
