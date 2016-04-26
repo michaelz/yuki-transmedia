@@ -78,12 +78,7 @@ $(document).ready(function() {
           $('#yuki_profil').fadeIn();
           $( ".dialogue" ).removeClass( "dialogue-arts-martiaux" )
 
-          $("audio")[0].volume = 1;
-          $("audio").animate({volume: 0}, 800);
 
-
-            $("audio")[0].volume = 0;
-            $("audio").animate({volume: 1}, 800);
             var fileSrc = "/audio/arts-martiaux/NinjaMaster-DerekFiechter.mp3"
             $("audio").attr("src",fileSrc).trigger("play");
 
