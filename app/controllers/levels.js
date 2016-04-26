@@ -129,7 +129,7 @@ router.put("/:id", function(req, res, next) {
 /**
  * Pass a level
  */
-router.post('/passLevelUser/:number/', auth.mustBeAuthenticated, auth.getUserInfo,
+router.post('/passLevelUser/:code/', auth.mustBeAuthenticated, auth.getUserInfo,
     function(req, res, next) {
 
 
@@ -139,7 +139,7 @@ router.post('/passLevelUser/:number/', auth.mustBeAuthenticated, auth.getUserInf
         console.log(user);
 
         var level = Level.findOne({
-            number: req.params.number
+            code: req.params.code
         }, function(err, level) {
             if (err) {
                 res.status(500).send(err);
@@ -160,11 +160,12 @@ router.post('/passLevelUser/:number/', auth.mustBeAuthenticated, auth.getUserInf
 
             var newInput = {
                 "level_id": level._id,
+                "code": level.code,
                 "result": newResult
             };
-
+            //res.send(newInput);
             user.passed_levels.push(newInput);
-
+            user.markModified('passed_levels');
 
             user.save(function(err, updatedUser) {
                 if (err) {

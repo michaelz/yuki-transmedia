@@ -29,7 +29,8 @@ var UserSchema = new Schema({
                 required: false,
                 ref: "Level"
             },
-            result: String //here we can save any result we want for any game that has been passed
+            result: String,
+            code: String //here we can save any result we want for any game that has been passed
 
         }
 
@@ -53,4 +54,3 @@ var UserSchema = new Schema({
  });*/
 
 mongoose.model('User', UserSchema);
-
