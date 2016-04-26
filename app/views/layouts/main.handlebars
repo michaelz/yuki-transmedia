@@ -36,7 +36,15 @@
 </head>
 <body class="body-{{pagename}}">
   <header class="mainHeader">
-    <a href="/"><img class="logo" src="/img/logo.png" alt="logo"/></a>
+    <div class="topmenu">
+      <a href="/"><img class="logo" src="/img/logo.png" alt="logo"/></a>
+      <div class="round-audio-button" style="display:none">
+          <div class="round-audio-button-circle">
+              <span class="round-icon icon-mute"></span>
+          </div>
+      </div>
+    </div>
+
   </header>
 
   <div class="square">
@@ -47,12 +55,9 @@
                 <span class="round-icon icon-open"></span>
             </div>
         </div>
+        <!--Gestion de l'audio-->
+        <audio class="lecteurAudio" controls preload="none"></audio>
 
-        <div class="round-audio-button" style="display:none">
-            <div class="round-audio-button-circle">
-                <span class="round-icon icon-open"></span>
-            </div>
-        </div>
 
 
         {{{body}}}

@@ -47,7 +47,12 @@ a {
   border-top: none;
   background: rgba($color-white,0.5);
 }
-
+.topmenu {
+  width: 90vw;
+  max-width: 80vh;
+  margin: 0 auto;
+  position:relative;
+}
 // Disable square for some pages on mobile (keyboard)
 
     @media screen and (max-device-width: 600px) {
@@ -223,28 +228,23 @@ audio {
   .round-audio-button-circle {
       position: absolute;
       top: 10px;
-      left: 430px;
-      border: 2px solid #cfdcec;
-      border-radius: 50%;
-      background: #2a738e;
-      box-shadow: 0 0 3px rgba(0,0,0,0.6);
-      &:hover {
-          background:darken(#2a738e,10);
-          cursor: pointer;
-      }
-      .icon-close:before {
+      right: 0px;
+
+      .icon-loud:before {
           @include icon($fa-var-volume-up);
+          cursor:pointer;
       }
-      .icon-open:before {
+      .icon-mute:before {
           @include icon($fa-var-volume-off);
+          cursor:pointer;
       }
-      .icon-close:before, .icon-open:before {
+      .icon-loud:before, .icon-mute:before {
           text-align:center;
           width: 40px;
           height:40px;
           line-height:40px;
           font-size: 20px;
-          color:$color-white;
+          color:$color-grey;
           display:block;
       }
   }
