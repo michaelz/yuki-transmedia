@@ -156,7 +156,7 @@ a {
     text-align: left;
     border: 2px solid $color-dialogue;
     z-index: 11;
-    background-color: rgba(#E4EFFF, 0.7);
+    background-color: rgba($color-dialogue-bg, 0.6);
     .dialogue-personnage {
         display:inline;
         font-size: 1em;
