@@ -5,10 +5,10 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var LevelSchema = new Schema({
-    number: Number,
+    number: {type: Number, unique: true, required: true},
     name: String,
     code: String,
-    release_date: Date,
+    release_date: {type: Date, unique: true, required: true},
     additional_info: String,
     description: String,
     clue: {
