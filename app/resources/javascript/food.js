@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+    $('.round-audio-button').show();
+    $("audio").append('<source class="audioSource" src="/audio/nourriture/HotSprings-DerekAndBrandonFiechter.mp3" type="audio/mpeg">');
+
     $('.round-info-button').hide();
     $('.img').hide();
     $('.infoBox').hide();

@@ -2,6 +2,8 @@
  *intro
  */
 $(document).ready(function() {
+  $('.round-audio-button').show();
+    $("audio").append('<source class="audioSource" src="/audio/popculture/DemAhFraudulant-Kamilean.mp3" type="audio/mpeg">');
 
     //Définition des variables
     ///////////////////////////////////////////////////////////////
