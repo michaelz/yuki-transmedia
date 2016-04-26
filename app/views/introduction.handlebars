@@ -4,10 +4,11 @@
         <iframe width="560" height="315" src="https://www.youtube.com/embed/CVUOTzoVeZA" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="actions">
-    {{#if auth}}
+    {{#if user}}
     	<a class="btn back-map" href="/">Retour aux mondes</a>
     {{else}}
     	<a class="btn tologin" href="/login">Passer la vidéo</a>
+        <p style="color:white">Cliquez pour se connecter et commencer le jeu !</p>
     {{/if}}
     </div>
 </div>

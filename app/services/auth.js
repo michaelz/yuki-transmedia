@@ -7,8 +7,17 @@ module.exports = {
     mustBeAuthenticated: function(req, res, next) {
         //console.log(req.session.plop);
         if (req.session && req.session.user) {
-            console.log(req.session.user);
-            return next();
+            User.findOne({
+                'username': req.session.user
+            }, function(err, user) {
+                if (err) {
+                    res.jerror('no user found')
+                    return;
+                }
+                req.connectedUser = user;
+                return next();
+            });
+            return;
         }
         // redirect to login with query
         res.redirect('/login'); // can be fun to add a ?q= to get the original query

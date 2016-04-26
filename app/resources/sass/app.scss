@@ -52,6 +52,11 @@ a {
   max-width: 80vh;
   margin: 0 auto;
   position:relative;
+  .welcome {
+      position:absolute;
+      top:2em;
+      right: 14%;
+  }
 }
 // Disable square for some pages on mobile (keyboard)
 

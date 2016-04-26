@@ -46,14 +46,14 @@ router.get('/', function(req, res,
     if (req.session.user) {
         res.render('map', {
             pagename: 'map',
-            title: 'Mondes'
+            title: 'Mondes',
+            user: req.session.user
         });
     } else {
         res.render('introduction', {
             pagename: 'introduction',
-            title: 'Yuki chez Ojiisan',
-            auth: false
-        });   
+            title: 'Yuki et la tasse brisée'
+        });
     }
 });
 
@@ -65,7 +65,7 @@ router.get('/mondes/ojiisan', auth.mustBeAuthenticated, function(req, res, next)
     res.render('introduction', {
         pagename: 'introduction',
         title: 'Yuki chez Ojiisan',
-        auth: true
+        user: req.connectedUser.username
     });
 });
 
@@ -83,26 +83,24 @@ router.get('/login', auth.cantBeAuthenticated, function(req, res, next) {
  * admin route.
  */
 router.get('/admin', auth.mustBeAuthenticated, function(req, res, next) {
-    console.log(req.session.user + " dsdksdnf");
-
     if (req.session.user == "admin") {
         res.render('admin', {
             pagename: 'admin',
-            title: 'Admin'
-        });  
-    } else {
-        res.render('map', {
-            pagename: 'map',
-            title: 'Mondes'
+            title: 'Admin',
+            user: req.connectedUser.username
         });
+    } else {
+        res.redirect('/');
     }
 });
 
-router.get('/admin/ajoutMonde', auth.mustBeAuthenticated, function(req, res, next) {
+router.get('/admin/ajoutMonde', auth.mustBeAuthenticated, function(req, res,
+    next) {
     if (req.session.user == "admin") {
         res.render('formLevel', {
             pagename: 'formLevel',
-            title: 'Nouveau monde'
+            title: 'Nouveau monde',
+            user: req.connectedUser.username
         });
     } else {
         res.render('map', {
@@ -116,13 +114,11 @@ router.get('/admin/:id', auth.mustBeAuthenticated, function(req, res, next) {
     if (req.session.user == "admin") {
         res.render('formLevel', {
             pagename: 'formLevel',
-            title: 'Modifier un monde'
+            title: 'Modifier un monde',
+            user: req.connectedUser.username
         });
     } else {
-        res.render('map', {
-            pagename: 'map',
-            title: 'Mondes'
-        });
+        res.redirect('/');
     }
 });
 
@@ -141,20 +137,24 @@ router.get('/regok', auth.cantBeAuthenticated, function(req, res, next) {
 /**
  * MartialArts route.
  */
-router.get('/mondes/artsmartiaux', auth.mustBeAuthenticated, level.getLevelAuth("martialarts"), function(req, res, next) {
+router.get('/mondes/artsmartiaux', auth.mustBeAuthenticated, level.getLevelAuth(
+    "martialarts"), function(req, res, next) {
     res.render('martialArts', {
         pagename: 'martialarts',
-        title: 'martialArts page'
+        title: 'martialArts page',
+        user: req.connectedUser.username
     });
 });
 
 /**
  * Calligraphy route.
  */
-router.get('/mondes/calligraphie', auth.mustBeAuthenticated, level.getLevelAuth("calligraphy"), function(req, res, next) {
+router.get('/mondes/calligraphie', auth.mustBeAuthenticated, level.getLevelAuth(
+    "calligraphy"), function(req, res, next) {
     res.render('calligraphy', {
         pagename: 'calligraphy',
-        title: 'Calligraphy page'
+        title: 'Calligraphy page',
+        user: req.connectedUser.username
     });
 });
 
@@ -162,30 +162,36 @@ router.get('/mondes/calligraphie', auth.mustBeAuthenticated, level.getLevelAuth(
 /**
  * Food route.
  */
-router.get('/mondes/nourriture', auth.mustBeAuthenticated, level.getLevelAuth("food"), function(req, res, next) {
+router.get('/mondes/nourriture', auth.mustBeAuthenticated, level.getLevelAuth(
+    "food"), function(req, res, next) {
     res.render('food', {
         pagename: 'food',
-        title: 'food Quizz page'
+        title: 'food Quizz page',
+        user: req.connectedUser.username
     });
 });
 
 /**
  * Origamis route.
  */
-router.get('/mondes/origamis', auth.mustBeAuthenticated, level.getLevelAuth("origami"), function(req, res, next) {
+router.get('/mondes/origamis', auth.mustBeAuthenticated, level.getLevelAuth(
+    "origami"), function(req, res, next) {
     res.render('origami', {
         pagename: 'origami',
-        title: 'Yuki dans le mondes des origamis'
+        title: 'Yuki dans le mondes des origamis',
+        user: req.connectedUser.username
     });
 });
 
 /**
  * Pop culture route.
  */
-router.get('/mondes/popculture', auth.mustBeAuthenticated, level.getLevelAuth("popculture"), function(req, res, next) {
+router.get('/mondes/popculture', auth.mustBeAuthenticated, level.getLevelAuth(
+    "popculture"), function(req, res, next) {
     res.render('popculture', {
         pagename: 'popculture',
-        title: 'Yuki dans le monde de la Pop culture'
+        title: 'Yuki dans le monde de la Pop culture',
+        user: req.connectedUser.username
     });
 });
 
@@ -194,9 +200,11 @@ router.get('/mondes/popculture', auth.mustBeAuthenticated, level.getLevelAuth("p
 /**
  * Outro route.
  */
-router.get('/outro', auth.mustBeAuthenticated, level.getLevelAuth("outro"), function(req, res, next) {
-    res.render('outro', {
-        pagename: 'outro',
-        title: 'outro page'
+router.get('/outro', auth.mustBeAuthenticated, level.getLevelAuth("outro"),
+    function(req, res, next) {
+        res.render('outro', {
+            pagename: 'outro',
+            title: 'outro page',
+            user: req.connectedUser.username
+        });
     });
-});

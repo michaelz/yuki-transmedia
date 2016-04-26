@@ -2,9 +2,9 @@ var express = require('express'),
     router = express.Router(),
     mongoose = require('mongoose'),
     Level = mongoose.model('Level'),
-    User = mongoose.model('User');
-tools = require('../services/tools');
-auth = require('../services/auth');
+    User = mongoose.model('User'),
+    tools = require('../services/tools'),
+    auth = require('../services/auth');
 
 
 module.exports = function(app) {
@@ -69,7 +69,7 @@ router.post('/', function(req, res, next) {
 
     level.save(function(err, CreatedLevel) {
         if (err) {
-            res.status(500).send(err);
+            res.jerror(err);
             return;
         }
         res.send(CreatedLevel);
