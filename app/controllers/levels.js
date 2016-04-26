@@ -107,15 +107,13 @@ router.put("/:id", function(req, res, next) {
         } else if (!level) {
             res.status(404).send("level not found");
         }
+
         level.code = req.body.code;
         level.url = req.body.url;
-        level.number = req.body.number;
-        level.name = req.body.name;
         level.release_date = req.body.release_date;
-        level.additional_info = req.body.additional_info;
-        level.description = req.body.description;
-        level.clue = req.body.clue;
-        level.solution = req.body.solution;
+
+        if (req.body.clue) level.clue = req.body.clue;
+        if (req.body.solution) level.solution = req.body.solution;
 
         level.save(req.body, function(err, updatedLevel) {
             if (err) {
