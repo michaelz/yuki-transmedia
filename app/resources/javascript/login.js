@@ -159,7 +159,7 @@ $(document).ready(function() {
                 success: function(data) {
                     if (data.status == 'success') {
                         window.location.replace(
-                            '/regok');
+                            '/');
                     } else {
                         $("#loginError").append(
                             '<p class="error">Problème</p>'

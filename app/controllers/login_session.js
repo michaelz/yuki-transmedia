@@ -43,6 +43,7 @@ router.post('/register', function(req, res) {
             res.status(500).send(err);
             return;
         }
+        req.session.user = user.username; // Automated login on register
         res.jsend({
             username: user.username,
             email: user.email
