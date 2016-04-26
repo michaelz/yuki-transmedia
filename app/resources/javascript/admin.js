@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  $('.round-audio-button').show();
+    $("audio").append('<source class="audioSource" src="/audio/admin/NyanCat.mp3" type="audio/mpeg">');
+
     $.get( "/api/level")
         .done(function(data) {
             $.each(data, function( index, value ) {

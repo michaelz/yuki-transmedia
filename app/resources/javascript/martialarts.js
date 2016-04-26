@@ -72,24 +72,16 @@ $(document).ready(function() {
         }
 
         if (indexdialoguescript === 12) {
-          //$( ".body-martialarts" ).fadeOut();
-          //$( ".body-martialarts-dojo" ).fadeIn();
+          $( ".dojo-front" ).fadeOut();
+          $( ".dojo-inside" ).fadeIn();
           $('#yuki_face').fadeOut();
           $('#yuki_profil').fadeIn();
-
-          $("audio")[0].volume = 1;
-          $("audio").animate({volume: 0}, 800);
+          $( ".dialogue" ).removeClass( "dialogue-arts-martiaux" )
 
 
-            $("audio")[0].volume = 0;
-            $("audio").animate({volume: 1}, 800);
             var fileSrc = "/audio/arts-martiaux/NinjaMaster-DerekFiechter.mp3"
             $("audio").attr("src",fileSrc).trigger("play");
 
-
-
-
-          //$("audio").append('<source class="audioSource" src="/audio/arts-martiaux/NinjaMaster-DerekFiechter.mp3" type="audio/mpeg">');
 
 
         }

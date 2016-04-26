@@ -58,6 +58,8 @@ var texts = {
 }
 
 $(document).ready(function() {
+    $('.round-audio-button').show();
+    $("audio").append('<source class="audioSource" src="/audio/calligraphie/CherryBlossoms-DerekFiechter.mp3" type="audio/mpeg">');
 
     $('.round-info-button').show();
     $('.img').hide();

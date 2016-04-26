@@ -1,6 +1,9 @@
 // TODO Appel aux webservices
 $(document).ready(function() {
     $('.round-info-button').hide();
+    $('.round-audio-button').show();
+
+      $("audio").append('<source class="audioSource" src="/audio/carte/65SecNatureSoundsEnchantedForest-TheHonestGuys.mp3" type="audio/mpeg">');
 
 
     // Get activated levels
