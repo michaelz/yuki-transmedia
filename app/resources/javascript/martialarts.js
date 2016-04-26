@@ -101,6 +101,7 @@ $(document).ready(function() {
     //Masquage des éléments
     $('.martialArtsBtn').hide();
     $('.round-info-button').hide();
+    $('.round-audio-button').show();
     $('#martial-arts-info').hide();
     $('#martialArtsDialogue').hide();
     $(".lvl-achieved").hide();
