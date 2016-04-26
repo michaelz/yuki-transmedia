@@ -245,11 +245,11 @@ audio {
       right: 0px;
 
       .icon-loud:before {
-          @include icon($fa-var-volume-up);
+          @include icon($fa-var-volume-off);
           cursor:pointer;
       }
       .icon-mute:before {
-          @include icon($fa-var-volume-off);
+          @include icon($fa-var-volume-up);
           cursor:pointer;
       }
       .icon-loud:before, .icon-mute:before {
