@@ -5,6 +5,7 @@ var express = require('express'),
     session = require('express-session'),
     MongoDBStore = require('connect-mongodb-session')(session),
     auth = require('../services/auth');
+var level = require('../services/level');
 
 module.exports = function(app) {
     app.use('/', router);
@@ -60,7 +61,7 @@ router.get('/', function(req, res,
 /**
  * Introduction route.
  */
-router.get('/mondes/ojiisan', function(req, res, next) {
+router.get('/mondes/ojiisan', auth.mustBeAuthenticated, function(req, res, next) {
     res.render('introduction', {
         pagename: 'introduction',
         title: 'Yuki chez Ojiisan',
@@ -93,7 +94,7 @@ router.get('/regok', auth.cantBeAuthenticated, function(req, res, next) {
 /**
  * MartialArts route.
  */
-router.get('/mondes/artsmartiaux', function(req, res, next) {
+router.get('/mondes/artsmartiaux', auth.mustBeAuthenticated, level.getLevelAuth(1), function(req, res, next) {
     res.render('martialArts', {
         pagename: 'martialarts',
         title: 'martialArts page'
@@ -103,7 +104,7 @@ router.get('/mondes/artsmartiaux', function(req, res, next) {
 /**
  * Calligraphy route.
  */
-router.get('/mondes/calligraphie', function(req, res, next) {
+router.get('/mondes/calligraphie', auth.mustBeAuthenticated, level.getLevelAuth(2), function(req, res, next) {
     res.render('calligraphy', {
         pagename: 'calligraphy',
         title: 'Calligraphy page'
@@ -114,7 +115,7 @@ router.get('/mondes/calligraphie', function(req, res, next) {
 /**
  * Food route.
  */
-router.get('/mondes/nourriture', function(req, res, next) {
+router.get('/mondes/nourriture', auth.mustBeAuthenticated, level.getLevelAuth(4), function(req, res, next) {
     res.render('food', {
         pagename: 'food',
         title: 'food Quizz page'
@@ -124,7 +125,7 @@ router.get('/mondes/nourriture', function(req, res, next) {
 /**
  * Origamis route.
  */
-router.get('/mondes/origamis', function(req, res, next) {
+router.get('/mondes/origamis', auth.mustBeAuthenticated, level.getLevelAuth(3), function(req, res, next) {
     res.render('origami', {
         pagename: 'origami',
         title: 'Yuki dans le mondes des origamis'
@@ -134,7 +135,7 @@ router.get('/mondes/origamis', function(req, res, next) {
 /**
  * Pop culture route.
  */
-router.get('/mondes/popculture', function(req, res, next) {
+router.get('/mondes/popculture', auth.mustBeAuthenticated, level.getLevelAuth(5), function(req, res, next) {
     res.render('popculture', {
         pagename: 'popculture',
         title: 'Yuki dans le monde de la Pop culture'
@@ -146,7 +147,7 @@ router.get('/mondes/popculture', function(req, res, next) {
 /**
  * Outro route.
  */
-router.get('/outro', function(req, res, next) {
+router.get('/outro', auth.mustBeAuthenticated, level.getLevelAuth(6), function(req, res, next) {
     res.render('outro', {
         pagename: 'outro',
         title: 'outro page'
