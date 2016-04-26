@@ -3,7 +3,8 @@ var express = require('express'),
     router = express.Router(),
     mongoose = require('mongoose'),
     session = require('express-session'),
-    User = mongoose.model('User');
+    auth = require('../services/auth');
+User = mongoose.model('User');
 
 require('express-jsend');
 
@@ -14,21 +15,21 @@ router.use(session({
 }));
 
 
-module.exports = function (app) {
+module.exports = function(app) {
     app.use('/api/user', router);
 };
 
 
-router.get("/me", function (req, res) {
-    res.send(req.cookies);
+router.get("/me", auth.mustBeAuthenticated, auth.getUserInfo, function(req, res) {
+    res.jsend(req.connectedUser);
 
 });
 
 
 
 //Retourne la liste des utilisateurs
-router.get('/', function (req, res, next) {
-    User.find(function (err, user) {
+router.get('/', function(req, res, next) {
+    User.find(function(err, user) {
         if (err) {
             res.status(500).send(err);
             return;
@@ -41,8 +42,8 @@ router.get('/', function (req, res, next) {
 });
 
 //Ajout d'un utilisateur
-router.post('/', function (req, res, next) {
-    User.find(function (err, user) {
+router.post('/', function(req, res, next) {
+    User.find(function(err, user) {
         if (err) {
             res.status(500).send(err);
             return;
@@ -55,8 +56,8 @@ router.post('/', function (req, res, next) {
 });
 
 //Affiche un utilisateur
-router.get('/:id', function (req, res, next) {
-    User.findById(req.params.id, function (err, user) {
+router.get('/:id', function(req, res, next) {
+    User.findById(req.params.id, function(err, user) {
         if (err) {
             res.status(500).send(err);
             return;
@@ -73,14 +74,13 @@ router.get('/:id', function (req, res, next) {
  * modify a user
  */
 
-router.put("/:id", function (req, res, next) {
+router.put("/:id", function(req, res, next) {
     var userId = req.params.id;
-    User.findById(userId, function (err, level) {
+    User.findById(userId, function(err, level) {
         if (err) {
             res.status(500).send(err);
             return;
-        }
-        else if (!user) {
+        } else if (!user) {
             res.status(404).send("user not found");
         }
         user.email = req.body.email;
@@ -89,7 +89,7 @@ router.put("/:id", function (req, res, next) {
         user.solved_solutions = req.body.solved_solutions;
         user.passed_levels = req.body.passed_levels;
 
-        user.save(req.body, function (err, updatedUser) {
+        user.save(req.body, function(err, updatedUser) {
             if (err) {
                 res.status(500).send(err);
                 update();
@@ -98,7 +98,3 @@ router.put("/:id", function (req, res, next) {
         })
     });
 });
-
-
-
-

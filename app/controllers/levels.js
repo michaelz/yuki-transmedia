@@ -7,16 +7,16 @@ tools = require('../services/tools');
 auth = require('../services/auth');
 
 
-module.exports = function (app) {
+module.exports = function(app) {
     app.use('/api/level', router);
 };
 
 /**
  * get all levels
  */
-router.get('/', function (req, res, next) {
+router.get('/', function(req, res, next) {
 
-    Level.find(function (err, levels) {
+    Level.find(function(err, levels) {
         if (err) {
             res.status(500).send(err);
             return;
@@ -26,15 +26,31 @@ router.get('/', function (req, res, next) {
 
 });
 
+/**
+ * Get all active levels
+ */
+router.get('/active', function(req, res, next) {
+    Level.find({
+        release_date: {
+            $lt: Date.now()
+        },
+    }).exec(function(err, levels) {
+        if (err) {
+            res.status(500).send(err);
+            return
+        }
+        res.send(levels);
+    })
+});
 
 /**
  * get a specific level
  */
-router.get('/:id', function (req, res, next) {
+router.get('/:id', function(req, res, next) {
 
 
     var levelId = req.params.id;
-    Level.findById(levelId, function (err, level) {
+    Level.findById(levelId, function(err, level) {
         if (err) {
             res.status(500).send(err);
             return;
@@ -48,10 +64,10 @@ router.get('/:id', function (req, res, next) {
 /**
  * post a level
  */
-router.post('/', function (req, res, next) {
+router.post('/', function(req, res, next) {
     var level = new Level(req.body);
 
-    level.save(function (err, CreatedLevel) {
+    level.save(function(err, CreatedLevel) {
         if (err) {
             res.status(500).send(err);
             return;
@@ -63,11 +79,11 @@ router.post('/', function (req, res, next) {
 /**
  * delete level
  */
-router.delete("/:id", function (req, res, next) {
+router.delete("/:id", function(req, res, next) {
     var levelId = req.params.id;
     Level.remove({
         _id: levelId
-    }, function (err, data) {
+    }, function(err, data) {
         if (err) {
             res.status(500).send(err);
             return;
@@ -82,14 +98,13 @@ router.delete("/:id", function (req, res, next) {
  * modify a level
  */
 
-router.put("/:id", function (req, res, next) {
+router.put("/:id", function(req, res, next) {
     var levelId = req.params.id;
-    Level.findById(levelId, function (err, level) {
+    Level.findById(levelId, function(err, level) {
         if (err) {
             res.status(500).send(err);
             return;
-        }
-        else if (!level) {
+        } else if (!level) {
             res.status(404).send("level not found");
         }
         level.question = req.body.question;
@@ -101,7 +116,7 @@ router.put("/:id", function (req, res, next) {
         level.clue = req.body.clue;
         level.solution = req.body.solution;
 
-        level.save(req.body, function (err, updatedLevel) {
+        level.save(req.body, function(err, updatedLevel) {
             if (err) {
                 res.status(500).send(err);
                 update();
@@ -115,52 +130,55 @@ router.put("/:id", function (req, res, next) {
 /**
  * Pass a level
  */
-router.post('/passLevelUser/:number/', auth.mustBeAuthenticated, auth.getUserInfo, function (req, res, next) {
+router.post('/passLevelUser/:number/', auth.mustBeAuthenticated, auth.getUserInfo,
+    function(req, res, next) {
 
 
-    var user = req.connectedUser;
+        var user = req.connectedUser;
 
 
-    console.log(user);
+        console.log(user);
 
-    var level = Level.findOne({number:  req.params.number}, function (err, level) {
-        if (err) {
-            res.status(500).send(err);
-            return;
-        } else if (!level) {
-            res.status(404).send("level not found");
-        }
-
-
-        var newResult = "";
-
-        if (req.body.result) {
-            newResult = req.body.result;
-
-        }
-        //assign level and result
-
-
-        var newInput = {
-            "level_id": level._id,
-            "result": newResult
-        };
-
-        user.passed_levels.push(newInput);
-
-
-        user.save(function (err, updatedUser) {
+        var level = Level.findOne({
+            number: req.params.number
+        }, function(err, level) {
             if (err) {
                 res.status(500).send(err);
                 return;
+            } else if (!level) {
+                res.status(404).send("level not found");
             }
-            res.send(updatedUser);
+
+
+            var newResult = "";
+
+            if (req.body.result) {
+                newResult = req.body.result;
+
+            }
+            //assign level and result
+
+
+            var newInput = {
+                "level_id": level._id,
+                "result": newResult
+            };
+
+            user.passed_levels.push(newInput);
+
+
+            user.save(function(err, updatedUser) {
+                if (err) {
+                    res.status(500).send(err);
+                    return;
+                }
+                res.send(updatedUser);
+            });
+
+
         });
 
-
     });
-
-});
 
 /*
  passed_levels: [
