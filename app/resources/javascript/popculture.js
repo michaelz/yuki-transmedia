@@ -15,7 +15,7 @@ $(document).ready(function() {
     var indexdialoguepersonnage = 0;
     var indexdialoguescript = 0;
     var dialoguescript = [
-        "Regade! Il est entré ici! Mince, nous ne pouvons pas entrer, la porte est bloquée.",
+        "Regarde! Il est entré ici! Mince, nous ne pouvons pas entrer, la porte est bloquée.",
         "Bonjour, que se passe-t-il? Je peux vous aider?",
         "On doit rentrer dans ce bâtiment mais les portes refusent de s’ouvrir.",
         "Je sais pourquoi, les portes sont équipées d’un programme qui reconnaît les visages et bloque l’accès à certaines personnes. Celui que vous suivez a bloqué l’accès pour vous.",
