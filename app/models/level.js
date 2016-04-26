@@ -11,6 +11,7 @@ var LevelSchema = new Schema({
     release_date: {type: Date, unique: true, required: true},
     additional_info: String,
     description: String,
+    url: String,
     clue: {
         url: String,
         alt: String,
