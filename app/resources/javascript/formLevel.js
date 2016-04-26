@@ -15,12 +15,8 @@ $(document).ready(function() {
     if (id) {
         $.get( "/api/level/" + id)
             .done(function(data) {
-                $("#num").val(data.number);
-                $("#nom").val(data.name);
                 $("#code").val(data.code);
                 $("#date_sortie").val(data.release_date);
-                $("#info_sup").val(data.additional_info);
-                $("#desc").val(data.description);
                 $("#url").val(data.url);
             })
             .fail(function() {
@@ -32,12 +28,8 @@ $(document).ready(function() {
 //Function envoyant les données des formulaires (créer un level, modifier un level) pour créer ou modifier un level
 function capture() {
     var level = {};
-    level.number = $("#num").val();
-    level.name = $("#nom").val();
     level.code = $("#code").val();
     level.release_date = $("#date_sortie").val();
-    level.additional_info = $("#info_sup").val();
-    level.description = $("#desc").val();
     level.url = $("#url").val();
 
     //Sélectionne la bonne root pour le bon formulaire

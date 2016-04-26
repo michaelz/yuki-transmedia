@@ -141,7 +141,7 @@ router.get('/regok', auth.cantBeAuthenticated, function(req, res, next) {
 /**
  * MartialArts route.
  */
-router.get('/mondes/artsmartiaux', auth.mustBeAuthenticated, level.getLevelAuth(1), function(req, res, next) {
+router.get('/mondes/artsmartiaux', auth.mustBeAuthenticated, level.getLevelAuth("artsmartiaux"), function(req, res, next) {
     res.render('martialArts', {
         pagename: 'martialarts',
         title: 'martialArts page'
@@ -151,7 +151,7 @@ router.get('/mondes/artsmartiaux', auth.mustBeAuthenticated, level.getLevelAuth(
 /**
  * Calligraphy route.
  */
-router.get('/mondes/calligraphie', auth.mustBeAuthenticated, level.getLevelAuth(2), function(req, res, next) {
+router.get('/mondes/calligraphie', auth.mustBeAuthenticated, level.getLevelAuth("calligraphie"), function(req, res, next) {
     res.render('calligraphy', {
         pagename: 'calligraphy',
         title: 'Calligraphy page'
@@ -162,7 +162,7 @@ router.get('/mondes/calligraphie', auth.mustBeAuthenticated, level.getLevelAuth(
 /**
  * Food route.
  */
-router.get('/mondes/nourriture', auth.mustBeAuthenticated, level.getLevelAuth(4), function(req, res, next) {
+router.get('/mondes/nourriture', auth.mustBeAuthenticated, level.getLevelAuth("nourriture"), function(req, res, next) {
     res.render('food', {
         pagename: 'food',
         title: 'food Quizz page'
@@ -172,7 +172,7 @@ router.get('/mondes/nourriture', auth.mustBeAuthenticated, level.getLevelAuth(4)
 /**
  * Origamis route.
  */
-router.get('/mondes/origamis', auth.mustBeAuthenticated, level.getLevelAuth(3), function(req, res, next) {
+router.get('/mondes/origamis', auth.mustBeAuthenticated, level.getLevelAuth("origamis"), function(req, res, next) {
     res.render('origami', {
         pagename: 'origami',
         title: 'Yuki dans le mondes des origamis'
@@ -182,7 +182,7 @@ router.get('/mondes/origamis', auth.mustBeAuthenticated, level.getLevelAuth(3), 
 /**
  * Pop culture route.
  */
-router.get('/mondes/popculture', auth.mustBeAuthenticated, level.getLevelAuth(5), function(req, res, next) {
+router.get('/mondes/popculture', auth.mustBeAuthenticated, level.getLevelAuth("popculture"), function(req, res, next) {
     res.render('popculture', {
         pagename: 'popculture',
         title: 'Yuki dans le monde de la Pop culture'
@@ -194,7 +194,7 @@ router.get('/mondes/popculture', auth.mustBeAuthenticated, level.getLevelAuth(5)
 /**
  * Outro route.
  */
-router.get('/outro', auth.mustBeAuthenticated, level.getLevelAuth(6), function(req, res, next) {
+router.get('/outro', auth.mustBeAuthenticated, level.getLevelAuth("outro"), function(req, res, next) {
     res.render('outro', {
         pagename: 'outro',
         title: 'outro page'
