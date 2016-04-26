@@ -79,6 +79,53 @@ router.get('/login', auth.cantBeAuthenticated, function(req, res, next) {
     });
 });
 
+/**
+ * admin route.
+ */
+router.get('/admin', auth.mustBeAuthenticated, function(req, res, next) {
+    console.log(req.session.user + " dsdksdnf");
+
+    if (req.session.user == "admin") {
+        res.render('admin', {
+            pagename: 'admin',
+            title: 'Admin'
+        });  
+    } else {
+        res.render('map', {
+            pagename: 'map',
+            title: 'Mondes'
+        });
+    }
+});
+
+router.get('/admin/ajoutMonde', auth.mustBeAuthenticated, function(req, res, next) {
+    if (req.session.user == "admin") {
+        res.render('formLevel', {
+            pagename: 'formLevel',
+            title: 'Nouveau monde'
+        });
+    } else {
+        res.render('map', {
+            pagename: 'map',
+            title: 'Mondes'
+        });
+    }
+});
+
+router.get('/admin/:id', auth.mustBeAuthenticated, function(req, res, next) {
+    if (req.session.user == "admin") {
+        res.render('formLevel', {
+            pagename: 'formLevel',
+            title: 'Modifier un monde'
+        });
+    } else {
+        res.render('map', {
+            pagename: 'map',
+            title: 'Mondes'
+        });
+    }
+});
+
 /*
  * Use the empty template to say thank you for being authenticated
  */
