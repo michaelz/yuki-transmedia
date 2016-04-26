@@ -39,7 +39,7 @@ function capture() {
     level.additional_info = $("#info_sup").val();
     level.description = $("#desc").val();
     level.url = $("#url").val();
-    
+
     //Sélectionne la bonne root pour le bon formulaire
     if (id == "ajoutMonde") {
         $.ajax({

@@ -107,7 +107,8 @@ router.put("/:id", function(req, res, next) {
         } else if (!level) {
             res.status(404).send("level not found");
         }
-        level.question = req.body.question;
+        level.code = req.body.code;
+        level.url = req.body.url;
         level.number = req.body.number;
         level.name = req.body.name;
         level.release_date = req.body.release_date;
