@@ -233,7 +233,7 @@ audio {
           cursor: pointer;
       }
       .icon-close:before {
-          @include icon($fa-var-times);
+          @include icon($fa-var-volume-up);
       }
       .icon-open:before {
           @include icon($fa-var-volume-off);
