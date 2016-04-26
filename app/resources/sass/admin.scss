@@ -1,0 +1,37 @@
+@import "components/variables";
+.body-admin {
+    .square {
+        width: 80%;
+        max-width: 1000px;
+        height: auto;
+    }
+}
+.tabLevel {
+    
+    h1.adminTitle {
+        font-family: $font-body;
+    }
+    a.btn {
+        margin-top: 1em;
+        display:inline-block;
+        margin-bottom: 1em;
+    }
+    padding: 1em;
+    table {
+        width: 100%;
+        overflow-x: auto;
+        border:none;
+        thead {
+            font-weight:bold;
+            td {
+                background: #c9c9c9;
+            }
+        }
+        td {
+
+            padding: 0.5em;
+            border: 1px solid #d0d0d0;
+            background: #eee;
+        }
+    }
+}
