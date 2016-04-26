@@ -141,7 +141,7 @@ router.get('/regok', auth.cantBeAuthenticated, function(req, res, next) {
 /**
  * MartialArts route.
  */
-router.get('/mondes/artsmartiaux', auth.mustBeAuthenticated, level.getLevelAuth("artsmartiaux"), function(req, res, next) {
+router.get('/mondes/artsmartiaux', auth.mustBeAuthenticated, level.getLevelAuth("martialarts"), function(req, res, next) {
     res.render('martialArts', {
         pagename: 'martialarts',
         title: 'martialArts page'
@@ -151,7 +151,7 @@ router.get('/mondes/artsmartiaux', auth.mustBeAuthenticated, level.getLevelAuth(
 /**
  * Calligraphy route.
  */
-router.get('/mondes/calligraphie', auth.mustBeAuthenticated, level.getLevelAuth("calligraphie"), function(req, res, next) {
+router.get('/mondes/calligraphie', auth.mustBeAuthenticated, level.getLevelAuth("calligraphy"), function(req, res, next) {
     res.render('calligraphy', {
         pagename: 'calligraphy',
         title: 'Calligraphy page'
@@ -162,7 +162,7 @@ router.get('/mondes/calligraphie', auth.mustBeAuthenticated, level.getLevelAuth(
 /**
  * Food route.
  */
-router.get('/mondes/nourriture', auth.mustBeAuthenticated, level.getLevelAuth("nourriture"), function(req, res, next) {
+router.get('/mondes/nourriture', auth.mustBeAuthenticated, level.getLevelAuth("food"), function(req, res, next) {
     res.render('food', {
         pagename: 'food',
         title: 'food Quizz page'
@@ -172,7 +172,7 @@ router.get('/mondes/nourriture', auth.mustBeAuthenticated, level.getLevelAuth("n
 /**
  * Origamis route.
  */
-router.get('/mondes/origamis', auth.mustBeAuthenticated, level.getLevelAuth("origamis"), function(req, res, next) {
+router.get('/mondes/origamis', auth.mustBeAuthenticated, level.getLevelAuth("origami"), function(req, res, next) {
     res.render('origami', {
         pagename: 'origami',
         title: 'Yuki dans le mondes des origamis'
