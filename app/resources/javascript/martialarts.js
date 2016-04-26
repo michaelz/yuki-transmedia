@@ -72,8 +72,8 @@ $(document).ready(function() {
         }
 
         if (indexdialoguescript === 12) {
-          //$( ".body-martialarts" ).fadeOut();
-          //$( ".body-martialarts-dojo" ).fadeIn();
+          $( ".dojo-front" ).fadeOut();
+          $( ".dojo-inside" ).fadeIn();
           $('#yuki_face').fadeOut();
           $('#yuki_profil').fadeIn();
 
