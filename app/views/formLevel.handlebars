@@ -1,9 +1,23 @@
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js" ></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.1/jquery.datetimepicker.min.js" ></script>
   <div class="formLevel">
-      Code :
+
+      <div class="form-item">
+          <label>Code :</label>
+
+
       <input placeholder="martialarts" "text" id="code" value=""><br>
-      Date de sortie :
-      <input placeholder="2016-12-31" type="text" id="date_sortie" value=""><br>
-      Url :
+      </div>
+      <div class="form-item">
+
+      <label>Date de sortie</label>
+      <input placeholder="2016-12-31T00:00:00" type="text" id="date_sortie" value="">
+      </div>
+      <div class="form-item">
+      <label>URL</label>
       <input placeholder="mondes/artsmartiaux" type="text" id="url" value=""><br><br>
-      <input type="submit" value="Enregister" onclick="capture();" />
+      </div>
+      <div class="form-item">
+          <input class="btn" type="submit" value="Enregister" onclick="capture();" /><a class="btn" href="/admin">Annuler</a>
+      </div>
   </div>
