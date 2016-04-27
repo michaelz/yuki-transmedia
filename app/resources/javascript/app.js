@@ -1,5 +1,13 @@
 $(document).ready(function() {
-  $("audio").trigger('play');
+  if (!Cookies.get("son")) Cookies.set("son", 1);
+  
+  if (Cookies.get("son") == 1) {	
+  	$("audio").trigger('play');
+  } else {
+  	$(".round-icon").toggleClass("icon-loud icon-mute");
+  	$("audio").trigger('pause');
+  }
+
   $(".round-audio-button").on('click', audio);
 
   function audio() {
@@ -7,8 +15,10 @@ $(document).ready(function() {
 
     if ($('.round-icon').hasClass('icon-loud')) {
       $("audio").trigger('pause');
+      Cookies.set("son", 0);
     } else {
       $("audio").trigger('play');
+      Cookies.set("son", 1);
     }
 }
 
