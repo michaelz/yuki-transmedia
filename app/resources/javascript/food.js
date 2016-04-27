@@ -144,16 +144,17 @@ var nextQuestion = function(currentPos, total) {
             $("#mondes").show();
             $("#msg").empty();
             $("#msg").append("Tu as réussi le défi. Maître Hiramatsu est fière de toi et comme convenu, il te transmet l'indice te permettant de retrouver le morceau de tasse à la Japan Impact.");
-            $(".yukiImage").removeAttr("src");
-            $(".yukiImage").attr("src", "/img/yuki_content.png");
+            //$(".yukiImage").removeAttr("src");
+            console.log("ok");
           });
+          $(".yukImage").attr("src", "/img/yuki_content.png");
         } else {
             $("#quizTXT").append("Dommage");
             $("#mondes").hide();
             $("#msg").empty();
             $("#msg").append("Tu as loupé les révisions. Maître Hiramatsu n'a pas réussi à apprendre correctement son examen. Il te demande gentiment de l'aider une nouvelle fois. Merci de réessayer pour aider Hiramatsu");
             $("#restartQuiz").show();
-            $(".yukImage").removeAttr("src");
+            //$(".yukImage").removeAttr("src");
             $(".yukImage").attr("src", "/img/sprites/yuki_tombe.png");
 
 
