@@ -37,7 +37,12 @@ $(document).ready(function() {
             url: 'mondes/popculture',
             solved: true
 
-        }, {
+        },  {
+            code: 'origami',
+            url: 'mondes/origamis',
+            solved: true
+
+        },{
             code: 'food',
             url: 'mondes/nourriture',
             solved: true

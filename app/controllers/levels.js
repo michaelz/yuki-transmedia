@@ -44,7 +44,7 @@ router.get('/active', function(req, res, next) {
         release_date: {
             $lt: localISOTime
         },
-    }).exec(function(err, levels) { 
+    }).exec(function(err, levels) {
         if (err) {
             res.status(500).send(err);
             return
