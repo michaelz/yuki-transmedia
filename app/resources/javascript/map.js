@@ -2,10 +2,14 @@
 $(document).ready(function() {
     $('.round-info-button').hide();
     $('.round-audio-button').show();
+<<<<<<< HEAD
 
     $("audio").append(
         '<source class="audioSource" src="/audio/carte/65SecNatureSoundsEnchantedForest-TheHonestGuys.mp3" type="audio/mpeg">'
     );
+=======
+      $("audio").append('<source class="audioSource" src="/audio/carte/65SecNatureSoundsEnchantedForest-TheHonestGuys.mp3" type="audio/mpeg">');
+>>>>>>> nettoyage code
 
 
     // Get activated levels
