@@ -42,7 +42,7 @@
         "load-grunt-tasks": "^3.2.0",
         "request": "^2.60.0",
         "time-grunt": "^1.2.1"
-    }
+    },
 
   "name": "yuki-transmedia",
   "version": "0.0.1",
