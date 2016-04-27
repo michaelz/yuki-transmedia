@@ -32,16 +32,17 @@ $(document).ready(function() {
     /**
      * Work with passed levels to show indices
      */
-    $.get('/api/user/me').done(function(data) {
-        var levels = data.data.passed_levels;
-        console.log(levels);
-        levels.forEach(function(data) {
+    $.get('/api/level/passed').done(function(data) {
+
+        console.log(data);
+        //var levels = data.data.passed_levels;
+        /*levels.forEach(function(data) {
             console.log(data);
             var itemSelector = '.item-' + data.code;
             $(itemSelector).addClass("solved");
             $(itemSelector).append("<img src='" + data.clue +
                 "'/>");
-        });
+        });*/
     }).fail(function(err) {
         console.log(err);
     });
@@ -50,15 +51,19 @@ $(document).ready(function() {
     /**
      * Get the japanImpact date to show the clues
      */
-    $.get('/api/level/japanimpact').done(function(japanimpact) {
-
+    $.get('/api/level/japanimpact').done(function(happening) {
+        if (happening) {
+            $('.element .signs').show();
+        } else {
+            console.log('no japanimpact');
+        }
     }).fail(function(err) {
-        console.log('no japanimpact');
-        $('.element .signs').show();
+
     });
 
     $('.element .signs select').on('change', function() {
-        console.log($(this).value());
+        console.log('selected a new one');
+        // TODO: Check all selects and make a post request to check
     });
 
 });

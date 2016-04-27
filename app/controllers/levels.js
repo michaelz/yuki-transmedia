@@ -51,7 +51,39 @@ router.get('/active', function(req, res, next) {
     })
 });
 
-/**x
+router.get('/japanimpact', function(req, res, next) {
+    var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+    var localISOTime = (new Date(Date.now() - tzoffset)).toISOString();
+
+    Level.findOne({
+        code: 'japanimpact'
+    }).exec(function(err, level) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+        // Check if japan impact date is already launched
+        if (new Date(level.release_date) < new Date(
+                localISOTime)) {
+            res.send(true);
+            return;
+        }
+        res.send(false);
+    });
+});
+
+
+/**
+ *  Get passed levels
+ */
+
+router.get('/passed', auth.mustBeAuthenticated, function(req, res, next) {
+    var levels = [];
+    // MANU: ici on a besoin de l'url, de l'image
+    res.send(levels);
+});
+
+/**
  * get a specific level
  */
 router.get('/:id', function(req, res, next) {
@@ -132,10 +164,11 @@ router.put("/:id", function(req, res, next) {
 });
 
 
+
 /**
  * Pass a level
  */
-router.post('/passLevelUser/:code/', auth.mustBeAuthenticated, auth.getUserInfo,
+router.post('/passLevelUser/:code/', auth.mustBeAuthenticated,
     function(req, res, next) {
 
 
