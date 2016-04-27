@@ -6,7 +6,6 @@ $(document).ready(function() {
         '<source class="audioSource" src="/audio/carte/65SecNatureSoundsEnchantedForest-TheHonestGuys.mp3" type="audio/mpeg">'
     );
 
-
     // Get activated levels
     $.get('/api/level/active').done(function(levels) {
         levels.forEach(function(data) {
