@@ -225,8 +225,14 @@ function capture() {
                 "image/jpeg", "image/octet-stream");
             a.download = 'monYuki.jpg';
             a.click();
-            $("#photoBouton").show();
             document.getElementById("myForm").submit();
+            
         }
+    });
+}
+
+function terminerPopculture() {
+    $.post("/api/level/passLevelUser/popculture",{ result: "done"}, function( data ) {
+        window.location.replace("/");
     });
 }
