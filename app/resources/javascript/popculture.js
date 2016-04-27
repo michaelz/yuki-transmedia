@@ -2,7 +2,8 @@
  *intro
  */
 $(document).ready(function() {
-  $('.round-audio-button').show();
+    $('.lvl-achieved').hide();
+    $('.round-audio-button').show();
     $("audio").append('<source class="audioSource" src="/audio/popculture/DemAhFraudulant-Kamilean.mp3" type="audio/mpeg">');
 
     //Définition des variables
@@ -233,6 +234,6 @@ function capture() {
 
 function terminerPopculture() {
     $.post("/api/level/passLevelUser/popculture",{ result: "done"}, function( data ) {
-        window.location.replace("/");
+        $('.lvl-achieved').show();
     });
 }
