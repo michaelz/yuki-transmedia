@@ -1,4 +1,5 @@
 {
+
     "name": "yuki-transmedia",
     "version": "0.0.1",
     "private": true,
@@ -42,4 +43,51 @@
         "request": "^2.60.0",
         "time-grunt": "^1.2.1"
     }
+=======
+  "name": "yuki-transmedia",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "async": "^2.0.0-rc.3",
+    "base64url": "^1.0.6",
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.13.3",
+    "client-sessions": "^0.7.0",
+    "compression": "^1.5.2",
+    "connect-mongodb-session": "^1.1.1",
+    "cookie-parser": "^1.4.1",
+    "cookies": "^0.6.1",
+    "express": "^4.13.3",
+    "express-handlebars": "^3.0.0",
+    "express-jsend": "^0.1.0",
+    "express-session": "^1.13.0",
+    "glob": "^6.0.4",
+    "jquery": "^2.2.1",
+    "jsonwebtoken": "^5.7.0",
+    "mailgun-js": "^0.7.10",
+    "method-override": "^2.3.0",
+    "mongoose": "^4.1.2",
+    "morgan": "^1.6.1",
+    "multer": "^1.1.0",
+    "nodemailer": "^2.3.2",
+    "serve-favicon": "^2.3.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-apidoc": "^0.11.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-develop": "^0.4.0",
+    "grunt-sass": "^1.0.0",
+    "jshint": "^2.9.1",
+    "load-grunt-tasks": "^3.2.0",
+    "request": "^2.60.0",
+    "time-grunt": "^1.2.1"
+  }
+
 }
