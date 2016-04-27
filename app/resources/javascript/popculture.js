@@ -2,7 +2,8 @@
  *intro
  */
 $(document).ready(function() {
-  $('.round-audio-button').show();
+    $('.lvl-achieved').hide();
+    $('.round-audio-button').show();
     $("audio").append('<source class="audioSource" src="/audio/popculture/DemAhFraudulant-Kamilean.mp3" type="audio/mpeg">');
 
     //Définition des variables
@@ -225,8 +226,14 @@ function capture() {
                 "image/jpeg", "image/octet-stream");
             a.download = 'monYuki.jpg';
             a.click();
-            $("#photoBouton").show();
             document.getElementById("myForm").submit();
+            
         }
+    });
+}
+
+function terminerPopculture() {
+    $.post("/api/level/passLevelUser/popculture",{ result: "done"}, function( data ) {
+        $('.lvl-achieved').show();
     });
 }
