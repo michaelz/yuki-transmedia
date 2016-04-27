@@ -3,8 +3,14 @@ var express = require('express'),
     mongoose = require('mongoose'),
     Level = mongoose.model('Level'),
     User = mongoose.model('User'),
-    tools = require('../services/tools'),
-    auth = require('../services/auth');
+
+
+  //  nodemailer = require('nodemailer');
+    mailgun = require('mailgun-js');
+tools = require('../services/tools');
+auth = require('../services/auth');
+
+
 
 
 module.exports = function(app) {
@@ -45,7 +51,7 @@ router.get('/active', function(req, res, next) {
     })
 });
 
-/**
+/**x
  * get a specific level
  */
 router.get('/:id', function(req, res, next) {
@@ -178,6 +184,9 @@ router.post('/passLevelUser/:code/', auth.mustBeAuthenticated, auth.getUserInfo,
         });
 
     });
+
+
+
 
 /*
  passed_levels: [
