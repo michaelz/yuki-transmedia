@@ -17,7 +17,8 @@ module.exports = function(app) {
  */
 router.get('/', function(req, res, next) {
 
-    Level.find({}, "code release_date keys.key clue", function(err, levels) {
+    Level.find({}, "code release_date keys.key clue url", function(err,
+        levels) {
         if (err) {
             res.status(500).send(err);
             return;
@@ -27,7 +28,6 @@ router.get('/', function(req, res, next) {
     //TODO pas envoyer isTrue
 
 });
-
 
 
 
@@ -41,7 +41,8 @@ router.get('/active', function(req, res, next) {
         release_date: {
             $lt: localISOTime
         },
-    },  "code release_date keys.key clue").exec(function(err, levels) {
+    }, "code release_date keys.key clue url").exec(function(err,
+        levels) {
         if (err) {
             res.status(500).send(err);
             return
