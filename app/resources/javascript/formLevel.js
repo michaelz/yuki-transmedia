@@ -41,32 +41,57 @@ Date.prototype.dateFormat = function(format) {
 };
 
 //Function envoyant les données des formulaires (créer un level, modifier un level) pour créer ou modifier un level
+
+
 function capture() {
+    File.prototype.convertToBase64 = function(callback){
+            var FR= new FileReader();
+            FR.onload = function(e) {
+                 callback(e.target.result)
+            };       
+            FR.readAsDataURL(this);
+    }
+
     var level = {};
     level.code = $("#code").val();
     level.release_date = $("#date_sortie").val();
     level.url = $("#url").val();
 
+    var selectedFile = $('#fileToUpload').prop('files');
+    
+    var selectedFile1 = selectedFile[0];
+
     //Sélectionne la bonne root pour le bon formulaire
     if (id == "ajoutMonde") {
-        $.ajax({
-            type: "POST",
-            url: "/api/level",
-            data: level
-        }).done(function(data) {
-            //window.location.replace('/admin');
-            console.log(data);
-        }).fail(function(err) {
-            console.log(err);
-        });
+        selectedFile1.convertToBase64(function(base64){
+            var contentType =  base64.split(';');
+            contentType = contentType[0].split(':');
+            contentType = contentType[1];
+
+            var data = base64.split(';');
+            data = data[1].replace("base64,", "");
+            level.clue = {
+                contentType: contentType[1],
+                data: data
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/api/level",
+                data: level
+            }).done(function(data) {
+                window.location.replace('/admin');
+            }).fail(function(err) {
+                console.log(err);
+            });
+        })
     } else {
         $.ajax({
             type: "PUT",
             url: "/api/level/" + id,
             data: level
         }).done(function(data) {
-            //window.location.replace('/admin');
-            console.log(data);
+            window.location.replace('/admin');
         }).fail(function(err) {
             console.log(err);
         });
