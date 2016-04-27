@@ -12,11 +12,12 @@ $(document).ready(function() {
                     value.code + '</td><td>' + value.release_date
                     .slice(0, -8).replace("T", " ") +
                     '</td><td>' + value.url +
-                    '</td><td><a href="/admin/' + value
+                    '</td><td><a class="edit" href="/admin/' +
+                    value
                     ._id +
-                    '">edit</a></td><td><button class="buttonDelete" id="' +
+                    '"></a>&nbsp;<span title="supprimer" class="buttonDelete" id="' +
                     value._id +
-                    '"> - </button></td></tr>');
+                    '"></span></td></tr>');
             });
             $(".buttonDelete").on("click", function() {
                 $.ajax({
