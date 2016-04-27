@@ -22,28 +22,24 @@ var UserSchema = new Schema({
         type: String,
         required: true
     },
-    passed_levels: [
-        {
+    passed_levels: [{
             level_id: {
                 type: Schema.Types.ObjectId,
                 required: false,
                 ref: "Level"
             },
             result: String,
-            code: String //here we can save any result we want for any game that has been passed
-
+            code: String
         }
 
     ],
-    solved_solutions : [
-        {
-            level_id:{
-                type: Schema.Types.ObjectId,
-                required: false,
-                ref: "Level"
-            }
+    solved_solutions: [{
+        level_id: {
+            type: Schema.Types.ObjectId,
+            required: false,
+            ref: "Level"
         }
-    ],
+    }],
 
 
 });

@@ -36,8 +36,11 @@ $(document).ready(function() {
         var levels = data.data.passed_levels;
         console.log(levels);
         levels.forEach(function(data) {
+            console.log(data);
             var itemSelector = '.item-' + data.code;
             $(itemSelector).addClass("solved");
+            $(itemSelector).append("<img src='" + data.clue +
+                "'/>");
         });
     }).fail(function(err) {
         console.log(err);

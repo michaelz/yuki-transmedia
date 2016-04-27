@@ -45,12 +45,12 @@ Date.prototype.dateFormat = function(format) {
 
 
 function capture() {
-    File.prototype.convertToBase64 = function(callback){
-            var FR= new FileReader();
-            FR.onload = function(e) {
-                 callback(e.target.result)
-            };       
-            FR.readAsDataURL(this);
+    File.prototype.convertToBase64 = function(callback) {
+        var FR = new FileReader();
+        FR.onload = function(e) {
+            callback(e.target.result)
+        };
+        FR.readAsDataURL(this);
     }
 
     var level = {};
@@ -59,20 +59,20 @@ function capture() {
     level.url = $("#url").val();
 
     var selectedFile = $('#fileToUpload').prop('files');
-    
+
     var selectedFile1 = selectedFile[0];
 
     //Sélectionne la bonne root pour le bon formulaire
     if (id == "ajoutMonde") {
-        selectedFile1.convertToBase64(function(base64){
-            var contentType =  base64.split(';');
+        selectedFile1.convertToBase64(function(base64) {
+            var contentType = base64.split(';');
             contentType = contentType[0].split(':');
             contentType = contentType[1];
 
             var data = base64.split(';');
             data = data[1].replace("base64,", "");
             level.clue = {
-                contentType: contentType[1],
+                contentType: contentType,
                 data: data
             };
 
