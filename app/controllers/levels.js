@@ -17,15 +17,19 @@ module.exports = function(app) {
  */
 router.get('/', function(req, res, next) {
 
-    Level.find(function(err, levels) {
+    Level.find({}, "code release_date keys.key clue", function(err, levels) {
         if (err) {
             res.status(500).send(err);
             return;
         }
         res.send(levels);
     });
+    //TODO pas envoyer isTrue
 
 });
+
+
+
 
 /**
  * Get all active levels
@@ -37,7 +41,7 @@ router.get('/active', function(req, res, next) {
         release_date: {
             $lt: localISOTime
         },
-    }).exec(function(err, levels) {
+    },  "code release_date keys.key clue").exec(function(err, levels) {
         if (err) {
             res.status(500).send(err);
             return

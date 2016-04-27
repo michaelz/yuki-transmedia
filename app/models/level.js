@@ -17,11 +17,12 @@ var LevelSchema = new Schema({
         type: String,
         required: false
     },
-    clues: [String],
-    solution: {
-        url_img: String,
-        alt: String
-    },
+    keys: [{
+        "key": String,
+        "is_true": Boolean
+    }],
+    clue: String
+
 
 
 });
