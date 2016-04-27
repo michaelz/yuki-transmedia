@@ -281,6 +281,11 @@ $(document).ready(function() {
                   $('.discussionContainer').hide();
                   $(".lvl-achieved").fadeIn();
                   $('.round-info-button').fadeOut();
+
+                  $.post("/api/level/passLevelUser/martialarts",{ result: lvl}, function( data ) {
+                  });
+
+
                   //alert("Bravo vous avez fini le mini jeu des arts martiaux.");
                 } else if (lvl < 4) {
                   kataGeneration(nbMove, lvl);
