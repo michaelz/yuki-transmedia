@@ -19,7 +19,7 @@ $(document).ready(function() {
     var dialoguescript = [
         "Regarde! Il est entré ici! Mince, nous ne pouvons pas entrer, la porte est bloquée.",
         "Bonjour, que se passe-t-il? Je peux vous aider?",
-        "On doit rentrer dans ce bâtiment mais les portes refusent de s’ouvrir.",
+        "On doit rentrer dans ce bâtiment, mais les portes refusent de s’ouvrir.",
         "Je sais pourquoi, les portes sont équipées d’un programme qui reconnaît les visages et bloque l’accès à certaines personnes. Celui que vous suivez a bloqué l’accès pour vous.",
         "Oh non! Il faut vraiment que nous entrions dans ce bâtiment. Comment faire?",
         "Suivez-moi, j’ai une idée. On va se déguiser afin que le programme ne vous reconnaisse pas."

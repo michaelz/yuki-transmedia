@@ -18,41 +18,41 @@ $(document).ready(function() {
   var indexdialoguepersonnage = 0;
   var indexdialoguescript = 0;
   var dialoguescript = [
-    "Wow ou sommes-nous ? Demandons à ce singe.",
-    "Bonjour singe-sama. Quel est cet endroit ?",
-    "Appele-moi Kaio-sensei. Tu es à l'entrée de mon dojo. Mais dis-moi, ton grand-père ne serait-il pas Ojii-san?",
-    "Oui, mais comment le connaisez-vous ?",
-    "Ho... nous avons appris les arts-martiaux ensemble il y a fort longtemps. Nous nous étions rencontré au cours d'une belle journée d'automne. Je me souviens bien de ces feuilles tombant des arbres. C'était très certainement un samedi... ",
+    "Wow où sommes-nous? Demandons à ce singe.",
+    "Bonjour singe-sama. Quel est cet endroit?",
+    "Appelle-moi Kaio-sensei. Tu es à l'entrée de mon dojo. Mais dis-moi, ton grand-père ne serait-il pas Ojiisan?",
+    "Oui, mais comment le connaissez-vous?",
+    "Ho... nous avons appris les arts martiaux ensemble, il y a fort longtemps. Nous nous étions rencontrés au cours d'une belle journée d'automne. Je me souviens bien de ces feuilles tombant des arbres. C'était très certainement un samedi... ",
     "Hum...",
-    "Ha non, il s'agissait d'un dimanche en réalité. Oui nous étions au parc et je marchais tranquillement sur un sentier terreux. J'ai aperçu Ojii-san sur un banc longeant un fleuve tranquille.",
+    "Ha non, il s'agissait d'un dimanche en réalité. Oui nous étions au parc et je marchais tranquillement sur un sentier terreux. J'ai aperçu Ojiisan sur un banc longeant un fleuve tranquille.",
     "Hum... Kaio-sensei",
-    "Sacré Ojii-san, il m'a immédiatement proposé de prendre place à ses côtés. Il m'a ensuite invité à boire le thé en sa compagnie. On a dégusté notre thé dans de sublimes tasses. La sienne était d'un bleu clair du plus bel effet avec de petites vagues dessinées dessus à la main.",
-    "Oui c'est la tasse que je recherche !!!",
-    "Ha la tasse! Figure-toi que j'ai vu un feu follet passer avec des morceaux tasses. Ils ressemblaient fortement à la tasse de Ojii-san. J'ai essayé de l'arrêter, mais il s'est enfui. ",
-    "Par contre, il a laissé tomber un indice permettant de le retrouver. Suis-moi, je t'apprendrai les arts-martiaux. Si je juge tes capacités suffisantes, je donnerai cet indice.",
-    "Yuki, prépare-toi! Je vais te présenter un COMBO a effectué. Il faudra que tu mémorises les différents mouvements, puis après un certain temps, tu pourras essayer de reproduire le COMBO.",
+    "Sacré Ojiisan, il m'a immédiatement proposé de prendre place à ses côtés. Il m'a ensuite invité à boire le thé en sa compagnie. On a dégusté notre thé dans de sublimes tasses. La sienne était d'un bleu clair du plus bel effet avec de petites vagues dessinées dessus à la main.",
+    "Oui c'est la tasse que je recherche!!!",
+    "Ha la tasse! Figure-toi que j'ai vu un feu follet passer avec des morceaux de tasse. Ils ressemblaient fortement à la tasse de Ojiisan. J'ai essayé de l'arrêter, mais il s'est enfui.",
+    "Par contre, il a laissé tomber un indice permettant de le retrouver. Suis-moi, je t'apprendrai les arts martiaux. Si je juge tes capacités suffisantes, je donnerai cet indice.",
+    "Yuki, prépare-toi! Je vais te présenter un COMBO à effectuer. Il faudra que tu mémorises les différents mouvements, puis après un certain temps, tu pourras essayer de reproduire le COMBO.",
     "Ce n'est pas grave si tu n'y arrives pas du premier coup, nous avons le temps. À chaque fois que tu arrives à exécuter un COMBO, le suivant devient plus compliqué.",
-    "Tu débutes donc je vais être gentil. Dès que tu parviens à exécuter 4 COMBO, je te donnerai l'indice.",
-    "Tu peux égelement obtenir des informations complémentaires sur les arts-martiaux et notre monde en cliquant sur la bulle d'info"
+    "Tu débutes donc je vais être gentil. Dès que tu parviens à exécuter 4 COMBOs, je te donnerai l'indice.",
+    "Tu peux égelement obtenir des informations complémentaires sur les arts martiaux et notre monde en cliquant sur la bulle d'info."
   ];
 
   var dialoguepersonnage = [
     "Yuki : ",
     "Yuki : ",
-    "Maitre Kaio : ",
+    "Maître Kaio : ",
     "Yuki : ",
-    "Maitre Kaio : ",
+    "Maître Kaio : ",
     "Yuki : ",
-    "Maitre Kaio : ",
+    "Maître Kaio : ",
     "Yuki : ",
-    "Maitre Kaio : ",
+    "Maître Kaio : ",
     "Yuki : ",
-    "Maitre Kaio : ",
-    "Maitre Kaio : ",
-    "Maitre Kaio : ",
-    "Maitre Kaio : ",
-    "Maitre Kaio : ",
-    "Maitre Kaio : "
+    "Maître Kaio : ",
+    "Maître Kaio : ",
+    "Maître Kaio : ",
+    "Maître Kaio : ",
+    "Maître Kaio : ",
+    "Maître Kaio : "
   ];
 
   $(".dialogue-personnage").append(dialoguepersonnage[
@@ -272,7 +272,7 @@ $(document).ready(function() {
               console.log(is_same);
               if (is_same === true) {
                 console.log(
-                  "Bien joué le kata a été effectué à la perfection"
+                  "Bien joué le kata a été effectué à la perfection!"
                 );
                 $(".kataASaisir").remove();
                 spriteAnimation(sprite);
