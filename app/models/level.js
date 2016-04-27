@@ -21,8 +21,7 @@ var LevelSchema = new Schema({
         "key": String,
         "is_true": Boolean
     }],
-    clue: String
-
+    clue: {data: Buffer, contentType: String}
 
 
 });
