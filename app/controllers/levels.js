@@ -4,8 +4,6 @@ var express = require('express'),
     Level = mongoose.model('Level'),
     User = mongoose.model('User'),
 
-    tools = require('../services/tools'),
-    auth = require('../services/auth');
 
   //  nodemailer = require('nodemailer');
     mailgun = require('mailgun-js');
@@ -132,31 +130,7 @@ router.put("/:id", function(req, res, next) {
         });
     });
 });
-/**
- * send email to all users when new level is available
- */
-router.post('/newLevelEmail', function(req, res, next) {
-    /*var level = new Level(req.body);
 
-    level.save(function(err, CreatedLevel) {
-        if (err) {
-            res.status(500).send(err);
-            return;
-        }
-        res.send(CreatedLevel);
-    });*/
-    var smtpConfig = {
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true, // use SSL
-        auth: {
-            user: 'user@gmail.com',
-            pass: 'pass'
-        }
-    };
-
-
-});
 
 /**
  * Pass a level
