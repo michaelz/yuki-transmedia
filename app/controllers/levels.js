@@ -30,9 +30,11 @@ router.get('/', function(req, res, next) {
  * Get all active levels
  */
 router.get('/active', function(req, res, next) {
+    var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+    var localISOTime = (new Date(Date.now() - tzoffset)).toISOString();
     Level.find({
         release_date: {
-            $lt: Date.now()
+            $lt: localISOTime
         },
     }).exec(function(err, levels) {
         if (err) {
@@ -47,7 +49,6 @@ router.get('/active', function(req, res, next) {
  * get a specific level
  */
 router.get('/:id', function(req, res, next) {
-
 
     var levelId = req.params.id;
     Level.findById(levelId, function(err, level) {
@@ -66,10 +67,9 @@ router.get('/:id', function(req, res, next) {
  */
 router.post('/', function(req, res, next) {
     var level = new Level(req.body);
-
     level.save(function(err, CreatedLevel) {
         if (err) {
-            res.jerror(err);
+            res.send(500, err);
             return;
         }
         res.send(CreatedLevel);
@@ -134,7 +134,6 @@ router.post('/passLevelUser/:code/', auth.mustBeAuthenticated, auth.getUserInfo,
 
 
         var user = req.connectedUser;
-
 
         console.log(user);
 
