@@ -14,14 +14,16 @@ var LevelSchema = new Schema({
         required: true
     },
     url: {
-        type: String,
-        required: false
+        type: String
     },
     keys: [{
         "key": String,
         "is_true": Boolean
     }],
-    clue: {data: Buffer, contentType: String}
+    clue: {
+        data: Buffer,
+        contentType: String
+    }
 
 
 });

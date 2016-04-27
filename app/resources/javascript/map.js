@@ -16,12 +16,19 @@ $(document).ready(function() {
             $(itemSelector + ' .icon').attr("href", '/' +
                 data.url);
             $(itemSelector + ' .sign-indice').show();
+            if (data.keys) {
+                data.keys.forEach(function(data) {
+                    $(itemSelector + " select")
+                        .append(
+                            '<option>' + data.key +
+                            '</option>');
+                });
+            }
         });
     }).fail(function(err) {
 
+
     });
-
-
     /**
      * Work with passed levels to show indices
      */
@@ -35,4 +42,20 @@ $(document).ready(function() {
     }).fail(function(err) {
         console.log(err);
     });
+
+
+    /**
+     * Get the japanImpact date to show the clues
+     */
+    $.get('/api/level/japanimpact').done(function(japanimpact) {
+
+    }).fail(function(err) {
+        console.log('no japanimpact');
+        $('.element .signs').show();
+    });
+
+    $('.element .signs select').on('change', function() {
+        console.log($(this).value());
+    });
+
 });
