@@ -5,17 +5,23 @@ module.exports = {
 
     // Get user information
     getLevelAuth: function findLevelGenerator(levelCode) {
-        var date = new Date();
-        return function (req, res, next) {
-            Level.findOne({code: levelCode, release_date: {$lte: date}}, function (err, level) {
+        //'UTC: 2016-04-27T10:38:43.558Z'
+        var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+        var localISOTime = (new Date(Date.now() - tzoffset)).toISOString();
+        console.log('UTC: ' + new Date().toISOString());
+        console.log('loc: ' + localISOTime);
+        return function(req, res, next) {
+            Level.findOne({
+                code: levelCode,
+                release_date: {
+                    $lte: localISOTime
+                }
+            }, function(err, level) {
                 if (err) {
                     res.status(500).send(err);
                     return;
                 } else if (!level) {
-                    res.render('map', {
-                        pagename: 'map',
-                        title: 'Mondes'
-                    });
+                    res.redirect('/');
                 } else {
                     next();
                 }

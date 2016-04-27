@@ -26,7 +26,7 @@ $(document).ready(function() {
     $.datetimepicker.setLocale('fr');
     $('#date_sortie').datetimepicker({
         format: 'YYYY-MM-DD\THH:mm',
-        formatDate: 'YYYY-MM-DD HH:mm',
+        formatDate: 'YYYY-MM-DD\THH:mm',
         mask: false,
         datepicker: true,
         timepicker: true
@@ -54,7 +54,8 @@ function capture() {
             url: "/api/level",
             data: level
         }).done(function(data) {
-            window.location.replace('/admin');
+            //window.location.replace('/admin');
+            console.log(data);
         }).fail(function(err) {
             console.log(err);
         });
@@ -64,7 +65,8 @@ function capture() {
             url: "/api/level/" + id,
             data: level
         }).done(function(data) {
-            window.location.replace('/admin');
+            //window.location.replace('/admin');
+            console.log(data);
         }).fail(function(err) {
             console.log(err);
         });
