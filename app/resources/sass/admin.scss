@@ -1,4 +1,7 @@
 @import "components/variables";
+@import "fontawesome/font-awesome";
+@import "components/mixins";
+
 .body-admin {
     .square {
         width: 80%;
@@ -30,6 +33,20 @@
             padding: 0.5em;
             border: 1px solid #d0d0d0;
             background: #eee;
+        }
+    }
+    .edit {
+        &:before {
+            color:$color-food-2;
+            @include icon($fa-var-edit);
+            cursor:pointer;
+        }
+    }
+    .buttonDelete {
+        &:before {
+            color:red;
+            @include icon($fa-var-minus-circle);
+            cursor:pointer;
         }
     }
 }
