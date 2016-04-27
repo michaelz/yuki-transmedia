@@ -26,8 +26,8 @@ $(document).ready(function() {
     var indexdialoguepersonnage = 0;
     var indexdialoguescript = 0;
     var dialoguescript = [
-        "Bonjour. Je m’appelle Yuki et voici mon ami Guro. Hum, nous recherchons un morceau d’une tasse. Est-ce que ceci vous dit-il quelque chose?",
-        "Bonjour Yuki. Oui, il y a quelque temps, un esprit malicieux est venu mélanger mes recettes et il avait des morceaux de tasse avec lui. ",
+        "Bonjour. Je m’appelle Yuki et voici mon ami Guro. Hum, nous recherchons un morceau d’une tasse. Est-ce que ceci vous dit quelque chose?",
+        "Bonjour Yuki. Oui, il y a quelque temps, un esprit malicieux est venu mélanger mes recettes et il avait des morceaux de tasse avec lui.",
         "Vous savez où je peux le trouver?",
         "Il a laissé derrière lui ces deux baguettes. Elle peuvent vous mener à lui. Je vous les donne si vous m’aidez à remettre de l’ordre dans mes recettes de cuisine.",
         "Oui d’accord, je vais vous aider."
@@ -100,7 +100,7 @@ $.getJSON("/api/quiz", function(data) {
         });
     } else {
         $('#startQuiz').parent().append(
-            '<p>Pas de questions ici, désolé !</p>');
+            '<p>Pas de questions ici, désolé!</p>');
     }
 });
 

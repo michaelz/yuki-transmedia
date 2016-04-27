@@ -84,9 +84,9 @@ $(document).ready(function() {
     var dialoguescript = [
 
         "Oh regarde Guro, quel beau paysage. C’est magnifique..",
-        "Mais quels sont ces cris? Bonjour, que ce passe-t-il?",
-        "Un esprit malveillant a mélangé les parties composants ma toiles. C’était ma plus belle!",
-        "Je vais t’aider a remettre le tout dans l’ordre.",
+        "Mais quels sont ces cris? Bonjour, que se passe-t-il?",
+        "Un esprit malveillant a mélangé les parties composant ma toile. C’était ma plus belle!",
+        "Je vais t’aider à remettre le tout dans l’ordre.",
         "Merci beaucoup! Si tu y parviens, pour te remercier, je te donnerai un indice menant à ce fauteur de trouble."
     ];
 
