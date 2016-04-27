@@ -15,13 +15,9 @@ var LevelSchema = new Schema({
     },
     url: {
         type: String,
-        required: true
+        required: false
     },
-    clue: {
-        url: String,
-        alt: String,
-        description: String
-    },
+    clues: [String],
     solution: {
         url_img: String,
         alt: String
