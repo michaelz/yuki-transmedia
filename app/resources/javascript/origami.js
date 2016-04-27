@@ -35,6 +35,7 @@ $(document).ready(function () {
 // when video ends
     function onPlayerStateChange(event) {
         if (event.data === 0) {
+            $('#map').hide();
             console.log("video end");
             $("#player1").hide();
             $("#selection").show().empty().append("<h2>Que doit faire Yuki maintenant ? </h2><button class='btn' id ='sol1'>Souffler </button>" +
@@ -59,6 +60,7 @@ $(document).ready(function () {
 
 
 function blowSolution(){
+    $('#map').hide();
     $("#selection").hide();
 
     vidId = "5c6C3rHOdf8";
@@ -85,6 +87,7 @@ function blowSolution(){
 }
 
 function waterSolution(){
+    $('#map').hide();
     $("#selection").hide();
 
     vidId = "yz399Ua5Dq0";
@@ -126,6 +129,10 @@ function endSecondvideo(event){
         $('#buttons').hide();
         // afficher bouton retour à la carte
         $('#map').show();
+
+        $.post("/api/level/passLevelUser/origami", function( data ) {
+            console.log("post");
+        });
 
     }
 
