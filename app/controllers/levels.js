@@ -3,12 +3,8 @@ var express = require('express'),
     mongoose = require('mongoose'),
     Level = mongoose.model('Level'),
     User = mongoose.model('User'),
-
-
-    //  nodemailer = require('nodemailer');
-    mailgun = require('mailgun-js');
-tools = require('../services/tools');
-auth = require('../services/auth');
+    tools = require('../services/tools'),
+    auth = require('../services/auth');
 
 
 
