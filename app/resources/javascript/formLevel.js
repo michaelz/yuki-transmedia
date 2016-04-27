@@ -12,7 +12,7 @@ $(document).ready(function() {
     id = sURLid[sURLid.length - 1];
 
     //Controle si l'id existe pour faire le get pour modifier un niveau
-    if (id) {
+    if (!id == 'ajoutMonde') {
         $.get("/api/level/" + id)
             .done(function(data) {
                 $("#code").val(data.code);

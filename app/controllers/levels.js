@@ -5,11 +5,10 @@ var express = require('express'),
     User = mongoose.model('User'),
 
 
-  //  nodemailer = require('nodemailer');
+    //  nodemailer = require('nodemailer');
     mailgun = require('mailgun-js');
 tools = require('../services/tools');
 auth = require('../services/auth');
-
 
 
 
@@ -184,20 +183,3 @@ router.post('/passLevelUser/:code/', auth.mustBeAuthenticated, auth.getUserInfo,
         });
 
     });
-
-
-
-
-/*
- passed_levels: [
- {
- level_id: {
- type: Schema.Types.ObjectId,
- required: false,
- ref: "Level"
- },
- result: String //here we can save any result we want for any game that has been passed
-
- }
-
- ]*/
