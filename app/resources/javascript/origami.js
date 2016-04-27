@@ -126,7 +126,7 @@ function endSecondvideo(event){
         console.log("endsecondvideo");
         //envoyer au back que c'est passé
         $("#player2").hide();
-        $('#buttons').hide();
+        $('#back').hide();
         // afficher bouton retour à la carte
         $('#map').show();
 
