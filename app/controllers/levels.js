@@ -7,7 +7,6 @@ var express = require('express'),
     auth = require('../services/auth');
 
 
-
 module.exports = function(app) {
     app.use('/api/level', router);
 };
@@ -25,7 +24,6 @@ router.get('/', function(req, res, next) {
         }
         res.send(levels);
     });
-    //TODO pas envoyer isTrue
 
 });
 
@@ -186,16 +184,12 @@ router.post('/passLevelUser/:code/', auth.mustBeAuthenticated,
                 res.status(404).send("level not found");
             }
 
-
             var newResult = "";
 
             if (req.body.result) {
                 newResult = req.body.result;
-
             }
             //assign level and result
-
-
             var newInput = {
                 "level_id": level._id,
                 "code": level.code,
@@ -212,8 +206,6 @@ router.post('/passLevelUser/:code/', auth.mustBeAuthenticated,
                 }
                 res.send(updatedUser);
             });
-
-
         });
 
     });
