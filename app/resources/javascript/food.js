@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+    $("#restartQuiz").on( "click", function() {
+      $(".lvl-achieved").fadeOut();
+      startQuiz();
+    });
+
     $('.round-audio-button').show();
     $("audio").append('<source class="audioSource" src="/audio/nourriture/HotSprings-DerekAndBrandonFiechter.mp3" type="audio/mpeg">');
 
@@ -129,22 +134,33 @@ var nextQuestion = function(currentPos, total) {
         $(".q-" + pos).hide();
         //To do div pour mettre le score du petit nenfant
         $(".quiz").append();
+        pos = 0;
+        $("#quizTXT").empty();
         if (correctAnswer >= 1) {
           // Envoi des infos à la bd
           $.post("/api/level/passLevelUser/food",{ result: correctAnswer}, function( data ) {
-            console.log("post");
             $("#quizTXT").append("Bravo");
-            $("#yukiQuiz").removeAttr("src");
-            $("#yukiQuiz").attr("src", "/img/yuki_content.png");
+            $("#restartQuiz").hide();
+            $("#mondes").show();
+            $("#msg").empty();
+            $("#msg").append("Tu as réussi le défi. Maître Hiramatsu est fière de toi et comme convenu, il te transmet l'indice te permettant de retrouver le morceau de tasse à la Japan Impact.");
+            $(".yukiImage").removeAttr("src");
+            $(".yukiImage").attr("src", "/img/yuki_content.png");
           });
         } else {
             $("#quizTXT").append("Dommage");
+            $("#mondes").hide();
+            $("#msg").empty();
+            $("#msg").append("Tu as loupé les révisions. Maître Hiramatsu n'a pas réussi à apprendre correctement son examen. Il te demande gentiment de l'aider une nouvelle fois. Merci de réessayer pour aider Hiramatsu");
+            $("#restartQuiz").show();
             $(".yukImage").removeAttr("src");
             $(".yukImage").attr("src", "/img/sprites/yuki_tombe.png");
+
+
         }
 
         $('.round-info-button').show();
-
+        $("#quizResult").empty();
         $("#quizResult").append(correctAnswer + "/" + total);
         $('.lvl-achieved').fadeIn();
 
