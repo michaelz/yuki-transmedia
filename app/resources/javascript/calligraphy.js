@@ -22,12 +22,20 @@ var settings = {
     success: {
         //fadeOriginal: false,    // cross-fade original image [true|false]
         callback: function(results) {
-                alert('Resolu en ' + results.moves + ' coups et en ' +
-                    +results.seconds + ' secondes.');
+               /* alert('Resolu en ' + results.moves + ' coups et en ' +
+                    +results.seconds + ' secondes.');*/
+
+            $.post("/api/level/passLevelUser/calligraphy",{ result: "moves: " + results.moves + ", seconds:" + results.seconds}, function( data ) {
+                console.log("post");
+            });
+            $(".lvl-achieved").show();
+
             } //,    // callback a user-defined function [function]
             // the function is passed an object as its argument
             // which includes the fields 'moves' and 'seconds'
             //callbackTimeout: 300    // time in ms after which the callback is called
+
+
     },
 
     // animation speeds and settings
@@ -58,6 +66,8 @@ var texts = {
 }
 
 $(document).ready(function() {
+
+    $(".lvl-achieved").hide();
     $('.round-audio-button').show();
     $("audio").append('<source class="audioSource" src="/audio/calligraphie/CherryBlossoms-DerekFiechter.mp3" type="audio/mpeg">');
 
