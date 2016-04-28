@@ -76,11 +76,12 @@ $(document).ready(function() {
           $( ".dojo-inside" ).fadeIn();
           $('#yuki_face').fadeOut();
           $('#yuki_profil').fadeIn();
+          $('.scoreBox').fadeIn();
           $( ".dialogue" ).removeClass( "dialogue-arts-martiaux" )
 
 
-            var fileSrc = "/audio/arts-martiaux/NinjaMaster-DerekFiechter.mp3"
-            $("audio").attr("src",fileSrc).trigger("play");
+          var fileSrc = "/audio/arts-martiaux/NinjaMaster-DerekFiechter.mp3"
+          $("audio").attr("src",fileSrc).trigger("play");
 
 
 
@@ -114,6 +115,9 @@ $(document).ready(function() {
         $('#martial-arts-info').hide();
         $('#martialArtsDialogue').hide();
         $(".lvl-achieved").hide();
+        $("#newGamePlusFail").hide();
+        $(".scoreBox").hide();
+
 
 
         //Masquage des sprites
@@ -137,7 +141,11 @@ $(document).ready(function() {
         var tblKata = []; //Premier kata préconfiguré
         var kataValidated = "true";
         lvl++;
-        nbMove++;
+        $( "#score" ).empty();
+        $( "#score" ).append(lvl);
+        if (lvl < 4) {
+                nbMove++;
+        }
         $("#nbrKata").empty();
         $("#retry").empty();
         $("#nbrKata").append(lvl);
@@ -149,7 +157,7 @@ $(document).ready(function() {
         //$(".desactivatedBtn").css("background", "grey");
 
 
-        if (lvl != 5 && kataValidated === "true") {
+        if (lvl > 0 && kataValidated === "true") {
           kataValidated = null;
           //Génération du kata aléatoire
           while (i < nbMove) {
@@ -235,6 +243,7 @@ $(document).ready(function() {
           var j = 0; //Index pour les inputs aléatoire définir le kata
 
 
+
           //$("#progressBar").hide();
           $("#progressBar .progress").removeClass("started").addClass("stopped");
 
@@ -256,7 +265,6 @@ $(document).ready(function() {
             if (nbrInputKata < nbMove) {
               spriteAnimation(sprite);
             }
-
 
             //Injection des valeurs saisies dans un tableau
             tblInputs[j] = this.id;
@@ -284,16 +292,25 @@ $(document).ready(function() {
 
                   $.post("/api/level/passLevelUser/martialarts",{ result: lvl}, function( data ) {
                   });
+                  $( "#continueGame" ).on( "click", function() {
+                    $(".lvl-achieved").fadeOut();
+                    $('.discussionContainer').fadeIn();
+                    //newGamePlus(nbMove, lvl);
+                    kataGeneration(nbMove, lvl);
+                  });
 
-
-                  //alert("Bravo vous avez fini le mini jeu des arts martiaux.");
                 } else if (lvl < 4) {
                   kataGeneration(nbMove, lvl);
+                } else if (lvl >= 4 && is_same) {
+                  kataGeneration(nbMove, lvl);
                 }
-
-
-              } else {
-
+              } else if (lvl >= 4 && is_same === false) {
+                $.post("/api/level/passLevelUser/martialarts",{ result: lvl}, function( data ) {
+                });
+                $("#newGamePlusFail").fadeIn();
+                $('#inputBox').hide();
+              }
+              else if (lvl <= 4 && is_same === false) {
                 $('.round-info-button').hide();
 
                 $('#yuki_profil').hide();

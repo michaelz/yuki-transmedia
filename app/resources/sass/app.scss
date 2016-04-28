@@ -206,7 +206,25 @@ a {
     z-index: 30;
 }
 
+#newGamePlusFail {
+    position: absolute;
+    top: 10%;
+    text-align: center;
+    background-color: rgba(228, 239, 255, 0.7);
+    border-style: solid;
+    border-width: 6px;
+    border-left: none;
+    border-right: none;
+    border-color: #454B4C;
+    z-index: 30;
+}
+
+
 .lvl-achieved img {
+    width: 35%;
+}
+
+#newGamePlusFail img {
     width: 35%;
 }
 
