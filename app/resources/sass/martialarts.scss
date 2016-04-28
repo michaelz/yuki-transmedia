@@ -223,3 +223,11 @@ z-index: 0;
   bottom: 16%;
   left: 13%;
 }
+/*
+*score box
+*/
+.scoreBox {
+    position: absolute;
+    z-index: 50;
+    width: 100%;
+}
