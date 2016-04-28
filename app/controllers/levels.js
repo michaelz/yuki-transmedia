@@ -60,7 +60,7 @@ router.get('/japanimpact', function(req, res, next) {
             res.status(500).send(err);
             return;
         }
-        // Check if japan impact date is already launched
+        // Check if japan impact date is already launched !!!! PLANTE CHEZ MOI !!!
         if (new Date(level.release_date) < new Date(
                 localISOTime)) {
             res.send(true);
@@ -74,10 +74,38 @@ router.get('/japanimpact', function(req, res, next) {
 /**
  *  Get passed levels
  */
+function levels(req, res, next) {
 
-router.get('/passed', auth.mustBeAuthenticated, function(req, res, next) {
+    Level.find({}, "code clue", function(err,
+        levels) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+        req.levels = levels
+        next();
+    });
+
+}
+router.get('/passed', auth.mustBeAuthenticated, levels, function(req, res, next) {
     var levels = [];
-    // MANU: ici on a besoin de l'url, de l'image
+    var exist = false;
+    var existInLevel = false;
+
+    req.connectedUser.passed_levels.forEach( function(passed_levels){
+        req.levels.forEach(function (level) {
+            if (level.code == passed_levels.code && !exist) {
+                exist = true;
+                levels.forEach( function (listLevel) {
+                    if (listLevel.code == level.code) existInLevel = true;  
+                })
+                if (!existInLevel) levels.push({code: level.code, picture: level.clue});
+            }
+
+        });
+        existInLevel = false;
+        exist = false;
+    });
     res.send(levels);
 });
 
