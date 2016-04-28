@@ -32,17 +32,16 @@ $(document).ready(function() {
     /**
      * Work with passed levels to show indices
      */
-    $.get('/api/level/passed').done(function(data) {
-
-        console.log(data);
-        //var levels = data.data.passed_levels;
-        /*levels.forEach(function(data) {
-            console.log(data);
+    $.get('/api/level/passed').done(function(levels) {
+        levels.forEach(function(data) {
             var itemSelector = '.item-' + data.code;
             $(itemSelector).addClass("solved");
-            $(itemSelector).append("<img src='" + data.clue +
-                "'/>");
-        });*/
+            $(itemSelector + " .indice").css(
+                "background", 'url("' + data.picture +
+                '") no-repeat center center / contain'
+            );
+        });
+
     }).fail(function(err) {
         console.log(err);
     });

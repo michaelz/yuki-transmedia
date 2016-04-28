@@ -107,9 +107,8 @@ router.get('/passed', auth.mustBeAuthenticated, levels, function(req, res, next)
                 if (!existInLevel) {
                     var b64;
                     if (level.clue.data) {
-                        var test = new Buffer(level.clue
+                        b64 = new Buffer(level.clue
                             .data);
-                        b64 = test.toString('base64');
                     }
                     levels.push({
                         code: level.code,
