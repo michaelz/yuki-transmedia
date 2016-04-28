@@ -1,0 +1,23 @@
+<div class="tabLevel">
+    <h1 class="adminTitle">Administration des questions pour le monde nourriture</h1>
+    <div class="form-item">
+	Position de la question : <input type="integer" id="pos">
+    </div><div class="form-item">
+    Question : 
+    </div><div class="form-item">
+    <textarea rows="4" cols="50" id="question">
+    </textarea>
+    </div><div class="form-item"> 
+    Réponse possible :
+    </div><div class="form-item">
+    <label>1)</label> <input type="integer" id="quest1"> <label>2)</label> <input type="integer" id="quest2">
+    </div><div class="form-item">
+    <label>3)</label> <input type="integer" id="quest3"> <label>4)</label><input type="integer" id="quest4">
+    </div><div class="form-item">
+    <label>Numéro de la réponse juste</label> <input type="integer" id="reponse">
+    </div>
+    <br>
+    <div class="form-item">
+          <input class="btn" type="submit" value="Enregister" onclick="saveQuestion();" /><a class="btn" href="/admin">Annuler</a>
+    </div>
+</div>
