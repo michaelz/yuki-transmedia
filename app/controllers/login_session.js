@@ -40,7 +40,10 @@ router.post('/register', function(req, res) {
     user.save(function(err, createdUser) {
         console.log(createdUser);
         if (err) {
+          console.log(err.toJSON());
             res.status(500).send(err);
+            //res.jerror(err.errmsg);
+            //console.log(err.errmsg);
             return;
         }
         req.session.user = user.username; // Automated login on register
