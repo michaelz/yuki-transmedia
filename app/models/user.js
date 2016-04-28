@@ -33,6 +33,7 @@ var UserSchema = new Schema({
         }
 
     ],
+
     solved_solutions: [{
         level_id: {
             type: Schema.Types.ObjectId,
@@ -40,6 +41,14 @@ var UserSchema = new Schema({
             ref: "Level"
         }
     }],
+
+    selectedKeys: [
+        {
+            "id_in_level": String,
+            "key": String
+
+        }
+    ]
 
 
 });

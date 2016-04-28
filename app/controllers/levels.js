@@ -16,8 +16,10 @@ module.exports = function(app) {
  */
 router.get('/', function(req, res, next) {
 
-    Level.find({}, "code release_date keys.key clue url", function(err,
+
+    Level.find({}, "code release_date keys.key clue url keys._id", function(err,
         levels) {
+
         if (err) {
             res.status(500).send(err);
             return;
@@ -255,3 +257,18 @@ router.post('/passLevelUser/:code/', auth.mustBeAuthenticated,
         });
 
     });
+//Todo validator
+
+/**
+ * validate
+ */
+router.post('/', function(req, res, next) {
+    var level = new Level(req.body);
+    level.save(function(err, CreatedLevel) {
+        if (err) {
+            res.send(500, err);
+            return;
+        }
+        res.send(CreatedLevel);
+    });
+});
