@@ -19,8 +19,13 @@ var LevelSchema = new Schema({
         unique: true
     },
     keys: [{
-        "key": String,
-        "is_true": Boolean
+        key_id:{
+            type: Schema.Types.ObjectId,
+            required: false,
+            ref: "Key"
+        },
+
+
     }],
     clue: {
         data: Buffer,
