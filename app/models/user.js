@@ -44,11 +44,8 @@ var UserSchema = new Schema({
 
     selectedKey: [
         {
-            key_id:{
-                type: Schema.Types.ObjectId,
-                required: false,
-                ref: "Key"
-            }
+            "key": String,
+            "is_true": Boolean
         }
     ]
 

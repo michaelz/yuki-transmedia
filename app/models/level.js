@@ -19,13 +19,8 @@ var LevelSchema = new Schema({
         unique: true
     },
     keys: [{
-        key_id:{
-            type: Schema.Types.ObjectId,
-            required: false,
-            ref: "Key"
-        },
-
-
+        "key": String,
+        "is_true": Boolean
     }],
     clue: {
         data: Buffer,
@@ -36,3 +31,4 @@ var LevelSchema = new Schema({
 });
 
 mongoose.model('Level', LevelSchema);
+//tableau de keys ici

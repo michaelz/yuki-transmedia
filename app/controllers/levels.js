@@ -17,7 +17,7 @@ module.exports = function(app) {
 router.get('/', function(req, res, next) {
 
 
-    Level.find({}, "code release_date keys.key clue url", function(err,
+    Level.find({}, "code release_date keys.key clue url keys._id", function(err,
         levels) {
 
         if (err) {
