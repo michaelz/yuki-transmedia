@@ -7,14 +7,16 @@ var mongoose = require('mongoose'),
 var LevelSchema = new Schema({
     code: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     release_date: {
         type: Date,
         required: true
     },
     url: {
-        type: String
+        type: String,
+        unique: true
     },
     keys: [{
         "key": String,
