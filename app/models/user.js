@@ -42,10 +42,11 @@ var UserSchema = new Schema({
         }
     }],
 
-    selectedKey: [
+    selectedKeys: [
         {
-            "key": String,
-            "is_true": Boolean
+            "id_in_level": String,
+            "key": String
+
         }
     ]
 

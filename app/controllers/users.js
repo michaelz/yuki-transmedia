@@ -69,14 +69,40 @@ router.get('/:id', function(req, res, next) {
     });
 });
 
+/**
+ * add selected keys
+ */
 
+router.put("/keys/:id", function(req, res, next) {
+    var userId = req.params.id;
+    User.findById(userId, function(err, user) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        } else if (!user) {
+            res.status(404).send("user not found");
+        }
+
+
+        user.selectedKeys = req.body.selectedKeys;
+
+
+        user.save(req.body, function(err, updatedUser) {
+            if (err) {
+                res.status(500).send(err);
+                // update();
+            }
+            res.send(updatedUser);
+        })
+    });
+});
 /**
  * modify a user
  */
 
 router.put("/:id", function(req, res, next) {
     var userId = req.params.id;
-    User.findById(userId, function(err, level) {
+    User.findById(userId, function(err, user) {
         if (err) {
             res.status(500).send(err);
             return;
@@ -88,13 +114,15 @@ router.put("/:id", function(req, res, next) {
         user.username = req.body.username;
         user.solved_solutions = req.body.solved_solutions;
         user.passed_levels = req.body.passed_levels;
+        user.selectedKeys = req.body.selectedKeys;
 
         user.save(req.body, function(err, updatedUser) {
             if (err) {
                 res.status(500).send(err);
-                update();
+               // update();
             }
             res.send(updatedUser);
         })
     });
 });
+

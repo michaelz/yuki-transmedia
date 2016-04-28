@@ -1,27 +1,55 @@
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js" ></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.1/jquery.datetimepicker.min.js" ></script>
-  <div class="formLevel">
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.1/jquery.datetimepicker.min.js"></script>
+<div class="formLevel">
 
-      <div class="form-item">
-          <label>Code :</label>
+    <div class="form-item">
+        <label>Code :</label>
 
 
-      <input placeholder="martialarts" "text" id="code" value=""><br>
-      </div>
-      <div class="form-item">
+        <input placeholder="martialarts" "text" id="code" value=""><br>
+    </div>
+    <div class="form-item">
 
-      <label>Date de sortie</label>
-      <input placeholder="2016-12-31T00:00:00" type="text" id="date_sortie" value="">
-      </div>
-      <div class="form-item">
-      <label>URL</label>
-      <input placeholder="mondes/artsmartiaux" type="text" id="url" value=""><br>
-      </div>
-      <div class="form-item">
-          <label>Image</label>
-          <input type="file" name="fileToUpload" id="fileToUpload" />
-      </div>
-      <div class="form-item">
-          <input class="btn" type="submit" value="Enregister" onclick="capture();" /><a class="btn" href="/admin">Annuler</a>
-      </div>
-  </div>
+        <label>Date de sortie</label>
+        <input placeholder="2016-12-31T00:00:00" type="text" id="date_sortie" value="">
+    </div>
+    <div class="form-item">
+        <label>URL</label>
+        <input placeholder="mondes/artsmartiaux" type="text" id="url" value=""><br>
+    </div>
+    <div class="form-item">
+        <label>Image</label>
+        <input type="file" name="fileToUpload" id="fileToUpload"/>
+    </div>
+</div>
+<div class="form-item">
+
+    <div class="form-item">
+        <label>1)</label> <input type="integer" id="key1">
+    </div>
+
+    <div class="form-item">
+        <label>2)</label> <input type="integer" id="key2">
+    </div>
+    <div class="form-item">
+        <label>3)</label> <input type="integer" id="key3">
+    </div>
+    <div class="form-item">
+        <label>4)</label><input type="integer" id="key4">
+    </div>
+    <div class="form-item">
+        <label>5)</label><input type="integer" id="key5">
+    </div>
+</div>
+<div class="form-item">
+    <label>Numéro de la clé correcte</label> <input type="integer" id="correctKey">
+</div>
+<br>
+
+</div>
+
+
+<div class="form-item">
+    <input class="btn" type="submit" value="Enregister" onclick="capture();"/><a class="btn" href="/admin">Annuler</a>
+</div>
+

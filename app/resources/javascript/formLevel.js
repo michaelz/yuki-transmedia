@@ -11,6 +11,8 @@ $(document).ready(function() {
     var sURLid = sPageURL.split('/');
     id = sURLid[sURLid.length - 1];
 
+
+
     //Controle si l'id existe pour faire le get pour modifier un niveau
     if (id != 'ajoutMonde') {
         $.get("/api/level/" + id)
@@ -32,6 +34,8 @@ $(document).ready(function() {
         datepicker: true,
         timepicker: true
     });
+
+
 });
 
 Date.parseDate = function(input, format) {
@@ -58,6 +62,14 @@ function capture() {
     level.release_date = $("#date_sortie").val();
     level.url = $("#url").val();
 
+    level.keys = [];
+    for (var i = 1; i <= 5; i++) {
+        if (i ==  $('#correctKey').val()){
+            level.keys.push({key: $('#key' + i).val(), is_true: true});
+        } else {
+            level.keys.push({key: $('#key' + i).val(), is_true: false});
+        }
+    }
 
 
     //Sélectionne la bonne root pour le bon formulaire
