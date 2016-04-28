@@ -76,7 +76,7 @@ router.get('/japanimpact', function(req, res, next) {
  */
 function levels(req, res, next) {
 
-    Level.find({}, "code clue", function(err,
+    Level.find({}, "code clue url", function(err,
         levels) {
         if (err) {
             res.status(500).send(err);
@@ -99,7 +99,14 @@ router.get('/passed', auth.mustBeAuthenticated, levels, function(req, res, next)
                 levels.forEach( function (listLevel) {
                     if (listLevel.code == level.code) existInLevel = true;  
                 })
-                if (!existInLevel) levels.push({code: level.code, picture: level.clue});
+                if (!existInLevel) {
+                    var b64;
+                    if (level.clue.data) {
+                        var test = new Buffer (level.clue.data);
+                        b64 = test.toString('base64');
+                    }
+                    levels.push({code: level.code, picture: b64, url: level.url});
+                }
             }
 
         });
