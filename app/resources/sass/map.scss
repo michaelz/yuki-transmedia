@@ -47,7 +47,7 @@
             }
             .sign-indice {
                 background:rgba($color-white,0.8);
-                padding: 0.8em;
+                padding: 0.3em;
 
                 border-radius: 1em;
                 display:inline-block;
@@ -56,8 +56,8 @@
                     position:relative;
 
                     z-index: 1;
-                    width: 40px;
-                    height: 40px;
+                    width: 50px;
+                    height: 50px;
                     border-radius: 100%;
                     text-align:center;
                     background: $color-grey;
@@ -81,9 +81,7 @@
                 .indice {
                     background: green;
                     &:before {
-                        @include icon($fa-var-hand-peace-o); // should be the icon of the indice
-                        font-size: 20px;
-                        line-height:40px;
+                        content:" ";
                     }
                 }
             }

@@ -8,8 +8,6 @@ module.exports = {
         //'UTC: 2016-04-27T10:38:43.558Z'
         var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
         var localISOTime = (new Date(Date.now() - tzoffset)).toISOString();
-        console.log('UTC: ' + new Date().toISOString());
-        console.log('loc: ' + localISOTime);
         return function(req, res, next) {
             Level.findOne({
                 code: levelCode,
