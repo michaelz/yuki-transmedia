@@ -94,6 +94,18 @@ router.get('/admin', auth.mustBeAuthenticated, function(req, res, next) {
     }
 });
 
+router.get('/admin/question', auth.mustBeAuthenticated, function(req, res, next) {
+    if (req.session.user == "admin") {
+        res.render('adminQuest', {
+            pagename: 'adminQuest',
+            title: 'Question',
+            user: req.connectedUser.username
+        });
+    } else {
+        res.redirect('/');
+    }
+});
+
 router.get('/admin/ajoutMonde', auth.mustBeAuthenticated, function(req, res,
     next) {
     if (req.session.user == "admin") {

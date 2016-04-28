@@ -5,8 +5,16 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var Quiz_food_questionSchema = new Schema({
-    position: Number,
-    question: String,
+    position: {
+        type: Number,
+        required: true,
+        unique: true
+    },
+    question: {
+        type: String,
+        required: true,
+        unique: true
+    },
     answers : [{
         text: String,
         is_solution: Boolean
