@@ -60,9 +60,12 @@ router.get('/japanimpact', function(req, res, next) {
             res.status(500).send(err);
             return;
         }
-        // Check if japan impact date is already launched !!!! PLANTE CHEZ MOI !!!
-        if (new Date(level.release_date) < new Date(
-                localISOTime)) {
+        if (!level) {
+            res.status(404).send('level not found');
+            return;
+        }
+        if (new Date(level.release_date) <
+            new Date(localISOTime)) {
             res.send(true);
             return;
         }
@@ -85,27 +88,36 @@ function levels(req, res, next) {
         req.levels = levels
         next();
     });
-
 }
 router.get('/passed', auth.mustBeAuthenticated, levels, function(req, res, next) {
     var levels = [];
     var exist = false;
     var existInLevel = false;
 
-    req.connectedUser.passed_levels.forEach( function(passed_levels){
-        req.levels.forEach(function (level) {
-            if (level.code == passed_levels.code && !exist) {
+    req.connectedUser.passed_levels.forEach(function(passed_levels) {
+        req.levels.forEach(function(level) {
+            if (level.code == passed_levels.code && !
+                exist) {
                 exist = true;
-                levels.forEach( function (listLevel) {
-                    if (listLevel.code == level.code) existInLevel = true;  
+                levels.forEach(function(listLevel) {
+                    if (listLevel.code == level
+                        .code) existInLevel =
+                        true;
                 })
                 if (!existInLevel) {
                     var b64;
                     if (level.clue.data) {
-                        var test = new Buffer (level.clue.data);
+                        var test = new Buffer(level.clue
+                            .data);
                         b64 = test.toString('base64');
                     }
-                    levels.push({code: level.code, picture: b64, url: level.url});
+                    levels.push({
+                        code: level.code,
+                        picture: 'data:' +
+                            level.clue.contentType +
+                            ';base64,' + b64,
+                        url: level.url
+                    });
                 }
             }
 
