@@ -1,10 +1,10 @@
 @import 'components/variables';
 @import 'fontawesome/font-awesome';
 @import 'components/mixins';
+
 .body-map .square {
     background: url('/img/map.png') no-repeat top center transparent;
     background-size: cover;
-
 }
 
 .map {
@@ -48,13 +48,13 @@
             .sign-indice {
                 background:rgba($color-white,0.8);
                 padding: 0.3em;
-
                 border-radius: 1em;
-                display:inline-block;
+                display:block;
+                float:right;
+                margin-top: 2em;
                 .indice {
                     float:left;
                     position:relative;
-
                     z-index: 1;
                     width: 50px;
                     height: 50px;
@@ -66,7 +66,6 @@
                         @include icon($fa-var-close);
                         line-height: 40px;
                         font-size: 20px;
-
                     }
                 }
                 .signs {
@@ -77,6 +76,7 @@
                 }
             }
 
+
             &.solved {
                 .indice {
                     background: green;
@@ -84,6 +84,12 @@
                         content:" ";
                     }
                 }
+            }
+            .world-title {
+                font-size: 0.9em;
+                font-color: $color-grey;
+                text-transform:uppercase;
+                margin:0;
             }
         }
         .item-intro {
