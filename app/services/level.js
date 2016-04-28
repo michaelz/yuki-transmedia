@@ -3,7 +3,6 @@ var mongoose = require('mongoose'),
 
 module.exports = {
 
-    // Get user information
     getLevelAuth: function findLevelGenerator(levelCode) {
         //'UTC: 2016-04-27T10:38:43.558Z'
         var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
