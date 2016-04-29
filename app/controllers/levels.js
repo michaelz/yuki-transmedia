@@ -197,7 +197,7 @@ router.put("/:id", function(req, res, next) {
         level.release_date = req.body.release_date;
 
         if (req.body.clue) level.clue = req.body.clue;
-        if (req.body.solution) level.solution = req.body.solution;
+        if (req.body.keys) level.keys = req.body.keys;
 
         level.save(req.body, function(err, updatedLevel) {
             if (err) {
