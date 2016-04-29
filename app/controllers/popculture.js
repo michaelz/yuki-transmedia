@@ -31,6 +31,7 @@ var upload = multer({
 router.post('/', auth.mustBeAuthenticated, auth.getUserInfo, function(req, res,
     next) {
     var filesBase64 = [];
+
     upload(req, res, function(err) {
         if (err) {
             console.log('Error Occured');
@@ -47,5 +48,5 @@ router.post('/', auth.mustBeAuthenticated, auth.getUserInfo, function(req, res,
                 console.log('Photo Uploaded');
             })
     })
-    res.redirect("back");
+    res.jsend();
 });

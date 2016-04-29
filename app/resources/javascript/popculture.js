@@ -214,17 +214,25 @@ $(document).ready(function() {
 });
 
 function capture() {
-    $("#photoBouton").hide();
     html2canvas($('.contenu'), {
         onrendered: function(canvas) {
             $("#img").val(canvas.toDataURL("image/png"));
+            console.log($("#img").val());
             var a = document.createElement('a');
             a.href = canvas.toDataURL("image/jpeg").replace(
                 "image/jpeg", "image/octet-stream");
             a.download = 'monYuki.jpg';
             a.click();
-            document.getElementById("myForm").submit();
 
+            $.ajax({
+                type: "POST",
+                url: "/api/picture/upload",
+                data: $("#img").val(canvas.toDataURL("image/png"))
+            }).done(function(data) {
+                console.log("ok");
+            }).fail(function(err) {
+                console.log(err);
+            });
         }
     });
 }
