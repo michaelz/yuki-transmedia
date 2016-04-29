@@ -3,6 +3,7 @@ var express = require('express'),
     router = express.Router(),
     mongoose = require('mongoose'),
     session = require('express-session'),
+    Level = mongoose.model('Level'),
     auth = require('../services/auth');
 User = mongoose.model('User');
 
@@ -15,21 +16,20 @@ router.use(session({
 }));
 
 
-module.exports = function(app) {
+module.exports = function (app) {
     app.use('/api/user', router);
 };
 
 
-router.get("/me", auth.mustBeAuthenticated, auth.getUserInfo, function(req, res) {
+router.get("/me", auth.mustBeAuthenticated, auth.getUserInfo, function (req, res) {
     res.jsend(req.connectedUser);
 
 });
 
 
-
 //Retourne la liste des utilisateurs
-router.get('/', function(req, res, next) {
-    User.find(function(err, user) {
+router.get('/', function (req, res, next) {
+    User.find(function (err, user) {
         if (err) {
             res.status(500).send(err);
             return;
@@ -45,21 +45,21 @@ router.get('/', function(req, res, next) {
  * création d'un utilisateur
  */
 /*router.post('/', function(req, res, next) {
-    User.find(function(err, user) {
-        if (err) {
-            res.status(500).send(err);
-            return;
-        } else if (!user) {
-            res.status(404).send('User does not exist');
-            return;
-        }
-        res.jsend(user);
-    });
-});*/
+ User.find(function(err, user) {
+ if (err) {
+ res.status(500).send(err);
+ return;
+ } else if (!user) {
+ res.status(404).send('User does not exist');
+ return;
+ }
+ res.jsend(user);
+ });
+ });*/
 
 //Affiche un utilisateur
-router.get('/:id', function(req, res, next) {
-    User.findById(req.params.id, function(err, user) {
+router.get('/:id', function (req, res, next) {
+    User.findById(req.params.id, function (err, user) {
         if (err) {
             res.status(500).send(err);
             return;
@@ -72,12 +72,53 @@ router.get('/:id', function(req, res, next) {
 });
 
 /**
+ * check if combination for keys is right
+ */
+
+router.post("/keys/check", function (req, res, next) {
+
+    //martialArts
+    /*   var martialArts = req.body.content[0];
+     var calligraphy = req.body.content[1];*/
+
+
+    var rightKeys = [];
+
+    Level.findOne({
+        code: 'martialarts'
+    }).exec(function(err, level) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+        if (!level) {
+            res.status(404).send('level not found');
+            return;
+        }
+
+        level.keys.forEach(function(keys){
+            if(keys.is_true) {
+                console.log(keys.key);
+                rightKeys.push(keys.key);
+            }
+        });
+
+        console.log(rightKeys);
+
+        res.send(level.keys);
+    });
+
+
+
+});
+
+/**
  * add selected keys
  */
 
-router.put("/keys/:id", function(req, res, next) {
-    var userId = req.params.id;
-    User.findById(userId, function(err, user) {
+router.put("/keys/:userid", function (req, res, next) {
+    var userId = req.params.userid;
+    User.findById(userId, function (err, user) {
         if (err) {
             res.status(500).send(err);
             return;
@@ -89,7 +130,7 @@ router.put("/keys/:id", function(req, res, next) {
         user.selectedKeys = req.body.selectedKeys;
 
 
-        user.save(req.body, function(err, updatedUser) {
+        user.save(req.body, function (err, updatedUser) {
             if (err) {
                 res.status(500).send(err);
                 // update();
@@ -98,13 +139,15 @@ router.put("/keys/:id", function(req, res, next) {
         })
     });
 });
+
+
 /**
  * modify a user
  */
 
-router.put("/:id", function(req, res, next) {
+router.put("/:id", function (req, res, next) {
     var userId = req.params.id;
-    User.findById(userId, function(err, user) {
+    User.findById(userId, function (err, user) {
         if (err) {
             res.status(500).send(err);
             return;
@@ -118,10 +161,10 @@ router.put("/:id", function(req, res, next) {
         user.passed_levels = req.body.passed_levels;
         user.selectedKeys = req.body.selectedKeys;
 
-        user.save(req.body, function(err, updatedUser) {
+        user.save(req.body, function (err, updatedUser) {
             if (err) {
                 res.status(500).send(err);
-               // update();
+                // update();
             }
             res.send(updatedUser);
         })
