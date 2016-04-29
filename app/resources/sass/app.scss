@@ -155,7 +155,7 @@ a {
     display: block;
     text-align: left;
     border: 2px solid $color-dialogue;
-    z-index: 11;
+    z-index: 1;
     background-color: rgba($color-dialogue-bg, 0.6);
     .dialogue-personnage {
         display:inline;
@@ -217,6 +217,7 @@ a {
     border-right: none;
     border-color: #454B4C;
     z-index: 30;
+    width: 100%;
 }
 
 
@@ -234,7 +235,7 @@ a {
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: 11;
+    z-index: 1;
     background-color: rgba($color-dialogue-bg, 0.94);
     overflow: auto;
 }
