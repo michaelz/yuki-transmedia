@@ -42,10 +42,13 @@ $(document).ready(function() {
             //"<td>pos.</td><td>Question</td><td>Réponses</td><td>Rép. Correcte</td>"
             $.each(data, function(index, value) {
                 $('.tabLevel .questions tbody').append(
-                    "<td>" + value.position +
+                    "<tr class='q-" + value._id +
+                    "'><td>" +
+                    value.position +
                     "</td><td>" +
                     value.question +
-                    "</td><td class='answers'></td>");
+                    "</td><td class='answers'></td></tr>"
+                );
 
                 var answers = $("<ul class='answers'></ul>");
                 $.each(value.answers, function(a, answer) {
@@ -61,7 +64,8 @@ $(document).ready(function() {
                         answer.text +
                         '</li>');
                 });
-                $('.answers').append(answers);
+                $('.q-' + value._id + ' .answers').append(
+                    answers);
             });
         }).fail(function() {
             console.log("error while loading quiz");
