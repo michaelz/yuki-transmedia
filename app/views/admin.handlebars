@@ -1,5 +1,6 @@
 <div class="tabLevel">
-    <h1 class="adminTitle">Administration des niveaux</h1>
+
+    <h2 class="adminTitle">Administration des niveaux</h2>
     <p>Dans cette édition, il y a 5 niveaux, plus un niveau spécial "polyjapan".</p>
     <p>Les 'codes' sont utilisés dans toute l'app pour les différents jeux, notamment en CSS pour les rendre visible au bon moment. C'est dans ce tableau qu'on peut rendre disponible un monde à un moment donné.</p>
     <p>Les codes ainsi que les urls doivent être mis de cette manière (code, url) pour matcher le code du site.</p>
@@ -12,9 +13,17 @@
     </ul>
     <p>Le niveau spécial polyjapan (code:polyjapan) permet de rendre accessible la possibilité de mettre le code</p>
 
-<a class="btn" href="/admin/ajoutMonde">Ajouter un niveau</a>
-	<table width="100%" >
+	<table class="levels" width="100%" >
 	<thead><tr><td>Code</td><td>Date sortie</td><td>Url</td><td></td></tr></thead>
 	<tbody></tbody>
 	</table>
+    <a class="btn" href="/admin/ajoutMonde">Ajouter un niveau</a>
+
+    <h2 class="adminTitle">Administration des questions</h2>
+    <table class="questions" width="100%" >
+    <thead><tr><td>pos.</td><td>Question</td><td>Réponses possibles</td></tr></thead>
+    <tbody></tbody>
+    </table>
+    <a class="btn" href="/admin/question">Ajouter une question</a>
+
 </div>

@@ -49,4 +49,28 @@
             cursor:pointer;
         }
     }
+    ul.answers {
+        &,li {
+            list-style:none;
+            margin:0;
+            padding:0;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+    }
+    .not-solution {
+        color:red;
+        &:before {
+            @include icon($fa-var-times-circle);
+            padding-right: 1em;
+        }
+    }
+    .is-solution {
+        color:green;
+        &:before {
+            @include icon($fa-var-check-square);
+            padding-right: 1em;
+        }
+    }
 }
