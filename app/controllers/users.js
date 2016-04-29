@@ -41,19 +41,21 @@ router.get('/', function(req, res, next) {
     });
 });
 
-//Ajout d'un utilisateur
-router.post('/', function(req, res, next) {
+/**
+ * création d'un utilisateur
+ */
+/*router.post('/', function(req, res, next) {
     User.find(function(err, user) {
         if (err) {
             res.status(500).send(err);
             return;
         } else if (!user) {
-            res.status(404).send('User not found');
+            res.status(404).send('User does not exist');
             return;
         }
         res.jsend(user);
     });
-});
+});*/
 
 //Affiche un utilisateur
 router.get('/:id', function(req, res, next) {
