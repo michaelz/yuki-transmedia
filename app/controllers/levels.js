@@ -214,13 +214,13 @@ router.put("/:id", function(req, res, next) {
 /**
  * Pass a level
  */
-router.post('/passLevelUser/:code/', auth.mustBeAuthenticated,
+router.post('/passLevelUser/:code/', auth.mustBeAuthenticated, 
     function(req, res, next) {
 
 
         var user = req.connectedUser;
 
-        console.log(user);
+        //console.log(user);
 
         var level = Level.findOne({
             code: req.params.code
@@ -244,7 +244,35 @@ router.post('/passLevelUser/:code/', auth.mustBeAuthenticated,
                 "result": newResult
             };
             //res.send(newInput);
-            user.passed_levels.push(newInput);
+            //user.passed_levels.push(newInput);
+
+            var newLevelPassed = user.passed_levels;
+            var exist = false;
+            var count = 0;
+
+            //efface le score si il est moint fort
+            user.passed_levels.forEach(function (levelPassed){
+                if (levelPassed.level_id.equals(level._id)) {
+                    if (level.code != "calligraphy"){
+                        if (levelPassed.result < newResult) {
+                            newLevelPassed.splice(count, 1);
+                            newLevelPassed.push(newInput);
+                        } 
+                    } else {
+                        if (parseInt(levelPassed.result) > parseInt(newResult)) {
+                            newLevelPassed.splice(count, 1);
+                            newLevelPassed.push(newInput);
+                        } 
+                    }
+                    exist = true;
+                } 
+                count++;
+            });
+            
+            if (!exist) newLevelPassed.push(newInput);
+
+            user.passed_levels = [];
+            user.passed_levels = newLevelPassed;
             user.markModified('passed_levels');
 
             user.save(function(err, updatedUser) {

@@ -32,6 +32,15 @@ module.exports = {
         next();
     },
 
+    isAdmin: function(req, res, next) {
+
+        if (req.session.user == "admin") {
+            next();
+        } else {
+            res.redirect('/');
+        }
+    },
+
     // Get user information
     getUserInfo: function(req, res, next) {
         User.findOne({

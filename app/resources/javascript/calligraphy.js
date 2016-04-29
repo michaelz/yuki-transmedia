@@ -25,7 +25,7 @@ var settings = {
                /* alert('Resolu en ' + results.moves + ' coups et en ' +
                     +results.seconds + ' secondes.');*/
 
-            $.post("/api/level/passLevelUser/calligraphy",{ result: "moves: " + results.moves + ", seconds:" + results.seconds}, function( data ) {
+            $.post("/api/level/passLevelUser/calligraphy", { result: results.seconds}, function( data ) {
                 console.log("post");
             });
             $(".lvl-achieved").show();

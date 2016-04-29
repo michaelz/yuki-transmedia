@@ -82,56 +82,37 @@ router.get('/login', auth.cantBeAuthenticated, function(req, res, next) {
 /**
  * admin route.
  */
-router.get('/admin', auth.mustBeAuthenticated, function(req, res, next) {
-    if (req.session.user == "admin") {
-        res.render('admin', {
-            pagename: 'admin',
-            title: 'Admin',
-            user: req.connectedUser.username
-        });
-    } else {
-        res.redirect('/');
-    }
+router.get('/admin', auth.mustBeAuthenticated, auth.isAdmin, function(req, res, next) {
+    res.render('admin', {
+        pagename: 'admin',
+        title: 'Admin',
+        user: req.connectedUser.username
+    });
 });
 
-router.get('/admin/question', auth.mustBeAuthenticated, function(req, res, next) {
-    if (req.session.user == "admin") {
-        res.render('adminQuest', {
-            pagename: 'adminQuest',
-            title: 'Question',
-            user: req.connectedUser.username
-        });
-    } else {
-        res.redirect('/');
-    }
+router.get('/admin/question', auth.mustBeAuthenticated, auth.isAdmin, function(req, res, next) {
+    res.render('adminQuest', {
+        pagename: 'adminQuest',
+        title: 'Question',
+        user: req.connectedUser.username
+    });
 });
 
-router.get('/admin/ajoutMonde', auth.mustBeAuthenticated, function(req, res,
+router.get('/admin/ajoutMonde', auth.mustBeAuthenticated, auth.isAdmin, function(req, res,
     next) {
-    if (req.session.user == "admin") {
-        res.render('formLevel', {
-            pagename: 'formLevel',
-            title: 'Nouveau monde',
-            user: req.connectedUser.username
-        });
-    } else {
-        res.render('map', {
-            pagename: 'map',
-            title: 'Mondes'
-        });
-    }
+    res.render('formLevel', {
+        pagename: 'formLevel',
+        title: 'Nouveau monde',
+        user: req.connectedUser.username
+    });
 });
 
-router.get('/admin/:id', auth.mustBeAuthenticated, function(req, res, next) {
-    if (req.session.user == "admin") {
-        res.render('formLevel', {
-            pagename: 'formLevel',
-            title: 'Modifier un monde',
-            user: req.connectedUser.username
-        });
-    } else {
-        res.redirect('/');
-    }
+router.get('/admin/:id', auth.mustBeAuthenticated, auth.isAdmin, function(req, res, next) {
+    res.render('formLevel', {
+        pagename: 'formLevel',
+        title: 'Modifier un monde',
+        user: req.connectedUser.username
+    });
 });
 
 /*
