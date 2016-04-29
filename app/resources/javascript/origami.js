@@ -11,7 +11,7 @@ $(document).ready(function () {
     function onYouTubePlayerAPIReady(vidId) {
         console.log("inmethod");
         if(!vidId){
-            vidId = "b7ZMKRmhIXI";
+            vidId = "E2qdFDRK5mo";
             console.log(vidId);
         }
 
@@ -63,7 +63,7 @@ function blowSolution(){
     $('#map').hide();
     $("#selection").hide();
 
-    vidId = "5c6C3rHOdf8";
+    vidId = "PbN_OYs4Afw";
     var player2;
 
 
@@ -90,7 +90,7 @@ function waterSolution(){
     $('#map').hide();
     $("#selection").hide();
 
-    vidId = "yz399Ua5Dq0";
+    vidId = "uPoidI3eUDE";
     var player2;
 
 
@@ -109,7 +109,7 @@ function waterSolution(){
 
 
 
-    console.log("blowsolution");
+    console.log("watersolution");
 
 }
 
