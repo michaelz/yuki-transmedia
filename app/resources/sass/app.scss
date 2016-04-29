@@ -108,6 +108,7 @@ a {
       border-radius: 50%;
       background: #2a738e;
       box-shadow: 0 0 3px rgba(0,0,0,0.6);
+      z-index: 55;
       &:hover {
           background:darken(#2a738e,10);
           cursor: pointer;

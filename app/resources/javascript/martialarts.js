@@ -76,7 +76,7 @@ $(document).ready(function() {
           $( ".dojo-inside" ).fadeIn();
           $('#yuki_face').fadeOut();
           $('#yuki_profil').fadeIn();
-          $('.scoreBox').fadeIn();
+
           $( ".dialogue" ).removeClass( "dialogue-arts-martiaux" )
 
 
@@ -141,6 +141,7 @@ $(document).ready(function() {
         var tblKata = []; //Premier kata préconfiguré
         var kataValidated = "true";
         lvl++;
+        $('.scoreBox').fadeOut();
         $( "#score" ).empty();
         $( "#score" ).append(lvl);
         if (lvl < 4) {
@@ -241,6 +242,7 @@ $(document).ready(function() {
           var nbrInputKata = 0;
           var tblInputs = []; //Tableau stockant les inputs pour le kata
           var j = 0; //Index pour les inputs aléatoire définir le kata
+          $('.scoreBox').fadeIn();
 
 
 
@@ -322,7 +324,7 @@ $(document).ready(function() {
                     $('#yuki_tombe').hide();
                   }, 4000);
 
-
+                  $('.scoreBox').fadeOut();
                   $("#progressBar .progress").removeClass("stopped").addClass(
                     "started");
                     $("#progressBar").show();
