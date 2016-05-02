@@ -1,10 +1,13 @@
 @import 'components/variables';
+@import 'fontawesome/font-awesome';
+@import 'components/mixins';
 .error {
   color: $color-martialarts-3;
 }
 
 
 .loginPage {
+    margin-top: 10%;
     text-align:center;
     input {
         margin: 0 auto;
@@ -18,13 +21,13 @@
         margin: 0.5em 0;
         display:block;
     }
-
     h3 {
+        cursor:pointer;
         background: lighten($color-grey,20);
         color: $color-white;
         padding: 0.5em;
         &:before {
-            content: '+';
+            @include icon($fa-var-angle-down);
             width: 1em;
             padding-right: 1em;
         }
@@ -36,11 +39,10 @@
     h3.ui-accordion-header-active {
         background: $color-grey;
         &:before {
-            content: '-';
+            @include icon($fa-var-angle-up);
         }
     }
     .msgContainer {
-
         margin: 0.2em;
     }
     .error {
