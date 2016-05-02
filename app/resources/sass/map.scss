@@ -100,7 +100,7 @@
             }
         }
         .item-martialarts {
-            left: 55%;
+            left: 62%;
             top: 27%;
             .icon {
                 background-image: url('/img/map/martialarts.png');
@@ -135,4 +135,17 @@
             }
         }
     }
+}
+
+
+
+.modal-bg {
+    position:absolute;
+    z-index:10;
+    background: rgba(white,0.8);
+    cursor:pointer;
+    left:0;
+    right:0;
+    bottom:0;
+    top:0;
 }
