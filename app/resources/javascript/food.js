@@ -123,8 +123,8 @@ var startQuiz = function(data) {
     $('.answer').on('click', function() {
         if (data[pos].answers[$(this).attr('data-position')].is_solution) {
             correctAnswer += 1;
-            $('.square').addClass("wrong");
-            $('.square').removeClass("right");
+            $('.square').addClass("right");
+            $('.square').removeClass("wrong");
             $('.answer-right').show();
             $('.answer-false').hide();
 
@@ -132,14 +132,17 @@ var startQuiz = function(data) {
           console.log("Mauvaise réponse")
           $('.answer-right').hide();
           $('.answer-false').show();
-          $('.square').addClass("right");
-          $('.square').removeClass("wrong");
+          $('.square').addClass("wrong");
+          $('.square').removeClass("right");
         }
+
+        setTimeout(function() {
+          nextQuestion(pos, data.length);
+        }, 800);
+
 
         //Indiquer mauvaise réponse
 
-        setTimeout(
-          nextQuestion(pos, data.length), 4000);
     });
 }
 

@@ -6,6 +6,12 @@
         background-size: cover;
     }
 }
+.square.wrong .questionBlock {
+  background:#D99193;
+}
+.square.right .questionBlock {
+  background:#69BC80;
+}
 .quiz {
 
     .startQuizArea {
