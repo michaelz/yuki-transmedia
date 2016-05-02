@@ -4,7 +4,9 @@
 $(document).ready(function() {
     $('.lvl-achieved').hide();
     $('.round-audio-button').show();
-    $("audio").append('<source class="audioSource" src="/audio/popculture/DemAhFraudulant-Kamilean.mp3" type="audio/mpeg">');
+    $("audio").append(
+        '<source class="audioSource" src="/audio/popculture/DemAhFraudulant-Kamilean.mp3" type="audio/mpeg">'
+    );
 
     //Définition des variables
     ///////////////////////////////////////////////////////////////
@@ -22,7 +24,8 @@ $(document).ready(function() {
         "Bonjour, on voulait rentrer dans le bâtiment derrière mais les portes refusent de s’ouvrir.",
         "Je sais pourquoi, les portes sont équipées d’un programme qui reconnaît les visages et bloque l’accès à certaines personnes. Celui que vous suivez a bloqué l’accès pour vous.",
         "Oh non! Il faut vraiment que nous entrions dans ce bâtiment. Comment faire?",
-        "Suivez-moi, j’ai une idée. On va se déguiser afin que le programme ne vous reconnaisse pas."    ];
+        "Suivez-moi, j’ai une idée. On va se déguiser afin que le programme ne vous reconnaisse pas."
+    ];
 
     var dialoguepersonnage = [
         "Hatsune : ",
@@ -123,47 +126,37 @@ $(document).ready(function() {
             }
         });
 
-        /*$(".btnAccessoires").click(function() {
-            $(".btnAccessoires").css("color", "#3498db");
-            $(".btnAccessoires").css("background", "white");
+        var fonds = [
+            'fond1',
+            'fond2',
+            'fond3',
+            'fond4',
+            'fond5',
+            'fond6',
+            'fond7',
+            'fond8',
+            'fond9'
+        ];
 
-            $(".btnFonds").css("color", "white");
-            $(".btnFonds").css("background", "#3498db");
+        for (var i = 0; i < fonds.length; i++) {
+            console.log(fonds[i]);
+            $('.menuFonds').append("<div class=\"bg " + fonds[i] +
+                "\" style=\"background-image:url('/img/jeu_popculture/fonds/" +
+                fonds[i] + ".png')\"></div>");
+        }
 
-            $(".btnFonds").css("border-top-width", "6px");
-            $(".btnFonds").css("border-bottom-width", "0px");
+        $('.bg').click(function() {
+            var bg = $(this).css("background-image");
 
-            $(".menuAccessoires").show();
-            $(".menuFonds").hide();
-        })*/
-
-        /*$(".btnFonds").click(function() {
-            $(".btnFonds").css("color", "#3498db");
-            $(".btnFonds").css("background", "white");
-
-            $(".btnFonds").css("border-top-width", "0px");
-            $(".btnFonds").css("border-bottom-width", "6px");
-
-            $(".btnAccessoires").css("color", "white");
-            $(".btnAccessoires").css("background", "#3498db");
-
-            $(".menuFonds").show();
-            $(".menuAccessoires").hide();
-        })*/
-
-
-        $("#fondsImg1").click(function() {
-            if ($('.contenu').css("background-image") ==
-                'url("http://' + $(
-                    location).attr('host') +
-                '/img/jeu_popculture/fonds/arts-martiaux.png")'
-            ) {
+            if ($('.contenu').css("background-image") == bg) {
+                // remove bg
                 $('.contenu').css("background-image", "");
             } else {
-                $('.contenu').css("background-image",
-                    "url(/img/jeu_popculture/fonds/arts-martiaux.png)"
-                );
+                $('.contenu').css("background-image", bg);
             }
+        })
+        $("#fondsImg1").click(function() {
+
         })
 
         $("#fondsImg2").click(function() {
@@ -227,7 +220,8 @@ function capture() {
             $.ajax({
                 type: "POST",
                 url: "/api/picture/upload",
-                data: $("#img").val(canvas.toDataURL("image/png"))
+                data: $("#img").val(canvas.toDataURL(
+                    "image/png"))
             }).done(function(data) {
                 console.log("ok");
             }).fail(function(err) {
@@ -238,7 +232,9 @@ function capture() {
 }
 
 function terminerPopculture() {
-    $.post("/api/level/passLevelUser/popculture",{ result: "done"}, function( data ) {
+    $.post("/api/level/passLevelUser/popculture", {
+        result: "done"
+    }, function(data) {
         $('.lvl-achieved').show();
     });
 }

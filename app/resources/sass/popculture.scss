@@ -27,7 +27,6 @@
     border-radius: 0 0 0 1em;
     overflow-y: auto;
     max-height:60vh;
-
     #droppableMenu {
 
     }
@@ -102,14 +101,28 @@
 
     }
     .yukidl {
-        float:right;
-        width: 25%;
-        margin-top: 5%;
+        text-align:center;
+        margin-top: 0%;
+        padding: 1em 0;
+        .btn {
+            display:inline-block;
+        }
     }
     .menuFonds {
-        margin: 0 25% 0 100px;
-        max-height: 20%;
+        background: #444;
+        margin:0;
+        height:5vh;
         padding: 1em;
+        overflow:auto;
+        min-height: 58px;
+        .bg {
+            display:inline-block;
+            height:50px;
+            width: 50px;
+            float:left;
+            margin: 4px;
+            cursor:pointer;
+        }
         .imgJeu {
             display:block;
             float:left;
@@ -119,7 +132,6 @@
             margin-top: 10px;
             margin-right:10px;
             min-width: 50px;
-
         	img {
         		max-width: 100%;
         	}
