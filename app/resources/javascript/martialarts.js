@@ -32,7 +32,7 @@ $(document).ready(function() {
     "Par contre, il a laissé tomber un indice permettant de le retrouver. Suis-moi, je t'apprendrai les arts martiaux. Si je juge tes capacités suffisantes, je donnerai cet indice.",
     "Yuki, prépare-toi! Je vais te présenter un COMBO à effectuer. Il faudra que tu mémorises les différents mouvements, puis après un certain temps, tu pourras essayer de reproduire le COMBO.",
     "Ce n'est pas grave si tu n'y arrives pas du premier coup, nous avons le temps. À chaque fois que tu arrives à exécuter un COMBO, le suivant devient plus compliqué.",
-    "Tu débutes donc je vais être gentil. Dès que tu parviens à exécuter 4 COMBOs, je te donnerai l'indice.",
+    "Tu débutes donc je vais être gentil. Dès que tu parviens à exécuter 4 COMBO, je te donnerai l'indice.",
     "Tu peux également obtenir des informations complémentaires sur les arts martiaux et notre monde en cliquant sur la bulle d'info."
   ];
 
