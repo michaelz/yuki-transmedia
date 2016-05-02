@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
     $('#buttons').hide();
     $('#map').hide();
     $('.lvl-achieved').hide();
@@ -7,62 +7,65 @@ $(document).ready(function () {
 // create youtube player
 
 
-    var player;
+var player;
 
-    function onYouTubePlayerAPIReady(vidId) {
+function onYouTubePlayerAPIReady(vidId) {
 
 
 
-        if(!vidId){
-            vidId = "E2qdFDRK5mo";
-            console.log(vidId);
-        }
-
+    if (!vidId) {
+        vidId = "E2qdFDRK5mo";
         console.log(vidId);
-        player = new YT.Player('player1', {
-            height: '315',
-            width: '100%',
-            videoId: vidId,
-            events: {
-                /* 'onReady': onPlayerReady,*/
-                'onStateChange': onPlayerStateChange
-            }
-        });
     }
 
-     // autoplay video
-     function onPlayerReady(event) {
-     event.target.playVideo();
-     }
+    console.log(vidId);
+    player = new YT.Player('player1', {
+        height: '315',
+        width: '100%',
+        videoId: vidId,
+        events: {
+            /* 'onReady': onPlayerReady,*/
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+// autoplay video
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
 
 // when video ends
-    function onPlayerStateChange(event) {
-        if (event.data === 0) {
-            $('#map').hide();
-            console.log("video end");
-            $("#player1").hide();
-            $("#selection").show().empty().append("<h2>Que doit faire Yuki maintenant ? </h2><button class='btn' id ='sol1'>Souffler </button>" +
-                "<button class='btn' id ='sol2'>Arroser </button>");
-            $('#buttons').show().attr("id","back1");
+function onPlayerStateChange(event) {
+    if (event.data === 0) {
+        $('#map').hide();
+        console.log("video end");
+        $("#player1").hide();
+        $("#selection").show().empty().append(
+            "<h1 class='titre'>Que doit faire Yuki maintenant ?</h1> " +
+            " <div class='div' id ='sol1'> <img class='imgorigami' src='/img/yuki_souffle.jpg'></div>" +
+            " <div class='div' id ='sol2'> <img class='imgorigami' src='/img/yuki_eau.jpg'></div>"
+        );
+        $('#buttons').show().attr("id", "back1");
 
-            $("#back1").on( "click", function(){
-                back1();
-            });
-            console.log("test1");
-            //$("#sol1").onclick(blowSolution());
+        $("#back1").on("click", function() {
+            back1();
+        });
+        console.log("test1");
+        //$("#sol1").onclick(blowSolution());
 
-            $("#sol1").on( "click", function(){
-                blowSolution();
-            });
+        $("#sol1").on("click", function() {
+            blowSolution();
+        });
 
-            $("#sol2").on( "click", function(){
-               waterSolution();
-            });
-        }
+        $("#sol2").on("click", function() {
+            waterSolution();
+        });
     }
+}
 
 
-function blowSolution(){
+function blowSolution() {
     $('#map').hide();
     $("#selection").hide();
 
@@ -70,18 +73,17 @@ function blowSolution(){
     var player2;
 
 
-        console.log("inmethod2");
-        console.log(vidId);
-        player2 = new YT.Player('player2', {
-            height: '315',
-            width: '560',
-            videoId: vidId,
-            events: {
-                 'onReady': onPlayerReady,
-                'onStateChange': endSecondvideo
-            }
-        });
-
+    console.log("inmethod2");
+    console.log(vidId);
+    player2 = new YT.Player('player2', {
+        height: '315',
+        width: '560',
+        videoId: vidId,
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': endSecondvideo
+        }
+    });
 
 
 
@@ -89,7 +91,7 @@ function blowSolution(){
 
 }
 
-function waterSolution(){
+function waterSolution() {
     $('#map').hide();
     $("#selection").hide();
 
@@ -105,7 +107,7 @@ function waterSolution(){
         width: '560',
         videoId: vidId,
         events: {
-             'onReady': onPlayerReady,
+            'onReady': onPlayerReady,
             'onStateChange': endSecondvideo
         }
     });
@@ -116,7 +118,7 @@ function waterSolution(){
 
 }
 
-function back1(){
+function back1() {
     $("#player1").show();
     $('#back1').hide();
     $("#selection").hide();
@@ -124,16 +126,16 @@ function back1(){
 
 }
 
-function endSecondvideo(event){
+function endSecondvideo(event) {
     if (event.data === 0) {
         console.log("endsecondvideo");
         //envoyer au back que c'est passé
         $("#player2").hide();
         $('#back').hide();
         // afficher bouton retour à la carte
-         $('.lvl-achieved').show();
+        $('.lvl-achieved').show();
 
-        $.post("/api/level/passLevelUser/origami", function( data ) {
+        $.post("/api/level/passLevelUser/origami", function(data) {
             console.log("post");
         });
 
@@ -141,10 +143,9 @@ function endSecondvideo(event){
 
 }
 
-
 function adjustHeight() {
     var width = $('.outer iframe').width();
-    $('.outer iframe').attr('height', width/1.8 + 'px');
+    $('.outer iframe').attr('height', width / 1.8 + 'px');
 
 }
 
