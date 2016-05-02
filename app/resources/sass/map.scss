@@ -48,13 +48,7 @@
 
 
 
-            &.solved {
-                .indice {
-                    &:before {
-                        content:" ";
-                    }
-                }
-            }
+
             .world-title {
                 text-align:center;
                 font-size: 0.9em;
@@ -187,6 +181,9 @@
             float:right;
             width:33%;
             text-align:center;
+            .enter {
+                display:block;
+            }
         }
     }
     .popup-header {
@@ -197,6 +194,13 @@
             padding-top: 37%;
             margin:0;
             text-align:center;
+        }
+    }
+    &.solved {
+        .indice {
+            &:before {
+                content:" ";
+            }
         }
     }
 }

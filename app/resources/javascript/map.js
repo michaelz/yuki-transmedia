@@ -47,8 +47,9 @@ $(document).ready(function() {
     $.get('/api/level/passed').done(function(levels) {
         levels.forEach(function(data) {
             var itemSelector = '.item-' + data.code;
-            var popupSelector = '.popup' + data.code;
+            var popupSelector = '.popup-' + data.code;
             $(itemSelector).addClass("solved");
+            $(popupSelector).addClass("solved");
             $(popupSelector + " .indice").css(
                 "background", 'url("' + data.picture +
                 '") no-repeat center center / contain'
