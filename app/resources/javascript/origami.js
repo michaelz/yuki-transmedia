@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $('#buttons').hide();
     $('#map').hide();
+    $('.lvl-achieved').hide();
 });
 
 // create youtube player
@@ -128,7 +129,7 @@ function endSecondvideo(event){
         $("#player2").hide();
         $('#back').hide();
         // afficher bouton retour à la carte
-        $('#map').show();
+         $('.lvl-achieved').show();
 
         $.post("/api/level/passLevelUser/origami", function( data ) {
             console.log("post");
