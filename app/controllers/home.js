@@ -57,7 +57,6 @@ router.get('/', function(req, res,
     }
 });
 
-
 /**
  * Introduction route.
  */
@@ -201,3 +200,11 @@ router.get('/outro', auth.mustBeAuthenticated, level.getLevelAuth("outro"),
             user: req.connectedUser.username
         });
     });
+
+/**
+ * Redirect all path who doesn't exist
+ */
+router.get('/**', function(req, res,
+    next) {
+    res.redirect('/');
+});
