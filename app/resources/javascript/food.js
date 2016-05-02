@@ -125,15 +125,10 @@ var startQuiz = function(data) {
             correctAnswer += 1;
             $('.square').addClass("right");
             $('.square').removeClass("wrong");
-            $('.answer-right').show();
-            $('.answer-false').hide();
-
         }else{
           console.log("Mauvaise réponse")
           $('.answer-right').hide();
           $('.answer-false').show();
-          $('.square').addClass("wrong");
-          $('.square').removeClass("right");
         }
 
         setTimeout(function() {
@@ -210,7 +205,7 @@ var buildQuestion = function(pos, q) {
 
     $.each(q.answers, function(a, answer) {
         $(".q-" + pos + " .choices").append("<li data-position='" +
-            a + "' class='answer'>" + answer.text + "</li>");
+            a + "' class='answer btn'>" + answer.text + "</li>");
     });
 }
 
