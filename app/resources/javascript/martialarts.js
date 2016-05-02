@@ -310,6 +310,7 @@ $(document).ready(function() {
                 $.post("/api/level/passLevelUser/martialarts",{ result: lvl}, function( data ) {
                 });
                 $("#newGamePlusFail").fadeIn();
+                $( ".scoreFinal" ).append(lvl);
                 $('#inputBox').hide();
               }
               else if (lvl <= 4 && is_same === false) {

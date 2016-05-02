@@ -36,6 +36,9 @@ $(document).ready(function() {
             '<p class="error">Login/Mot de passe non-reconnu</p>'
           );
         }
+      },
+      error: function(data) {
+        console.log(data);
       }
     });
   });
