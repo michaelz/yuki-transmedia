@@ -25,9 +25,11 @@ var LevelSchema = new Schema({
     clue: {
         data: Buffer,
         contentType: String
-    }
-
-
+    },
+    is_world: {
+        type: Boolean,
+        required: true
+    } 
 });
 
 mongoose.model('Level', LevelSchema);

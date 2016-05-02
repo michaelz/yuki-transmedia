@@ -15,9 +15,25 @@ module.exports = function(app) {
  * get all levels
  */
 router.get('/', function(req, res, next) {
+    Level.find({}, "code release_date keys.key clue url keys._id is_world", function(err,
+        levels) {
+
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+        res.send(levels);
+    });
+});
+
+/**
+ * get all games
+ */
+
+router.get('/listGames', function(req, res, next) {
 
 
-    Level.find({}, "code release_date keys.key clue url keys._id", function(err,
+    Level.find({is_world: "true"}, "code release_date keys.key clue url keys._id is_world", function(err,
         levels) {
 
         if (err) {
@@ -28,8 +44,6 @@ router.get('/', function(req, res, next) {
     });
 
 });
-
-
 
 /**
  * Get all active levels
@@ -195,6 +209,7 @@ router.put("/:id", function(req, res, next) {
         level.code = req.body.code;
         level.url = req.body.url;
         level.release_date = req.body.release_date;
+        level.is_world = req.body.is_world;
 
         if (req.body.clue) level.clue = req.body.clue;
         if (req.body.keys) level.keys = req.body.keys;

@@ -20,6 +20,7 @@ $(document).ready(function() {
                 $("#code").val(data.code);
                 $("#date_sortie").val(data.release_date);
                 $("#url").val(data.url);
+                if (data.is_world) $("#isWorld").prop("checked", true);
                 var x = 1;
                 $.each( data.keys, function( index, value ) {
                     $("#key" + x).val(value.key);
@@ -65,7 +66,7 @@ function capture() {
     level.code = $("#code").val();
     level.release_date = $("#date_sortie").val();
     level.url = $("#url").val();
-
+    level.is_world = $('#isWorld').is(':checked');
     level.keys = [];
     for (var i = 1; i <= 5; i++) {
         if (i ==  $('#correctKey').val()){
