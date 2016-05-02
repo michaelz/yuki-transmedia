@@ -33,7 +33,7 @@ $(document).ready(function() {
     "Yuki, prépare-toi! Je vais te présenter un COMBO à effectuer. Il faudra que tu mémorises les différents mouvements, puis après un certain temps, tu pourras essayer de reproduire le COMBO.",
     "Ce n'est pas grave si tu n'y arrives pas du premier coup, nous avons le temps. À chaque fois que tu arrives à exécuter un COMBO, le suivant devient plus compliqué.",
     "Tu débutes donc je vais être gentil. Dès que tu parviens à exécuter 4 COMBOs, je te donnerai l'indice.",
-    "Tu peux égelement obtenir des informations complémentaires sur les arts martiaux et notre monde en cliquant sur la bulle d'info."
+    "Tu peux également obtenir des informations complémentaires sur les arts martiaux et notre monde en cliquant sur la bulle d'info."
   ];
 
   var dialoguepersonnage = [
