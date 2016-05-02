@@ -312,6 +312,7 @@ $(document).ready(function() {
                 $("#newGamePlusFail").fadeIn();
                 $( ".scoreFinal" ).append(lvl);
                 $('#inputBox').hide();
+                $('.round-info-button-circle').hide();
               }
               else if (lvl <= 4 && is_same === false) {
                 $('.round-info-button').hide();
