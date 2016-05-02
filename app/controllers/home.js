@@ -81,7 +81,8 @@ router.get('/login', auth.cantBeAuthenticated, function(req, res, next) {
 /**
  * admin route.
  */
-router.get('/admin', auth.mustBeAuthenticated, auth.isAdmin, function(req, res, next) {
+router.get('/admin', auth.mustBeAuthenticated, auth.isAdmin, function(req, res,
+    next) {
     res.render('admin', {
         pagename: 'admin',
         title: 'Admin',
@@ -89,7 +90,8 @@ router.get('/admin', auth.mustBeAuthenticated, auth.isAdmin, function(req, res, 
     });
 });
 
-router.get('/admin/question', auth.mustBeAuthenticated, auth.isAdmin, function(req, res, next) {
+router.get('/admin/question', auth.mustBeAuthenticated, auth.isAdmin, function(
+    req, res, next) {
     res.render('adminQuest', {
         pagename: 'adminQuest',
         title: 'Question',
@@ -97,16 +99,18 @@ router.get('/admin/question', auth.mustBeAuthenticated, auth.isAdmin, function(r
     });
 });
 
-router.get('/admin/ajoutMonde', auth.mustBeAuthenticated, auth.isAdmin, function(req, res,
-    next) {
-    res.render('formLevel', {
-        pagename: 'formLevel',
-        title: 'Nouveau monde',
-        user: req.connectedUser.username
+router.get('/admin/ajoutMonde', auth.mustBeAuthenticated, auth.isAdmin,
+    function(req, res,
+        next) {
+        res.render('formLevel', {
+            pagename: 'formLevel',
+            title: 'Nouveau monde',
+            user: req.connectedUser.username
+        });
     });
-});
 
-router.get('/admin/:id', auth.mustBeAuthenticated, auth.isAdmin, function(req, res, next) {
+router.get('/admin/:id', auth.mustBeAuthenticated, auth.isAdmin, function(req,
+    res, next) {
     res.render('formLevel', {
         pagename: 'formLevel',
         title: 'Modifier un monde',
@@ -200,11 +204,3 @@ router.get('/outro', auth.mustBeAuthenticated, level.getLevelAuth("outro"),
             user: req.connectedUser.username
         });
     });
-
-/**
- * Redirect all path who doesn't exist
- */
-router.get('/**', function(req, res,
-    next) {
-    res.redirect('/');
-});
