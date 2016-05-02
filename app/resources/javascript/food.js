@@ -162,7 +162,7 @@ var nextQuestion = function(currentPos, total) {
             $("#restartQuiz").hide();
             $("#mondes").show();
             $("#msg").empty();
-            $("#msg").append("Tu as réussi le défi. Maître Hiramatsu est fier de toi et comme convenu, il te transmet l'indice te permettant de retrouver le morceau de tasse à la Japan Impact.");
+            $("#msg").append("Tu as réussi le défi. Maître Hiramatsu te remercie et comme convenu, il te transmet l'indice te permettant de retrouver le morceau de tasse à la Japan Impact.");
             //$(".yukiImage").removeAttr("src");
             console.log("ok");
           });
