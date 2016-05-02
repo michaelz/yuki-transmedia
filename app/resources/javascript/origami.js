@@ -10,7 +10,9 @@ $(document).ready(function () {
     var player;
 
     function onYouTubePlayerAPIReady(vidId) {
-        console.log("inmethod");
+
+
+
         if(!vidId){
             vidId = "E2qdFDRK5mo";
             console.log(vidId);
@@ -19,7 +21,7 @@ $(document).ready(function () {
         console.log(vidId);
         player = new YT.Player('player1', {
             height: '315',
-            width: '560',
+            width: '100%',
             videoId: vidId,
             events: {
                 /* 'onReady': onPlayerReady,*/
@@ -138,3 +140,20 @@ function endSecondvideo(event){
     }
 
 }
+
+
+function adjustHeight() {
+    var width = $('.outer iframe').width();
+    $('.outer iframe').attr('height', width/1.8 + 'px');
+
+}
+
+// calls adjustHeight on window load
+jQuery(window).load(function() {
+    adjustHeight();
+});
+
+// calls adjustHeight anytime the browser window is resized
+jQuery(window).resize(function() {
+    adjustHeight();
+});
