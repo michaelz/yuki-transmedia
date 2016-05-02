@@ -29,6 +29,8 @@ var settings = {
                 console.log("post");
             });
             $(".lvl-achieved").show();
+            $(".round-info-button-circle").show();
+
 
             } //,    // callback a user-defined function [function]
             // the function is passed an object as its argument
