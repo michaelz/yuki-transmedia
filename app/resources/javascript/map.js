@@ -14,15 +14,20 @@ $(document).ready(function() {
     $.get('/api/level/active').done(function(levels) {
         levels.forEach(function(data) {
             var itemSelector = '.item-' + data.code;
+            var popupSelector = '.popup-' + data.code;
+
             $(itemSelector).removeClass('disabled');
+
             $(itemSelector).on('click', function() {
                 openPopup(data.code);
             });
-            //$(itemSelector + ' .icon').attr("href", '/' +data.url);
-            $(itemSelector + ' .sign-indice').show();
+
+            $(popupSelector + ' .enter').attr("href",
+                '/' + data.url);
+            $(popupSelector + ' .sign-indice').show();
             if (data.keys) {
                 data.keys.forEach(function(data) {
-                    $(itemSelector + " select")
+                    $(popupSelector + " select")
                         .append(
                             '<option value="' +
                             data.key + '">' +
@@ -41,14 +46,10 @@ $(document).ready(function() {
      */
     $.get('/api/level/passed').done(function(levels) {
         levels.forEach(function(data) {
-            var popup = $('<div class="popup popup-' +
-                level + '"></div>');
-            popup.append(
-                '<div class="popup-close popupClose"></div><div class="popup-header"></div><div class="popup-content"><div class="indice"><p>Indice:</p></div><div class="keys">Sélectionner la clé</div><div class="go"></div></div>'
-            );
             var itemSelector = '.item-' + data.code;
+            var popupSelector = '.popup' + data.code;
             $(itemSelector).addClass("solved");
-            $(itemSelector + " .indice").css(
+            $(popupSelector + " .indice").css(
                 "background", 'url("' + data.picture +
                 '") no-repeat center center / contain'
             );
@@ -79,7 +80,7 @@ $(document).ready(function() {
      */
     $.get('/api/level/japanimpact').done(function(happening) {
         if (happening) {
-            $('.element .signs').show();
+            $('.signs').show();
         } else {
             console.log('no japanimpact');
         }
@@ -158,18 +159,14 @@ $(".popupClose").on('click', function() {
 
 
 function openPopup(world) {
-    $(".popup").addClass("popup-" + world);
-    $(".modal-bg").show();
-    $(".popup-" + world).show();
+    $(".modal-bg").fadeIn();
+    $(".popup-" + world).fadeIn();
     loadWorldinPopup(world);
 }
 
 function closePopup() {
-    $(".modal-bg").hide();
-    $(".popup").hide();
-    $(".popup").removeClass(function(index, css) {
-        return (css.match(/(^|\s)popup-\S+/g) || []).join(' ');
-    });
+    $(".modal-bg").fadeOut();
+    $(".popup").fadeOut();
 }
 
 

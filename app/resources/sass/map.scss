@@ -45,47 +45,18 @@
                     width: 90px;
                 }
             }
-            .sign-indice {
-                background:rgba($color-white,0.8);
-                padding: 0.3em;
-                border-radius: 1em;
-                display:block;
-                float:right;
-                margin-top: 2em;
-                .indice {
-                    float:left;
-                    position:relative;
-                    z-index: 1;
-                    width: 50px;
-                    height: 50px;
-                    border-radius: 100%;
-                    text-align:center;
-                    background: $color-grey;
-                    color:white;
-                    &:before {
-                        @include icon($fa-var-close);
-                        line-height: 40px;
-                        font-size: 20px;
-                    }
-                }
-                .signs {
-                    // This should show up only once japan impact has started
-                    float:right;
-                    width: 50px;
-                    overflow:hidden;
-                }
-            }
+
 
 
             &.solved {
                 .indice {
-                    background: green;
                     &:before {
                         content:" ";
                     }
                 }
             }
             .world-title {
+                text-align:center;
                 font-size: 0.9em;
                 font-color: $color-grey;
                 text-transform:uppercase;
@@ -153,15 +124,104 @@
     position:absolute;
     left: 5%;
     right:5%;
-    top: 20%;
-    height:50%;
+    top: 15%;
+    min-height:50%;
     border: 3px solid $color-dialogue;
-    background: $color-dialogue-bg;
+    background-color:white;
     color: $color-dialogue;
     z-index:15;
     .popup-close {
+        position:absolute;
+        right:0;
+        margin-top: -1em;
+        margin-right: -1em;
         &:before {
             @include icon($fa-var-close);
+            border: 2px solid $color-grey;
+            border-radius: 50%;
+            background:white;
+            text-align:center;
+            display:block;
+            font-size: 15px;
+            line-height:20px;
+            width:20px;
+            height:20px;
         }
+    }
+    .popup-header {
+        height: 65%;
+        margin: 0 auto;
+    }
+    .sign-indice {
+        padding: 0.3em;
+        border-radius: 1em;
+        display:block;
+        margin-top: 2em;
+        .indice {
+            position:relative;
+            z-index: 1;
+            width: 50px;
+            height: 50px;
+            margin: 0 auto;
+            border-radius: 100%;
+            text-align:center;
+            background: $color-grey;
+            color:white;
+            &:before {
+                @include icon($fa-var-close);
+                line-height: 40px;
+                font-size: 20px;
+            }
+        }
+        .indice-wrapper {
+            float:left;
+            width: 33%;
+        }
+        .signs {
+            // This should show up only once japan impact has started
+            float:left;
+            width: 33%;
+            overflow:hidden;
+        }
+        .enterWorld {
+            float:right;
+            width:33%;
+            text-align:center;
+        }
+    }
+    .popup-header {
+        background-repeat:no-repeat;
+        background-position: top center;
+        background-size: auto 70%;
+        h2 {
+            padding-top: 37%;
+            margin:0;
+            text-align:center;
+        }
+    }
+}
+.popup-martialarts {
+    .popup-header {
+        background-image: url('/img/map/pop/martialarts.png');
+    }
+}
+.popup-calligraphy {
+    .popup-header {
+        background-image: url('/img/map/pop/calligraphy.png');
+    }
+}
+.popup-origami {
+    .popup-header {
+        background-image: url('/img/map/pop/origami.png');
+    }
+}
+.popup-food {
+    .popup-header {
+        background-image: url('/img/map/pop/food.png');
+    }
+}
+.popup-popculture {
+    .popup-header {
+        background-image: url('/img/map/pop/popculture.png');
     }
 }

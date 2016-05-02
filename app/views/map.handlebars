@@ -8,78 +8,22 @@
         </div>
         <div class="element item-martialarts disabled" title="Arts Martiaux">
           <a class="icon" href="#"></a>
-          <div class="sign-indice" style="display:none;">
-              <div class="indice">
-
-              </div>
-              <div style="display:none;" class='signs'>
-                  Clé ?
-                    <select class="sign-martialarts">
-                        <option value="0">&nbsp;</option>
-                    </select>
-              </div>
-
-            </div>
-            <p class="world-title">Arts Martiaux</p>
+          <p class="world-title">Arts Martiaux</p>
         </div>
         <div class="element item-calligraphy disabled" title="Calligraphie">
             <a class="icon" href="#"></a>
-            <div class="sign-indice" style="display:none;" >
-                <div class="indice">
-
-                </div>
-                <div style="display:none" class='signs'>
-                    Clé ?
-                    <select class="sign-calligraphy">
-                        <option value="0">&nbsp;</option>
-                    </select>
-                </div>
-            </div>
             <p class="world-title">Calligraphie</p>
         </div>
         <div class="element item-origami disabled" title="Origamis">
             <a class="icon" href="#"></a>
-            <div class="sign-indice"  style="display:none;">
-                <div class="indice">
-
-                </div>
-                <div style="display:none" class='signs'>
-                    Clé ?
-                    <select class="sign-origami">
-                        <option value="0">&nbsp;</option>
-                    </select>
-                </div>
-            </div>
             <p class="world-title">Origamis</p>
         </div>
         <div class="element item-food disabled" title="Nourriture">
             <a class="icon" href="#"></a>
-            <div class="sign-indice" style="display:none;" >
-                <div class="indice">
-
-                </div>
-                <div style="display:none" class='signs'>
-                    Clé ?
-                    <select class="sign-food">
-                        <option value="0">&nbsp;</option>
-                    </select>
-                </div>
-            </div>
             <p class="world-title">Nourriture</p>
         </div>
         <div class="element item-popculture disabled" title="Pop Culture">
-
             <a class="icon" href="#"></a>
-            <div class="sign-indice" style="display:none;" >
-                <div class="indice">
-                </div>
-                <div style="display:none" class='signs'>
-                    Clé ?
-                    <select class="sign-popculture">
-                        <option value="0">&nbsp;</option>
-                    </select>
-                </div>
-            </div>
             <p class="world-title">Pop Culture</p>
         </div>
     </div>
@@ -98,16 +42,107 @@
 
 <div class="lvl-achieved" style="display:none">
   <div class="yuki_content"><img class="yukImage" src="/img/yuki_content.png"></img></div>
-  <p id="msg">Bravo, tu as trouvé tous les indices permettant à Yuki de trouver la tasse. L'aventure ne se termine pas maintenant, afin d'aider à Yuki, va à la JapanImpact le XX-XX-XX et retrouve les codes qui te permettront d'assembler la tasse sur les lieux. 
+  <p id="msg">Bravo, tu as trouvé tous les indices permettant à Yuki de trouver la tasse. L'aventure ne se termine pas maintenant, afin d'aider à Yuki, va à la JapanImpact le XX-XX-XX et retrouve les codes qui te permettront d'assembler la tasse sur les lieux.
   En attendant profite d'améliorer tes scores ! A bientôt :D</p>
   <a class='btn'id="mondes">Carte</a>
 </div>
-<div class="popup" style="display:none;">
+
+<div class="popup popup-martialarts" style="display:none;">
     <div class="popup-close popupClose"></div>
-    <div class="popup-header"></div>
+    <div class="popup-header"><h2>Bienvenue dans le monde des Arts Martiaux</h2></div>
     <div class="popup-content">
-        <div class="indice"><p>Indice:</p></div>
-        <div class="keys">Sélectionner la clé</div>
-        <div class="go"></div>
+        <div class="sign-indice" style="display:none;">
+            <div class="indice-wrapper">
+                <div class="indice">
+                </div>
+            </div>
+            <div style="display:none;" class='signs'>
+                Clé ?
+                  <select class="sign-martialarts">
+                      <option value="0">&nbsp;</option>
+                  </select>
+            </div>
+            <div class="enterWorld"><a class="btn enter" href="#">Entre dans le monde !</a></div>
+
+          </div>
+    </div>
+</div>
+<div class="popup popup-calligraphy" style="display:none;">
+    <div class="popup-close popupClose"></div>
+    <div class="popup-header"><h2>Bienvenue dans le monde de la calligraphie</h2></div>
+    <div class="popup-content">
+        <div class="sign-indice" style="display:none;">
+            <div class="indice-wrapper">
+                <div class="indice">
+                </div>
+                <p class="text">Indice</p>
+            </div>
+            <div style="display:none;" class='signs'>
+                Clé ?
+                  <select class="sign-calligraphy">
+                      <option value="0">&nbsp;</option>
+                  </select>
+            </div>
+            <div class="enterWorld"><a class="enter" href="#">Entre dans le monde !</a></div>
+
+          </div>
+    </div>
+</div>
+<div class="popup popup-origami" style="display:none;">
+    <div class="popup-close popupClose"></div>
+    <div class="popup-header"><h2>Bienvenue dans le monde des origamis</h2></div>
+    <div class="popup-content">
+        <div class="sign-indice" style="display:none;">
+            <div class="indice-wrapper">
+                <div class="indice">
+                </div>
+            </div>
+            <div style="display:none;" class='signs'>
+                Clé ?
+                  <select class="sign-origami">
+                      <option value="0">&nbsp;</option>
+                  </select>
+            </div>
+            <div class="enterWorld"><a class="enter" href="#">Entre dans le monde !</a></div>
+
+          </div>
+    </div>
+</div>
+<div class="popup popup-food" style="display:none;">
+    <div class="popup-close popupClose"></div>
+    <div class="popup-header"><h2>Bienvenue dans le monde de la nourriture</h2></div>
+    <div class="popup-content">
+        <div class="sign-indice" style="display:none;">
+            <div class="indice-wrapper">
+                <div class="indice">
+                </div>
+            </div>
+            <div class='signs' style="display:none;">
+                Clé ?
+                  <select class="sign-food">
+                      <option value="0">&nbsp;</option>
+                  </select>
+            </div>
+            <div class="enterWorld"><a class="enter" href="#">Entre dans le monde !</a></div>
+          </div>
+    </div>
+</div>
+<div class="popup popup-popculture" style="display:none;">
+    <div class="popup-close popupClose"></div>
+    <div class="popup-header"><h2>Bienvenue dans le monde de la popculture !</h2></div>
+    <div class="popup-content">
+        <div class="sign-indice" style="display:none;">
+            <div class="indice-wrapper">
+                <div class="indice">
+                </div>
+            </div>
+            <div style="display:none;" class='signs'>
+                Clé ?
+                  <select class="sign-popculture">
+                      <option value="0">&nbsp;</option>
+                  </select>
+            </div>
+            <div class="enterWorld"><a class="enter" href="#">Entre dans le monde !</a></div>
+          </div>
     </div>
 </div>
