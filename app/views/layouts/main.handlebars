@@ -38,9 +38,12 @@
 <body class="body-{{pagename}}">
   <header class="mainHeader">
     <div class="topmenu">
+        {{#if user}}
+            <div class="welcome">Bienvenue {{user}} !</div>
+        {{/if}}
       <a href="/"><img class="logo" src="/img/logo.png" alt="logo"/></a>
       {{#if user}}
-      <div class="welcome">Welcome {{user}} ! <a href="/session/logout">Logout</a></div>
+      <div class="logout"><a href="/session/logout">Se déconnecter</a></div>
       {{/if}}
       <div class="round-audio-button" style="display:none">
           <div class="round-audio-button-circle">

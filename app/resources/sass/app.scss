@@ -52,10 +52,15 @@ a {
   max-width: 80vh;
   margin: 0 auto;
   position:relative;
+  .logout {
+      position:absolute;
+      top:2em;
+      right: 14%;
+  }
   .welcome {
     position:absolute;
     top:2em;
-    right: 14%;
+    left: 0;
   }
 }
 // Disable square for some pages on mobile (keyboard)
