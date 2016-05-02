@@ -8,12 +8,19 @@ $(document).ready(function() {
     $.get("/api/level")
         .done(function(data) {
             $.each(data, function(index, value) {
+                var monde;
+                console.log(value.is_world);
+                if (value.is_world) {
+                    monde = "monde";
+                } else {
+                    monde = "autre";
+                };
                 $('.tabLevel .levels tbody').append(
                     '<tr><td>' +
                     value.code + '</td><td>' + value.release_date
                     .slice(0, -8).replace("T", " ") +
                     '</td><td>' + value.url +
-                    '</td><td><a class="edit" href="/admin/' +
+                    '</td><td>'+ monde + '</td><td><a class="edit" href="/admin/' +
                     value
                     ._id +
                     '"></a>&nbsp;<span title="supprimer" class="buttonDelete" id="' +

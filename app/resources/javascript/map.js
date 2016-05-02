@@ -1,7 +1,9 @@
 // TODO Appel aux webservices
 $(document).ready(function() {
+    if (!Cookies.get("japanimpact")) Cookies.set("japanimpact", 0);
     $('.round-info-button').hide();
     $('.round-audio-button').show();
+    $(".lvl-achieved").hide();
     $("audio").append(
         '<source class="audioSource" src="/audio/carte/65SecNatureSoundsEnchantedForest-TheHonestGuys.mp3" type="audio/mpeg">'
     );
@@ -33,6 +35,7 @@ $(document).ready(function() {
 
 
     });
+
     /**
      * Work with passed levels to show indices
      */
@@ -55,6 +58,21 @@ $(document).ready(function() {
         console.log(err);
     });
 
+    /**
+     * Show div for JapanImpact RDV
+     */
+    $.get('/api/level/passed').done(function(levelsPassed) {
+        $.get('/api/level/listGames').done(function(levels) {
+            if (levelsPassed.length == levels.length && Cookies.get("japanimpact") == 0) {
+                Cookies.set("japanimpact", 1);
+                $(".lvl-achieved").show();
+            }
+        }).fail(function(err) {
+            console.log(err);
+        });        
+    }).fail(function(err) {
+        console.log(err);
+    });
 
     /**
      * Get the japanImpact date to show the clues
@@ -68,6 +86,10 @@ $(document).ready(function() {
     }).fail(function(err) {
 
     });
+
+    $('#mondes').click(function() {
+        $(".lvl-achieved").hide();
+    })
 
     $('.element .signs select').on('change', function() {
         console.log('selected a new one');
