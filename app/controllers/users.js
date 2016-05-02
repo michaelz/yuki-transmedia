@@ -81,35 +81,48 @@ router.post("/keys/check", function (req, res, next) {
     /*   var martialArts = req.body.content[0];
      var calligraphy = req.body.content[1];*/
 
+    console.log("length: " + req.body.content.length);
 
     var rightKeys = [];
 
-    Level.findOne({
-        code: 'martialarts'
-    }).exec(function(err, level) {
-        if (err) {
-            res.status(500).send(err);
-            return;
-        }
-        if (!level) {
-            res.status(404).send('level not found');
-            return;
-        }
 
-        level.keys.forEach(function(keys){
-            if(keys.is_true) {
-                console.log(keys.key);
-                rightKeys.push(keys.key);
+
+    req.body.content.forEach(function (level) {
+        console.log("levels:"+level.levelCode);
+
+        Level.findOne({
+            code: level.levelCode
+
+        }).exec(function (err, level) {
+
+            if (err) {
+                res.status(500).send(err);
+                return;
             }
+            if (!level) {
+                //res.status(404).send('level not found');
+                return;
+            }
+
+            console.log("level.keys: " +level.keys);
+            level.keys.forEach(function (key) {
+                if (key.is_true) {
+                    console.log( "key: "+ key.key);
+                    rightKeys.push(key.key);
+                }
+            });
+            if(rightKeys.length = req.body.content.length) {
+                console.log("right keys: " + rightKeys);
+                res.send(rightKeys);
+            }
+
         });
 
-        console.log(rightKeys);
-
-        res.send(level.keys);
     });
 
 
 
+    //res.jsend({"keys" : rightKeys});
 });
 
 /**
@@ -170,4 +183,3 @@ router.put("/:id", function (req, res, next) {
         })
     });
 });
-
