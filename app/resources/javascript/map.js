@@ -50,9 +50,10 @@ $(document).ready(function() {
             var popupSelector = '.popup-' + data.code;
             $(itemSelector).addClass("solved");
             $(popupSelector).addClass("solved");
+            $(popupSelector + " .text").html('Indice');
             $(popupSelector + " .indice").css(
                 "background", 'url("' + data.picture +
-                '") no-repeat center center / contain'
+                '") no-repeat center center / 68% auto'
             );
         });
 
@@ -65,13 +66,14 @@ $(document).ready(function() {
      */
     $.get('/api/level/passed').done(function(levelsPassed) {
         $.get('/api/level/listGames').done(function(levels) {
-            if (levelsPassed.length == levels.length && Cookies.get("japanimpact") == 0) {
+            if (levelsPassed.length == levels.length &&
+                Cookies.get("japanimpact") == 0) {
                 Cookies.set("japanimpact", 1);
                 $(".lvl-achieved").show();
             }
         }).fail(function(err) {
             console.log(err);
-        });        
+        });
     }).fail(function(err) {
         console.log(err);
     });

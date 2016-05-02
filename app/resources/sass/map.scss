@@ -152,12 +152,13 @@
         display:block;
         margin-top: 2em;
         .indice {
+            margin-top: 1em;
+            padding: 1em;
             position:relative;
             z-index: 1;
-            width: 50px;
-            height: 50px;
-            margin: 0 auto;
-            border-radius: 100%;
+            width: 65%;
+            padding-top:65%;
+            margin: 5% auto;
             text-align:center;
             background: $color-grey;
             color:white;
@@ -166,10 +167,19 @@
                 line-height: 40px;
                 font-size: 20px;
             }
+
         }
         .indice-wrapper {
             float:left;
-            width: 33%;
+            width: 24%;
+            margin: 0 4% 4%;
+            background:$color-grey;
+            border-radius: 2em;
+            .text {
+                text-align:center;
+                color:white;
+                border-radius: 2em;
+            }
         }
         .signs {
             // This should show up only once japan impact has started
@@ -189,15 +199,17 @@
     .popup-header {
         background-repeat:no-repeat;
         background-position: top center;
-        background-size: auto 70%;
+        background-size: auto 80%;
         h2 {
-            padding-top: 37%;
+            padding-top: 25%;
             margin:0;
             text-align:center;
         }
     }
     &.solved {
         .indice {
+            background-color:white!important;
+            border-radius: 2em;
             &:before {
                 content:" ";
             }
