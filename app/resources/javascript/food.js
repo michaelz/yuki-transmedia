@@ -14,6 +14,9 @@ $(document).ready(function() {
     $('.quiz').hide();
     $('.lvl-achieved').hide();
 
+    $('.answer-right').hide();
+    $('.answer-false').hide();
+
     $('.round-info-button').on('click', showInfos);
 
     function showInfos() {
@@ -120,8 +123,23 @@ var startQuiz = function(data) {
     $('.answer').on('click', function() {
         if (data[pos].answers[$(this).attr('data-position')].is_solution) {
             correctAnswer += 1;
+            $('.square').addClass("wrong");
+            $('.square').removeClass("right");
+            $('.answer-right').show();
+            $('.answer-false').hide();
+
+        }else{
+          console.log("Mauvaise réponse")
+          $('.answer-right').hide();
+          $('.answer-false').show();
+          $('.square').addClass("right");
+          $('.square').removeClass("wrong");
         }
-        nextQuestion(pos, data.length);
+
+        //Indiquer mauvaise réponse
+
+        setTimeout(
+          nextQuestion(pos, data.length), 4000);
     });
 }
 
@@ -130,6 +148,9 @@ var startQuiz = function(data) {
  * Next question or finish quiz if question is last
  */
 var nextQuestion = function(currentPos, total) {
+  $('.square').removeClass("right");
+  $('.square').removeClass("wrong");
+
     if (currentPos == total - 1) {
         $(".q-" + pos).hide();
         //To do div pour mettre le score du petit nenfant
