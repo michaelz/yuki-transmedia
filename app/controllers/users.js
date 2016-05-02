@@ -81,7 +81,7 @@ router.post("/keys/check", function (req, res, next) {
     /*   var martialArts = req.body.content[0];
      var calligraphy = req.body.content[1];*/
 
-    console.log(req.body.content);
+    console.log("length: " + req.body.content.length);
 
     var rightKeys = [];
 
@@ -89,7 +89,6 @@ router.post("/keys/check", function (req, res, next) {
 
     req.body.content.forEach(function (level) {
         console.log("levels:"+level.levelCode);
-
 
         Level.findOne({
             code: level.levelCode
@@ -101,7 +100,7 @@ router.post("/keys/check", function (req, res, next) {
                 return;
             }
             if (!level) {
-                res.status(404).send('level not found');
+                //res.status(404).send('level not found');
                 return;
             }
 
@@ -184,4 +183,3 @@ router.put("/:id", function (req, res, next) {
         })
     });
 });
-
