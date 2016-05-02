@@ -6,6 +6,12 @@
         background-size: cover;
     }
 }
+.square.wrong .questionBlock {
+  background:#D99193;
+}
+.square.right .questionBlock {
+  background:#69BC80;
+}
 .quiz {
 
     .startQuizArea {
@@ -37,8 +43,10 @@
 
             }
             li {
-                width: 50%;
-                margin: 0.5em 0;
+                width: 35%;
+                padding: 1em;
+                text-transform:none;
+                margin: 1%
                 display:inline-block;
             }
         }

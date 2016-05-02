@@ -14,6 +14,9 @@ $(document).ready(function() {
     $('.quiz').hide();
     $('.lvl-achieved').hide();
 
+    $('.answer-right').hide();
+    $('.answer-false').hide();
+
     $('.round-info-button').on('click', showInfos);
 
     function showInfos() {
@@ -120,8 +123,21 @@ var startQuiz = function(data) {
     $('.answer').on('click', function() {
         if (data[pos].answers[$(this).attr('data-position')].is_solution) {
             correctAnswer += 1;
+            $('.square').addClass("right");
+            $('.square').removeClass("wrong");
+        }else{
+          console.log("Mauvaise réponse")
+          $('.answer-right').hide();
+          $('.answer-false').show();
         }
-        nextQuestion(pos, data.length);
+
+        setTimeout(function() {
+          nextQuestion(pos, data.length);
+        }, 800);
+
+
+        //Indiquer mauvaise réponse
+
     });
 }
 
@@ -130,6 +146,9 @@ var startQuiz = function(data) {
  * Next question or finish quiz if question is last
  */
 var nextQuestion = function(currentPos, total) {
+  $('.square').removeClass("right");
+  $('.square').removeClass("wrong");
+
     if (currentPos == total - 1) {
         $(".q-" + pos).hide();
         //To do div pour mettre le score du petit nenfant
@@ -186,7 +205,7 @@ var buildQuestion = function(pos, q) {
 
     $.each(q.answers, function(a, answer) {
         $(".q-" + pos + " .choices").append("<li data-position='" +
-            a + "' class='answer'>" + answer.text + "</li>");
+            a + "' class='answer btn'>" + answer.text + "</li>");
     });
 }
 
