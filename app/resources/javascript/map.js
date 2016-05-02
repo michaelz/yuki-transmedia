@@ -38,6 +38,11 @@ $(document).ready(function() {
      */
     $.get('/api/level/passed').done(function(levels) {
         levels.forEach(function(data) {
+            var popup = $('<div class="popup popup-' +
+                level + '"></div>');
+            popup.append(
+                '<div class="popup-close popupClose"></div><div class="popup-header"></div><div class="popup-content"><div class="indice"><p>Indice:</p></div><div class="keys">Sélectionner la clé</div><div class="go"></div></div>'
+            );
             var itemSelector = '.item-' + data.code;
             $(itemSelector).addClass("solved");
             $(itemSelector + " .indice").css(
@@ -134,6 +139,7 @@ function openPopup(world) {
     $(".popup").addClass("popup-" + world);
     $(".modal-bg").show();
     $(".popup-" + world).show();
+    loadWorldinPopup(world);
 }
 
 function closePopup() {
@@ -142,4 +148,9 @@ function closePopup() {
     $(".popup").removeClass(function(index, css) {
         return (css.match(/(^|\s)popup-\S+/g) || []).join(' ');
     });
+}
+
+
+function loadWorldinPopup(world) {
+
 }

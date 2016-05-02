@@ -151,10 +151,13 @@
 }
 .popup {
     position:absolute;
-    left: 10%;
-    right:10%;
-    border: 1px solid red;
-    background: yellow;
+    left: 5%;
+    right:5%;
+    top: 20%;
+    height:50%;
+    border: 3px solid $color-dialogue;
+    background: $color-dialogue-bg;
+    color: $color-dialogue;
     z-index:15;
     .popup-close {
         &:before {
