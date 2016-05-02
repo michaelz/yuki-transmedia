@@ -149,3 +149,16 @@
     bottom:0;
     top:0;
 }
+.popup {
+    position:absolute;
+    left: 10%;
+    right:10%;
+    border: 1px solid red;
+    background: yellow;
+    z-index:15;
+    .popup-close {
+        &:before {
+            @include icon($fa-var-close);
+        }
+    }
+}

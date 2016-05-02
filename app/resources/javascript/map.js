@@ -13,8 +13,10 @@ $(document).ready(function() {
         levels.forEach(function(data) {
             var itemSelector = '.item-' + data.code;
             $(itemSelector).removeClass('disabled');
-            $(itemSelector + ' .icon').attr("href", '/' +
-                data.url);
+            $(itemSelector).on('click', function() {
+                openPopup(data.code);
+            });
+            //$(itemSelector + ' .icon').attr("href", '/' +data.url);
             $(itemSelector + ' .sign-indice').show();
             if (data.keys) {
                 data.keys.forEach(function(data) {
@@ -116,19 +118,28 @@ $(document).ready(function() {
 
 
 $(".modal-bg").on('click', function() {
-closePopup();
-})
+    closePopup();
+});
+
+$(".popupClose").on('click', function() {
+    closePopup();
+
+
 
 });
 
 
 
 function openPopup(world) {
+    $(".popup").addClass("popup-" + world);
     $(".modal-bg").show();
-    $(".item-" + world + " .popup").show();
+    $(".popup-" + world).show();
 }
 
 function closePopup() {
     $(".modal-bg").hide();
     $(".popup").hide();
+    $(".popup").removeClass(function(index, css) {
+        return (css.match(/(^|\s)popup-\S+/g) || []).join(' ');
+    });
 }
