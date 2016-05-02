@@ -89,9 +89,6 @@ a {
 .copyright {
   font-size: 9px;
   text-align: center;
-  &:after {
-    @include icon($fa-var-arrow-up);
-  }
 }
 
 /**
