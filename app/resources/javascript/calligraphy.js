@@ -61,8 +61,8 @@ var texts = {
     toggleOriginalLabel: 'Original',
     toggleNumbersLabel: 'Numbers',
     confirmShuffleMessage: 'Do you really want to shuffle?',
-    movesLabel: 'moves',
-    secondsLabel: 'seconds'
+    movesLabel: 'déplacements',
+    secondsLabel: 'secondes'
 }
 
 $(document).ready(function() {
