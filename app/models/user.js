@@ -50,7 +50,7 @@ var UserSchema = new Schema({
         }
     ],
 
-    finished: Boolean
+    finished: []
 });
 
 /*UserSchema.virtual('date')

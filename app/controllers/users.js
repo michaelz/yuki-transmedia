@@ -41,6 +41,16 @@ router.get('/', function (req, res, next) {
     });
 });
 
+router.get('/finished', auth.mustBeAuthenticated, auth.getUserInfo, function (req, res, next) {
+    if (req.connectedUser.finished.length == 0) {
+        res.status(401).send('No finished keys');  
+        return; 
+    } else {
+        res.send(req.connectedUser.finished);    
+    };
+    
+});
+
 /**
  * création d'un utilisateur
  */
@@ -72,16 +82,8 @@ router.get('/:id', function (req, res, next) {
 });
 
 /**
- * All keys right
- */
-router.post("/keys/check", function (req, res, next) {
-    
-});
-
-/**
  * check if combination for keys is right
  */
-
 router.post("/keys/check", auth.mustBeAuthenticated, auth.getUserInfo, function (req, res, next) {
     var rightKeys = [];
     var levelKeyUser = [];
@@ -102,11 +104,10 @@ router.post("/keys/check", auth.mustBeAuthenticated, auth.getUserInfo, function 
             });
         });
         if (rightKeys.length == levelsBD.length) {
-            res.send("true");
-            /*User.findByIdAndUpdate (req.connectedUser._id, {$set: {finished: true}}, function (err, user) {
+            User.findByIdAndUpdate (req.connectedUser._id, {$set: {finished: rightKeys}}, function (err, user) {
                 if (err) return res.status(500).send(err);
                 res.send("true");
-            });*/
+            });
         } else {
             res.send("false");
         }
