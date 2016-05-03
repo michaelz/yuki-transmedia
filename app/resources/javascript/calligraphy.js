@@ -8,7 +8,7 @@ var settings = {
 
     // display additional gui controls
     control: {
-        shufflePieces: false, // display 'Shuffle' button [true|false]
+        shufflePieces: true, // display 'Shuffle' button [true|false]
         confirmShuffle: false, // ask before shuffling [true|false]
         toggleOriginal: true, // display 'Original' button [true|false]
         toggleNumbers: false, // display 'Numbers' button [true|false]
@@ -22,14 +22,16 @@ var settings = {
     success: {
         //fadeOriginal: false,    // cross-fade original image [true|false]
         callback: function(results) {
-               /* alert('Resolu en ' + results.moves + ' coups et en ' +
-                    +results.seconds + ' secondes.');*/
+                /* alert('Resolu en ' + results.moves + ' coups et en ' +
+                     +results.seconds + ' secondes.');*/
 
-            $.post("/api/level/passLevelUser/calligraphy", { result: results.seconds}, function( data ) {
-                console.log("post");
-            });
-            $(".lvl-achieved").show();
-            $(".round-info-button-circle").show();
+                $.post("/api/level/passLevelUser/calligraphy", {
+                    result: results.seconds
+                }, function(data) {
+                    console.log("post");
+                });
+                $(".lvl-achieved").show();
+                $(".round-info-button-circle").show();
 
 
             } //,    // callback a user-defined function [function]
@@ -59,7 +61,7 @@ var settings = {
 }
 
 var texts = {
-    shuffleLabel: 'Mélanger',
+    shuffleLabel: 'Recommencer',
     toggleOriginalLabel: 'Original',
     toggleNumbersLabel: 'Numbers',
     confirmShuffleMessage: 'Do you really want to shuffle?',
@@ -71,7 +73,9 @@ $(document).ready(function() {
 
     $(".lvl-achieved").hide();
     $('.round-audio-button').show();
-    $("audio").append('<source class="audioSource" src="/audio/calligraphie/CherryBlossoms-DerekFiechter.mp3" type="audio/mpeg">');
+    $("audio").append(
+        '<source class="audioSource" src="/audio/calligraphie/CherryBlossoms-DerekFiechter.mp3" type="audio/mpeg">'
+    );
 
     $('.round-info-button').show();
     $('.img').hide();
