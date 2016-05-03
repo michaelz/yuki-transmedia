@@ -262,8 +262,15 @@
 }
 
 .popup-combinaison {
-  .popup-header {
+  .popup-title {
+    padding-top:20%;
+    background-size:auto 50%;
+    background-repeat:no-repeat;
+    background-position:center center;
     background-image: url('/img/yuki_content.png');
+    h2 {
+      padding-top: 2em;
+    }
   }
 }
 .combinaisonAchieved{
