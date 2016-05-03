@@ -95,7 +95,7 @@ $(document).ready(function() {
         $(".lvl-achieved").hide();
     })
 
-    $('.element .signs select').on('change', function() {
+    $('.popup .signs select').on('change', function() {
         console.log('selected a new one');
         //console.log($(this).val());
 
@@ -104,17 +104,12 @@ $(document).ready(function() {
         var arts = $('.sign-martialarts option:selected').val();
         var pop = $('.sign-popculture option:selected').val();
         var origamis = $('.sign-origami option:selected').val();
-        console.log(pop);
+        //console.log(pop);
 
         // TODO: Check all selects and make a post request to check
         if (arts != 0 && calli != 0 && food != 0 && pop != 0 &&
             origamis != 0) {
-            console.log(arts+" "+calli+" "+origamis+" "+food+" "+pop);
-            $('.combinaisonBox').fadeIn();
-            //$(arts+" "+calli+" "+origamis+" "+food+" "+pop).appendTo($("#combinaison"));
-            $("#combinaison").append(arts + " " + calli + " " +
-                origamis + " " + food + " " + pop);
-            $.post("/keys/check", {
+            $.post("api/user/keys/check", {
                     "content": [{
                         "levelCode": " martialarts",
                         "key": arts
@@ -133,12 +128,20 @@ $(document).ready(function() {
                     }]
                 },
                 function(data) {
-                    if (data) {
+                  console.log(data);
+                    if (data === "true") {
+                        $(".popup-martialarts").fadeOut();
+                        $(".popup-calligraphy").fadeOut();
+                        $(".popup-origami").fadeOut();
+                        $(".popup-food").fadeOut();
+                        $(".popup-popculture").fadeOut();
                         $('.combinaisonBox').fadeIn();
-                        $(arts + " " + calli + " " +
+                        /*$(arts + " " + calli + " " +
                             origamis + " " + food + " " +
                             pop).appendTo($(
-                            "#combinaison"));
+                            "#combinaison"));*/
+                            $("#combinaison").empty();
+                            $("#combinaison").append(arts + " " + calli + " " +origamis + " " + food + " " +pop);
                     } else {
 
                     }
