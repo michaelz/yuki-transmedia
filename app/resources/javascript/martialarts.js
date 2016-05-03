@@ -230,7 +230,7 @@ $(document).ready(function() {
             }, 4000);
 
 
-            console.log(tblKata);
+            //console.log(tblKata);
             i = 0;
             //tblKata = [];
             //lvl++;
@@ -279,11 +279,11 @@ $(document).ready(function() {
               .every(function(element, index) {
                 return element === tblInputs[index];
               });
-              console.log(is_same);
+              //console.log(is_same);
               if (is_same === true) {
-                console.log(
-                  "Bien joué le kata a été effectué à la perfection!"
-                );
+                //console.log(
+                  //"Bien joué le kata a été effectué à la perfection!"
+                //);
                 $(".kataASaisir").remove();
                 spriteAnimation(sprite);
 
