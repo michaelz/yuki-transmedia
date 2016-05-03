@@ -15,8 +15,6 @@ function onYouTubePlayerAPIReady(vidId) {
         vidId = "E2qdFDRK5mo";
         console.log(vidId);
     }
-
-    console.log(vidId);
     player = new YT.Player('player1', {
         height: '315',
         width: '100%',
@@ -25,7 +23,6 @@ function onYouTubePlayerAPIReady(vidId) {
             rel: 0
         },
         events: {
-            /* 'onReady': onPlayerReady,*/
             'onStateChange': onPlayerStateChange
         }
     });
@@ -142,17 +139,12 @@ function endSecondvideo(event) {
 
 }
 
-function adjustHeight() {
-    var width = $('.outer iframe').width();
-    $('.outer iframe').attr('height', width / 1.77777777778 + 'px');
-}
-
 // calls adjustHeight on window load
 jQuery(window).load(function() {
-    adjustHeight();
+    adjustVideoHeight();
 });
 
 // calls adjustHeight anytime the browser window is resized
 jQuery(window).resize(function() {
-    adjustHeight();
+    adjustVideoHeight();
 });
