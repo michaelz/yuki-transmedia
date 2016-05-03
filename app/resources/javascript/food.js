@@ -159,6 +159,7 @@ var nextQuestion = function(currentPos, total) {
             $.post("/api/level/passLevelUser/food", {
                 result: correctAnswer
             }, function(data) {
+                $(".round-info-button").fadeOut();
                 $("#quizTXT").append("Bravo");
                 $("#restartQuiz").hide();
                 $("#mondes").show();
