@@ -121,10 +121,10 @@ $(document).ready(function() {
 
         $.ajax({
             type: "PUT",
-            url: "/api/user/keys",
+            url: "/api/user/keytosave",
             contentType: "application/json",
             data: {
-                "data": keytosave
+                "selectedKeys": keytosave
             }
         });
 

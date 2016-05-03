@@ -16,20 +16,20 @@ router.use(session({
 }));
 
 
-module.exports = function (app) {
+module.exports = function(app) {
     app.use('/api/user', router);
 };
 
 
-router.get("/me", auth.mustBeAuthenticated, auth.getUserInfo, function (req, res) {
+router.get("/me", auth.mustBeAuthenticated, auth.getUserInfo, function(req, res) {
     res.jsend(req.connectedUser);
 
 });
 
 
 //Retourne la liste des utilisateurs
-router.get('/', function (req, res, next) {
-    User.find(function (err, user) {
+router.get('/', function(req, res, next) {
+    User.find(function(err, user) {
         if (err) {
             res.status(500).send(err);
             return;
@@ -41,14 +41,15 @@ router.get('/', function (req, res, next) {
     });
 });
 
-router.get('/finished', auth.mustBeAuthenticated, auth.getUserInfo, function (req, res, next) {
+router.get('/finished', auth.mustBeAuthenticated, auth.getUserInfo, function(
+    req, res, next) {
     if (req.connectedUser.finished.length == 0) {
-        res.status(401).send('No finished keys');  
-        return; 
+        res.status(401).send('No finished keys');
+        return;
     } else {
-        res.send(req.connectedUser.finished);    
+        res.send(req.connectedUser.finished);
     };
-    
+
 });
 
 /**
@@ -68,8 +69,8 @@ router.get('/finished', auth.mustBeAuthenticated, auth.getUserInfo, function (re
  });*/
 
 //Affiche un utilisateur
-router.get('/:id', function (req, res, next) {
-    User.findById(req.params.id, function (err, user) {
+router.get('/:id', function(req, res, next) {
+    User.findById(req.params.id, function(err, user) {
         if (err) {
             res.status(500).send(err);
             return;
@@ -84,28 +85,41 @@ router.get('/:id', function (req, res, next) {
 /**
  * check if combination for keys is right
  */
-router.post("/keys/check", auth.mustBeAuthenticated, auth.getUserInfo, function (req, res, next) {
+router.post("/keys/check", auth.mustBeAuthenticated, auth.getUserInfo, function(
+    req, res, next) {
     var rightKeys = [];
     var levelKeyUser = [];
-    if(req.body.content) levelKeyUser = req.body.content;
-    Level.find({is_world: "true"}, function(err,
+    if (req.body.content) levelKeyUser = req.body.content;
+    Level.find({
+        is_world: "true"
+    }, function(err,
         levelsBD) {
         if (err) {
             res.status(500).send(err);
             return;
         }
-        levelKeyUser.forEach(function (level) {
-            levelsBD.forEach(function (levelBD) {
-                levelBD.keys.forEach(function (key) {
-                    if (key.is_true && key.key == level.key) {
-                        rightKeys.push(key.key);
+        levelKeyUser.forEach(function(level) {
+            levelsBD.forEach(function(levelBD) {
+                levelBD.keys.forEach(function(
+                    key) {
+                    if (key.is_true &&
+                        key.key ==
+                        level.key) {
+                        rightKeys.push(
+                            key.key
+                        );
                     }
                 })
             });
         });
         if (rightKeys.length == levelsBD.length) {
-            User.findByIdAndUpdate (req.connectedUser._id, {$set: {finished: rightKeys}}, function (err, user) {
-                if (err) return res.status(500).send(err);
+            User.findByIdAndUpdate(req.connectedUser._id, {
+                $set: {
+                    finished: rightKeys
+                }
+            }, function(err, user) {
+                if (err) return res.status(500).send(
+                    err);
                 res.send("true");
             });
         } else {
@@ -118,28 +132,37 @@ router.post("/keys/check", auth.mustBeAuthenticated, auth.getUserInfo, function 
  * add selected keys
  */
 
-router.put("/keys", auth.mustBeAuthenticated, auth.getUserInfo, function (req, res, next) {
-        
-        var selectedKeys = req.body.selectedKeys;
-        var selectedKeysUser = req.connectedUser.selectedKeys;
-        
-        var count = 0;
-        var exist = false;
+router.put("/keytosave", auth.mustBeAuthenticated, auth.getUserInfo, function(
+    req,
+    res, next) {
 
-        selectedKeysUser.forEach( function(keyUser) {
-            if (selectedKeys.code == keyUser.id_in_level && exist != false) {  
-                selectedKeysUser.splice(count, 1);
-                selectedKeysUser.push(selectedKeys.key);
-                exist = true;
-            }
-            count++;
-        })
+    var selectedKeys = req.body.selectedKeys;
+    var selectedKeysUser = req.connectedUser.selectedKeys;
+    console.log(req.body);
+    var count = 0;
+    var exist = false;
 
-        if (!exist) selectedKeysUser.push(selectedKeys.key);
- 
-        User.findByIdAndUpdate (req.connectedUser._id, {$set: {selectedKeys: selectedKeysUser}}, function (err, user) {
-            if (err) return res.status(500).send(err);
-            res.send({etat: "ok",  selectedKeys});
+    selectedKeysUser.forEach(function(keyUser) {
+        if (selectedKeys.code == keyUser.id_in_level && exist !=
+            false) {
+            selectedKeysUser.splice(count, 1);
+            selectedKeysUser.push(selectedKeys.key);
+            exist = true;
+        }
+        count++;
+    })
+
+    if (!exist) selectedKeysUser.push(selectedKeys.key);
+
+    User.findByIdAndUpdate(req.connectedUser._id, {
+        $set: {
+            selectedKeys: selectedKeysUser
+        }
+    }, function(err, user) {
+        if (err) return res.status(500).send(err);
+        res.send({
+            etat: "ok",
+            selectedKeys
         });
     });
 });
@@ -149,9 +172,9 @@ router.put("/keys", auth.mustBeAuthenticated, auth.getUserInfo, function (req, r
  * modify a user
  */
 
-router.put("/:id", function (req, res, next) {
+router.put("/:id", function(req, res, next) {
     var userId = req.params.id;
-    User.findById(userId, function (err, user) {
+    User.findById(userId, function(err, user) {
         if (err) {
             res.status(500).send(err);
             return;
@@ -165,7 +188,7 @@ router.put("/:id", function (req, res, next) {
         user.passed_levels = req.body.passed_levels;
         user.selectedKeys = req.body.selectedKeys;
 
-        user.save(req.body, function (err, updatedUser) {
+        user.save(req.body, function(err, updatedUser) {
             if (err) {
                 res.status(500).send(err);
                 // update();
