@@ -109,11 +109,6 @@ $(document).ready(function() {
         // TODO: Check all selects and make a post request to check
         if (arts != 0 && calli != 0 && food != 0 && pop != 0 &&
             origamis != 0) {
-            //console.log(arts+" "+calli+" "+origamis+" "+food+" "+pop);
-            //$('.combinaisonBox').fadeIn();
-            //$(arts+" "+calli+" "+origamis+" "+food+" "+pop).appendTo($("#combinaison"));
-            //$("#combinaison").append(arts + " " + calli + " " +
-                //origamis + " " + food + " " + pop);
             $.post("api/user/keys/check", {
                     "content": [{
                         "levelCode": " martialarts",
@@ -133,12 +128,19 @@ $(document).ready(function() {
                     }]
                 },
                 function(data) {
+                  console.log(data);
                     if (data === "true") {
+                        $(".popup-martialarts").fadeOut();
+                        $(".popup-calligraphy").fadeOut();
+                        $(".popup-origami").fadeOut();
+                        $(".popup-food").fadeOut();
+                        $(".popup-popculture").fadeOut();
                         $('.combinaisonBox').fadeIn();
                         /*$(arts + " " + calli + " " +
                             origamis + " " + food + " " +
                             pop).appendTo($(
                             "#combinaison"));*/
+                            $("#combinaison").empty();
                             $("#combinaison").append(arts + " " + calli + " " +origamis + " " + food + " " +pop);
                     } else {
 
