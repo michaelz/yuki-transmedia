@@ -118,27 +118,29 @@ router.post("/keys/check", auth.mustBeAuthenticated, auth.getUserInfo, function 
  * add selected keys
  */
 
-router.put("/keys/:userid", function (req, res, next) {
-    var userId = req.params.userid;
-    User.findById(userId, function (err, user) {
-        if (err) {
-            res.status(500).send(err);
-            return;
-        } else if (!user) {
-            res.status(404).send("user not found");
-        }
+router.put("/keys", auth.mustBeAuthenticated, auth.getUserInfo, function (req, res, next) {
+        
+        var selectedKeys = req.body.selectedKeys;
+        var selectedKeysUser = req.connectedUser.selectedKeys;
+        
+        var count = 0;
+        var exist = false;
 
-
-        user.selectedKeys = req.body.selectedKeys;
-
-
-        user.save(req.body, function (err, updatedUser) {
-            if (err) {
-                res.status(500).send(err);
-                // update();
+        selectedKeysUser.forEach( function(keyUser) {
+            if (selectedKeys.code == keyUser.id_in_level && exist != false) {  
+                selectedKeysUser.splice(count, 1);
+                selectedKeysUser.push(selectedKeys.key);
+                exist = true;
             }
-            res.send(updatedUser);
+            count++;
         })
+
+        if (!exist) selectedKeysUser.push(selectedKeys.key);
+ 
+        User.findByIdAndUpdate (req.connectedUser._id, {$set: {selectedKeys: selectedKeysUser}}, function (err, user) {
+            if (err) return res.status(500).send(err);
+            res.send({etat: "ok",  selectedKeys});
+        });
     });
 });
 
