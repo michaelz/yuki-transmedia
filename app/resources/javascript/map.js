@@ -163,6 +163,7 @@ $(document).ready(function() {
                             origamis + " " + food + " " +
                             pop).appendTo($(
                             "#combinaison"));*/
+                            $("#keyBtn").empty();
                         $("#combinaison").empty();
                         $("#combinaison").append(arts + " " +
                             calli + " " + origamis +
