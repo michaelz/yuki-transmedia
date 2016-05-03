@@ -104,25 +104,43 @@
     .yukidl {
         text-align:center;
         margin-top: 0%;
-        padding: 1em 0;
+        padding: 0;
         .btn {
+            font-size: 0.8em;
             display:inline-block;
+            width: 33%;
+        }
+        @media screen and (min-device-width: 600px) {
+            padding: 1em 0;
+            .btn {
+                font-size: 1em;
+
+            }
         }
     }
     .menuFonds {
         background: #444;
         margin:0;
         height:5vh;
-        padding: 1em;
+        padding: 0em;
         overflow:auto;
-        min-height: 58px;
+        min-height: 40px;
+        @media screen and (min-device-width: 600px) {
+            padding: 1em;
+            min-height:58px;
+        }
+
         .bg {
             display:inline-block;
-            height:50px;
-            width: 50px;
+            height:30px;
+            width: 30px;
             float:left;
             margin: 4px;
             cursor:pointer;
+            @media screen and (min-device-width: 600px) {
+                height:50px;
+                width:50px;
+            }
         }
         .imgJeu {
             display:block;
