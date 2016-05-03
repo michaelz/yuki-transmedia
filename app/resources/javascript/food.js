@@ -1,12 +1,14 @@
 $(document).ready(function() {
 
-    $("#restartQuiz").on( "click", function() {
-      $(".lvl-achieved").fadeOut();
-      startQuiz();
+    $("#restartQuiz").on("click", function() {
+        $(".lvl-achieved").fadeOut();
+        startQuiz();
     });
 
     $('.round-audio-button').show();
-    $("audio").append('<source class="audioSource" src="/audio/nourriture/HotSprings-DerekAndBrandonFiechter.mp3" type="audio/mpeg">');
+    $("audio").append(
+        '<source class="audioSource" src="/audio/nourriture/HotSprings-DerekAndBrandonFiechter.mp3" type="audio/mpeg">'
+    );
 
     $('.round-info-button').hide();
     $('.img').hide();
@@ -122,13 +124,13 @@ var startQuiz = function(data) {
             correctAnswer += 1;
             $('.square').addClass("right");
             $('.square').removeClass("wrong");
-        }else{
-          $('.square').addClass("wrong");
-          $('.square').removeClass("right");
+        } else {
+            $('.square').addClass("wrong");
+            $('.square').removeClass("right");
         }
 
         setTimeout(function() {
-          nextQuestion(pos, data.length);
+            nextQuestion(pos, data.length);
         }, 800);
 
 
@@ -142,8 +144,8 @@ var startQuiz = function(data) {
  * Next question or finish quiz if question is last
  */
 var nextQuestion = function(currentPos, total) {
-  $('.square').removeClass("right");
-  $('.square').removeClass("wrong");
+    $('.square').removeClass("right");
+    $('.square').removeClass("wrong");
 
     if (currentPos == total - 1) {
         $(".q-" + pos).hide();
@@ -152,22 +154,28 @@ var nextQuestion = function(currentPos, total) {
         pos = 0;
         $("#quizTXT").empty();
         if (correctAnswer >= 1) {
-          // Envoi des infos à la bd
-          $.post("/api/level/passLevelUser/food",{ result: correctAnswer}, function( data ) {
-            $("#quizTXT").append("Bravo");
-            $("#restartQuiz").hide();
-            $("#mondes").show();
-            $("#msg").empty();
-            $("#msg").append("Tu as réussi le défi. Maître Hiramatsu te remercie et comme convenu, il te transmet l'indice te permettant de retrouver le morceau de tasse à la <span class="jImpact">Japan Impact</span>.");
-            //$(".yukiImage").removeAttr("src");
-            console.log("ok");
-          });
-          $(".yukImage").attr("src", "/img/yuki_content.png");
+            // Envoi des infos à la bd
+            $.post("/api/level/passLevelUser/food", {
+                result: correctAnswer
+            }, function(data) {
+                $("#quizTXT").append("Bravo");
+                $("#restartQuiz").hide();
+                $("#mondes").show();
+                $("#msg").empty();
+                $("#msg").append(
+                    "Tu as réussi le défi. Maître Hiramatsu te remercie et comme convenu, il te transmet l'indice te permettant de retrouver le morceau de tasse à la <span class=\"jImpact\">Japan Impact</span>."
+                );
+                //$(".yukiImage").removeAttr("src");
+                console.log("ok");
+            });
+            $(".yukImage").attr("src", "/img/yuki_content.png");
         } else {
             $("#quizTXT").append("Dommage");
             $("#mondes").hide();
             $("#msg").empty();
-            $("#msg").append("Tu as loupé les révisions. Maître Hiramatsu n'a pas réussi à apprendre correctement son examen. Il te demande gentiment de l'aider une nouvelle fois. Merci de réessayer pour aider Hiramatsu.");
+            $("#msg").append(
+                "Tu as loupé les révisions. Maître Hiramatsu n'a pas réussi à apprendre correctement son examen. Il te demande gentiment de l'aider une nouvelle fois. Merci de réessayer pour aider Hiramatsu."
+            );
             $("#restartQuiz").show();
             //$(".yukImage").removeAttr("src");
             $(".yukImage").attr("src", "/img/sprites/yuki_tombe.png");
@@ -201,7 +209,8 @@ var buildQuestion = function(pos, q) {
 
     $.each(q.answers, function(a, answer) {
         $(".q-" + pos + " .choices").append("<li data-position='" +
-            a + "' class='answer btn'>" + answer.text + "</li>");
+            a + "' class='answer btn'>" + answer.text + "</li>"
+        );
     });
 }
 
