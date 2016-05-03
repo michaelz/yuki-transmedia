@@ -95,7 +95,7 @@ $(document).ready(function() {
         $(".lvl-achieved").hide();
     })
 
-    $('.element .signs select').on('change', function() {
+    $('.popup .signs select').on('change', function() {
         console.log('selected a new one');
         //console.log($(this).val());
 
@@ -114,7 +114,7 @@ $(document).ready(function() {
             //$(arts+" "+calli+" "+origamis+" "+food+" "+pop).appendTo($("#combinaison"));
             //$("#combinaison").append(arts + " " + calli + " " +
                 //origamis + " " + food + " " + pop);
-            $.post("/keys/check", {
+            $.post("api/user/keys/check", {
                     "content": [{
                         "levelCode": " martialarts",
                         "key": arts
@@ -133,12 +133,13 @@ $(document).ready(function() {
                     }]
                 },
                 function(data) {
-                    if (data) {
+                    if (data === "true") {
                         $('.combinaisonBox').fadeIn();
-                        $(arts + " " + calli + " " +
+                        /*$(arts + " " + calli + " " +
                             origamis + " " + food + " " +
                             pop).appendTo($(
-                            "#combinaison"));
+                            "#combinaison"));*/
+                            $("#combinaison").append(arts + " " + calli + " " +origamis + " " + food + " " +pop);
                     } else {
 
                     }
