@@ -14,9 +14,6 @@ $(document).ready(function() {
     $('.quiz').hide();
     $('.lvl-achieved').hide();
 
-    $('.answer-right').hide();
-    $('.answer-false').hide();
-
     $('.round-info-button').on('click', showInfos);
 
     function showInfos() {
@@ -126,9 +123,8 @@ var startQuiz = function(data) {
             $('.square').addClass("right");
             $('.square').removeClass("wrong");
         }else{
-          console.log("Mauvaise réponse")
-          $('.answer-right').hide();
-          $('.answer-false').show();
+          $('.square').addClass("wrong");
+          $('.square').removeClass("right");
         }
 
         setTimeout(function() {
