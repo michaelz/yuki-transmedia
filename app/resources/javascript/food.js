@@ -165,7 +165,7 @@ var nextQuestion = function(currentPos, total) {
                 $("#mondes").show();
                 $("#msg").empty();
                 $("#msg").append(
-                    "Tu as réussi le défi. Maître Hiramatsu te remercie et comme convenu, il te transmet l'indice te permettant de retrouver le morceau de tasse à <span class=\"jImpact\">Japan Impact</span>."
+                    "Tu as réussi le défi. Maître Hiramatsu te remercie et comme convenu, il te transmet l'indice (disponible depuis la carte) te permettant de retrouver le morceau de tasse à <span class=\"jImpact\">Japan Impact</span>."
                 );
                 //$(".yukiImage").removeAttr("src");
                 console.log("ok");
