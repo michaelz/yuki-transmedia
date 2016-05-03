@@ -102,10 +102,11 @@ router.post("/keys/check", auth.mustBeAuthenticated, auth.getUserInfo, function 
             });
         });
         if (rightKeys.length == levelsBD.length) {
-            User.findByIdAndUpdate (req.connectedUser._id, {$set: {finished: true}}, function (err, user) {
+            res.send("true");
+            /*User.findByIdAndUpdate (req.connectedUser._id, {$set: {finished: true}}, function (err, user) {
                 if (err) return res.status(500).send(err);
                 res.send("true");
-            });
+            });*/
         } else {
             res.send("false");
         }
