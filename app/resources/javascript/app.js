@@ -21,7 +21,9 @@ $(document).ready(function() {
             Cookies.set("son", 1);
         }
     }
-
+    $(".logout a").click(function () {
+        Cookies.remove('japanimpact');
+    }); 
 })
 
 function adjustVideoHeight() {
