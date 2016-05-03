@@ -48,9 +48,9 @@ var UserSchema = new Schema({
             "key": String
 
         }
-    ]
+    ],
 
-
+    finished: []
 });
 
 /*UserSchema.virtual('date')
