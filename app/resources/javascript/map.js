@@ -128,6 +128,7 @@ $(document).ready(function() {
                     }]
                 },
                 function(data) {
+                  console.log();
                   console.log(data);
                     if (data === "true") {
                         $(".popup-martialarts").fadeOut();
