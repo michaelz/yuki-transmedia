@@ -1,5 +1,13 @@
 // TODO Appel aux webservices
 $(document).ready(function() {
+  $.get( "api/user/finished", function( data ) {
+    if (data.length != 0) {
+      $("#keyBtn").empty();
+      $("#keyBtn").append('<button><i class="fa fa-key" aria-hidden="true"></i></button>');
+      var keys = data.toString();
+      $("#combinaison").append(keys);
+    }
+});
     if (!Cookies.get("japanimpact")) Cookies.set("japanimpact", 0);
     $('.round-info-button').hide();
     $('.round-audio-button').show();
@@ -143,6 +151,7 @@ $(document).ready(function() {
                             "#combinaison"));*/
                             $("#combinaison").empty();
                             $("#combinaison").append(arts + " " + calli + " " +origamis + " " + food + " " +pop);
+                            $("#keyBtn").append('<button><i class="fa fa-key" aria-hidden="true"></i></button>');
                     } else {
 
                     }
@@ -180,3 +189,8 @@ function closePopup() {
 function loadWorldinPopup(world) {
 
 }
+
+$("#keyBtn").on('click', function() {
+    console.log("Key clicked");
+    $('.combinaisonBox').fadeIn();
+});
