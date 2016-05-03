@@ -106,20 +106,33 @@ $(document).ready(function() {
     })
 
     $('.popup .signs select').on('change', function() {
-        console.log('selected a new one');
-        //console.log($(this).val());
 
         var calli = $('.sign-calligraphy option:selected').val();
         var food = $('.sign-food option:selected').val();
         var arts = $('.sign-martialarts option:selected').val();
         var pop = $('.sign-popculture option:selected').val();
         var origamis = $('.sign-origami option:selected').val();
-        //console.log(pop);
 
-        // TODO: Check all selects and make a post request to check
+
+        var keytosave = {
+            code: $(this).attr('class').split("-")[1],
+            key: $(this).val()
+        }
+
+        $.ajax({
+            type: "PUT",
+            url: "/api/user/keys",
+            contentType: "application/json",
+            data: {
+                "data": keytosave
+            }
+        });
+
+
+        // Check all selects and make a post request to check
         if (arts != 0 && calli != 0 && food != 0 && pop != 0 &&
             origamis != 0) {
-            $.post("api/user/keys/check", {
+            $.post("/api/user/keys/check", {
                     "content": [{
                         "levelCode": " martialarts",
                         "key": arts
