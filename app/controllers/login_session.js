@@ -3,7 +3,7 @@ var express = require('express'),
     bcrypt = require('bcryptjs'),
     session = require('express-session'),
     router = express.Router(),
-//Cookies = require('cookies'),
+    //Cookies = require('cookies'),
     User = mongoose.model('User'),
     auth = require('../services/auth'),
 
@@ -14,12 +14,12 @@ const saltRounds = 10;
 const salt = '$2a$10$RpO7eflB5oO7Otp01NgmFO';
 
 
-module.exports = function (app) {
+module.exports = function(app) {
     app.use('/session', router);
 };
 
 // Logout endpoint
-router.get('/logout', function (req, res) {
+router.get('/logout', function(req, res) {
     req.session.destroy();
     res.redirect('/');
 });
@@ -27,7 +27,7 @@ router.get('/logout', function (req, res) {
 /**
  * Register new user
  */
-router.post('/register', function (req, res) {
+router.post('/register', function(req, res) {
     var user = new User;
     user.username = req.body.username;
     user.email = req.body.email;
@@ -35,7 +35,7 @@ router.post('/register', function (req, res) {
     var hash = bcrypt.hashSync(password, salt);
     user.password = hash;
 
-    user.save(function (err, createdUser) {
+    user.save(function(err, createdUser) {
         console.log(createdUser);
         if (err) {
             console.log(err.toJSON());
@@ -58,7 +58,7 @@ router.post('/register', function (req, res) {
     });
 });
 
-router.post('/login', function (req, res) {
+router.post('/login', function(req, res) {
     if (!req.body.identifier || !req.body.password) {
         res.jerror('login failed, no pswd or username input');
     } else {
@@ -70,9 +70,18 @@ router.post('/login', function (req, res) {
                 username: req.body.identifier
             }, {
                 email: req.body.identifier
-            }],
-            password: hash
-        }, function (err, user) {
+            }]
+        }, function(err, user) {
+            console.log(user.password);
+            console.log(hash);
+            bcrypt.compare(req.body.password, user.password,
+                function(error, result) {
+                    console.log("error" + error);
+                    console.log("reesult" + result);
+                    /*res.jerror("wrong password");
+                    console.log('wrong password'); // TODO: Doesn't work. bravo.
+                    return;*/
+                });
             if (err) {
                 res.jerror(err);
                 return;
