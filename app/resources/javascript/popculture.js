@@ -115,9 +115,9 @@ $(document).ready(function() {
             }
         });
 
-        $("#droppableMenu").droppable({
+        $(".droppableMenu").droppable({
             drop: function(event, ui) {
-                $("#droppableMenu").append(ui.draggable[0]);
+                $(".menuAccessoires").append(ui.draggable[0]);
                 $("#" + ui.draggable[0].id).css({
                     'position': 'relative',
                     'left': '',
