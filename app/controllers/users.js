@@ -131,7 +131,7 @@ router.post("/keys/check", auth.mustBeAuthenticated, auth.getUserInfo, function(
 /**
  * add selected keys
  */
-
+/*
 router.put("/keytosave", auth.mustBeAuthenticated, auth.getUserInfo, function(
     req,
     res, next) {
@@ -165,7 +165,7 @@ router.put("/keytosave", auth.mustBeAuthenticated, auth.getUserInfo, function(
             selectedKeys
         });
     });
-});
+});*/
 
 
 /**
