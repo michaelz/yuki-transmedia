@@ -77,7 +77,8 @@ $(document).ready(function() {
 
         if (indexdialoguescript < dialoguescript.length) {
             $(".dialogue-personnage").empty();
-            $(".dialogue-personnage").append(correctAnswer);
+            $(".dialogue-personnage").append(dialoguepersonnage[
+                indexdialoguepersonnage]);
         }
     }
 
