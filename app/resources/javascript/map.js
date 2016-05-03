@@ -104,12 +104,12 @@ $(document).ready(function() {
         var arts = $('.sign-martialarts option:selected').val();
         var pop = $('.sign-popculture option:selected').val();
         var origamis = $('.sign-origami option:selected').val();
-
+        console.log(pop);
 
         // TODO: Check all selects and make a post request to check
         if (arts != 0 && calli != 0 && food != 0 && pop != 0 &&
             origamis != 0) {
-            //console.log(arts+" "+calli+" "+origamis+" "+food+" "+pop);
+            console.log(arts+" "+calli+" "+origamis+" "+food+" "+pop);
             $('.combinaisonBox').fadeIn();
             //$(arts+" "+calli+" "+origamis+" "+food+" "+pop).appendTo($("#combinaison"));
             $("#combinaison").append(arts + " " + calli + " " +
