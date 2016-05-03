@@ -194,7 +194,6 @@ $(".popupClose").on('click', function() {
 function openPopup(world) {
     $(".modal-bg").fadeIn();
     $(".popup-" + world).fadeIn();
-    loadWorldinPopup(world);
 }
 
 function closePopup() {
