@@ -115,6 +115,7 @@
   top:0;
 }
 .popup {
+  text-align:center;
   position:absolute;
   left: 5%;
   right:5%;
@@ -143,37 +144,56 @@
     }
   }
   .popup-header {
-    height: 65%;
-    margin: 0 auto;
+    height: 100px;
+    width:100px;
+    margin: -50px auto 0 auto;
+  }
+  h2 {
+      margin-top:0;
+  }
+  .enterWorld {
+    text-align:center;
+    clear:both;
+    margin: 5% 10%;
+    .enter {
+      background: #84A654;
+      color:white;
+      display:block;
+      font-size: 1.1em;
+      line-height:2;
+    }
   }
   .sign-indice {
     padding: 0.3em;
     border-radius: 1em;
     display:block;
-    margin-top: 2em;
-    .indice {
-      margin-top: 1em;
-      padding: 1em;
-      position:relative;
-      z-index: 1;
-      width: 65%;
-      padding-top:65%;
-      margin: 5% auto;
-      text-align:center;
-      background: $color-grey;
-      color:white;
-      &:before {
-        @include icon($fa-var-close);
-        line-height: 40px;
-        font-size: 20px;
-      }
-    }
+    margin-top: 1em;
+    margin-bottom: 1em;
+    overflow:hidden;
+
     .indice-wrapper {
       float:left;
-      width: 24%;
-      margin: 0 4% 4%;
+      width: 30%;
+      margin: 0 10%;
       background:$color-grey;
-      border-radius: 2em;
+      border-radius: 0.9em;
+      .indice {
+        margin-top: 1em;
+        padding: 1em;
+        position:relative;
+        z-index: 1;
+        width: 65%;
+        padding-top:65%;
+        margin: 5% auto;
+        text-align:center;
+        background: $color-grey;
+        color:white;
+        &:before {
+          @include icon($fa-var-close);
+          line-height: 40px;
+          font-size: 20px;
+        }
+      }
       .text {
         text-align:center;
         color:white;
@@ -182,18 +202,18 @@
     }
     .signs {
       // This should show up only once japan impact has started
-      float:left;
-      width: 33%;
-      overflow:hidden;
-    }
-    .enterWorld {
       float:right;
-      width:33%;
-      text-align:center;
-      .enter {
-        display:block;
+      width: 50%;
+      overflow:hidden;
+      select {
+          padding: 0.4em;
+          border:1px solid #d0d0d0;
+          background: white;
+          border-radius: 1em;
+          font-size: 1.8em;
       }
     }
+
   }
   .popup-header {
     background-repeat:no-repeat;
@@ -206,9 +226,9 @@
     }
   }
   &.solved {
-    .indice {
+    .indice-wrapper .indice {
       background-color:white!important;
-      border-radius: 2em;
+      border-radius: 50%;
       &:before {
         content:" ";
       }
