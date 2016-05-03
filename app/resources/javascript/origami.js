@@ -83,7 +83,7 @@ function blowSolution() {
         }
     });
 
-    adjustHeight();
+    adjustVideoHeight();
 }
 
 function waterSolution() {
@@ -94,9 +94,6 @@ function waterSolution() {
     vidId = "uPoidI3eUDE";
     var player2;
 
-
-    console.log("inmethod2");
-    console.log(vidId);
     $("#player2").show();
 
     player2 = new YT.Player('player2', {
@@ -111,7 +108,7 @@ function waterSolution() {
             'onStateChange': endSecondvideo
         }
     });
-    adjustHeight();
+    adjustVideoHeight();
 }
 
 function back1() {
@@ -139,12 +136,12 @@ function endSecondvideo(event) {
 
 }
 
-// calls adjustHeight on window load
+// calls adjustVideoHeight on window load
 jQuery(window).load(function() {
     adjustVideoHeight();
 });
 
-// calls adjustHeight anytime the browser window is resized
+// calls adjustVideoHeight anytime the browser window is resized
 jQuery(window).resize(function() {
     adjustVideoHeight();
 });
