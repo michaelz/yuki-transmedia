@@ -1,0 +1,13 @@
+@import 'components/datetimepicker';
+
+
+.body-formLevel {
+    .form-item {
+        margin: 1em;
+        label {
+            width: 150px;
+            display:inline-block;
+            text-align:right;
+        }
+    }
+}

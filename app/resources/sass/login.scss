@@ -1,0 +1,64 @@
+@import 'components/variables';
+@import 'fontawesome/font-awesome';
+@import 'components/mixins';
+.error {
+  color: $color-martialarts-3;
+}
+
+
+.loginPage {
+    margin-top: 10%;
+    text-align:center;
+    input {
+        margin: 0 auto;
+        width: 60%;
+        max-width: 300px;
+        text-align:center;
+        display:block;
+    }
+    .form-item {
+        width: 100%;
+        margin: 0.5em 0;
+        display:block;
+    }
+    h3 {
+        cursor:pointer;
+        background: lighten($color-grey,20);
+        color: $color-white;
+        padding: 0.5em;
+        &:before {
+            @include icon($fa-var-angle-down);
+            width: 1em;
+            padding-right: 1em;
+        }
+        &:focus {
+            outline:none;
+        }
+    }
+
+    h3.ui-accordion-header-active {
+        background: $color-grey;
+        &:before {
+            @include icon($fa-var-angle-up);
+        }
+    }
+    .msgContainer {
+        margin: 0.2em;
+    }
+    .error {
+        padding: 0.3em;
+        font-size: 0.8em;
+        background: desaturate(lighten(red,40),30);
+        text-align:center;
+        margin: 0 auto;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+        overflow:hidden;
+    }
+    button.submit {
+    background:grey;
+        &.active {
+            background:green;
+        }
+    }
+}

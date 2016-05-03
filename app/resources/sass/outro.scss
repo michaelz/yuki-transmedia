@@ -1,0 +1,33 @@
+@import 'fontawesome/font-awesome';
+@import 'components/variables';
+@import 'components/mixins';
+
+.body-outro .square {
+  background-size: cover;
+  height:auto;
+  min-height:0;
+}
+.videoFin {
+    overflow:hidden;
+    clear:both;
+    .actions {
+        padding: 2em;
+        margin-top: -2px;
+        position:relative;
+        z-index: 2;
+        background: $color-grey;
+        text-align:center;
+
+        .btn {
+            color:inherit;
+        }
+        .btn.back-map:before {
+            @include icon($fa-var-globe);
+            padding-right: 0.5em;
+        }
+    }
+}
+#video {
+    margin: -4px;// fix white spaces sometimes
+    border-bottom: 6px solid $color-grey;
+}

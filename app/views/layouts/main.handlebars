@@ -4,16 +4,76 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <title>{{title }}</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="apple-touch-icon" sizes="57x57" href="/img/favicon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/img/favicon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/img/favicon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/img/favicon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/img/favicon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/img/favicon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/img/favicon/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/img/favicon/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/img/favicon/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/img/favicon/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/img/favicon/manifest.json">
+  <link rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#de6742">
+  <link rel="shortcut icon" href="/img/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/img/favicon/mstile-144x144.png">
+  <meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/{{pagename}}.css">
   {{#if ENV_DEVELOPMENT}}
-    <script src="http://localhost:35729/livereload.js"></script>
+  <script src="http://localhost:35729/livereload.js"></script>
   {{/if}}
+  <script type="text/javascript" src="/js/lib/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/app.js"></script>
+  <script src="/js/lib/jquery-ui/jquery-ui.min.js"></script>
+  <script src="/js/lib/js.cookie.js"></script>
 </head>
-<body>
+<body class="body-{{pagename}}">
+  <header class="mainHeader">
+    <div class="topmenu">
+        {{#if user}}
+            <div class="welcome">Bienvenue {{user}} !</div>
+        {{/if}}
+      <a href="/"><img class="logo" src="/img/logo.png" alt="logo"/></a>
+      {{#if user}}
+      <div class="logout"><a href="/session/logout">Se déconnecter</a></div>
+      {{/if}}
+      <div class="round-audio-button" style="display:none">
+          <div class="round-audio-button-circle">
+              <span class="round-icon icon-mute"></span>
+          </div>
+      </div>
+    </div>
+
+  </header>
+
+  <div class="square">
+    <div class="content">
+
+        <div class="round-info-button" style="display:none">
+            <div class="round-info-button-circle">
+                <span class="round-icon icon-open"></span>
+            </div>
+        </div>
+        <!--Gestion de l'audio-->
+        <audio loop class="lecteurAudio" controls preload="none"></audio>
 
 
-  {{{body}}}
 
-
+        {{{body}}}
+      </div>
+      <script type="text/javascript" src="/js/{{pagename}}.js"></script>
+    </div>
+    <div class="copyright">
+      <p>Ce projet a été réalisé dans le cadre du projet Transmedia M42 2016</p>
+      <p>Merci à Tab, Sab, Fla, Val, Schenk, Greg, Yun, Den, Guz, Mich</p>
+    </div>
   </body>
-</html>
+  </html>

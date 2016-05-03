@@ -1,5 +1,10 @@
 node_modules/
 public/components
 public/doc
+public/js
+!public/js/NE_PAS_MODIFIER_LES_FICHIERS_ICI
+public/css
+public/fonts
 .sass-cache
 .idea
+storage/*

@@ -1,0 +1,14 @@
+@import 'components/variables';
+@import 'components/jqpuzzle';
+
+/* background + animation
+==================================================*/
+.body-calligraphy .square {
+  background: url("/img/calligraphie_decor.jpg") no-repeat top center transparent;
+  background-size: cover;
+  min-height: 80vh;
+}
+
+div .img {
+	margin-top: 15%;
+}

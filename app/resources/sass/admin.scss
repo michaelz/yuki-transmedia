@@ -1,0 +1,76 @@
+@import "components/variables";
+@import "fontawesome/font-awesome";
+@import "components/mixins";
+
+.body-admin {
+    .square {
+        width: 80%;
+        max-width: 1000px;
+        height: auto;
+    }
+}
+.tabLevel {
+    h1.adminTitle {
+        font-family: $font-body;
+    }
+    a.btn {
+        margin-top: 1em;
+        display:inline-block;
+        margin-bottom: 1em;
+    }
+    padding: 1em;
+    table {
+        width: 100%;
+        overflow-x: auto;
+        border:none;
+        thead {
+            font-weight:bold;
+            td {
+                background: #c9c9c9;
+            }
+        }
+        td {
+            padding: 0.5em;
+            border: 1px solid #d0d0d0;
+            background: #eee;
+        }
+    }
+    .edit {
+        &:before {
+            color:$color-food-2;
+            @include icon($fa-var-edit);
+            cursor:pointer;
+        }
+    }
+    .buttonDelete {
+        &:before {
+            color:red;
+            @include icon($fa-var-minus-circle);
+            cursor:pointer;
+        }
+    }
+    ul.answers {
+        &,li {
+            list-style:none;
+            margin:0;
+            padding:0;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+    }
+    .not-solution {
+        color:red;
+        &:before {
+            @include icon($fa-var-times-circle);
+            padding-right: 1em;
+        }
+    }
+    .is-solution {
+        color:green;
+        &:before {
+            @include icon($fa-var-check-square);
+            padding-right: 1em;
+        }
+    }
+}

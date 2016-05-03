@@ -1,0 +1,103 @@
+<!--background img-->
+<div class="dojo-front"></div>
+<div class="dojo-inside"></div>
+
+<!--réussite level-->
+<div style="display: none" class="lvl-achieved">
+  <h1>Bravo</h1>
+  <div class="yuki_content"><img src="/img/yuki_content.png"></img></div>
+  <p>Tu as réussi le défi des arts martiaux. Maitre Kaio est fier de toi et comme convenu, il te transmet l'indice te permettant
+    de retrouver le morceau de tasse à <span class="jImpact">Japan Impact</span>.</p><br>
+    <button class="btn"><a href="/">Retour à la carte</a></button>
+    <p>Si tu le souhaite, tu peux continuer les kata. Attention maintenant que tu as fait tes preuves tu n'auras plus le droit à l'erreur.</p>
+    <button class="btn" id="continueGame">Continuer le mini jeu</button>
+    <!--<a href="/">Retour à la carte</a>-->
+    <!--<a id="continueGame">Continuer le mini jeu</a>-->
+</div>
+
+<div class="scoreBox">
+  <p>Votre score : <span id="score"></span></p>
+</div>
+
+<!--réussite level-->
+<div style="display: none" id="newGamePlusFail">
+  <h1>Dommage</h1>
+  <div class="yuki_content"><img src="/img/sprites/yuki_tombe.png"></img></div>
+  <p>Dommage tu as fait une erreur, mais maître Kaio est fière de toi!</p>
+  <p>Ton score est de <span class="scoreFinal"></span></p>
+  <button class="btn"><a href="/">Retour à la carte</a></button>
+</div>
+
+
+<script src="/js/lib/jquery-ui/jquery-ui.min.js"></script>
+
+<div id="martial-arts-info" class="infoBox">
+
+    <div class="round-info-button-close">
+        <div class="round-info-button-circle">
+            <span class="round-icon icon-close"></span>
+        </div>
+    </div>
+
+
+  <h2 class="info-title first-info-title">Les arts martiaux</h2>
+  <p>Un grand nombre d’arts martiaux sont originaires du Japon. Ils traduisent au moins trois termes
+    japonais couramment utilisés:  budō, dont le sens littéral est « voie de la guerre », bujutsu signifiant
+    « techniques de la guerre », et bugei pour « art martial ».</p>
+    <p>Parmi les arts martiaux japonais les plus connus, nous retrouvons l’aikido, le judo, le karaté, le
+      kendo et le sumo, un des plus anciens arts martiaux japonais. Mais il en existe encore beaucoup d'autres, peu connus en occident. </p>
+        <h2 class="info-title">Le saviez-vous ?</h2>
+        <p>Les femmes n'ont le droit de participer qu'aux concours amateurs de Sumo, car non sacrés, et ce uniquement depuis 1997</p>
+        <div class="inspiration">
+          <h2 class="info-title">Nos inspirations</h2>
+      <p>Nous avons décidé d’illustrer le maître d’arts martiaux par un singe, car au Japon, le singe est synonyme de sagesse et de bonheur.</p>
+      <p>Au Japon, il est fréquent de représenter les trois singes de la sagesse. Ceci est un symbole d'origine asiatique constitué de
+        trois singes, dont chacun se couvre une partie différente du visage avec les mains : le premier les yeux, le deuxième la bouche et le troisième les oreilles.</p><br>
+        </div>
+    </div>
+
+    <div class="dialogue dialogue-arts-martiaux">
+      <h3 class="dialogue-personnage"></h3>
+      <p class="dialogue-script"></p>
+      <button class="btn dialogue-skip" type="button">Suivant</button>
+    </div>
+
+
+      <div id="martialArtsDialogue" class="discussionContainer">
+        <h3>Maitre Kaio</h3>
+        <span id="retry"><br></span><p id="martialArtsBubble4">Essaye d'exécuter le kata N°<span id="nbrKata"></span></p>
+        <div id="kataASaisir">
+        </div>
+      </div>
+
+      <div id=spriteYuki>
+        <img id="yuki_face" src="/img/sprites/yuki_face.png" alt="sprite de yuki de face"></img>
+        <img style="display: none" id="yuki_profil" src="/img/sprites/yuki_profil.png" alt="sprite de yuki de profil"></img>
+        <img id="yuki_poing" src="/img/sprites/yuki_poing.png" alt="sprite de yuki poing"></img>
+        <img id="yuki_pied" src="/img/sprites/yuki_pied.png" alt="sprite de yuki coup de pied"></img>
+        <img id="yuki_saut" src="/img/sprites/yuki_saut.png" alt="sprite de yuki sautant"></img>
+        <img id="yuki_poingDeFeu" src="/img/sprites/yuki_poingDeFeu.png" alt="sprite de yuki spécial"></img>
+        <img id="yuki_tombe" src="/img/sprites/yuki_tombe.png" alt="sprite de yuki échec"></img>
+      </div>
+
+      <div id="inputBox" class="discussionContainer">
+        <div id="progressBar"><div class="progress"></div></div>
+
+        <div id="btnBox">
+          <div class="martialArtsBtn" id="btnPoing">
+            <img src="/img/punch.png" alt="poing" />
+          </div>
+
+          <div class="martialArtsBtn" id="btnPied">
+            <img src="/img/kick.png" alt="poing" />
+          </div>
+
+          <div class="martialArtsBtn" id="btnJump">
+            <img src="/img/jump.png" alt="poing" />
+          </div>
+
+          <div class="martialArtsBtn" id="btnSpe">
+            <img src="/img/special.png" alt="poing" />
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,35 @@
+@import "components/variables";
+.body-origami .square {
+  background-size: cover;
+  height:auto;
+  .lvl-achieved {
+      position: inherit;
+      margin: 10% 0;
+  }
+}
+
+.imgorigami{
+  float: left;
+  margin-left: 55px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  position: relative;
+  border: solid white 2px;
+
+}
+
+.imgorigami:hover{
+  cursor:pointer;
+  border: solid $color-grey 2px;
+}
+
+.div{
+  text-align: center;
+}
+
+.titre{
+  padding-top: 40px;
+  font-size: 2.2em;
+  text-align: center;
+  margin-bottom: 50px;
+}
