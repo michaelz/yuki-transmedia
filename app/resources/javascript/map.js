@@ -113,21 +113,18 @@ $(document).ready(function() {
         var pop = $('.sign-popculture option:selected').val();
         var origamis = $('.sign-origami option:selected').val();
 
-        /*
-                var keytosave = {
-                    code: $(this).attr('class').split("-")[1],
-                    key: $(this).val()
-                }
+        var keytosave = {
+            code: $(this).attr('class').split("-")[1],
+            key: $(this).val()
+        }
 
-                $.ajax({
-                    type: "PUT",
-                    url: "/api/user/keytosave",
-                    contentType: "application/json",
-                    data: {
-                        "selectedKeys": keytosave
-                    }
-                });
-                */
+        $.ajax({
+            type: "PUT",
+            url: "/api/user/dudu/save",
+            data: {
+                "selectedKeys": keytosave
+            }
+        });
 
 
         // Check all selects and make a post request to check
