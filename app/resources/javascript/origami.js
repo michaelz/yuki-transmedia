@@ -11,8 +11,6 @@ var player;
 
 function onYouTubePlayerAPIReady(vidId) {
 
-
-
     if (!vidId) {
         vidId = "E2qdFDRK5mo";
         console.log(vidId);
@@ -23,6 +21,9 @@ function onYouTubePlayerAPIReady(vidId) {
         height: '315',
         width: '100%',
         videoId: vidId,
+        playerVars: {
+            rel: 0
+        },
         events: {
             /* 'onReady': onPlayerReady,*/
             'onStateChange': onPlayerStateChange
@@ -51,8 +52,7 @@ function onPlayerStateChange(event) {
         $("#back1").on("click", function() {
             back1();
         });
-        console.log("test1");
-        //$("#sol1").onclick(blowSolution());
+
 
         $("#sol1").on("click", function() {
             blowSolution();
@@ -73,25 +73,24 @@ function blowSolution() {
     var player2;
 
 
-    console.log("inmethod2");
-    console.log(vidId);
     player2 = new YT.Player('player2', {
         height: '315',
-        width: '560',
+        width: '100%',
         videoId: vidId,
+        playerVars: {
+            rel: 0
+        },
         events: {
             'onReady': onPlayerReady,
             'onStateChange': endSecondvideo
         }
     });
 
-
-
-    console.log("blowsolution");
-
+    adjustHeight();
 }
 
 function waterSolution() {
+
     $('#map').hide();
     $("#selection").hide();
 
@@ -102,20 +101,20 @@ function waterSolution() {
     console.log("inmethod2");
     console.log(vidId);
     $("#player2").show();
+
     player2 = new YT.Player('player2', {
         height: '315',
-        width: '560',
+        width: '100%',
         videoId: vidId,
+        playerVars: {
+            rel: 0
+        },
         events: {
             'onReady': onPlayerReady,
             'onStateChange': endSecondvideo
         }
     });
-
-
-
-    console.log("watersolution");
-
+    adjustHeight();
 }
 
 function back1() {
@@ -145,8 +144,7 @@ function endSecondvideo(event) {
 
 function adjustHeight() {
     var width = $('.outer iframe').width();
-    $('.outer iframe').attr('height', width / 1.8 + 'px');
-
+    $('.outer iframe').attr('height', width / 1.77777777778 + 'px');
 }
 
 // calls adjustHeight on window load

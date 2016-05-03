@@ -2,7 +2,15 @@
 .body-origami .square {
   background-size: cover;
   height:auto;
-  min-height:0;
+  .lvl-achieved {
+      position: inherit;
+      margin: 10% 0;
+  }
+}
+.outer  {
+    line-height:0;
+    padding:0;
+    margin:0;
 }
 
 .imgorigami{
