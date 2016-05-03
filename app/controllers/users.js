@@ -81,48 +81,30 @@ router.post("/keys/check", function (req, res, next) {
     /*   var martialArts = req.body.content[0];
      var calligraphy = req.body.content[1];*/
 
-    console.log("length: " + req.body.content.length);
-
     var rightKeys = [];
-
-
-
-    req.body.content.forEach(function (level) {
-        console.log("levels:"+level.levelCode);
-
-        Level.findOne({
-            code: level.levelCode
-
-        }).exec(function (err, level) {
-
-            if (err) {
-                res.status(500).send(err);
-                return;
-            }
-            if (!level) {
-                //res.status(404).send('level not found');
-                return;
-            }
-
-            console.log("level.keys: " +level.keys);
-            level.keys.forEach(function (key) {
-                if (key.is_true) {
-                    console.log( "key: "+ key.key);
-                    rightKeys.push(key.key);
-                }
+    var levelKeyUser = [];
+    if(req.body.content) levelKeyUser = req.body.content;
+    Level.find({is_world: "true"}, function(err,
+        levelsBD) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+        levelKeyUser.forEach(function (level) {
+            levelsBD.forEach(function (levelBD) {
+                levelBD.keys.forEach(function (key) {
+                    if (key.is_true && key.key == level.key) {
+                        rightKeys.push(key.key);
+                    }
+                })
             });
-            if(rightKeys.length = req.body.content.length) {
-                console.log("right keys: " + rightKeys);
-                res.send(rightKeys);
-            }
-
         });
-
+        if (rightKeys.length == levelsBD.length) {
+            res.send("true");
+        } else {
+            res.send("false");
+        }
     });
-
-
-
-    //res.jsend({"keys" : rightKeys});
 });
 
 /**
