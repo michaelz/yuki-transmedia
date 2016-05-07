@@ -72,16 +72,6 @@ router.post('/login', function(req, res) {
                 email: req.body.identifier
             }]
         }, function(err, user) {
-            console.log(user.password);
-            console.log(hash);
-            bcrypt.compare(req.body.password, user.password,
-                function(error, result) {
-                    console.log("error" + error);
-                    console.log("reesult" + result);
-                    /*res.jerror("wrong password");
-                    console.log('wrong password'); // TODO: Doesn't work. bravo.
-                    return;*/
-                });
             if (err) {
                 res.jerror(err);
                 return;
@@ -89,9 +79,20 @@ router.post('/login', function(req, res) {
                 res.jerror("User not found");
                 return;
             } else {
-                req.session.user = user.username;
-                res.jsend("Welcome " + user.username + "!")
-                return;
+                bcrypt.compare(req.body.password, user.password,
+                function(error, result) {
+                    if (error) {
+                        res.jerror("error");
+                        return;
+                    } else if (!result) {
+                        res.jerror("wrong password");
+                        return;
+                    } else {
+                        req.session.user = user.username;
+                        res.jsend("Welcome " + user.username + "!")
+                        return;
+                    }
+                });
             }
         });
 
