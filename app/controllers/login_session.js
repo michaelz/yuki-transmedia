@@ -31,7 +31,7 @@ router.post('/register', function(req, res) {
     var user = new User;
     user.username = req.body.username;
     user.email = req.body.email;
-    var password = toString(req.body.password);
+    var password = req.body.password;
     var hash = bcrypt.hashSync(password, salt);
     user.password = hash;
 
@@ -63,7 +63,7 @@ router.post('/login', function(req, res) {
         res.jerror('login failed, no pswd or username input');
     } else {
         var criteria = {};
-        var hash = bcrypt.hashSync(toString(req.body.password), salt);
+        var hash = bcrypt.hashSync(req.body.password, salt);
         // Find the user with either login or password
         User.findOne({
             $or: [{
