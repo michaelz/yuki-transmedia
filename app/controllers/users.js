@@ -131,41 +131,43 @@ router.post("/keys/check", auth.mustBeAuthenticated, auth.getUserInfo, function(
 /**
  * add selected keys
  */
-/*
-router.put("/keytosave", auth.mustBeAuthenticated, auth.getUserInfo, function(
-    req,
-    res, next) {
 
+router.put("/dudu/save", auth.mustBeAuthenticated, auth.getUserInfo, function( req,
+    res, next) {
+    
     var selectedKeys = req.body.selectedKeys;
     var selectedKeysUser = req.connectedUser.selectedKeys;
-    console.log(req.body);
     var count = 0;
     var exist = false;
 
     selectedKeysUser.forEach(function(keyUser) {
         if (selectedKeys.code == keyUser.id_in_level && exist !=
-            false) {
+            true) {
             selectedKeysUser.splice(count, 1);
-            selectedKeysUser.push(selectedKeys.key);
+            selectedKeysUser.push({id_in_level: selectedKeys.code, key: selectedKeys.key});
             exist = true;
         }
         count++;
     })
 
-    if (!exist) selectedKeysUser.push(selectedKeys.key);
+    //console.log(selectedKeysUser);
 
+    if (exist == false) selectedKeysUser.push({id_in_level: selectedKeys.code, key: selectedKeys.key});
+    console.log(selectedKeysUser);
     User.findByIdAndUpdate(req.connectedUser._id, {
         $set: {
             selectedKeys: selectedKeysUser
         }
     }, function(err, user) {
+        console.log("hello");
         if (err) return res.status(500).send(err);
+        console.log("yop");
         res.send({
             etat: "ok",
             selectedKeys
         });
     });
-});*/
+});
 
 
 /**
