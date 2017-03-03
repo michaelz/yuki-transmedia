@@ -175,7 +175,6 @@ module.exports = function (grunt) {
     'jshint',
     'copy',
     'uglify',
-    'develop',
     'apidoc'
   ]);
 };
