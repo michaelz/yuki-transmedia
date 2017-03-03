@@ -1,5 +1,15 @@
 // TODO Appel aux webservices
 $(document).ready(function() {
+    $.get("api/user/finished", function(data) {
+        if (data.length != 0) {
+            $("#keyBtn").empty();
+            $("#keyBtn").append(
+                '<button><i class="fa fa-key" aria-hidden="true"></i></button>'
+            );
+            var keys = data.toString();
+            $("#combinaison").append(keys);
+        }
+    });
     if (!Cookies.get("japanimpact")) Cookies.set("japanimpact", 0);
     $('.round-info-button').hide();
     $('.round-audio-button').show();
@@ -96,20 +106,31 @@ $(document).ready(function() {
     })
 
     $('.popup .signs select').on('change', function() {
-        console.log('selected a new one');
-        //console.log($(this).val());
 
         var calli = $('.sign-calligraphy option:selected').val();
         var food = $('.sign-food option:selected').val();
         var arts = $('.sign-martialarts option:selected').val();
         var pop = $('.sign-popculture option:selected').val();
         var origamis = $('.sign-origami option:selected').val();
-        //console.log(pop);
 
-        // TODO: Check all selects and make a post request to check
+        var keytosave = {
+            code: $(this).attr('class').split("-")[1],
+            key: $(this).val()
+        }
+
+        $.ajax({
+            type: "PUT",
+            url: "/api/user/dudu/save",
+            data: {
+                "selectedKeys": keytosave
+            }
+        });
+
+
+        // Check all selects and make a post request to check
         if (arts != 0 && calli != 0 && food != 0 && pop != 0 &&
             origamis != 0) {
-            $.post("api/user/keys/check", {
+            $.post("/api/user/keys/check", {
                     "content": [{
                         "levelCode": " martialarts",
                         "key": arts
@@ -128,7 +149,6 @@ $(document).ready(function() {
                     }]
                 },
                 function(data) {
-                  console.log(data);
                     if (data === "true") {
                         $(".popup-martialarts").fadeOut();
                         $(".popup-calligraphy").fadeOut();
@@ -140,8 +160,14 @@ $(document).ready(function() {
                             origamis + " " + food + " " +
                             pop).appendTo($(
                             "#combinaison"));*/
-                            $("#combinaison").empty();
-                            $("#combinaison").append(arts + " " + calli + " " +origamis + " " + food + " " +pop);
+                            $("#keyBtn").empty();
+                        $("#combinaison").empty();
+                        $("#combinaison").append(arts + " " +
+                            calli + " " + origamis +
+                            " " + food + " " + pop);
+                        $("#keyBtn").append(
+                            '<button><i class="fa fa-key" aria-hidden="true"></i></button>'
+                        );
                     } else {
 
                     }
@@ -158,8 +184,6 @@ $(".modal-bg").on('click', function() {
 $(".popupClose").on('click', function() {
     closePopup();
 
-
-
 });
 
 
@@ -167,7 +191,6 @@ $(".popupClose").on('click', function() {
 function openPopup(world) {
     $(".modal-bg").fadeIn();
     $(".popup-" + world).fadeIn();
-    loadWorldinPopup(world);
 }
 
 function closePopup() {
@@ -176,6 +199,7 @@ function closePopup() {
 }
 
 
-function loadWorldinPopup(world) {
-
-}
+$("#keyBtn").on('click', function() {
+    console.log("Key clicked");
+    $('.combinaisonBox').fadeIn();
+});

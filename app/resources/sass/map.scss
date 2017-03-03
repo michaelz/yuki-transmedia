@@ -3,249 +3,286 @@
 @import 'components/mixins';
 
 .body-map .square {
-    background: url('/img/map.png') no-repeat top center transparent;
-    background-size: cover;
+  background: url('/img/map.png') no-repeat top center transparent;
+  background-size: cover;
 }
 
 .map {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  .elements {
+    position:relative;
     height: 100%;
     width: 100%;
-    position: absolute;
-    .elements {
-        position:relative;
-        height: 100%;
-        width: 100%;
-        .element {
-            padding-left: 60px;
-            margin-top: -30px;
-            margin-left: -30px;
-            position:absolute;
-            font-size: 10px;
-            @media screen and (min-device-width: 600px) {
-                padding-left: 90px;
-                margin-top: -45px;
-                margin-left: -45px;
-                .icon {
-                    height: 90px;
-                    width: 90px;
-                }
-            }
-            &.disabled {
-                opacity: 0.3;
-            }
-            .icon {
-                display:inline-block;
-                background-position: center center;
-                background-size: contain;
-                background-repeat:no-repeat;
-                height: 60px;
-                width: 60px;
-                @media screen and (min-device-width: 600px) {
-                    height: 90px;
-                    width: 90px;
-                }
-            }
+    .element {
+      padding-left: 60px;
+      margin-top: -30px;
+      margin-left: -30px;
+      position:absolute;
+      font-size: 10px;
+      @media screen and (min-device-width: 600px) {
+        padding-left: 90px;
+        margin-top: -45px;
+        margin-left: -45px;
+        .icon {
+          height: 90px;
+          width: 90px;
+        }
+      }
+      &.disabled {
+        opacity: 0.3;
+      }
+      .icon {
+        display:inline-block;
+        background-position: center center;
+        background-size: contain;
+        background-repeat:no-repeat;
+        height: 60px;
+        width: 60px;
+        @media screen and (min-device-width: 600px) {
+          height: 90px;
+          width: 90px;
+        }
+      }
 
 
 
 
-            .world-title {
-                text-align:center;
-                font-size: 0.9em;
-                font-color: $color-grey;
-                text-transform:uppercase;
-                margin:0;
-            }
-        }
-        .item-intro {
-            left: 17%;
-            top: 16%;
-            .icon {
-                background-image: url('/img/map/ojiisan.png');
-            }
-        }
-        .item-martialarts {
-            left: 62%;
-            top: 27%;
-            .icon {
-                background-image: url('/img/map/martialarts.png');
-            }
-        }
-        .item-calligraphy {
-            left: 0%;
-            top: 40%;
-            .icon {
-                background-image: url('/img/map/calligraphy.png');
-            }
-        }
-        .item-origami {
-            left: 55%;
-            top: 53%;
-            .icon {
-                background-image: url('/img/map/origami.png');
-            }
-        }
-        .item-food {
-            left: 12%;
-            top: 72%;
-            .icon {
-                background-image: url('/img/map/food.png');
-            }
-        }
-        .item-popculture {
-            left: 55%;
-            top: 84%;
-            .icon {
-                background-image: url('/img/map/popculture.png');
-            }
-        }
+      .world-title {
+        text-align:center;
+        font-size: 0.9em;
+        font-color: $color-grey;
+        text-transform:uppercase;
+        margin:0;
+      }
     }
+    .item-intro {
+      left: 17%;
+      top: 16%;
+      .icon {
+        background-image: url('/img/map/ojiisan.png');
+      }
+    }
+    .item-martialarts {
+      left: 62%;
+      top: 27%;
+      .icon {
+        background-image: url('/img/map/martialarts.png');
+      }
+    }
+    .item-calligraphy {
+      left: 0%;
+      top: 40%;
+      .icon {
+        background-image: url('/img/map/calligraphy.png');
+      }
+    }
+    .item-origami {
+      left: 55%;
+      top: 53%;
+      .icon {
+        background-image: url('/img/map/origami.png');
+      }
+    }
+    .item-food {
+      left: 12%;
+      top: 72%;
+      .icon {
+        background-image: url('/img/map/food.png');
+      }
+    }
+    .item-popculture {
+      left: 55%;
+      top: 84%;
+      .icon {
+        background-image: url('/img/map/popculture.png');
+      }
+    }
+  }
 }
 
 
 
 .modal-bg {
-    position:absolute;
-    z-index:10;
-    background: rgba(white,0.8);
-    cursor:pointer;
-    left:0;
-    right:0;
-    bottom:0;
-    top:0;
+  position:absolute;
+  z-index:10;
+  background: rgba(white,0.8);
+  cursor:pointer;
+  left:0;
+  right:0;
+  bottom:0;
+  top:0;
 }
 .popup {
+  text-align:center;
+  position:absolute;
+  left: 5%;
+  right:5%;
+  top: 15%;
+  min-height:50%;
+  border: 3px solid $color-dialogue;
+  background-color:white;
+  color: $color-dialogue;
+  z-index:15;
+  .popup-close {
     position:absolute;
-    left: 5%;
-    right:5%;
-    top: 15%;
-    min-height:50%;
-    border: 3px solid $color-dialogue;
-    background-color:white;
-    color: $color-dialogue;
-    z-index:15;
-    .popup-close {
-        position:absolute;
-        right:0;
-        margin-top: -1em;
-        margin-right: -1em;
+    right:0;
+    margin-top: -1em;
+    margin-right: -1em;
+    &:before {
+      @include icon($fa-var-close);
+      border: 2px solid $color-grey;
+      border-radius: 50%;
+      background:white;
+      text-align:center;
+      display:block;
+      font-size: 15px;
+      line-height:20px;
+      width:20px;
+      height:20px;
+    }
+  }
+  .popup-header {
+    height: 100px;
+    width:100px;
+    margin: -50px auto 0 auto;
+  }
+  h2 {
+      margin-top:0;
+  }
+  .enterWorld {
+    text-align:center;
+    clear:both;
+    margin: 5% 10%;
+    .enter {
+      background: #84A654;
+      color:white;
+      display:block;
+      font-size: 1.1em;
+      line-height:2;
+    }
+  }
+  .sign-indice {
+    padding: 0.3em;
+    border-radius: 1em;
+    display:block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    overflow:hidden;
+
+    .indice-wrapper {
+      float:left;
+      width: 30%;
+      margin: 0 10%;
+      background:$color-grey;
+      border-radius: 0.9em;
+      .indice {
+        margin-top: 1em;
+        padding: 1em;
+        position:relative;
+        z-index: 1;
+        width: 65%;
+        padding-top:65%;
+        margin: 5% auto;
+        text-align:center;
+        background: $color-grey;
+        color:white;
         &:before {
-            @include icon($fa-var-close);
-            border: 2px solid $color-grey;
-            border-radius: 50%;
-            background:white;
-            text-align:center;
-            display:block;
-            font-size: 15px;
-            line-height:20px;
-            width:20px;
-            height:20px;
+          @include icon($fa-var-close);
+          line-height: 40px;
+          font-size: 20px;
         }
+      }
+      .text {
+        text-align:center;
+        color:white;
+        border-radius: 2em;
+      }
     }
-    .popup-header {
-        height: 65%;
-        margin: 0 auto;
+    .signs {
+      // This should show up only once japan impact has started
+      float:right;
+      width: 50%;
+      overflow:hidden;
+      select {
+          padding: 0.4em;
+          border:1px solid #d0d0d0;
+          background: white;
+          border-radius: 1em;
+          font-size: 1.8em;
+      }
     }
-    .sign-indice {
-        padding: 0.3em;
-        border-radius: 1em;
-        display:block;
-        margin-top: 2em;
-        .indice {
-            margin-top: 1em;
-            padding: 1em;
-            position:relative;
-            z-index: 1;
-            width: 65%;
-            padding-top:65%;
-            margin: 5% auto;
-            text-align:center;
-            background: $color-grey;
-            color:white;
-            &:before {
-                @include icon($fa-var-close);
-                line-height: 40px;
-                font-size: 20px;
-            }
-        }
-        .indice-wrapper {
-            float:left;
-            width: 24%;
-            margin: 0 4% 4%;
-            background:$color-grey;
-            border-radius: 2em;
-            .text {
-                text-align:center;
-                color:white;
-                border-radius: 2em;
-            }
-        }
-        .signs {
-            // This should show up only once japan impact has started
-            float:left;
-            width: 33%;
-            overflow:hidden;
-        }
-        .enterWorld {
-            float:right;
-            width:33%;
-            text-align:center;
-            .enter {
-                display:block;
-            }
-        }
+
+  }
+  .popup-header {
+    background-repeat:no-repeat;
+    background-position: top center;
+    background-size: auto 80%;
+    h2 {
+      padding-top: 25%;
+      margin:0;
+      text-align:center;
     }
-    .popup-header {
-        background-repeat:no-repeat;
-        background-position: top center;
-        background-size: auto 80%;
-        h2 {
-            padding-top: 25%;
-            margin:0;
-            text-align:center;
-        }
+  }
+  &.solved {
+    .indice-wrapper .indice {
+      background-color:white!important;
+      border-radius: 50%;
+      &:before {
+        content:" ";
+      }
     }
-    &.solved {
-        .indice {
-            background-color:white!important;
-            border-radius: 2em;
-            &:before {
-                content:" ";
-            }
-        }
-    }
+  }
 }
 .popup-martialarts {
-    .popup-header {
-        background-image: url('/img/map/pop/martialarts.png');
-    }
+  .popup-header {
+    background-image: url('/img/map/pop/martialarts.png');
+  }
 }
 .popup-calligraphy {
-    .popup-header {
-        background-image: url('/img/map/pop/calligraphy.png');
-    }
+  .popup-header {
+    background-image: url('/img/map/pop/calligraphy.png');
+  }
 }
 .popup-origami {
-    .popup-header {
-        background-image: url('/img/map/pop/origami.png');
-    }
+  .popup-header {
+    background-image: url('/img/map/pop/origami.png');
+  }
 }
 .popup-food {
-    .popup-header {
-        background-image: url('/img/map/pop/food.png');
-    }
+  .popup-header {
+    background-image: url('/img/map/pop/food.png');
+  }
 }
 .popup-popculture {
-    .popup-header {
-        background-image: url('/img/map/pop/popculture.png');
-    }
+  .popup-header {
+    background-image: url('/img/map/pop/popculture.png');
+  }
 }
 
 .popup-combinaison {
-    .popup-header {
-        background-image: url('/img/yuki_content.png');
+  .popup-title {
+    padding-top:20%;
+    background-size:auto 50%;
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-image: url('/img/yuki_content.png');
+    h2 {
+      padding-top: 2em;
     }
+  }
 }
 .combinaisonAchieved{
   text-align: center;
+}
+
+div#keyBtn {
+    position: absolute;
+    top: 1%;
+    left: 1%;
+}
+
+#keyBtn:hover {
+    cursor: pointer;
 }
