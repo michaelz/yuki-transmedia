@@ -169,4 +169,13 @@ module.exports = function (grunt) {
     'apidoc',
     'watch'
   ]);
+  
+  grunt.registerTask('deploy', [
+    'sass',
+    'jshint',
+    'copy',
+    'uglify',
+    'develop',
+    'apidoc'
+  ]);
 };
